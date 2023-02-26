@@ -294,11 +294,11 @@ iframe {
 }
 
 .input100:focus + .focus-input100::after {
-  color: #a64bf4;
+  color: #1a3bb1;
 }
 
 .has-val.input100 + .focus-input100::after {
-  color: #a64bf4;
+  color: #1a3bb1;
 }
 
 
@@ -335,11 +335,11 @@ iframe {
   z-index: -1;
   width: 300%;
   height: 100%;
-  background: #a64bf4;
-  background: -webkit-linear-gradient(right, #00dbde, #fc00ff, #00dbde, #fc00ff);
-  background: -o-linear-gradient(right, #00dbde, #fc00ff, #00dbde, #fc00ff);
-  background: -moz-linear-gradient(right, #00dbde, #fc00ff, #00dbde, #fc00ff);
-  background: linear-gradient(right, #00dbde, #fc00ff, #00dbde, #fc00ff);
+  background: #1a3bb1;
+  background: -webkit-linear-gradient(right, #00dbde, #0080ff, #00dbde, #0080ff);
+  background: -o-linear-gradient(right, #00dbde, #0080ff, #00dbde, #0080ff);
+  background: -moz-linear-gradient(right, #00dbde, #0080ff, #00dbde, #0080ff);
+  background: linear-gradient(right, #00dbde, #0080ff, #00dbde, #0080ff);
   top: 0;
   left: -100%;
 
@@ -348,7 +348,7 @@ iframe {
   -moz-transition: all 0.4s;
   transition: all 0.4s;
 }
-
+/* -------------------------- transicion-boton ----------------------*/
 .login100-form-btn {
   font-family: Poppins-Medium;
   font-size: 16px;

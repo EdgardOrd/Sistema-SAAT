@@ -10,7 +10,8 @@ if(!isset($_SESSION['S_IDUSUARIO'])){
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>AdminLTE 3 | Dashboard</title>
+  <title>Administrador SAAT</title>
+  <link rel="icon" type="image/png" href="images/icons/perfil.ico"/>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Font Awesome -->
@@ -67,7 +68,7 @@ if(!isset($_SESSION['S_IDUSUARIO'])){
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
       <div class="pull-right">
-        <a href="../controlador/usuario/controlador_cerrar_session.php" class="btn btn-default btn-flat">Salir</a>
+        <a href="../controlador/usuario/controlador_cerrar_session.php" class="btn btn-default btn-flat">Cerrar Sesión</a>
       </div>
     </ul>
   </nav>

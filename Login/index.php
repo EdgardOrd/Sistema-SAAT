@@ -9,11 +9,11 @@ if(isset($_SESSION['S_IDUSUARIO'])){
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>SAAT</title>
+	<title>Sistema de Asignación Automática de Tickets SAAT</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
-	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+	<link rel="icon" type="image/png" href="images/icons/iniciar-sesion.ico"/>
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
 <!--===============================================================================================-->
@@ -58,13 +58,7 @@ if(isset($_SESSION['S_IDUSUARIO'])){
                     <span class="focus-input100" data-symbol="&#xf190;"></span>
                 </div>
 
-                <div class="text-right p-t-8 p-b-31">
-                    <a href="#">
-                        ¿Olvidaste la contraseña?
-                    </a>
-                </div>
-
-                <div class="container-login100-form-btn">
+                <div class="container-login100-form-btn  mt-5">
                     <div class="wrap-login100-form-btn">
                         <div class="login100-form-bgbtn"></div>
                         <button class="login100-form-btn" id="login-btn" onclick="VerificarUsuario()">
@@ -72,12 +66,15 @@ if(isset($_SESSION['S_IDUSUARIO'])){
                         </button>
                     </div>
                 </div><br>
-                <section id="contacto">
-                    <ul>
-                        <li><a href="#"> <i class="fa-brands fa-facebook"></i></a></li>
-                        <li><a href="#"><i class="fa-brands fa-square-whatsapp"></i></a></li>
-                    </ul>
-                </section>
+                <div class="flex-c-m">
+						<a href="#" class="login100-social-item bg2">
+							<i class="fa fa-facebook"></i>
+						</a>
+
+						<a href="#" class="login100-social-item bg3">
+							<i class="fa fa-google"></i>
+						</a>
+					</div>
         </div>
     </div>
 </div>

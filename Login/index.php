@@ -33,15 +33,14 @@ if(isset($_SESSION['S_IDUSUARIO'])){
 <!--===============================================================================================-->
 	<link rel="stylesheet" href="css/main.css">
 	<link rel="stylesheet" href="css/util.css">
-	<link rel="stylesheet" href="css/contacto.css">
 <!--===============================================================================================-->
 	<script src="https://kit.fontawesome.com/15bb13ea67.js" crossorigin="anonymous"></script>
 <!--===============================================================================================-->
 </head>
 <body>
-	
+<form id="login-form">
 <div class="limiter">
-    <div class="container-login100" style="background-image: url('images/bg-002.jpg');">
+    <div class="container-login100" style="background-image: url('images/bg-02.png');">
         <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
                 <span class="login100-form-title p-b-49">
                     INICIAR SESIÓN
@@ -78,7 +77,7 @@ if(isset($_SESSION['S_IDUSUARIO'])){
         </div>
     </div>
 </div>
-
+</form>
 
 	<div id="dropDownSelect1"></div>
 
@@ -102,6 +101,7 @@ if(isset($_SESSION['S_IDUSUARIO'])){
 <!--===============================================================================================-->
 	<script src="js/main.js"></script>
     <script src="../js/usuario.js"></script>
+
 
 </body>
 <script>

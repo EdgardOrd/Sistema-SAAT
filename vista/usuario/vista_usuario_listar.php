@@ -5,9 +5,34 @@
               <div class="card-tools">
                 <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
               </div>
-          </div>
+        </div>
             <div class="card-body">
-              Contenido del Usuario
+              <table id="tabla_usuario" class="display responsive nowrap" style="width: 100%">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Usuario</th>
+                      <th>Rol</th>
+                      <th>Sexo</th>
+                      <th>Estatus</th>
+                      <th>Acci&oacute;n</th>
+                    </tr>
+                  </thead>
+                  <tfoot>
+                    <tr>
+                      <th>#</th>
+                      <th>Usuario</th>
+                      <th>Rol</th>
+                      <th>Sexo</th>
+                      <th>Estatus</th>
+                      <th>Acci&oacute;n</th>
+                    </tr>
+                  </tfoot>
+              </table>
             </div>
         </div>
-      </div>
+<script>
+  $(document).ready(function () {
+
+  });
+</script>

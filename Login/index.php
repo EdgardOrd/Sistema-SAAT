@@ -38,7 +38,7 @@ if(isset($_SESSION['S_IDUSUARIO'])){
 <!--===============================================================================================-->
 </head>
 <body>
-<form id="login-form">
+<div id="login-form">
 <div class="limiter">
     <div class="container-login100" style="background-image: url('images/bg-02.png');">
         <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
@@ -77,7 +77,7 @@ if(isset($_SESSION['S_IDUSUARIO'])){
         </div>
     </div>
 </div>
-</form>
+</div>
 
 	<div id="dropDownSelect1"></div>
 

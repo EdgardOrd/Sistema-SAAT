@@ -35,6 +35,8 @@ if(!isset($_SESSION['S_IDUSUARIO'])){
   <link rel="stylesheet" href="../Plantilla/plugins/datatable/datatable.min.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <link href='https://unpkg.com/css.gg/icons/all.css' rel='stylesheet'>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -164,7 +166,7 @@ if(!isset($_SESSION['S_IDUSUARIO'])){
 <script src="../Plantilla/plugins/jquery-ui/jquery-ui.min.js"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <script>
-  var idioma_espanol = {
+  let idioma_espanol = {
 			select: {
 			rows: "%d fila seleccionada"
 			},
@@ -223,5 +225,7 @@ if(!isset($_SESSION['S_IDUSUARIO'])){
 <script src="../Plantilla/dist/js/demo.js"></script>
 
 <script src="../Plantilla/plugins/datatables/datatables.min.js"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </body>
 </html>

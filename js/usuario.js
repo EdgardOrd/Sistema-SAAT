@@ -4,7 +4,7 @@ document.getElementById("login-form").addEventListener("keypress", function(even
       VerificarUsuario(); 
     }
   });
-  
+//********************  FUNCION PARA PODER VERIFICAR SI EL USUARIO DE LA BDD ES CORRECTO *******************************
 function VerificarUsuario(){
     let usu = $("#txt_usu").val();
     let con = $("#txt_con").val();
@@ -63,6 +63,7 @@ function VerificarUsuario(){
     })
 }
 
+//********************  FUNCION PARA PODER LISTAR LOS USUARIOS DE LA BDD  *******************************
 function listar_usuario(){
     let table = $("#tabla_usuario").DataTable({
        "ordering":false,
@@ -79,24 +80,49 @@ function listar_usuario(){
        },
        "columns":[
            {"data":"posicion"},
-           {"data":"persona"},
-           {"data":"usu_user"},
-           {"data":"usu_tipo"},
-           {"data":"usu_sexo"},
-           {"data":"usu_estatus",
+           {"data":"usu_nombre"},
+           {"data":"rol_nombre"},
+           {"data":"usu_sexo",
            render: function (data, type, row ) {
-               if(data=='ACTIVO'){
-                   return "<span class='label label-success'>"+data+"</span>";                   
+               if(data=='M'){
+                   return "MASCULINO";                   
                }else{
-                 return "<span class='label label-danger'>"+data+"</span>";                 
+                 return "FEMENINO";                 
                }
              }
            },  
-           {"defaultContent":"<button style='font-size:13px;' type='button' class='editar btn btn-primary'>"}
+           {"data":"usu_estatus",
+           render: function (data, type, row ) {
+               if(data=='ACTIVO'){
+                   return "<span class='badge bg-danger'>"+data+"</span>";                   
+               }else{
+                 return "<span class='badge bg-success'>"+data+"</span>";                 
+               }
+             }
+           },  
+           {"defaultContent":"<button style='font-size:13px;' type='button' class='editar btn btn-primary'><i class='fa fa-edit'></i></button>"}
        ],
 
        "language":idioma_espanol,
        select: true
    });
+   document.getElementById("tabla_usuario_filter").style.display="none";
+    $('input.global_filter').on( 'keyup click', function () {
+    filterGlobal();
+    } );
+    $('input.column_filter').on( 'keyup click', function () {
+        filterColumn( $(this).parents('tr').attr('data-column') );
+    });
 
+    function filterGlobal() {
+        $('#tabla_usuario').DataTable().search(
+            $('#global_filter').val(),
+        ).draw();
+    }
+}
+
+
+//********************  FUNCION PARA EL MODAL DE USUARIO  *******************************
+function abrirModalRegistro(){
+    $("#modal_registro").modal('show');
 }

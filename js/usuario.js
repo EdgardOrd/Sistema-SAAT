@@ -1,9 +1,12 @@
-document.getElementById("login-form").addEventListener("keypress", function(event) {
-    if (event.keyCode === 13) {
-      event.preventDefault(); 
-      VerificarUsuario(); 
-    }
-  });
+window.onload = function() {
+    document.getElementById("login-form").addEventListener("keypress", function(event) {
+      if (event.keyCode === 13) {
+        event.preventDefault(); 
+        VerificarUsuario(); 
+      }
+    });
+  };
+  
 //********************  FUNCION PARA PODER VERIFICAR SI EL USUARIO DE LA BDD ES CORRECTO *******************************
 function VerificarUsuario(){
     let usu = $("#txt_usu").val();
@@ -64,8 +67,9 @@ function VerificarUsuario(){
 }
 
 //********************  FUNCION PARA PODER LISTAR LOS USUARIOS DE LA BDD  *******************************
+var table;
 function listar_usuario(){
-    let table = $("#tabla_usuario").DataTable({
+    table = $("#tabla_usuario").DataTable({
        "ordering":false,
        "paging": false,
        "searching": { "regex": true },
@@ -93,14 +97,14 @@ function listar_usuario(){
            },  
            {"data":"usu_estatus",
            render: function (data, type, row ) {
-               if(data=='ACTIVO'){
-                   return "<span class='badge bg-danger'>"+data+"</span>";                   
+               if(data=='1'){
+                   return "<span class='badge bg-warning text-dark'>"+data+"</span>";                   
                }else{
-                 return "<span class='badge bg-success'>"+data+"</span>";                 
+                    return "<span class='badge bg-warning text-dark'>"+data+"</span>"; 
                }
              }
            },  
-           {"defaultContent":"<button style='font-size:13px;' type='button' class='editar btn btn-primary'><i class='fa fa-edit'></i></button>"}
+           {"defaultContent":"</button>&nbsp;<button style='font-size:13px;' type='button' class='desactivar btn btn-danger'><i class='fa fa-power-off' aria-hidden='true'></i></button>&nbsp;<button style='font-size:13px;' type='button' class='activar btn btn-success'><i class='fa fa-power-off' aria-hidden='true'></i></button>"}
        ],
 
        "language":idioma_espanol,
@@ -114,15 +118,168 @@ function listar_usuario(){
         filterColumn( $(this).parents('tr').attr('data-column') );
     });
 
-    function filterGlobal() {
-        $('#tabla_usuario').DataTable().search(
-            $('#global_filter').val(),
-        ).draw();
+}
+
+
+//********************  FUNCION PARA ACTIVAR/DESACTIVAR USUARIOS DESDE EL ADMIN-WEB  *******************************
+// ***** OJO: NO ME BORRA EN RESPONSIVE YA QUE DESDE LA BDD NO ME TRAE EL ID QUE SE REFLEJA EN LA WEB. ***
+
+$('#tabla_usuario').on('click','.desactivar',function(){
+    let data = table.row($(this).parents('tr')).data();
+    if(table.row(this).child.isShown()){
+        let data = table.row(this).data();
     }
+    Swal.fire({
+        title: '¿Estás seguro de desactivar el usuario?',
+        text: "Al confirmar la operación el Usuario no volvera a tener acceso al Sistema.",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Aceptar'
+      }).then((result) => {
+        if (result.isConfirmed) {
+            Modificar_Estatus(data.usu_id, '2');
+        }
+      })
+})
+
+$('#tabla_usuario').on('click','.activar',function(){
+    let data = table.row($(this).parents('tr')).data();
+    if(table.row(this).child.isShown()){
+        let data = table.row(this).data();
+    }
+    Swal.fire({
+        title: '¿Estás seguro de activar el usuario?',
+        text: "Al confirmar la operación el Usuario volvera a tener acceso al Sistema.",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Aceptar'
+      }).then((result) => {
+        if (result.isConfirmed) {
+            Modificar_Estatus(data.usu_id, '1');
+        }
+      })
+})
+
+
+function Modificar_Estatus(idusuario,estatus){
+    let mensaje = "";
+    if(estatus == '2'){
+        mensaje = 'desactivado';
+    }else{
+        mensaje = 'activado';
+    }
+    $.ajax({
+        "url":"../controlador/usuario/controlador_modificar_estatus_usuario.php",
+        type:'POST',
+        data:{
+            idusuario:idusuario,
+            estatus:estatus
+        }
+    }).done(function(resp){
+        if(resp>0){
+            Swal.fire("CONFRIMADO", "Usuario "+mensaje+" con éxito.","success")
+            .then((value)=>{
+                table.ajax.reload();
+            });
+        }
+    })
+}
+
+function filterGlobal() {
+    $('#tabla_usuario').DataTable().search(
+        $('#global_filter').val(),
+    ).draw();
 }
 
 
 //********************  FUNCION PARA EL MODAL DE USUARIO  *******************************
 function abrirModalRegistro(){
+    $("#modal_registro").modal({backdrop:'static',keyboard:false})
     $("#modal_registro").modal('show');
 }
+
+//********************  FUNCION PARA LISTAR ROLES DE USUARIO  *******************************
+function listar_combo_rol(){
+    $.ajax({
+        "url":"../controlador/usuario/controlador_combo_rol_listar.php",
+        type:'POST'
+    }).done(function(resp){
+        let data = JSON.parse(resp);
+        let cadena = "";
+        if (data.length > 0){
+            for(let i=0;i<data.length;i++){
+                cadena+="<option value='"+data[i][0]+"'>"+data[i][1]+"</option>";
+            }
+            $('#cbm_rol').html(cadena);
+            $('#cbm_rol_editar').html(cadena);
+        }else{
+            cadena+="<option value=''>NO SE ENCONTRARON REGISTROS</option>";
+            $('#cbm_rol').html(cadena);
+            $('#cbm_rol_editar').html(cadena);
+        }
+    })
+}
+
+function Registrar_Usuario(){
+    let usu = $('#txt_usu').val();
+    let contra = $('#txt_con1').val();
+    let contra2 = $('#txt_con2').val();
+    let sexo = $('#cbm_sexo').val();
+    let rol = $('#cbm_rol').val();
+    if(usu.length == 0 || contra.length == 0 || contra2.length == 0 || sexo.length == 0 || rol.length == 0){
+        return Swal.fire("Advertencia", "Llene los campos vacios","warning");
+    }
+
+    if(contra =! contra2){
+        return Swal.fire("Advertencia", "Las contraseñas no coinciden","warning");
+    }
+
+    $.ajax({
+        "url":"../controlador/usuario/controlador_usuario_registro.php",
+        type:'POST',
+        data:{
+            usuario:usu,
+            contrasena:contra,
+            sexo:sexo,
+            rol:rol
+        }
+    }).done(function(resp){
+        if(resp>0){
+            if(resp==1){
+                $('#modal_registro').modal('hide');
+                Swal.fire("CONFRIMADO", "Nuevo Usuario Registrado","success")
+                .then((value)=>{
+                    LimpiarRegistro();
+                    table.ajax.reload();
+                });
+            }else{
+                return Swal.fire("Advertencia", "El usuario ya existe","warning");
+            }
+        }else{  
+            Swal.fire("ERROR", "No se pudo completar el error","error");
+        }
+    })
+}
+
+function LimpiarRegistro(){
+    $('#txt_usu').val("");
+    $('#txt_con1').val("");
+    $('#txt_con2').val("");
+}
+
+function AbrirModalEditarContra(){
+    $("#modal_editar_contra").modal({backdrop:'static',keyboard:false})
+    $("#modal_editar_contra").modal('show');
+    $('#modal_editar_contra').on('shown.bs.modal', function(){
+        $('#txtcontraactual_editar').focus();
+      })
+}
+/*
+function Editar_Contra(){
+
+}
+*/

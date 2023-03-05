@@ -32,58 +32,64 @@ if(!isset($_SESSION['S_IDUSUARIO'])){
   <link rel="stylesheet" href="../Plantilla/plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
   <link rel="stylesheet" href="../Plantilla/plugins/summernote/summernote-bs4.css">
-  <link rel="stylesheet" href="../Plantilla/plugins/datatable/datatable.min.css">
+  <link rel="stylesheet" href="../Plantilla/plugins/datatables/datatables.min.css"> 
+  <link rel="stylesheet" href="../Plantilla/plugins/select3/select2.min.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
   <link href='https://unpkg.com/css.gg/icons/all.css' rel='stylesheet'>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
 </head>
+
+<style>
+  .swal2-popup{
+    font-size:1.6rem !important;
+  }
+</style>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
 
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-    <!-- Left navbar links -->
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
-      </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="index3.html" class="nav-link">Casa</a>
-      </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Contacto</a>
-      </li>
-    </ul>
-
-    <!-- SEARCH FORM -->
-    <form class="form-inline ml-3">
-      <div class="input-group input-group-sm">
-        <input class="form-control form-control-navbar" type="search" placeholder="Buscar..." aria-label="Search">
-        <div class="input-group-append">
-          <button class="btn btn-navbar" type="submit">
-            <i class="fas fa-search"></i>
-          </button>
-        </div>
+  <!-- Left navbar links -->
+  <ul class="navbar-nav">
+    <li class="nav-item">
+      <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
+    </li>
+  </ul>
+  
+  <!-- SEARCH FORM -->
+  <form class="form-inline ml-3">
+    <div class="input-group input-group-sm">
+      <input class="form-control form-control-navbar" type="search" placeholder="Buscar..." aria-label="Search">
+      <div class="input-group-append">
+        <button class="btn btn-navbar" type="submit">
+          <i class="fas fa-search"></i>
+        </button>
       </div>
-    </form>
+    </div>
+  </form>
 
-    <!-- Right navbar links -->
-    <ul class="navbar-nav ml-auto">
+  <!-- Right navbar links -->
+  <ul class="navbar-nav ml-auto">
+    <li class="nav-item">
       <div class="pull-right">
         <div>
-        <a href="../controlador/usuario/controlador_cerrar_session.php" class="btn btn-outline-info"> <img src="../plantilla/../plantilla/dist/img/cerrarsesion1.png" class="img-circle elevation-2 " alt="User Image" width="40"></a>
+          <a href="../controlador/usuario/controlador_cerrar_session.php" class="btn btn-outline-info"> <img src="../plantilla/../plantilla/dist/img/cerrarsesion1.png" class="img-circle elevation-2 " alt="User Image" width="40">
+          <span class="brand-text font-weight-light">Cerrar Sesión</span>
+          </a>
         </div>
       </div>
-    </ul>
-  </nav>
+    </li>
+  </ul>
+</nav>
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
-      <img src="../plantilla/../plantilla/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+    <a href="index.php" class="brand-link">
+      <img src="../plantilla/../plantilla/dist/img/admi.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8">
       <span class="brand-text font-weight-light">Administrador</span>
     </a>
@@ -93,10 +99,10 @@ if(!isset($_SESSION['S_IDUSUARIO'])){
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="../plantilla/../plantilla/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+          <img src="../plantilla/../plantilla/dist/img/ci.png" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block"><?php echo $_SESSION['S_USER']; ?></a>
+          <a href="#" class="d-block">Usuario: <?php echo $_SESSION['S_USER']; ?></a>
         </div>
       </div>
       <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
@@ -104,14 +110,16 @@ if(!isset($_SESSION['S_IDUSUARIO'])){
                with font-awesome or any other icon font library -->
           <li class="nav-item has-treeview menu-open">
             <a onclick="cargar_contenido('contenido_principal', 'usuario/vista_usuario_listar.php')" class="nav-link active">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <i class="nav-icon fas fa-solid fa-users"></i>
               <p>
-                Usuario
+                Usuarios
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
           </li>
-      </ul>
+          <!-- ********** CONFIGURACION *********** -->
+      </ul><br>
+
       <!-- Sidebar Menu -->
       <nav class="mt-2">
        
@@ -127,6 +135,8 @@ if(!isset($_SESSION['S_IDUSUARIO'])){
     <div class="row" id="contenido_principal">
       <div class="col-md-12">
         <div class="card card-warning card-solid">
+          <input type="text" id="txtidprincipal" value="<?php echo $_SESSION['S_IDUSUARIO'] ?>" hidden>
+          <input type="text" id="usuarioprincipal" value="<?php echo $_SESSION['S_USER'] ?>"hidden>
           <div class="card-header with-border">
             <h3 class="card-title">BIENVENIDO AL CONTENIDO PRINCIPAL</h3>
 
@@ -159,7 +169,38 @@ if(!isset($_SESSION['S_IDUSUARIO'])){
   <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
+  <div class="modal" id="modal_editar_contra">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
 
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title"><a>Modificar Contrase&ntilde;a</a></h4>
+        <button type="button" class="close " data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="col-lg-12">
+        <input type="text" id="txtcontra_bd" hidden>
+        <label for="">Contrase&ntilde;a Actual</label>
+        <input type="password" class="form-control" id="txtcontraactual_editar" placeholder="Contrase&ntilde;a Actual"><br>
+      </div>
+      <div class="col-lg-12">
+        <label for="">Nueva Contrase&ntilde;a</label>
+        <input type="password" class="form-control" id="txtcontranu_editar" placeholder="Nueva Contrase&ntilde;a"><br>
+      </div>
+      <div class="col-lg-12">
+        <label for="">Reapita la nueva Contrase&ntilde;a</label>
+        <input type="password" class="form-control" id="txtcontrare_editar" placeholder="Reapita Contrase&ntilde;a"><br>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer"> <!-- d-flex align-items-center justify-content-center por si lo quiero mover al centro -->
+        <button class="btn btn-primary" onclick="Registrar_Usuario()"><i class="fa fa-check">&nbsp;Modificar</i></button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times">&nbsp;Cerrar</i></button>
+      </div>
+    </div>
+  </div>
 <!-- jQuery -->
 <script src="../Plantilla/plugins/jquery/jquery.min.js"></script>
 <!-- jQuery UI 1.11.4 -->
@@ -227,5 +268,9 @@ if(!isset($_SESSION['S_IDUSUARIO'])){
 <script src="../Plantilla/plugins/datatables/datatables.min.js"></script>
 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+<script src="../Plantilla/plugins/select3/select2.min.js"></script>
+<script src="../Plantilla/plugins/sweetalert3/sweetalert2.js"></script>
+
 </body>
 </html>

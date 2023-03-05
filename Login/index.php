@@ -66,11 +66,11 @@ if(isset($_SESSION['S_IDUSUARIO'])){
                     </div>
                 </div><br>
                 <div class="flex-c-m">
-						<a href="#" class="login100-social-item bg2">
+						<a href="https://www.facebook.com/CimeqhOficial" class="login100-social-item bg2" target="_blank">
 							<i class="fa fa-facebook"></i>
 						</a>
 
-						<a href="#" class="login100-social-item bg3">
+						<a href="https://www.cimeqh.org/" class="login100-social-item bg3" target="_blank">
 							<i class="fa fa-google"></i>
 						</a>
 					</div>

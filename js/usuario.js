@@ -104,7 +104,7 @@ function listar_usuario(){
                }
              }
            },  
-           {"defaultContent":"</button>&nbsp;<button style='font-size:13px;' type='button' class='desactivar btn btn-danger'><i class='fa fa-power-off' aria-hidden='true'></i></button>&nbsp;<button style='font-size:13px;' type='button' class='activar btn btn-success'><i class='fa fa-power-off' aria-hidden='true'></i></button>"}
+           {"defaultContent":"<button style='font-size:13px;' type='button' class='desactivar btn btn-danger'><i class='fa fa-power-off' aria-hidden='true'></i></button>&nbsp;<button style='font-size:13px;' type='button' class='activar btn btn-success'><i class='fa fa-power-off' aria-hidden='true'></i></button>"}
        ],
 
        "language":idioma_espanol,
@@ -143,7 +143,20 @@ $('#tabla_usuario').on('click','.desactivar',function(){
         }
       })
 })
-
+/*
+$('#tabla_usuario').on('click','.editar',function(){
+    let data = table.row($(this).parents('tr')).data();
+    if(table.row(this).child.isShown()){
+        let data = table.row(this).data();
+    }
+    $("#modal_editar").modal({backdrop:'static',keyboard:false})
+    $("#modal_editar").modal('show');
+    $('#txtidusuario').val(data.usu_id);
+    $('#txtusu_editar').val(data.usu_nombre);
+    $('#cbm_sexo_editar').val(data.usu_sexo).trigger('change');
+    $('#cbm_rol_editar').val(data.rol_id).trigger('change');
+})
+*/
 $('#tabla_usuario').on('click','.activar',function(){
     let data = table.row($(this).parents('tr')).data();
     if(table.row(this).child.isShown()){
@@ -195,7 +208,6 @@ function filterGlobal() {
     ).draw();
 }
 
-
 //********************  FUNCION PARA EL MODAL DE USUARIO  *******************************
 function abrirModalRegistro(){
     $("#modal_registro").modal({backdrop:'static',keyboard:false})
@@ -234,7 +246,7 @@ function Registrar_Usuario(){
         return Swal.fire("Advertencia", "Llene los campos vacios","warning");
     }
 
-    if(contra =! contra2){
+    if(contra != contra2){
         return Swal.fire("Advertencia", "Las contraseñas no coinciden","warning");
     }
 
@@ -278,8 +290,65 @@ function AbrirModalEditarContra(){
         $('#txtcontraactual_editar').focus();
       })
 }
-/*
-function Editar_Contra(){
 
+function TraerDatosUsuario(){
+    let usuario = $('#usuarioprincipal').val();
+    $.ajax({
+        "url":"../controlador/usuario/controlador_traerdatos_usuario.php",
+        type: 'POST',
+        data:{
+            usuario:usuario
+        }
+    }).done(function(resp){
+        let data = JSON.parse(resp);
+        if(data.length>0){
+            $('#txtcontra_bd').val(data[0][2]);
+        }
+    })
 }
-*/
+
+function Editar_Contra(){
+    let idusuario = $("#txtidprincipal").val();
+    let contrabd = $("#txtcontra_bd").val();
+    let contraescrita = $("#txtcontraactual_editar").val();
+    let contranu = $("#txtcontranu_editar").val();
+    let contrare = $("#txtcontrare_editar").val();
+    if(contraescrita.length==0 || contranu.length==0 || contrare.length==0){
+        return Swal.fire("Advertencia", "Llenar datos vacios","warning");
+    }
+    if(contranu != contrare){
+        return Swal.fire("Advertencia", "Las contraseñas no coiciden.","warning");
+    }
+    $.ajax({
+        url:'../controlador/usuario/controlador_contra_modificar.php',
+        type:'POST',
+        data:{
+            idusuario:idusuario,
+            contrabd:contrabd,
+            contraescrita:contraescrita,
+            contranu:contranu
+        }
+    }).done(function(resp){
+        if(resp>0){
+            if(resp==1){
+                $('#modal_editar_contra').modal('hide');
+                Swal.fire("CONFRIMADO", "Contrase\u00f1a Actualizada","success")
+                .then((value)=>{
+                    LimpiarEditarContra();
+                    table.ajax.reload();
+                });
+            }else{
+                return Swal.fire("Error", "La contrase\u00f1a actual no coincide","error");
+            }
+        }else{
+            return Swal.fire("Error", "No se actualizo la contrase\u00f1a","error");
+        }
+    })
+}
+
+
+function LimpiarEditarContra(){
+    $("#txtcontranu_editar").val("");
+    $("#txtcontrare_editar").val("");
+    $("#txtcontraactual_editar").val("");
+}

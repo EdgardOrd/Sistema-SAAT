@@ -106,18 +106,44 @@ if(!isset($_SESSION['S_IDUSUARIO'])){
         </div>
       </div>
       <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
           <li class="nav-item has-treeview menu-open">
-            <a onclick="cargar_contenido('contenido_principal', 'usuario/vista_usuario_listar.php')" class="nav-link active">
+            <a href="#" onclick="cargar_contenido('contenido_principal', 'usuario/vista_usuario_listar.php')" class="nav-link active">
               <i class="nav-icon fas fa-solid fa-users"></i>
               <p>
                 Usuarios
-                <i class="right fas fa-angle-left"></i>
               </p>
             </a>
           </li>
           <!-- ********** CONFIGURACION *********** -->
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa fa-list-ul"></i>
+              <p>
+                Colegios
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="#" onclick="cargar_contenido('contenido_principal', 'usuario/vista_colegio_cimeqh.php')" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>CIMEQH</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" onclick="cargar_contenido('contenido_principal', 'usuario/vista_colegio_cich.php')" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>CICH</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" onclick="cargar_contenido('contenido_principal', 'usuario/vista_colegio_cah.php')" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>CAH</p>
+                </a>
+              </li>
+            </ul>
+          </li>
       </ul><br>
 
       <!-- Sidebar Menu -->
@@ -132,11 +158,11 @@ if(!isset($_SESSION['S_IDUSUARIO'])){
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper mt-3">
   <section class="content">
+  <input type="text" id="txtidprincipal" value="<?php echo $_SESSION['S_IDUSUARIO'] ?>" hidden>
+  <input type="text" id="usuarioprincipal" value="<?php echo $_SESSION['S_USER'] ?>"hidden>
     <div class="row" id="contenido_principal">
       <div class="col-md-12">
         <div class="card card-warning card-solid">
-          <input type="text" id="txtidprincipal" value="<?php echo $_SESSION['S_IDUSUARIO'] ?>" hidden>
-          <input type="text" id="usuarioprincipal" value="<?php echo $_SESSION['S_USER'] ?>"hidden>
           <div class="card-header with-border">
             <h3 class="card-title">BIENVENIDO AL CONTENIDO PRINCIPAL</h3>
 
@@ -168,7 +194,7 @@ if(!isset($_SESSION['S_IDUSUARIO'])){
   </aside>
   <!-- /.control-sidebar -->
 </div>
-<!-- ./wrapper -->
+<!-- *********** MODAL DE EDITAR CONTRA **************** -->
   <div class="modal" id="modal_editar_contra">
     <div class="modal-dialog modal-sm">
       <div class="modal-content">
@@ -196,7 +222,7 @@ if(!isset($_SESSION['S_IDUSUARIO'])){
 
       <!-- Modal footer -->
       <div class="modal-footer"> <!-- d-flex align-items-center justify-content-center por si lo quiero mover al centro -->
-        <button class="btn btn-primary" onclick="Registrar_Usuario()"><i class="fa fa-check">&nbsp;Modificar</i></button>
+        <button class="btn btn-primary" onclick="Editar_Contra()"><i class="fa fa-check">&nbsp;Modificar</i></button>
         <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times">&nbsp;Cerrar</i></button>
       </div>
     </div>
@@ -271,6 +297,9 @@ if(!isset($_SESSION['S_IDUSUARIO'])){
 
 <script src="../Plantilla/plugins/select3/select2.min.js"></script>
 <script src="../Plantilla/plugins/sweetalert3/sweetalert2.js"></script>
-
+<script src="../js/usuario.js"></script>
+<script>
+  TraerDatosUsuario();
+</script>
 </body>
 </html>

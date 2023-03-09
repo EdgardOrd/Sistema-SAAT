@@ -27,7 +27,7 @@ function VerificarUsuario(){
              Swal.fire("ERROR", "Usuario y/o contrase\u00f1a incorrecta","error");
         }else{
             let data = JSON.parse(resp);
-            if (data[0][5]==='INACTIVO'){
+            if (data[0][5]==='INACTVIO'){
                 return Swal.fire("Advertencia", "Lo sentimos el usuario "+usu+" se encuentra suspendido, comuniquese con el administrador.","warnign");
             }
             $.ajax({

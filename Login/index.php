@@ -1,9 +1,12 @@
 <?php
 session_start();
 if(isset($_SESSION['S_IDUSUARIO'])){
-    header('Location: ../vista/index.php');
-}
-
+    if($_SESSION['S_ROL'] == 'ADMINISTRADOR'){
+        header('Location: ../vista/index.php');
+    } else if($_SESSION['S_ROL'] == 'CONTRIBUYENTE'){
+        header('Location: ../vista/index_ticket.php');
+    }
+} 
 ?>
 
 <!DOCTYPE html>

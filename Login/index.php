@@ -5,7 +5,14 @@ if(isset($_SESSION['S_IDUSUARIO'])){
         header('Location: ../vista/index.php');
     } else if($_SESSION['S_ROL'] == 'CONTRIBUYENTE'){
         header('Location: ../vista/index_ticket.php');
+    }else if($_SESSION['S_ROL'] == 'DELEGADO'){
+        header('Location: ../vista/index_cich.php');
+    }else if($_SESSION['S_ROL'] == 'DELEGADO1'){
+        header('Location: ../vista/index_cah.php');
+    }else if($_SESSION['S_ROL'] == 'DELEGADO2'){
+        header('Location: ../vista/index_cimeqh.php');
     }
+    
 } 
 ?>
 

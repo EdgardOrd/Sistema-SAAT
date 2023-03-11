@@ -22,6 +22,12 @@
                     <span class="me-2">Agregar</span>
                   </button>
                 </div>
+                <div class="col-lg-2">
+                  <button class="btn btn-outline-secondary d-flex align-items-center justify-content-rigth mt-3" style="width:100%" onclick="AbrirModalEditarContra()">
+                  <i class="fas fa-cog me-2 mr-2"></i>
+                    <span class="me-2">Importar CSV</span>
+                  </button>
+                </div>
               </div> 
 <!--**************************** TABLA DE CIMEQH *****************************************************************-->
             <table id="tabla_cimeqh" class="display responsive nowrap" style="width:100%">
@@ -106,6 +112,6 @@
         
 <script>
 $(document).ready(function () {
-    $('#tabla_cimeqh').DataTable();
+  listar_usuario_cimeqh();
 });
 </script>

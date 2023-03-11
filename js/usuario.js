@@ -105,7 +105,7 @@ function listar_usuario(){
              }
            },  
            {"defaultContent":"<button style='font-size:13px;' type='button' class='desactivar btn btn-danger'><i class='fa fa-power-off' aria-hidden='true'></i></button>&nbsp;<button style='font-size:13px;' type='button' class='activar btn btn-success'><i class='fa fa-power-off' aria-hidden='true'></i></button>"}
-       ],
+       ], 
 
        "language":idioma_espanol,
        select: true

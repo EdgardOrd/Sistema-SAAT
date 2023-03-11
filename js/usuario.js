@@ -4,7 +4,7 @@ window.onload = function() {
         event.preventDefault(); 
         VerificarUsuario(); 
       }
-    });
+    }); 
   };
   
 //********************  FUNCION PARA PODER VERIFICAR SI EL USUARIO DE LA BDD ES CORRECTO *******************************

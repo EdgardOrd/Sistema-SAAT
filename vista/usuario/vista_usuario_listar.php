@@ -5,11 +5,11 @@
             <h3 class="card-title">BIENVENIDO AL CONTENIDO DEL USUARIO</h3>
               <div class="card-tools">
                 <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
-              </div>
+              </div> 
         </div>
             <div class="card-body">   
             <div class="form-group row">
-                <div class="col-lg-10">
+                <div class="col-lg-10"> 
                   <div class="input-group">
                     <input type="text" class="global_filter form-control" id="global_filter" placeholder="Ingresar usuario a buscar">
                     <span class="input-group-addon "><i class="fa fa-search pt-2 pl-2"></i> </span>

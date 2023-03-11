@@ -105,14 +105,23 @@ if(!isset($_SESSION['S_IDUSUARIO'])){
         </div>
       </div>
       <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <li class="nav-item has-treeview menu-open">
+          <li class="nav-item has-treeview">
             <a href="#" onclick="cargar_contenido('contenido_principal', 'usuario/vista_colegio_cimeqh.php')" class="nav-link active">
               <i class="nav-icon fas fa-solid fa-user"></i>
               <p>
-                COLEGIO CIMEQH
+                DELEGADO CIMEQH
               </p>
             </a>
           </li>
+          <li class="nav-item has-treeview">
+            <a href="#" onclick="cargar_contenido('contenido_principal', 'plantillaColegio/plantilla_cimeqh.php')" class="nav-link">
+              <i class="nav-icon fas fa-light fa-file"></i>
+              <p>
+                  PLANTILLA CIMEQH
+              </p>
+            </a>
+          </li>
+
           <!-- ********** CONFIGURACION *********** -->
          
       </ul><br>
@@ -135,7 +144,7 @@ if(!isset($_SESSION['S_IDUSUARIO'])){
       <div class="col-md-12">
         <div class="card card-warning card-solid">
           <div class="card-header with-border">
-            <h3 class="card-title">BIENVENIDO AL CONTENIDO PRINCIPAL</h3>
+            <h3 class="card-title">BIENVENIDO AL CONTENIDO PRINCIPAL DEL COLEGIO CIMEQH</h3>
 
             <div class="card-tools pull-right">
             <button type="button" class="btn btn-box-tool" data-card-widget="remove"><i class="fas fa-times"></i>
@@ -152,11 +161,7 @@ if(!isset($_SESSION['S_IDUSUARIO'])){
   </div>
   <!-- /.content-wrapper -->
   <footer class="main-footer">
-    <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong>
-    All rights reserved.
-    <div class="float-right d-none d-sm-inline-block">
-      <b>Version</b> 3.0.0
-    </div>
+    
   </footer>
 
   <!-- Control Sidebar -->
@@ -166,38 +171,7 @@ if(!isset($_SESSION['S_IDUSUARIO'])){
   <!-- /.control-sidebar -->
 </div>
 <!-- *********** MODAL DE EDITAR CONTRA **************** -->
-  <div class="modal" id="modal_editar_contra">
-    <div class="modal-dialog modal-sm">
-      <div class="modal-content">
-
-      <!-- Modal Header -->
-      <div class="modal-header">
-        <h4 class="modal-title"><a>Modificar Contrase&ntilde;a</a></h4>
-        <button type="button" class="close " data-dismiss="modal">&times;</button>
-      </div>
-
-      <!-- Modal body -->
-      <div class="col-lg-12">
-        <input type="text" id="txtcontra_bd" hidden>
-        <label for="">Contrase&ntilde;a Actual</label>
-        <input type="password" class="form-control" id="txtcontraactual_editar" placeholder="Contrase&ntilde;a Actual"><br>
-      </div>
-      <div class="col-lg-12">
-        <label for="">Nueva Contrase&ntilde;a</label>
-        <input type="password" class="form-control" id="txtcontranu_editar" placeholder="Nueva Contrase&ntilde;a"><br>
-      </div>
-      <div class="col-lg-12">
-        <label for="">Reapita la nueva Contrase&ntilde;a</label>
-        <input type="password" class="form-control" id="txtcontrare_editar" placeholder="Reapita Contrase&ntilde;a"><br>
-      </div>
-
-      <!-- Modal footer -->
-      <div class="modal-footer"> <!-- d-flex align-items-center justify-content-center por si lo quiero mover al centro -->
-        <button class="btn btn-primary" onclick="Editar_Contra()"><i class="fa fa-check">&nbsp;Modificar</i></button>
-        <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times">&nbsp;Cerrar</i></button>
-      </div>
-    </div>
-  </div>
+  
 <!-- jQuery -->
 <script src="../Plantilla/plugins/jquery/jquery.min.js"></script>
 <!-- jQuery UI 1.11.4 -->

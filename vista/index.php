@@ -37,6 +37,8 @@ if(!isset($_SESSION['S_IDUSUARIO'])){
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
   <link href='https://unpkg.com/css.gg/icons/all.css' rel='stylesheet'>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  
+ 
 
 </head>
 
@@ -164,14 +166,41 @@ if(!isset($_SESSION['S_IDUSUARIO'])){
         <div class="card card-warning card-solid">
           <div class="card-header with-border">
             <h3 class="card-title">BIENVENIDO AL CONTENIDO PRINCIPAL</h3>
-
             <div class="card-tools pull-right">
             <button type="button" class="btn btn-box-tool" data-card-widget="remove"><i class="fas fa-times"></i>
             </button>
             </div>
           </div>
           <div class="card-body">
-            Contenido Principal
+          <h3 class="mt-4 mb-2">Contenido de Colegios</h3><br>
+          <div class="row">
+            <div class="col-12">
+              <!-- Custom Tabs -->
+              <div class="card">
+                <div class="card-header d-flex p-0">
+                  <h3 class="card-title p-3">Colegios</h3>
+                  <ul class="nav nav-pills ml-auto p-2">
+                    <li class="nav-item"><a class="nav-link active" href="#tab_1" data-toggle="tab">CIMEQH</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#tab_2" data-toggle="tab">CICH</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#tab_3" data-toggle="tab">CAH</a></li>
+                  </ul>
+                </div>
+                <div class="card-body">
+                  <div class="tab-content">
+                    <div class="tab-pane active" id="tab_1">
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rerum numquam eius voluptatum, hic mollitia id sit quaerat fuga ad ipsam aspernatur excepturi earum rem a eligendi, ut, dolorem perferendis atque.
+                    </div>
+                    <div class="tab-pane" id="tab_2">
+                      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repudiandae ipsam aspernatur ex numquam voluptatibus tenetur illum accusamus vitae explicabo, similique iste sit corporis suscipit dolores quaerat esse in et beatae!
+                    </div>      
+                    <div class="tab-pane" id="tab_3">
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque esse totam cumque atque ullam temporibus reiciendis eveniet dolor voluptatem, molestias sed delectus! Delectus consequuntur ratione animi quod minima eveniet necessitatibus.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
           </div>
         </div>
       </div>
@@ -180,11 +209,7 @@ if(!isset($_SESSION['S_IDUSUARIO'])){
   </div>
   <!-- /.content-wrapper -->
   <footer class="main-footer">
-    <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong>
-    All rights reserved.
-    <div class="float-right d-none d-sm-inline-block">
-      <b>Version</b> 3.0.0
-    </div>
+    
   </footer>
 
   <!-- Control Sidebar -->

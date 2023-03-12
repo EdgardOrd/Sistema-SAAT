@@ -152,11 +152,7 @@ if(!isset($_SESSION['S_IDUSUARIO'])){
   </div>
   <!-- /.content-wrapper -->
   <footer class="main-footer">
-    <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong>
-    All rights reserved.
-    <div class="float-right d-none d-sm-inline-block">
-      <b>Version</b> 3.0.0
-    </div>
+    
   </footer>
 
   <!-- Control Sidebar -->
@@ -166,38 +162,7 @@ if(!isset($_SESSION['S_IDUSUARIO'])){
   <!-- /.control-sidebar -->
 </div>
 <!-- *********** MODAL DE EDITAR CONTRA **************** -->
-  <div class="modal" id="modal_editar_contra">
-    <div class="modal-dialog modal-sm">
-      <div class="modal-content">
-
-      <!-- Modal Header -->
-      <div class="modal-header">
-        <h4 class="modal-title"><a>Modificar Contrase&ntilde;a</a></h4>
-        <button type="button" class="close " data-dismiss="modal">&times;</button>
-      </div>
-
-      <!-- Modal body -->
-      <div class="col-lg-12">
-        <input type="text" id="txtcontra_bd" hidden>
-        <label for="">Contrase&ntilde;a Actual</label>
-        <input type="password" class="form-control" id="txtcontraactual_editar" placeholder="Contrase&ntilde;a Actual"><br>
-      </div>
-      <div class="col-lg-12">
-        <label for="">Nueva Contrase&ntilde;a</label>
-        <input type="password" class="form-control" id="txtcontranu_editar" placeholder="Nueva Contrase&ntilde;a"><br>
-      </div>
-      <div class="col-lg-12">
-        <label for="">Reapita la nueva Contrase&ntilde;a</label>
-        <input type="password" class="form-control" id="txtcontrare_editar" placeholder="Reapita Contrase&ntilde;a"><br>
-      </div>
-
-      <!-- Modal footer -->
-      <div class="modal-footer"> <!-- d-flex align-items-center justify-content-center por si lo quiero mover al centro -->
-        <button class="btn btn-primary" onclick="Editar_Contra()"><i class="fa fa-check">&nbsp;Modificar</i></button>
-        <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times">&nbsp;Cerrar</i></button>
-      </div>
-    </div>
-  </div>
+ 
 <!-- jQuery -->
 <script src="../Plantilla/plugins/jquery/jquery.min.js"></script>
 <!-- jQuery UI 1.11.4 -->

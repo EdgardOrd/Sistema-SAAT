@@ -37,7 +37,6 @@ if(!isset($_SESSION['S_IDUSUARIO'])){
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
   <link href='https://unpkg.com/css.gg/icons/all.css' rel='stylesheet'>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-
 </head>
 
 <style>

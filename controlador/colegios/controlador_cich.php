@@ -2,7 +2,7 @@
     require '../../modelo/modelo_usuario.php';
 
     $MU = new Modelo_Usuario();
-    $consulta = $MU->listar_cimeqh();
+    $consulta = $MU->listar_cich();
     if($consulta){
         echo json_encode($consulta);
     }else{

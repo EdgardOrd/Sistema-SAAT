@@ -22,8 +22,69 @@
             }
         }
 
+        function listar_combo_colegios(){
+            $sql = "call SP_COMBO_COLEGIO_CIMEQH()";
+            $arreglo = array();
+            if ($consulta = $this->conexion->conexion->query($sql)) {
+                while ($consulta_VU = mysqli_fetch_array($consulta)) {
+                        $arreglo[] = $consulta_VU;
+                }
+                return $arreglo;
+                $this->conexion->cerrar();
+            }
+        }
+
+        function listar_combo_colegios_cich(){
+            $sql = "call SP_COMBO_COLEGIO_CICH()";
+            $arreglo = array();
+            if ($consulta = $this->conexion->conexion->query($sql)) {
+                while ($consulta_VU = mysqli_fetch_array($consulta)) {
+                        $arreglo[] = $consulta_VU;
+                }
+                return $arreglo;
+                $this->conexion->cerrar();
+            }
+        }
+
+        function listar_combo_colegios_cah(){
+            $sql = "call SP_COMBO_COLEGIO_CAH()";
+            $arreglo = array();
+            if ($consulta = $this->conexion->conexion->query($sql)) {
+                while ($consulta_VU = mysqli_fetch_array($consulta)) {
+                        $arreglo[] = $consulta_VU;
+                }
+                return $arreglo;
+                $this->conexion->cerrar();
+            }
+        }
+
         function listar_cimeqh(){
             $sql = "call SP_LISTAR_CIMEQH()";
+            $arreglo = array();
+            if ($consulta = $this->conexion->conexion->query($sql)) {
+                while ($consulta_VU = mysqli_fetch_assoc($consulta)) {
+                    $arreglo["data"][]=$consulta_VU;
+                }
+                return $arreglo;
+                $this->conexion->cerrar();
+            }
+        }
+
+        
+        function listar_cich(){
+            $sql = "call SP_LISTAR_CICH()";
+            $arreglo = array();
+            if ($consulta = $this->conexion->conexion->query($sql)) {
+                while ($consulta_VU = mysqli_fetch_assoc($consulta)) {
+                    $arreglo["data"][]=$consulta_VU;
+                }
+                return $arreglo;
+                $this->conexion->cerrar();
+            }
+        }
+
+        function listar_cah(){
+            $sql = "call SP_LISTAR_CAH()";
             $arreglo = array();
             if ($consulta = $this->conexion->conexion->query($sql)) {
                 while ($consulta_VU = mysqli_fetch_assoc($consulta)) {
@@ -54,6 +115,36 @@
                     $arreglo["data"][]=$consulta_VU;
                 }
                 return $arreglo;
+                $this->conexion->cerrar();
+            }
+        }
+
+        function RegistrarCimeqh($expediente,$colegio,$proyecto,$propietario,$catrastal,$fecha){
+            $sql = "call SP_REGISTRAR_APROBADO_CIMEQH('$expediente','$colegio','$proyecto','$propietario','$catrastal','$fecha')";
+            if ($consulta = $this->conexion->conexion->query($sql)) {
+                if ($row = mysqli_fetch_array($consulta)) {
+                    return $id= trim($row[0]);
+                }
+                $this->conexion->cerrar();
+            }
+        }
+ 
+        function RegistrarCich($expediente,$colegio,$proyecto,$propietario,$catrastal,$fecha){
+            $sql = "call SP_REGISTRAR_APROBADO_CICH('$expediente','$colegio','$proyecto','$propietario','$catrastal','$fecha')";
+            if ($consulta = $this->conexion->conexion->query($sql)) {
+                if ($row = mysqli_fetch_array($consulta)) {
+                    return $id= trim($row[0]);
+                }
+                $this->conexion->cerrar();
+            }
+        }
+
+        function RegistrarCah($expediente,$colegio,$proyecto,$propietario,$catrastal,$fecha){
+            $sql = "call SP_REGISTRAR_APROBADO_CAH('$expediente','$colegio','$proyecto','$propietario','$catrastal','$fecha')";
+            if ($consulta = $this->conexion->conexion->query($sql)) {
+                if ($row = mysqli_fetch_array($consulta)) {
+                    return $id= trim($row[0]);
+                }
                 $this->conexion->cerrar();
             }
         }

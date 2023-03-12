@@ -235,7 +235,7 @@ function listar_combo_rol(){
         }
     })
 }
-
+ 
 function Registrar_Usuario(){
     let usu = $('#txt_usu').val();
     let contra = $('#txt_con1').val();

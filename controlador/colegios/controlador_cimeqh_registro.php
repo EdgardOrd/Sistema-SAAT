@@ -11,4 +11,4 @@
     $consulta = $MU->RegistrarCimeqh($expediente,$colegio,$proyecto,$propietario,$catrastal,$fecha);
     echo $consulta;
 
-?> 
+?>  

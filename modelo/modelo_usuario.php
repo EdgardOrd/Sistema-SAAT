@@ -122,30 +122,33 @@
         function RegistrarCimeqh($expediente,$colegio,$proyecto,$propietario,$catrastal,$fecha){
             $sql = "call SP_REGISTRAR_APROBADO_CIMEQH('$expediente','$colegio','$proyecto','$propietario','$catrastal','$fecha')";
             if ($consulta = $this->conexion->conexion->query($sql)) {
-                if ($row = mysqli_fetch_array($consulta)) {
-                    return $id= trim($row[0]);
-                }
+                $this->conexion->conexion->next_result(); // Limpiar el conjunto de resultados
                 $this->conexion->cerrar();
+                return true; // Opcionalmente, puedes retornar true si la operación fue exitosa
+            } else {
+                return false; // Opcionalmente, puedes retornar false si la operación falló
             }
         }
  
         function RegistrarCich($expediente,$colegio,$proyecto,$propietario,$catrastal,$fecha){
             $sql = "call SP_REGISTRAR_APROBADO_CICH('$expediente','$colegio','$proyecto','$propietario','$catrastal','$fecha')";
             if ($consulta = $this->conexion->conexion->query($sql)) {
-                if ($row = mysqli_fetch_array($consulta)) {
-                    return $id= trim($row[0]);
-                }
+                $this->conexion->conexion->next_result(); // Limpiar el conjunto de resultados
                 $this->conexion->cerrar();
+                return true; // Opcionalmente, puedes retornar true si la operación fue exitosa
+            } else {
+                return false; // Opcionalmente, puedes retornar false si la operación falló
             }
         }
 
         function RegistrarCah($expediente,$colegio,$proyecto,$propietario,$catrastal,$fecha){
             $sql = "call SP_REGISTRAR_APROBADO_CAH('$expediente','$colegio','$proyecto','$propietario','$catrastal','$fecha')";
             if ($consulta = $this->conexion->conexion->query($sql)) {
-                if ($row = mysqli_fetch_array($consulta)) {
-                    return $id= trim($row[0]);
-                }
+                $this->conexion->conexion->next_result(); // Limpiar el conjunto de resultados
                 $this->conexion->cerrar();
+                return true; // Opcionalmente, puedes retornar true si la operación fue exitosa
+            } else {
+                return false; // Opcionalmente, puedes retornar false si la operación falló
             }
         }
 

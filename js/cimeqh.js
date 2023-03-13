@@ -102,7 +102,7 @@ function Registrar_Nota_Cimeqh(){
                 .then((value)=>{
                     LimpiarRegistro();
                     table.ajax.reload();
-                });
+                }); 
             }else{
                 return Swal.fire("ADVERTENCIA", "La Nota de Aprobación ya Existe","warning");
             }

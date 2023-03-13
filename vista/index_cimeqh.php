@@ -57,16 +57,7 @@ if(!isset($_SESSION['S_IDUSUARIO'])){
   </ul>
   
   <!-- SEARCH FORM -->
-  <form class="form-inline ml-3">
-    <div class="input-group input-group-sm">
-      <input class="form-control form-control-navbar" type="search" placeholder="Buscar..." aria-label="Search">
-      <div class="input-group-append">
-        <button class="btn btn-navbar" type="submit">
-          <i class="fas fa-search"></i>
-        </button>
-      </div>
-    </div>
-  </form>
+
 
   <!-- Right navbar links -->
   <ul class="navbar-nav ml-auto">
@@ -97,7 +88,7 @@ if(!isset($_SESSION['S_IDUSUARIO'])){
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="../plantilla/../plantilla/dist/img/ci.png" class="img-circle elevation-2" alt="User Image">
+          <img src="../plantilla/../plantilla/dist/img/ci.png" class="img elevation-2" alt="User Image">
         </div>
         <div class="info">
           <a href="#" class="d-block">Usuario: <?php echo $_SESSION['S_USER']; ?></a>

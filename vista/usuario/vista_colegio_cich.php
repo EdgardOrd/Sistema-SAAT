@@ -12,7 +12,7 @@
         <div class="form-group row">
                 <div class="col-lg-10">
                   <div class="input-group">
-                    <input type="text" class="global_filter form-control" id="global_filter" placeholder="Ingresar nombre a buscar">
+                    <input type="text" class="global_filter form-control" id="global_filter" placeholder="Ingrese el nombre del propietario...">
                     <span class="input-group-addon "><i class="fa fa-search pt-2 pl-2"></i> </span>
                   </div>
                 </div>
@@ -35,7 +35,7 @@
                         <th>N° Expediente</th>
                         <th>Tipo de Proyecto</th>
                         <th>Propietario</th>
-                        <th>N°Catastral</th>
+                        <th>Clave Catastral</th>
                         <th>Fecha</th>
                         <th>Estatus</th>
                         <th>Acci&oacute;n</th>
@@ -47,7 +47,7 @@
                         <th>N° Expediente</th>
                         <th>Tipo de Proyecto</th>
                         <th>Propietario</th>
-                        <th>N°Catastral</th>
+                        <th>Clave Catastral</th>
                         <th>Fecha</th>
                         <th>Estatus</th>
                         <th>Acci&oacute;n</th>

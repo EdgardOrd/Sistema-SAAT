@@ -18,7 +18,7 @@
                 <div class="col-lg-2">
                   <button class="btn btn-danger d-flex align-items-center justify-content-center py-2" style="width:100%" onclick="abrirModalRegistro()">
                     <i class="gg-add-r btn-icon me-2 mr-2"></i>
-                    <span class="me-2">Nuevo Registro</span>
+                    <span class="me-2">Nuevo Usuario</span>
                   </button>
                 </div>
                 <div class="col-lg-3">
@@ -31,7 +31,7 @@
               <table id="tabla_usuario" class="display responsive nowrap" style="width: 100%">
                   <thead>
                     <tr>
-                      <th>#</th>
+                      <th></th>
                       <th>Usuario</th>
                       <th>Rol</th>
                       <th>Sexo</th>
@@ -41,7 +41,7 @@
                   </thead>
                   <tfoot>
                     <tr>
-                      <th>#</th>
+                      <th></th>
                       <th>Usuario</th>
                       <th>Rol</th>
                       <th>Sexo</th>

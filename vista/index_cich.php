@@ -58,16 +58,7 @@ if(!isset($_SESSION['S_IDUSUARIO'])){
   </ul>
   
   <!-- SEARCH FORM -->
-  <form class="form-inline ml-3">
-    <div class="input-group input-group-sm">
-      <input class="form-control form-control-navbar" type="search" placeholder="Buscar..." aria-label="Search">
-      <div class="input-group-append">
-        <button class="btn btn-navbar" type="submit">
-          <i class="fas fa-search"></i>
-        </button>
-      </div>
-    </div>
-  </form>
+
 
   <!-- Right navbar links -->
   <ul class="navbar-nav ml-auto">
@@ -98,7 +89,7 @@ if(!isset($_SESSION['S_IDUSUARIO'])){
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="../plantilla/../plantilla/dist/img/ci.png" class="img-circle elevation-2" alt="User Image">
+          <img src="../plantilla/../plantilla/dist/img/cich.ico" class="img elevation-2" alt="User Image">
         </div>
         <div class="info">
           <a href="#" class="d-block">Usuario: <?php echo $_SESSION['S_USER']; ?></a>
@@ -162,38 +153,7 @@ if(!isset($_SESSION['S_IDUSUARIO'])){
   <!-- /.control-sidebar -->
 </div>
 <!-- *********** MODAL DE EDITAR CONTRA **************** -->
-  <div class="modal" id="modal_editar_contra">
-    <div class="modal-dialog modal-sm">
-      <div class="modal-content">
 
-      <!-- Modal Header -->
-      <div class="modal-header">
-        <h4 class="modal-title"><a>Modificar Contrase&ntilde;a</a></h4>
-        <button type="button" class="close " data-dismiss="modal">&times;</button>
-      </div>
-
-      <!-- Modal body -->
-      <div class="col-lg-12">
-        <input type="text" id="txtcontra_bd" hidden>
-        <label for="">Contrase&ntilde;a Actual</label>
-        <input type="password" class="form-control" id="txtcontraactual_editar" placeholder="Contrase&ntilde;a Actual"><br>
-      </div>
-      <div class="col-lg-12">
-        <label for="">Nueva Contrase&ntilde;a</label>
-        <input type="password" class="form-control" id="txtcontranu_editar" placeholder="Nueva Contrase&ntilde;a"><br>
-      </div>
-      <div class="col-lg-12">
-        <label for="">Reapita la nueva Contrase&ntilde;a</label>
-        <input type="password" class="form-control" id="txtcontrare_editar" placeholder="Reapita Contrase&ntilde;a"><br>
-      </div>
-
-      <!-- Modal footer -->
-      <div class="modal-footer"> <!-- d-flex align-items-center justify-content-center por si lo quiero mover al centro -->
-        <button class="btn btn-primary" onclick="Editar_Contra()"><i class="fa fa-check">&nbsp;Modificar</i></button>
-        <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times">&nbsp;Cerrar</i></button>
-      </div>
-    </div>
-  </div>
 <!-- jQuery -->
 <script src="../Plantilla/plugins/jquery/jquery.min.js"></script>
 <!-- jQuery UI 1.11.4 -->

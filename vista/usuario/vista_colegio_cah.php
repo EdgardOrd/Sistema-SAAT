@@ -18,17 +18,17 @@
                   </div>
                 </div>
                 <div class="col-lg-2">
-                  <button class="btn btn-danger d-flex align-items-center justify-content-center py-2" style="width:100%" onclick="abrirModalNuevoCah()">
+                  <button class="btn btn-success d-flex align-items-center justify-content-center py-2" style="width:100%" onclick="abrirModalNuevoCah()">
                     <i class="gg-add-r btn-icon me-2 mr-2"></i>
                     <span class="me-2">Agregar</span>
                   </button>
                 </div>
                 <div class="col-lg-2"><br>
-                <button class="cssbuttons-io-button">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"></path><path fill="currentColor" d="M1 14.5a6.496 6.496 0 0 1 3.064-5.519 8.001 8.001 0 0 1 15.872 0 6.5 6.5 0 0 1-2.936 12L7 21c-3.356-.274-6-3.078-6-6.5zm15.848 4.487a4.5 4.5 0 0 0 2.03-8.309l-.807-.503-.12-.942a6.001 6.001 0 0 0-11.903 0l-.12.942-.805.503a4.5 4.5 0 0 0 2.029 8.309l.173.013h9.35l.173-.013zM13 12h3l-4 5-4-5h3V8h2v4z"></path></svg>
-                  <span>CSV</span>
-                </button>
-                </div> 
+                  <a href="../vista/fpdf/PruebaH.php" target="_blank" class="btn btn-primary"><i class="fas fa-file-pdf me-2 mr-2"></i>Generar Reportes</a>
+                </div>
+                <div class="col-lg-2"><br>
+                  <a href="#" class="btn btn-primary"><i class="fas fa-download me-2 mr-2"></i>Descargar CSV</a>
+                </div>
               </div>
               <table id="tabla_cah" class="display responsive nowrap" style="width:100%">
               <thead>
@@ -37,8 +37,8 @@
                         <th>Tipo de Proyecto</th>
                         <th>Propietario</th>
                         <th>Clave Catastral</th>
-                        <th>Fecha</th>
-                        <th>Estatus</th>
+                        <th>Fecha de Aprobación</th>
+                        <th>Estado</th>
                         <th>Acci&oacute;n</th>
                     </tr>
                 </thead>
@@ -49,8 +49,8 @@
                         <th>Tipo de Proyecto</th>
                         <th>Propietario</th>
                         <th>Clave Catastral</th>
-                        <th>Fecha</th>
-                        <th>Estatus</th>
+                        <th>Fecha de Aprobación</th>
+                        <th>Estado</th>
                         <th>Acci&oacute;n</th>
                     </tr>
                 </tfoot>

@@ -103,13 +103,11 @@ if(!isset($_SESSION['S_IDUSUARIO'])){
               </p>
             </a>
           </li>
-          <li class="nav-item has-treeview">
-            <a href="#" onclick="cargar_contenido('contenido_principal', 'plantillaColegio/plantilla_cimeqh.php')" class="nav-link">
-              <i class="nav-icon fas fa-light fa-file"></i>
-              <p>
-                  PLANTILLA CIMEQH
-              </p>
-            </a>
+          <li class="nav-item">
+              <a href="#" onclick="cargar_contenido('contenido_principal', 'usuario/vista_grafico_cimeqh.php')" class="nav-link">
+                <i class="far fa-chart-bar nav-icon"></i>
+                <p>Gráficos Estádisticos</p>
+              </a>
           </li>
 
           <!-- ********** CONFIGURACION *********** -->

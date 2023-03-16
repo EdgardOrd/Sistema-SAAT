@@ -33,7 +33,7 @@ function listar_usuario_cimeqh(){
                }
              }
            },  
-           {"defaultContent":"<button style='font-size:13px;' type='button' class='desactivar btn btn-primary'><i class='fas fa-upload' aria-hidden='true'></i></button>&nbsp;<button style='font-size:13px;' type='button' class='desactivar btn btn-primary'><i class='fas fa-share-square' aria-hidden='true'></i></button>"}
+           {"defaultContent":"<button style='font-size:13px;' type='button' class='desactivar btn btn-primary'><i class='fas fa-share-square' aria-hidden='true'></i></button>"}
        ], 
        "language":idioma_espanol,
        select: true

@@ -27,8 +27,8 @@
                 <div class="col-lg-2"><br>
                   <a href="../vista/fpdf/PruebaH.php" target="_blank" class="btn btn-primary"><i class="fas fa-file-pdf me-2 mr-2"></i>Generar Reportes</a>
                 </div>
-                <div class="col-lg-2"><br>
-                  <a href="#" class="btn btn-primary"><i class="fas fa-download me-2 mr-2"></i>Descargar CSV</a>
+                <div class="col-lg-4"><br>
+                  <a href="#" class="btn btn-primary"><i class="fas fa-file-excel me-2 mr-2"></i>Generar Plantilla de Aprobación</a>
                 </div>
                 
               </div><br>

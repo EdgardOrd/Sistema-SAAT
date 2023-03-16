@@ -136,6 +136,12 @@ if(!isset($_SESSION['S_IDUSUARIO'])){
               </li>
             </ul>
           </li>
+          <li class="nav-item">
+                <a href="#" onclick="cargar_contenido('contenido_principal', 'usuario/vista_graficos_colegios.php')" class="nav-link">
+                  <i class="far fa-chart-bar nav-icon"></i>
+                  <p>Gráficos Estádisticos</p>
+                </a>
+              </li>
       </ul><br>
 
       <!-- Sidebar Menu -->

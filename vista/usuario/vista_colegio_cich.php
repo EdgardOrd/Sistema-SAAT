@@ -9,6 +9,7 @@
               </div>
         </div>
         <div class="card-body">   
+        <h3 class="mt-4 mb-2">Aprobar Notas de Construcción</h3><br>
         <div class="form-group row">
                 <div class="col-lg-10">
                   <div class="input-group">
@@ -25,8 +26,8 @@
                 <div class="col-lg-2"><br>
                   <a href="../vista/fpdf/PruebaH.php" target="_blank" class="btn btn-primary"><i class="fas fa-file-pdf me-2 mr-2"></i>Generar Reportes</a>
                 </div>
-                <div class="col-lg-2"><br>
-                  <a href="#" class="btn btn-primary"><i class="fas fa-download me-2 mr-2"></i>Descargar CSV</a>
+                <div class="col-lg-4"><br>
+                  <a href="#" class="btn btn-primary"><i class="fas fa-file-excel me-2 mr-2"></i>Generar Plantilla de Aprobación</a>
                 </div>
               </div>
               <table id="tabla_cich" class="display responsive nowrap" style="width:100%">

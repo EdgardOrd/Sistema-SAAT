@@ -25,7 +25,7 @@
                   </button>
                 </div>
                 <div class="col-lg-2"><br>
-                  <a href="../vista/fpdf/PruebaH.php" target="_blank" class="btn btn-primary"><i class="fas fa-file-pdf me-2 mr-2"></i>Generar Reportes</a>
+                  <a href="../vista/fpdf/ReporteCimeqh.php" target="_blank" class="btn btn-primary"><i class="fas fa-file-pdf me-2 mr-2"></i>Generar Reportes</a>
                 </div>
                 <div class="col-lg-4"><br>
                   <a href="#" class="btn btn-primary"><i class="fas fa-file-excel me-2 mr-2"></i>Generar Plantilla de Aprobación</a>
@@ -90,8 +90,8 @@
       </div>
       <!-- Modal body -->
       <div class="col-lg-12">
-        <label for="">N° Catastral</label>
-        <input type="number" class="form-control" id="txt_cat" placeholder="Ingrese el numero catastral"><br>
+        <label for="">Clave Catastral</label>
+        <input type="text" class="form-control" id="txt_cat" placeholder="Ingrese el numero catastral"><br>
       </div>
        <!-- Modal body -->
       <div class="col-lg-12">

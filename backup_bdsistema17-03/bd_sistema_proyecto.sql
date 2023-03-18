@@ -44,7 +44,7 @@ CREATE TABLE `proyecto` (
 
 LOCK TABLES `proyecto` WRITE;
 /*!40000 ALTER TABLE `proyecto` DISABLE KEYS */;
-INSERT INTO `proyecto` VALUES (1,5,'Millonario','Henry Orellana','123456789','2023-02-01','APROBADO'),(2,4,'Millonario','Edgard Ordoñez','123456','2023-03-01','APROBADO'),(3,3,'Millonario','Douglas Chavez','12345','2023-04-05','APROBADO'),(6,5,'Normal ','Raul Reyes rEYES ','1348','2023-03-23','APROBADO'),(8,3,'Normal ','Raul Reyes rEYES ','1348','2023-03-23','APROBADO'),(10,3,'Normal ','Raul Reyes rEYES ','1348','2023-03-23','APROBADO'),(45,4,'Millonario','KO','1234589','2023-03-08','APROBADO'),(46,4,'Normal ','JI','1356','2023-03-28','APROBADO'),(55,4,'Millonario','Juan Jose Lopez','4587','2023-03-14','APROBADO'),(58,5,'Millonario','Edwin Orellana ','123864','2023-03-12','APROBADO'),(135,5,'Normal','Raul Reyes','31552','2023-02-05','APROBADO'),(274,5,'Normal ','Reyes ','31864','2023-03-21','APROBADO'),(528,4,'Millonario ','Yo','123234','2023-08-05','APROBADO'),(894,5,'Millonario','INversiones','135861','2023-08-05','APROBADO'),(1386,5,'Normal ','jUAN CARLOS MENDONZA','3186','2023-03-11','APROBADO'),(13868,3,'Normal ','Jh','368515','2023-03-23','APROBADO'),(16816,5,'Millonario','Juan Carlos ','316845','2023-05-06','APROBADO');
+INSERT INTO `proyecto` VALUES (1,5,'Millonario','Henry Orellana','123456789','2023-02-01','APROBADO'),(2,4,'Millonario','Edgard Ordoñez','123456','2023-03-01','APROBADO'),(3,3,'Millonario','Douglas Chavez','12345','2023-04-05','APROBADO'),(6,5,'Normal ','Raul Reyes rEYES ','1348','2023-03-23','APROBADO'),(8,3,'Normal ','Raul Reyes rEYES ','1348','2023-03-23','APROBADO'),(10,3,'Normal ','Raul Reyes rEYES ','1348','2023-03-23','APROBADO'),(45,4,'Millonario','KO','1234589','2023-03-08','APROBADO'),(46,4,'Normal ','JI','1356','2023-03-28','APROBADO'),(55,4,'Millonario','Juan Jose Lopez','4587','2023-03-14','APROBADO'),(58,5,'Millonario','Edwin Orellana ','123864','2023-03-12','APROBADO'),(135,5,'Normal','Raul Reyes','31552','2023-02-05','APROBADO'),(258,5,'Normal ','Jeir','E258','2023-03-16','APROBADO'),(274,5,'Normal ','Reyes ','31864','2023-03-21','APROBADO'),(528,4,'Millonario ','Yo','123234','2023-08-05','APROBADO'),(894,5,'Millonario','INversiones','135861','2023-08-05','APROBADO'),(1386,5,'Normal ','jUAN CARLOS MENDONZA','3186','2023-03-11','APROBADO'),(13868,3,'Normal ','Jh','368515','2023-03-23','APROBADO'),(16816,5,'Millonario','Juan Carlos ','316845','2023-05-06','APROBADO');
 /*!40000 ALTER TABLE `proyecto` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -57,4 +57,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-03-16 10:15:07
+-- Dump completed on 2023-03-17 19:28:16

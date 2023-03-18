@@ -9,7 +9,7 @@ class PDF extends FPDF
    function Header()
    {
       
-      $this->Image('cimeqh.jpeg', 5, 10, 60); //logo de la empresa,moverDerecha,moverAbajo,tamañoIMG
+      $this->Image('cimeqh.jpeg', 220, 10, 60); //logo de la empresa,moverDerecha,moverAbajo,tamañoIMG
       $this->SetFont('Arial', 'B', 19); //tipo fuente, negrita(B-I-U-BIU), tamañoTexto
       $this->Cell(95); // Movernos a la derecha
       $this->SetTextColor(0, 0, 0); //color
@@ -19,19 +19,19 @@ class PDF extends FPDF
       $this->SetTextColor(103); //color
 
       /* UBICACION */
-      $this->Cell(200);  // mover a la derecha
+      $this->Cell(1);  // mover a la derecha
       $this->SetFont('Arial', 'B', 10);
       $this->Cell(96, 10, utf8_decode("Ubicación : San Pedro Sula"), 0, 0, '', 0);
       $this->Ln(6);
 
       /* TELEFONO */
-      $this->Cell(200);  // mover a la derecha
+      $this->Cell(1);  // mover a la derecha
       $this->SetFont('Arial', 'B', 10);
       $this->Cell(59, 10, utf8_decode("Teléfono : 9669-0746"), 0, 0, '', 0);
       $this->Ln(5);
 
       /* COREEO */
-      $this->Cell(200);  // mover a la derecha
+      $this->Cell(1);  // mover a la derecha
       $this->SetFont('Arial', 'B', 10);
       $this->Cell(85, 10, utf8_decode("Correo : capnor@cimeqh.org"), 0, 0, '', 0);
       $this->Ln(22);
@@ -74,11 +74,10 @@ class PDF extends FPDF
    }
 }
 
-//include '../../recursos/Recurso_conexion_bd.php';
-//require '../../funciones/CortarCadena.php';
-/* CONSULTA INFORMACION DEL HOSPEDAJE */
-//$consulta_info = $conexion->query(" select *from hotel ");
-//$dato_info = $consulta_info->fetch_object();
+  include '../../modelo/modelo_conexion.php';
+  $conexion = new conexion();
+  $conexion->conectar();
+  
 
 $pdf = new PDF();
 $pdf->AddPage("landscape"); /* aqui entran dos para parametros (horientazion,tamaño)V->portrait H->landscape tamaño (A3.A4.A5.letter.legal) */
@@ -88,129 +87,17 @@ $i = 0;
 $pdf->SetFont('Arial', '', 12);
 $pdf->SetDrawColor(163, 163, 163); //colorBorde
 
-/*$consulta_reporte_alquiler = $conexion->query("  ");*/
+$consulta_reporte = $conexion->conexion->query("CALL SP_REPORTE_APROBADO_CIMEQH()");
 
-/*while ($datos_reporte = $consulta_reporte_alquiler->fetch_object()) {      
-   }*/
+while ($datos_reporte = $consulta_reporte->fetch_object()) {      
+   
 $i = $i + 1;
 /* TABLA */
-$pdf->Cell(40, 10, utf8_decode("0001"), 1, 0, 'C', 0);
-$pdf->Cell(85, 10, utf8_decode("Juan Solis"), 1, 0, 'C', 0);
-$pdf->Cell(60, 10, utf8_decode("NO485748"), 1, 0, 'C', 0);
-$pdf->Cell(60, 10, utf8_decode("12/34/2020"), 1, 0, 'C', 0);
-$pdf->Cell(30, 10, utf8_decode("Aprobado"), 1, 1, 'C', 0);
+$pdf->Cell(40, 10, utf8_decode($datos_reporte->num_expediente), 1, 0, 'C', 0);
+$pdf->Cell(85, 10, utf8_decode($datos_reporte->propietario), 1, 0, 'C', 0);
+$pdf->Cell(60, 10, utf8_decode($datos_reporte->clave_catastral), 1, 0, 'C', 0);
+$pdf->Cell(60, 10, utf8_decode($datos_reporte->fecha_de_aprobacion), 1, 0, 'C', 0);
+$pdf->Cell(30, 10, utf8_decode($datos_reporte->estatus), 1, 1, 'C', 0);
+}
 
-$pdf->Cell(40, 10, utf8_decode("0012"), 1, 0, 'C', 0);
-$pdf->Cell(85, 10, utf8_decode("Pedro Perez"), 1, 0, 'C', 0);
-$pdf->Cell(60, 10, utf8_decode("SE343445"), 1, 0, 'C', 0);
-$pdf->Cell(60, 10, utf8_decode("12/34/2020"), 1, 0, 'C', 0);
-$pdf->Cell(30, 10, utf8_decode("Aprobado"), 1, 1, 'C', 0);
-
-$pdf->Cell(40, 10, utf8_decode("0024"), 1, 0, 'C', 0);
-$pdf->Cell(85, 10, utf8_decode("María García"), 1, 0, 'C', 0);
-$pdf->Cell(60, 10, utf8_decode("SE563423"), 1, 0, 'C', 0);
-$pdf->Cell(60, 10, utf8_decode("01/23/2023"), 1, 0, 'C', 0);
-$pdf->Cell(30, 10, utf8_decode("Aprobado"), 1, 1, 'C', 0);
-
-$pdf->Cell(40, 10, utf8_decode("0076"), 1, 0, 'C', 0);
-$pdf->Cell(85, 10, utf8_decode("Juan Martínez"), 1, 0, 'C', 0);
-$pdf->Cell(60, 10, utf8_decode("SE235678"), 1, 0, 'C', 0);
-$pdf->Cell(60, 10, utf8_decode("06/15/2022"), 1, 0, 'C', 0);
-$pdf->Cell(30, 10, utf8_decode("Aprobado"), 1, 1, 'C', 0);
-
-$pdf->Cell(40, 10, utf8_decode("0099"), 1, 0, 'C', 0);
-$pdf->Cell(85, 10, utf8_decode("Ana López"), 1, 0, 'C', 0);
-$pdf->Cell(60, 10, utf8_decode("SE783452"), 1, 0, 'C', 0);
-$pdf->Cell(60, 10, utf8_decode("11/05/2021"), 1, 0, 'C', 0);
-$pdf->Cell(30, 10, utf8_decode("Aprobado"), 1, 1, 'C', 0);
-
-$pdf->Cell(40, 10, utf8_decode("0001"), 1, 0, 'C', 0);
-$pdf->Cell(85, 10, utf8_decode("Juan Rodriguez"), 1, 0, 'C', 0);
-$pdf->Cell(60, 10, utf8_decode("SE123456"), 1, 0, 'C', 0);
-$pdf->Cell(60, 10, utf8_decode("01/01/2023"), 1, 0, 'C', 0);
-$pdf->Cell(30, 10, utf8_decode("Aprobado"), 1, 1, 'C', 0);
-
-$pdf->Cell(40, 10, utf8_decode("0002"), 1, 0, 'C', 0);
-$pdf->Cell(85, 10, utf8_decode("Maria Lopez"), 1, 0, 'C', 0);
-$pdf->Cell(60, 10, utf8_decode("SE234567"), 1, 0, 'C', 0);
-$pdf->Cell(60, 10, utf8_decode("02/02/2023"), 1, 0, 'C', 0);
-$pdf->Cell(30, 10, utf8_decode("Aprobado"), 1, 1, 'C', 0);
-
-$pdf->Cell(40, 10, utf8_decode("0003"), 1, 0, 'C', 0);
-$pdf->Cell(85, 10, utf8_decode("Ana Martinez"), 1, 0, 'C', 0);
-$pdf->Cell(60, 10, utf8_decode("SE345678"), 1, 0, 'C', 0);
-$pdf->Cell(60, 10, utf8_decode("03/03/2023"), 1, 0, 'C', 0);
-$pdf->Cell(30, 10, utf8_decode("Aprobado"), 1, 1, 'C', 0);
-
-$pdf->Cell(40, 10, utf8_decode("0004"), 1, 0, 'C', 0);
-$pdf->Cell(85, 10, utf8_decode("Pedro Gomez"), 1, 0, 'C', 0);
-$pdf->Cell(60, 10, utf8_decode("SE456789"), 1, 0, 'C', 0);
-$pdf->Cell(60, 10, utf8_decode("04/04/2023"), 1, 0, 'C', 0);
-$pdf->Cell(30, 10, utf8_decode("Aprobado"), 1, 1, 'C', 0);
-
-$pdf->Cell(40, 10, utf8_decode("0005"), 1, 0, 'C', 0);
-$pdf->Cell(85, 10, utf8_decode("Carlos Sanchez"), 1, 0, 'C', 0);
-$pdf->Cell(60, 10, utf8_decode("SE567890"), 1, 0, 'C', 0);
-$pdf->Cell(60, 10, utf8_decode("05/05/2023"),1,0,'C',0);
-$pdf->Cell(30, 10, utf8_decode("Aprobado"), 1, 1, 'C', 0);
-
-$pdf->Cell(40, 10, utf8_decode("0006"), 1, 0, 'C', 0);
-$pdf->Cell(85, 10, utf8_decode("Laura Gonzalez"), 1, 0, 'C', 0);
-$pdf->Cell(60, 10, utf8_decode("SE678901"), 1, 0, 'C', 0);
-$pdf->Cell(60, 10, utf8_decode("06/06/2023"), 1, 0, 'C', 0);
-$pdf->Cell(30, 10, utf8_decode("Aprobado"), 1, 1, 'C', 0);
-
-$pdf->Cell(40, 10, utf8_decode("0007"), 1, 0, 'C', 0);
-$pdf->Cell(85, 10, utf8_decode("Mario Fernandez"), 1, 0, 'C', 0);
-$pdf->Cell(60, 10, utf8_decode("SE789012"), 1, 0, 'C', 0);
-$pdf->Cell(60, 10, utf8_decode("07/07/2023"), 1, 0, 'C', 0);
-$pdf->Cell(30, 10, utf8_decode("Aprobado"), 1, 1, 'C', 0);
-
-$pdf->Cell(40, 10, utf8_decode("0008"), 1, 0, 'C', 0);
-$pdf->Cell(85, 10, utf8_decode("Sofia Hernandez"), 1, 0, 'C', 0);
-$pdf->Cell(60, 10, utf8_decode("SE890123"), 1, 0, 'C', 0);
-$pdf->Cell(60, 10, utf8_decode("08/08/2023"), 1, 0, 'C', 0);
-$pdf->Cell(30, 10, utf8_decode("Aprobado"), 1, 1, 'C', 0);
-
-$pdf->Cell(40, 10, utf8_decode("0009"), 1, 0, 'C', 0);
-$pdf->Cell(85, 10, utf8_decode("Diego Perez"), 1, 0, 'C', 0);
-$pdf->Cell(60, 10, utf8_decode("SE901234"), 1, 0, 'C', 0);
-$pdf->Cell(60, 10, utf8_decode("09/09/2023"), 1, 0, 'C', 0);
-$pdf->Cell(30, 10, utf8_decode("Aprobado"), 1, 1, 'C', 0);
-
-$pdf->Cell(40, 10, utf8_decode("0010"), 1, 0, 'C', 0);
-$pdf->Cell(85, 10, utf8_decode("Carla Ramirez"), 1, 0, 'C', 0);
-$pdf->Cell(60, 10, utf8_decode("SE012345"), 1, 0, 'C', 0);
-$pdf->Cell(60, 10, utf8_decode("10/10/2023"), 1, 0, 'C',0);
-$pdf->Cell(30, 10, utf8_decode("Aprobado"), 1, 1, 'C', 0);
-
-$pdf->Cell(40, 10, utf8_decode("0013"), 1, 0, 'C', 0);
-$pdf->Cell(85, 10, utf8_decode("Ana Garcia"), 1, 0, 'C', 0);
-$pdf->Cell(60, 10, utf8_decode("SE234567"), 1, 0, 'C', 0);
-$pdf->Cell(60, 10, utf8_decode("11/11/2023"), 1, 0, 'C', 0);
-$pdf->Cell(30, 10, utf8_decode("Aprobado"), 1, 1, 'C', 0);
-
-$pdf->Cell(40, 10, utf8_decode("0014"), 1, 0, 'C', 0);
-$pdf->Cell(85, 10, utf8_decode("Jorge Torres"), 1, 0, 'C', 0);
-$pdf->Cell(60, 10, utf8_decode("SE345678"), 1, 0, 'C', 0);
-$pdf->Cell(60, 10, utf8_decode("12/12/2023"), 1, 0, 'C', 0);
-$pdf->Cell(30, 10, utf8_decode("Seguimiento"), 1, 1, 'C', 0);
-
-$pdf->Cell(40, 10, utf8_decode("0015"), 1, 0, 'C', 0);
-$pdf->Cell(85, 10, utf8_decode("Maria Torres"), 1, 0, 'C', 0);
-$pdf->Cell(60, 10, utf8_decode("SE456789"), 1, 0, 'C', 0);
-$pdf->Cell(60, 10, utf8_decode("01/01/2024"), 1, 0, 'C', 0);
-$pdf->Cell(30, 10, utf8_decode("Aprobado"), 1, 1, 'C', 0);
-
-$pdf->Cell(40, 10, utf8_decode("0016"), 1, 0, 'C', 0);
-$pdf->Cell(85, 10, utf8_decode("Carlos Hernandez"), 1, 0, 'C', 0);
-$pdf->Cell(60, 10, utf8_decode("SE567890"), 1, 0, 'C', 0);
-$pdf->Cell(60, 10, utf8_decode("02/02/2024"), 1, 0, 'C', 0);
-$pdf->Cell(30, 10, utf8_decode("Aprobado"), 1, 1, 'C', 0);
-
-$pdf->Cell(40, 10, utf8_decode("0017"), 1, 0, 'C', 0);
-$pdf->Cell(85, 10, utf8_decode("Luisa Martinez"), 1, 0, 'C', 0);
-$pdf->Cell(60, 10, utf8_decode("SE678901"), 1, 0, 'C', 0);
-$pdf->Cell(60, 10, utf8_decode("03/03/2024"), 1, 0, 'C', 0);
-$pdf->Cell(30, 10, utf8_decode("Aprobado"), 1, 1, 'C', 0);
 $pdf->Output('ReporteCimeqh.pdf', 'I');//nombreDescarga, Visor(I->visualizar - D->descargar)

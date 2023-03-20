@@ -3,7 +3,7 @@ session_start();
 if(isset($_SESSION['S_IDUSUARIO'])){
     if($_SESSION['S_ROL'] == 'ADMINISTRADOR'){
         header('Location: ../vista/index.php');
-    } else if($_SESSION['S_ROL'] == 'CONTRIBUYENTE'){
+    } else if($_SESSION['S_ROL'] == 'USUARIO'){
         header('Location: ../vista/index_ticket.php');
     }else if($_SESSION['S_ROL'] == 'DELEGADO CAH'){
         header('Location: ../vista/index_cah.php');

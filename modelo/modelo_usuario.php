@@ -17,7 +17,7 @@
                         $arreglo[] = $consulta_VU;
                     }
                 }
-                return $arreglo;
+                return $arreglo; 
                 $this->conexion->cerrar();
             }
         }

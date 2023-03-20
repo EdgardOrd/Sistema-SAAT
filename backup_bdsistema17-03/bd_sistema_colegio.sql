@@ -18,27 +18,26 @@ USE `bd_sistema`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `rol`
+-- Table structure for table `colegio`
 --
 
-DROP TABLE IF EXISTS `rol`;
+DROP TABLE IF EXISTS `colegio`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `rol` (
-  `rol_id` int NOT NULL,
-  `rol_nombre` varchar(20) NOT NULL,
-  PRIMARY KEY (`rol_id`)
+CREATE TABLE `colegio` (
+  `nombre` varchar(6) NOT NULL,
+  PRIMARY KEY (`nombre`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `rol`
+-- Dumping data for table `colegio`
 --
 
-LOCK TABLES `rol` WRITE;
-/*!40000 ALTER TABLE `rol` DISABLE KEYS */;
-INSERT INTO `rol` VALUES (1,'ADMINISTRADOR'),(2,'DELEGADO CIMEQH'),(3,'DELEGADO CICH'),(4,'DELEGADO CAH'),(5,'USUARIO');
-/*!40000 ALTER TABLE `rol` ENABLE KEYS */;
+LOCK TABLES `colegio` WRITE;
+/*!40000 ALTER TABLE `colegio` DISABLE KEYS */;
+INSERT INTO `colegio` VALUES ('CAH'),('CICH'),('CIMEQH');
+/*!40000 ALTER TABLE `colegio` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 

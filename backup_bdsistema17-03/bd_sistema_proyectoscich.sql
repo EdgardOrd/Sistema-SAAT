@@ -18,27 +18,36 @@ USE `bd_sistema`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `rol`
+-- Table structure for table `proyectoscich`
 --
 
-DROP TABLE IF EXISTS `rol`;
+DROP TABLE IF EXISTS `proyectoscich`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `rol` (
-  `rol_id` int NOT NULL,
-  `rol_nombre` varchar(20) NOT NULL,
-  PRIMARY KEY (`rol_id`)
+CREATE TABLE `proyectoscich` (
+  `num_expediente` int NOT NULL,
+  `nombre_col` varchar(7) DEFAULT 'CICH',
+  `tipo_proyecto` varchar(100) NOT NULL,
+  `propietario` varchar(50) NOT NULL,
+  `clave_catastral` varchar(100) NOT NULL,
+  `area` float NOT NULL,
+  `presupuesto` float NOT NULL,
+  `estatus` enum('APROBADO','DESAPROBADO','SEGUIMIENTO','SOLICITUD DE DOCUMENTACION') NOT NULL,
+  `Observaciones` varchar(200) DEFAULT NULL,
+  `fecha` date NOT NULL,
+  PRIMARY KEY (`num_expediente`),
+  KEY `nombre_col` (`nombre_col`),
+  CONSTRAINT `proyectoscich_ibfk_1` FOREIGN KEY (`nombre_col`) REFERENCES `colegio` (`nombre`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `rol`
+-- Dumping data for table `proyectoscich`
 --
 
-LOCK TABLES `rol` WRITE;
-/*!40000 ALTER TABLE `rol` DISABLE KEYS */;
-INSERT INTO `rol` VALUES (1,'ADMINISTRADOR'),(2,'DELEGADO CIMEQH'),(3,'DELEGADO CICH'),(4,'DELEGADO CAH'),(5,'USUARIO');
-/*!40000 ALTER TABLE `rol` ENABLE KEYS */;
+LOCK TABLES `proyectoscich` WRITE;
+/*!40000 ALTER TABLE `proyectoscich` DISABLE KEYS */;
+/*!40000 ALTER TABLE `proyectoscich` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 

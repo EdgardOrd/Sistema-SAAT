@@ -25,16 +25,18 @@ DROP TABLE IF EXISTS `usuario`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `usuario` (
-  `usu_id` int NOT NULL AUTO_INCREMENT,
-  `usu_nombre` varchar(20) DEFAULT NULL,
-  `usu_contrasena` varchar(255) DEFAULT NULL,
-  `usu_sexo` char(1) DEFAULT NULL,
-  `rol_id` int DEFAULT NULL,
-  `usu_estatus` enum('ACTIVO','INACTIVO') DEFAULT NULL,
-  PRIMARY KEY (`usu_id`),
-  KEY `rol_id_idx` (`rol_id`),
-  CONSTRAINT `rol_id` FOREIGN KEY (`rol_id`) REFERENCES `rol` (`rol_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `id_usuario` int NOT NULL,
+  `nombre_col` varchar(6) NOT NULL,
+  `usu_nombre` varchar(20) NOT NULL,
+  `usu_contrasena` varchar(255) NOT NULL,
+  `usu_status` enum('ACTIVO','INACTIVO') NOT NULL,
+  `rol_id` int NOT NULL,
+  PRIMARY KEY (`id_usuario`),
+  KEY `nombre_col` (`nombre_col`),
+  KEY `rol_id` (`rol_id`),
+  CONSTRAINT `usuario_ibfk_1` FOREIGN KEY (`nombre_col`) REFERENCES `colegio` (`nombre`),
+  CONSTRAINT `usuario_ibfk_2` FOREIGN KEY (`rol_id`) REFERENCES `rol` (`rol_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -43,7 +45,7 @@ CREATE TABLE `usuario` (
 
 LOCK TABLES `usuario` WRITE;
 /*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
-INSERT INTO `usuario` VALUES (1,'admin','$2y$10$whfAXByWks5Img54uIkJ9u75A6o6q1JYShPkyFJUBS.Jucia92dPC','M',1,'ACTIVO'),(2,'usuario','$2y$10$yrsQxathTpodoJNDSZMobuHpQLZ8UMz32yKniDQZNOUovkVt//Vpm','F',3,'ACTIVO'),(3,'CICH','$2y$10$yrsQxathTpodoJNDSZMobuHpQLZ8UMz32yKniDQZNOUovkVt//Vpm','M',2,'ACTIVO'),(4,'CAH','$2y$10$bNRGEI2PUX5VusyPHGvsce4ne7UcOItuehRmtm2ZGS1QQiWnEvCoe','M',4,'ACTIVO'),(5,'CIMEQH','$2y$10$bNRGEI2PUX5VusyPHGvsce4ne7UcOItuehRmtm2ZGS1QQiWnEvCoe','M',5,'ACTIVO');
+INSERT INTO `usuario` VALUES (1,'CIMEQH','admin','$2y$10$whfAXByWks5Img54uIkJ9u75A6o6q1JYShPkyFJUBS.Jucia92dPC','ACTIVO',1),(2,'CIMEQH','CIMEQH','$2y$10$whfAXByWks5Img54uIkJ9u75A6o6q1JYShPkyFJUBS.Jucia92dPC','ACTIVO',2),(3,'CICH','CICH','$2y$10$whfAXByWks5Img54uIkJ9u75A6o6q1JYShPkyFJUBS.Jucia92dPC','ACTIVO',3),(4,'CAH','CAH','$2y$10$whfAXByWks5Img54uIkJ9u75A6o6q1JYShPkyFJUBS.Jucia92dPC','ACTIVO',4),(5,'CIMEQH','usuario','$2y$10$whfAXByWks5Img54uIkJ9u75A6o6q1JYShPkyFJUBS.Jucia92dPC','ACTIVO',5);
 /*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -56,4 +58,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-03-17 19:28:17
+-- Dump completed on 2023-03-20  7:59:14

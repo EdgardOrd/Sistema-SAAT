@@ -10,5 +10,5 @@
         echo $data;
     }else{
         echo 0;
-    }
+    } 
 ?>

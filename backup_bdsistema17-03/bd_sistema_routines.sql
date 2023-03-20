@@ -20,7 +20,7 @@ USE `bd_sistema`;
 --
 -- Dumping routines for database 'bd_sistema'
 --
-/*!50003 DROP PROCEDURE IF EXISTS `SP_COMBO_COLEGIO_CAH` */;
+/*!50003 DROP PROCEDURE IF EXISTS `SP_APROBADOS_CAH` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
@@ -30,19 +30,22 @@ USE `bd_sistema`;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_COMBO_COLEGIO_CAH`()
-SELECT 
-usuario.usu_id,
-usuario.usu_nombre
-FROM 
-usuario
-WHERE usuario.usu_nombre = 'CAH' ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_APROBADOS_CAH`(
+    in_fecha_inicial date, 
+    in_fecha_final date
+)
+begin
+        select num_expediente as "Numero de Expediente",clave_catastral as "Clave Catastral", tipo_proyecto as "Tipo de Construcción",
+        propietario as "Propietario", fecha as "Fecha" 
+        from proyectoscah
+        where (estatus = 'APROBADO' or estatus = "SEGUIMIENTO") and fecha between in_fecha_inicial and in_fecha_final;
+    end ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `SP_COMBO_COLEGIO_CICH` */;
+/*!50003 DROP PROCEDURE IF EXISTS `SP_APROBADOS_CICH` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
@@ -52,19 +55,22 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_COMBO_COLEGIO_CICH`()
-SELECT 
-usuario.usu_id,
-usuario.usu_nombre
-FROM 
-usuario
-WHERE usuario.usu_nombre = 'CICH' ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_APROBADOS_CICH`(
+    in_fecha_inicial date, 
+    in_fecha_final date
+)
+begin
+        select num_expediente as "Numero de Expediente",clave_catastral as "Clave Catastral", tipo_proyecto as "Tipo de Construcción",
+        propietario as "Propietario", fecha as "Fecha" 
+        from proyectoscich
+        where (estatus = 'APROBADO' or estatus = "SEGUIMIENTO") and fecha between in_fecha_inicial and in_fecha_final;
+    end ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `SP_COMBO_COLEGIO_CIMEQH` */;
+/*!50003 DROP PROCEDURE IF EXISTS `SP_APROBADOS_CIMEQH` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
@@ -74,19 +80,22 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_COMBO_COLEGIO_CIMEQH`()
-SELECT 
-usuario.usu_id,
-usuario.usu_nombre
-FROM 
-usuario
-WHERE usuario.usu_nombre = 'CIMEQH' ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_APROBADOS_CIMEQH`(
+    in_fecha_inicial date, 
+    in_fecha_final date
+)
+begin
+        select num_expediente as "Numero de Expediente",clave_catastral as "Clave Catastral", tipo_proyecto as "Tipo de Construcción",
+        propietario as "Propietario", fecha as "Fecha" 
+        from proyectoscimeqh 
+        where (estatus = 'APROBADO' or estatus = "SEGUIMIENTO") and fecha between in_fecha_inicial and in_fecha_final;
+    end ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `SP_LISTAR_CAH` */;
+/*!50003 DROP PROCEDURE IF EXISTS `SP_AREA_CAH` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
@@ -96,171 +105,26 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_LISTAR_CAH`()
-SELECT 
-proyecto.num_expediente,
-proyecto.tipo_proyecto,
-proyecto.propietario,
-proyecto.clave_catastral,
-proyecto.fecha_de_aprobacion,
-proyecto.estatus,
-usuario.usu_nombre
-FROM 
-proyecto
-INNER JOIN usuario ON proyecto.usu_id = usuario.usu_id 
-WHERE usuario.usu_nombre = 'CAH' ;;
-DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `SP_LISTAR_CICH` */;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8mb4 */ ;
-/*!50003 SET character_set_results = utf8mb4 */ ;
-/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
-DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_LISTAR_CICH`()
-SELECT 
-proyecto.num_expediente,
-proyecto.tipo_proyecto,
-proyecto.propietario,
-proyecto.clave_catastral,
-proyecto.fecha_de_aprobacion,
-proyecto.estatus,
-usuario.usu_nombre
-FROM 
-proyecto
-INNER JOIN usuario ON proyecto.usu_id = usuario.usu_id 
-WHERE usuario.usu_nombre = 'CICH' ;;
-DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `SP_LISTAR_CIMEQH` */;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8mb4 */ ;
-/*!50003 SET character_set_results = utf8mb4 */ ;
-/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
-DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_LISTAR_CIMEQH`()
-SELECT 
-proyecto.num_expediente,
-proyecto.tipo_proyecto,
-proyecto.propietario,
-proyecto.clave_catastral,
-proyecto.fecha_de_aprobacion,
-proyecto.estatus,
-usuario.usu_nombre
-FROM 
-proyecto
-INNER JOIN usuario ON proyecto.usu_id = usuario.usu_id 
-WHERE usuario.usu_nombre = 'CIMEQH' ;;
-DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `SP_LISTAR_COMBO_ROL` */;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8mb4 */ ;
-/*!50003 SET character_set_results = utf8mb4 */ ;
-/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
-DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_LISTAR_COMBO_ROL`()
-SELECT 
-rol.rol_id,
-rol.rol_nombre
-FROM 
-rol ;;
-DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `SP_LISTAR_USUARIO` */;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8mb4 */ ;
-/*!50003 SET character_set_results = utf8mb4 */ ;
-/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
-DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_LISTAR_USUARIO`()
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_AREA_CAH`(
+    IN in_fecha_inicial DATE,
+    IN in_fecha_final DATE
+)
 BEGIN
-    DECLARE CANTIDAD INT;
-    SET CANTIDAD=0;
     SELECT 
-        @CANTIDAD:=@CANTIDAD+1 AS posicion,
-        usuario.usu_id,
-        usuario.usu_nombre,
-        usuario.usu_sexo,
-        usuario.rol_id,
-        usuario.usu_estatus,
-        rol.rol_nombre
-    FROM 
-        usuario
-        INNER JOIN rol ON usuario.rol_id = rol.rol_id;
+        COUNT(CASE WHEN area < 100 THEN 1 END) AS `Menor a 100`,
+        COUNT(CASE WHEN area BETWEEN 100 AND 250 THEN 1 END) AS `100 - 250`,
+        COUNT(CASE WHEN area BETWEEN 251 AND 500 THEN 1 END) AS `251 - 500`,
+        COUNT(CASE WHEN area BETWEEN 501 AND 1000 THEN 1 END) AS `501 - 1000`,
+        COUNT(CASE WHEN area > 1000 THEN 1 END) AS `Mayor a 1000`
+    FROM proyectoscah
+    WHERE fecha BETWEEN in_fecha_inicial AND in_fecha_final;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `SP_MODIFICAR_CONTRA_USUARIO` */;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8mb4 */ ;
-/*!50003 SET character_set_results = utf8mb4 */ ;
-/*!50003 SET collation_connection  = utf8mb4_unicode_ci */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
-DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_MODIFICAR_CONTRA_USUARIO`(IN IDUSUARIO INT,IN CONTRA VARCHAR(250))
-UPDATE usuario SET
-usu_contrasena=CONTRA
-WHERE usu_id=IDUSUARIO ;;
-DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `SP_MODIFICAR_ESTATUS_USUARIO` */;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8mb4 */ ;
-/*!50003 SET character_set_results = utf8mb4 */ ;
-/*!50003 SET collation_connection  = utf8mb4_unicode_ci */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
-DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_MODIFICAR_ESTATUS_USUARIO`(IN IDUSUARIO INT, IN ESTATUS VARCHAR(45))
-UPDATE usuario SET
-	usu_estatus=ESTATUS
-WHERE usu_id=IDUSUARIO ;;
-DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `SP_REGISTRAR_APROBADO_CAH` */;
+/*!50003 DROP PROCEDURE IF EXISTS `SP_AREA_CICH` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
@@ -270,103 +134,26 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_REGISTRAR_APROBADO_CAH`(IN EXPE INT,IN COLEGIO INT,IN PROYECT VARCHAR(100), IN PROPI VARCHAR(50), IN CLAVE VARCHAR(100), IN FECHA DATE)
-BEGIN 
-    INSERT INTO proyecto(num_expediente,usu_id,tipo_proyecto,propietario,clave_catastral,fecha_de_aprobacion,estatus) VALUES (EXPE,COLEGIO,PROYECT,PROPI,CLAVE,FECHA,'1');
-    SELECT LAST_INSERT_ID(); -- Devolver el ID del nuevo registro insertado
-END ;;
-DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `SP_REGISTRAR_APROBADO_CICH` */;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8mb4 */ ;
-/*!50003 SET character_set_results = utf8mb4 */ ;
-/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
-DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_REGISTRAR_APROBADO_CICH`(IN EXPE INT,IN COLEGIO INT,IN PROYECT VARCHAR(100), IN PROPI VARCHAR(50), IN CLAVE VARCHAR(100), IN FECHA DATE)
-BEGIN 
-    INSERT INTO proyecto(num_expediente,usu_id,tipo_proyecto,propietario,clave_catastral,fecha_de_aprobacion,estatus) VALUES (EXPE,COLEGIO,PROYECT,PROPI,CLAVE,FECHA,'1');
-    SELECT LAST_INSERT_ID(); -- Devolver el ID del nuevo registro insertado
-END ;;
-DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `SP_REGISTRAR_APROBADO_CIMEQH` */;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8mb4 */ ;
-/*!50003 SET character_set_results = utf8mb4 */ ;
-/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
-DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_REGISTRAR_APROBADO_CIMEQH`(IN EXPE INT,IN COLEGIO INT,IN PROYECT VARCHAR(100), IN PROPI VARCHAR(50), IN CLAVE VARCHAR(100), IN FECHA DATE)
-BEGIN 
-    INSERT INTO proyecto(num_expediente,usu_id,tipo_proyecto,propietario,clave_catastral,fecha_de_aprobacion,estatus) VALUES (EXPE,COLEGIO,PROYECT,PROPI,CLAVE,FECHA,'1');
-    SELECT LAST_INSERT_ID(); -- Devolver el ID del nuevo registro insertado
-END ;;
-DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `SP_REGISTRAR_USUARIO` */;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8mb4 */ ;
-/*!50003 SET character_set_results = utf8mb4 */ ;
-/*!50003 SET collation_connection  = utf8mb4_unicode_ci */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
-DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_REGISTRAR_USUARIO`(IN USU VARCHAR(45),IN CONTRA VARCHAR(250),IN SEXO CHAR(1),IN ROL INT)
-BEGIN 
-DECLARE CANTIDAD INT;
-SET @CANTIDAD:=(select count(*) from usuario where usu_nombre=BINARY USU);
-IF @CANTIDAD = 0 THEN
-	INSERT INTO usuario(usu_nombre,usu_contrasena,usu_sexo,rol_id,usu_estatus) VALUES (USU,CONTRA,SEXO,ROL,'1');
-    SELECT 1;
-ELSE 
-	SELECT 2;
-END IF;
-END ;;
-DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `SP_REPORTE_APROBADO_CAH` */;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8mb4 */ ;
-/*!50003 SET character_set_results = utf8mb4 */ ;
-/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
-DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_REPORTE_APROBADO_CAH`()
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_AREA_CICH`(
+    IN in_fecha_inicial DATE,
+    IN in_fecha_final DATE
+)
 BEGIN
-    select num_expediente, propietario, clave_catastral,
-    fecha_de_aprobacion, estatus from proyecto where estatus = "APROBADO" && usu_id = 4;
+    SELECT 
+        COUNT(CASE WHEN area < 100 THEN 1 END) AS `Menor a 100`,
+        COUNT(CASE WHEN area BETWEEN 100 AND 250 THEN 1 END) AS `100 - 250`,
+        COUNT(CASE WHEN area BETWEEN 251 AND 500 THEN 1 END) AS `251 - 500`,
+        COUNT(CASE WHEN area BETWEEN 501 AND 1000 THEN 1 END) AS `501 - 1000`,
+        COUNT(CASE WHEN area > 1000 THEN 1 END) AS `Mayor a 1000`
+    FROM proyectoscich
+    WHERE fecha BETWEEN in_fecha_inicial AND in_fecha_final;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `SP_REPORTE_APROBADO_CICH` */;
+/*!50003 DROP PROCEDURE IF EXISTS `SP_AREA_CIMEQH` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
@@ -376,17 +163,26 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_REPORTE_APROBADO_CICH`()
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_AREA_CIMEQH`(
+    IN in_fecha_inicial DATE,
+    IN in_fecha_final DATE
+)
 BEGIN
-    select num_expediente, propietario, clave_catastral,
-    fecha_de_aprobacion, estatus from proyecto where estatus = "APROBADO" && usu_id = 3;
+    SELECT 
+        COUNT(CASE WHEN area < 100 THEN 1 END) AS `Menor a 100`,
+        COUNT(CASE WHEN area BETWEEN 100 AND 250 THEN 1 END) AS `100 - 250`,
+        COUNT(CASE WHEN area BETWEEN 251 AND 500 THEN 1 END) AS `251 - 500`,
+        COUNT(CASE WHEN area BETWEEN 501 AND 1000 THEN 1 END) AS `501 - 1000`,
+        COUNT(CASE WHEN area > 1000 THEN 1 END) AS `Mayor a 1000`
+    FROM proyectoscimeqh
+    WHERE fecha BETWEEN in_fecha_inicial AND in_fecha_final;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `SP_REPORTE_APROBADO_CIMEQH` */;
+/*!50003 DROP PROCEDURE IF EXISTS `SP_CAMBIOS` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
@@ -396,11 +192,389 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_REPORTE_APROBADO_CIMEQH`()
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_CAMBIOS`(
+    IN in_fecha_inicial DATE,
+    IN in_fecha_final DATE
+)
 BEGIN
-    select num_expediente, propietario, clave_catastral,
-    fecha_de_aprobacion, estatus from proyecto where estatus = "APROBADO" && usu_id = 5;
+    select num_expediente, Observaciones, fecha from proyectoscimeqh where Observaciones like '%cambio de%'
+    union
+    select num_expediente, Observaciones, fecha from proyectoscich where Observaciones like '%cambio de%'
+    union
+    select num_expediente, Observaciones, fecha from proyectoscah where Observaciones like '%cambio de%';
 END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `SP_CONSTRUCCION_CAH` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_CONSTRUCCION_CAH`(
+    in_fecha_inicial date, 
+    in_fecha_final date
+)
+begin
+        select num_expediente as "Numero de Expediente",clave_catastral as "Clave Catastral", tipo_proyecto as "Tipo de Construcción",
+        propietario as "Propietario", estatus as "Estatus", fecha as "Fecha" 
+        from proyectoscah
+        where fecha between in_fecha_inicial and in_fecha_final order by tipo_proyecto;
+    end ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `SP_CONSTRUCCION_CICH` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_CONSTRUCCION_CICH`(
+    in_fecha_inicial date, 
+    in_fecha_final date
+)
+begin
+        select num_expediente as "Numero de Expediente",clave_catastral as "Clave Catastral", tipo_proyecto as "Tipo de Construcción",
+        propietario as "Propietario", estatus as "Estatus", fecha as "Fecha" 
+        from proyectoscich
+        where fecha between in_fecha_inicial and in_fecha_final order by tipo_proyecto;
+    end ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `SP_CONSTRUCCION_CIMEQH` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_CONSTRUCCION_CIMEQH`(
+    in_fecha_inicial date, 
+    in_fecha_final date
+)
+begin
+        select num_expediente as "Numero de Expediente",clave_catastral as "Clave Catastral", tipo_proyecto as "Tipo de Construcción",
+        propietario as "Propietario", estatus as "Estatus", fecha as "Fecha" 
+        from proyectoscimeqh
+        where fecha between in_fecha_inicial and in_fecha_final order by tipo_proyecto;
+    end ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `SP_DESAPROBADOS_CAH` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_DESAPROBADOS_CAH`(
+    in_fecha_inicial date, 
+    in_fecha_final date
+)
+begin
+        select num_expediente as "Numero de Expediente",clave_catastral as "Clave Catastral", tipo_proyecto as "Tipo de Construcción",
+        propietario as "Propietario",  fecha as "Fecha" 
+        from proyectoscah
+        where estatus = 'DESAPROBADO' and fecha between in_fecha_inicial and in_fecha_final;
+    end ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `SP_DESAPROBADOS_CICH` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_DESAPROBADOS_CICH`(
+    in_fecha_inicial date, 
+    in_fecha_final date
+)
+begin
+        select num_expediente as "Numero de Expediente",clave_catastral as "Clave Catastral", tipo_proyecto as "Tipo de Construcción",
+        propietario as "Propietario", fecha as "Fecha" 
+        from proyectoscich
+        where estatus = 'DESAPROBADO' and fecha between in_fecha_inicial and in_fecha_final;
+    end ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `SP_DESAPROBADOS_CIMEQH` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_DESAPROBADOS_CIMEQH`(
+    in_fecha_inicial date, 
+    in_fecha_final date
+)
+begin
+        select num_expediente as "Numero de Expediente",clave_catastral as "Clave Catastral", tipo_proyecto as "Tipo de Construcción",
+        propietario as "Propietario", fecha as "Fecha" 
+        from proyectoscimeqh
+        where estatus = 'DESAPROBADO' and fecha between in_fecha_inicial and in_fecha_final;
+    end ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `SP_DOCUMENTACION_CAH` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_DOCUMENTACION_CAH`(
+    in_fecha_inicial date, 
+    in_fecha_final date
+)
+begin
+        select num_expediente as "Numero de Expediente",clave_catastral as "Clave Catastral", tipo_proyecto as "Tipo de Construcción",
+        propietario as "Propietario", fecha as "Fecha" 
+        from proyectoscah
+        where estatus = 'SOLICITUD DE DOCUMENTACION' and fecha between in_fecha_inicial and in_fecha_final;
+    end ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `SP_DOCUMENTACION_CICH` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_DOCUMENTACION_CICH`(
+    in_fecha_inicial date, 
+    in_fecha_final date
+)
+begin
+        select num_expediente as "Numero de Expediente",clave_catastral as "Clave Catastral", tipo_proyecto as "Tipo de Construcción",
+        propietario as "Propietario",  fecha as "Fecha" 
+        from proyectoscich
+        where estatus = 'SOLICITUD DE DOCUMENTACION' and fecha between in_fecha_inicial and in_fecha_final;
+    end ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `SP_DOCUMENTACION_CIMEQH` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_DOCUMENTACION_CIMEQH`(
+    in_fecha_inicial date, 
+    in_fecha_final date
+)
+begin
+        select num_expediente as "Numero de Expediente",clave_catastral as "Clave Catastral", tipo_proyecto as "Tipo de Construcción",
+        propietario as "Propietario", fecha as "Fecha" 
+        from proyectoscimeqh
+        where estatus = 'SOLICITUD DE DOCUMENTACION' and fecha between in_fecha_inicial and in_fecha_final;
+    end ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `SP_MOSTRAR_CAH` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_MOSTRAR_CAH`()
+begin
+		select num_expediente as "Expediente", tipo_proyecto as "Tipo de Proyecto",
+        propietario as "Propietario" , clave_catastral as "Clave Catastral", estatus as "Estatus", observaciones as 
+        "Observaciones" , fecha as "Fecha" from ProyectosCIMEQH;
+    end ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `SP_MOSTRAR_CICH` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_MOSTRAR_CICH`()
+begin
+		select num_expediente as "Expediente", tipo_proyecto as "Tipo de Proyecto",
+        propietario as "Propietario" , clave_catastral as "Clave Catastral", estatus as "Estatus", observaciones as 
+        "Observaciones" , fecha as "Fecha" from ProyectosCIMEQH;
+    end ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `SP_MOSTRAR_CIMEQH` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_MOSTRAR_CIMEQH`()
+begin
+		select num_expediente as "Expediente", tipo_proyecto as "Tipo de Proyecto",
+        propietario as "Propietario" , clave_catastral as "Clave Catastral", estatus as "Estatus", observaciones as 
+        "Observaciones" , fecha as "Fecha" from ProyectosCIMEQH;
+    end ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `SP_PRESUPUESTO_CAH` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_PRESUPUESTO_CAH`(
+    in_fecha_inicial date, 
+    in_fecha_final date
+)
+begin
+  SELECT 
+    COUNT(CASE WHEN presupuesto < 100000 THEN 1 END) AS 'Menor a 100,000',
+    COUNT(CASE WHEN presupuesto >= 100000 AND presupuesto <= 250000 THEN 1 END) AS '100,000 - 250,000',
+    COUNT(CASE WHEN presupuesto > 250000 AND presupuesto <= 500000 THEN 1 END) AS '250,000 - 500,000',
+    COUNT(CASE WHEN presupuesto > 500000 AND presupuesto <= 1000000 THEN 1 END) AS '500,000 - 1,000,000',
+    COUNT(CASE WHEN presupuesto > 1000000 THEN 1 END) AS 'Mayor a 1,000,000'
+  FROM proyectoscah where fecha between in_fecha_inicial and in_fecha_final;
+end ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `SP_PRESUPUESTO_CICH` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_PRESUPUESTO_CICH`(
+    in_fecha_inicial date, 
+    in_fecha_final date
+)
+begin
+  SELECT 
+    COUNT(CASE WHEN presupuesto < 100000 THEN 1 END) AS 'Menor a 100,000',
+    COUNT(CASE WHEN presupuesto >= 100000 AND presupuesto <= 250000 THEN 1 END) AS '100,000 - 250,000',
+    COUNT(CASE WHEN presupuesto > 250000 AND presupuesto <= 500000 THEN 1 END) AS '250,000 - 500,000',
+    COUNT(CASE WHEN presupuesto > 500000 AND presupuesto <= 1000000 THEN 1 END) AS '500,000 - 1,000,000',
+    COUNT(CASE WHEN presupuesto > 1000000 THEN 1 END) AS 'Mayor a 1,000,000'
+  FROM proyectoscich where fecha between in_fecha_inicial and in_fecha_final;
+end ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `SP_PRESUPUESTO_CIMEQH` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_PRESUPUESTO_CIMEQH`(
+    in_fecha_inicial date, 
+    in_fecha_final date
+)
+begin
+  SELECT 
+    COUNT(CASE WHEN presupuesto < 100000 THEN 1 END) AS 'Menor a 100,000',
+    COUNT(CASE WHEN presupuesto >= 100000 AND presupuesto <= 250000 THEN 1 END) AS '100,000 - 250,000',
+    COUNT(CASE WHEN presupuesto > 250000 AND presupuesto <= 500000 THEN 1 END) AS '250,000 - 500,000',
+    COUNT(CASE WHEN presupuesto > 500000 AND presupuesto <= 1000000 THEN 1 END) AS '500,000 - 1,000,000',
+    COUNT(CASE WHEN presupuesto > 1000000 THEN 1 END) AS 'Mayor a 1,000,000'
+  FROM proyectoscimeqh where fecha between in_fecha_inicial and in_fecha_final;
+end ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
@@ -419,12 +593,10 @@ DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_VERIFICAR_USUARIO`(IN USUARIO VARCHAR(45))
 BEGIN
 SELECT 
-usuario.usu_id,
+usuario.id_usuario,
 usuario.usu_nombre,
 usuario.usu_contrasena,
-usuario.usu_sexo,
-usuario.usu_id,
-usuario.usu_estatus,
+usuario.usu_status,
 rol.rol_nombre
 FROM usuario
 INNER JOIN rol ON usuario.rol_id = rol.rol_id
@@ -445,4 +617,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-03-17 19:28:17
+-- Dump completed on 2023-03-20  7:59:15

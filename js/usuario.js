@@ -27,7 +27,7 @@ function VerificarUsuario(){
              Swal.fire("ERROR", "Usuario y/o contrase\u00f1a incorrecta","error");
         }else{
             let data = JSON.parse(resp);
-            if (data[0][3]==='2'){
+            if (data[0][3]==='INACTIVO'){
                 return Swal.fire("Advertencia", "Lo sentimos el usuario "+usu+" se encuentra suspendido, comuniquese con el administrador.","warnign");
             }
             $.ajax({
@@ -86,21 +86,12 @@ function listar_usuario(){
            {"data":"posicion"},
            {"data":"usu_nombre"},
            {"data":"rol_nombre"},
-           {"data":"usu_sexo",
+           {"data":"usu_status",
            render: function (data, type, row ) {
-               if(data=='M'){
-                   return "MASCULINO";                   
+               if(data=='ACTIVO'){
+                   return "<span class='badge bg-success'>"+data+"</span>";                   
                }else{
-                 return "FEMENINO";                 
-               }
-             }
-           },  
-           {"data":"usu_estatus",
-           render: function (data, type, row ) {
-               if(data=='1'){
-                   return "<span class='badge bg-warning text-dark'>"+data+"</span>";                   
-               }else{
-                    return "<span class='badge bg-warning text-dark'>"+data+"</span>"; 
+                    return "<span class='badge badge-danger'>"+data+"</span>"; 
                }
              }
            },  
@@ -139,7 +130,7 @@ $('#tabla_usuario').on('click','.desactivar',function(){
         confirmButtonText: 'Aceptar'
       }).then((result) => {
         if (result.isConfirmed) {
-            Modificar_Estatus(data.usu_id, '2');
+            Modificar_Estatus(data.id_usuario, '2');
         }
       })
 })
@@ -172,7 +163,7 @@ $('#tabla_usuario').on('click','.activar',function(){
         confirmButtonText: 'Aceptar'
       }).then((result) => {
         if (result.isConfirmed) {
-            Modificar_Estatus(data.usu_id, '1');
+            Modificar_Estatus(data.id_usuario, '1');
         }
       })
 })
@@ -240,9 +231,8 @@ function Registrar_Usuario(){
     let usu = $('#txt_usu').val();
     let contra = $('#txt_con1').val();
     let contra2 = $('#txt_con2').val();
-    let sexo = $('#cbm_sexo').val();
     let rol = $('#cbm_rol').val();
-    if(usu.length == 0 || contra.length == 0 || contra2.length == 0 || sexo.length == 0 || rol.length == 0){
+    if(usu.length == 0 || contra.length == 0 || contra2.length == 0 || rol.length == 0){
         return Swal.fire("Advertencia", "Llene los campos vacios","warning");
     }
 
@@ -256,7 +246,6 @@ function Registrar_Usuario(){
         data:{
             usuario:usu,
             contrasena:contra,
-            sexo:sexo,
             rol:rol
         }
     }).done(function(resp){

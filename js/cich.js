@@ -20,21 +20,29 @@ function listar_usuario_cich(){
            type:'POST'
        },
        "columns":[
-           {"data":"num_expediente"},
-           {"data":"tipo_proyecto"},
-           {"data":"propietario"},
-           {"data":"clave_catastral"},  
-           {"data":"fecha_de_aprobacion"},  
-           {"data":"estatus",
+           {"data":"Expediente"},
+           {"data":"Tipo de Proyecto"},
+           {"data":"Propietario"},
+           {"data":"Clave Catastral"},  
+           {"data":"Estatus",
            render: function (data, type, row ) {
-               if(data=='1'){
-                   return "<span class='badge bg-success'>+"+data+"</span>";                   
-               }else{
-                    return "<span class='badge bg-success'>"+data+"</span>"; 
-               }
-             }
+            switch (data) {
+                case 'APROBADO':
+                  return "<span class='badge bg-success'>"+data+"</span>";
+                case 'DESAPROBADO':
+                  return "<span class='badge bg-danger'>"+data+"</span>";
+                case 'SEGUIMIENTO':
+                  return "<span class='badge bg-warning'>"+data+"</span>";
+                case 'SOLICITUD DE DOCUMENTACION':
+                  return "<span class='badge bg-info'>"+data+"</span>";
+                default:
+                  return data;
+              }              
+             } 
            },  
-           {"defaultContent":"<button style='font-size:13px;' type='button' class='desactivar btn btn-primary'><i class='fas fa-share-square' aria-hidden='true'></i></button>"}
+           {"data":"Observaciones"},  
+           {"data":"Fecha"},
+           {"defaultContent":"<button style='font-size:13px;' type='button' class='desactivar btn btn-primary'><i class='fas fa-edit' aria-hidden='true'></i></button>"}
        ], 
        "language":idioma_espanol,
        select: true
@@ -79,9 +87,11 @@ function Registrar_Nota_Cich(){
     let proye = $('#txt_proyect').val();
     let prop = $('#txt_prop').val();
     let cat = $('#txt_cat').val();
+    let area = $('#txt_area').val();
+    let presu = $('#txt_pre').val();
+    let obs = $('#txt_obs').val();
     let fecha = $('#txt_fech').val();
-    let colegio = $('#cbm_colegio').val();
-    if(exp.length == 0 || proye.length == 0 || prop.length == 0 || cat.length == 0 || fecha.length == 0 || colegio.length == 0){
+    if(exp.length == 0 || proye.length == 0 || prop.length == 0 || cat.length == 0 || area.length == 0 || presu.length == 0  || obs.length == 0 || fecha.length == 0){
         return Swal.fire("Advertencia", "Llene los campos vacios","warning");
     }
     $.ajax({
@@ -92,8 +102,10 @@ function Registrar_Nota_Cich(){
             proyecto:proye,
             propietario:prop,
             catastral:cat,
+            area:area,
+            presupuesto:presu,
+            observaciones:obs,
             fecha:fecha,
-            colegio:colegio
         }
     }).done(function(resp){
         if(resp>0){
@@ -118,6 +130,6 @@ function LimpiarRegistro(){
     $('#txt_proyect').val("");
     $('#txt_prop').val("");
     $('#txt_cat').val("");
+    $('#txt_obs').val("");
     $('#txt_fech').val("");
-    $('#cbm_colegio').val("");
 }

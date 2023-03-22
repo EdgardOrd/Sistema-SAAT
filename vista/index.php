@@ -46,6 +46,19 @@ if(!isset($_SESSION['S_IDUSUARIO'])){
   .swal2-popup{
     font-size:1.6rem !important;
   }
+
+  #tabla_cimeqh{
+    font-size:0.7rem !important;
+    font-weight: 500 !important;
+  }
+  #tabla_cich{
+    font-size:0.7rem !important;
+    font-weight: 500 !important;
+  }
+  #tabla_cah{
+    font-size:0.7rem !important;
+    font-weight: 500 !important;
+  }
 </style>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -81,7 +94,7 @@ if(!isset($_SESSION['S_IDUSUARIO'])){
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="index.php" class="brand-link">
-      <img src="../plantilla/../plantilla/dist/img/admi.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+      <img src="../plantilla/../plantilla/dist/img/admi.png" alt="Admin Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8">
       <span class="brand-text font-weight-light">Administrador</span>
     </a>

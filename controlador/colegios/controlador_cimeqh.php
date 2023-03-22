@@ -5,7 +5,7 @@
     $consulta = $MU->listar_cimeqh();
     if($consulta){
         echo json_encode($consulta);
-    }else{
+    }else{ 
         echo '{
 		    "sEcho": 1,
 		    "iTotalRecords": "0",

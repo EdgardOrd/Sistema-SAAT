@@ -59,7 +59,7 @@
         }
 
         function listar_cimeqh(){
-            $sql = "call SP_LISTAR_CIMEQH()";
+            $sql = "call SP_MOSTRAR_CIMEQH()";
             $arreglo = array();
             if ($consulta = $this->conexion->conexion->query($sql)) {
                 while ($consulta_VU = mysqli_fetch_assoc($consulta)) {
@@ -72,7 +72,7 @@
 
         
         function listar_cich(){
-            $sql = "call SP_LISTAR_CICH()";
+            $sql = "call SP_MOSTRAR_CICH()";
             $arreglo = array();
             if ($consulta = $this->conexion->conexion->query($sql)) {
                 while ($consulta_VU = mysqli_fetch_assoc($consulta)) {
@@ -84,7 +84,7 @@
         }
 
         function listar_cah(){
-            $sql = "call SP_LISTAR_CAH()";
+            $sql = "call SP_MOSTRAR_CAH()";
             $arreglo = array();
             if ($consulta = $this->conexion->conexion->query($sql)) {
                 while ($consulta_VU = mysqli_fetch_assoc($consulta)) {
@@ -119,8 +119,8 @@
             }
         }
 
-        function RegistrarCimeqh($expediente,$colegio,$proyecto,$propietario,$catrastal,$fecha){
-            $sql = "call SP_REGISTRAR_APROBADO_CIMEQH('$expediente','$colegio','$proyecto','$propietario','$catrastal','$fecha')";
+        function RegistrarCimeqh($expediente,$proyecto,$propietario,$catrastal,$area,$presupuesto,$observaciones,$fecha){
+            $sql = "call SP_REGISTRAR_APROBADO_CIMEQH('$expediente','$proyecto','$propietario','$catrastal','$area','$presupuesto','$observaciones','$fecha')";
             if ($consulta = $this->conexion->conexion->query($sql)) {
                 $this->conexion->conexion->next_result(); // Limpiar el conjunto de resultados
                 $this->conexion->cerrar();
@@ -130,8 +130,8 @@
             }
         }
  
-        function RegistrarCich($expediente,$colegio,$proyecto,$propietario,$catrastal,$fecha){
-            $sql = "call SP_REGISTRAR_APROBADO_CICH('$expediente','$colegio','$proyecto','$propietario','$catrastal','$fecha')";
+        function RegistrarCich($expediente,$proyecto,$propietario,$catrastal,$area,$presupuesto,$observaciones,$fecha){
+            $sql = "call SP_REGISTRAR_APROBADO_CICH('$expediente','$proyecto','$propietario','$catrastal','$area','$presupuesto','$observaciones','$fecha')";
             if ($consulta = $this->conexion->conexion->query($sql)) {
                 $this->conexion->conexion->next_result(); // Limpiar el conjunto de resultados
                 $this->conexion->cerrar();
@@ -141,8 +141,8 @@
             }
         }
 
-        function RegistrarCah($expediente,$colegio,$proyecto,$propietario,$catrastal,$fecha){
-            $sql = "call SP_REGISTRAR_APROBADO_CAH('$expediente','$colegio','$proyecto','$propietario','$catrastal','$fecha')";
+        function RegistrarCah($expediente,$proyecto,$propietario,$catrastal,$area,$presupuesto,$observaciones,$fecha){
+            $sql = "call SP_REGISTRAR_APROBADO_CAH('$expediente','$proyecto','$propietario','$catrastal','$area','$presupuesto','$observaciones','$fecha')";
             if ($consulta = $this->conexion->conexion->query($sql)) {
                 $this->conexion->conexion->next_result(); // Limpiar el conjunto de resultados
                 $this->conexion->cerrar();
@@ -181,7 +181,7 @@
                 return 0;
             }
         }
-
+ 
 
         function Registrar_Usuario($usuario,$contra,$rol){
             $sql = "call SP_REGISTRAR_USUARIO('$usuario','$contra','$rol')";

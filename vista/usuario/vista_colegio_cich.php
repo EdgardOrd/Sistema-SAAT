@@ -66,12 +66,12 @@
 <!--*****************************************************************************************************************-->
 <form autocomplete="false" onsubmit="return false">
   <div class="modal" id="modal_nuevo_cich">
-    <div class="modal-dialog modal-xl">
+    <div class="modal-dialog modal-lg">
       <div class="modal-content">
 
         <!-- Modal Header -->
         <div class="modal-header">
-          <h4 class="modal-title"><a>Nota de Aprobación</a></h4>
+          <h4 class="modal-title"><a>Nota de Aprobación CICH</a></h4>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
 
@@ -93,9 +93,14 @@
               <input type="text" class="form-control" id="txt_prop" placeholder="Ingrese el propietario">
               <br>
             </div>
-            <div class="col-lg-12">
+            <div class="col-lg-6">
               <label for="">Clave Catastral</label>
               <input type="text" class="form-control" id="txt_cat" placeholder="Ingrese el numero catastral">
+              <br>
+            </div>
+            <div class="col-lg-6">
+              <label for="">Fecha</label>
+              <input type="date" class="form-control" id="txt_fech" placeholder="Ingrese la fecha">
               <br>
             </div>
             <div class="col-lg-6">
@@ -113,11 +118,7 @@
               <input type="text" class="form-control" id="txt_obs" placeholder="Observaciones">
               <br>
             </div>
-            <div class="col-lg-12">
-              <label for="">Fecha</label>
-              <input type="date" class="form-control" id="txt_fech" placeholder="Ingrese la fecha">
-              <br>
-            </div>
+            
             
           </div>
         </div>

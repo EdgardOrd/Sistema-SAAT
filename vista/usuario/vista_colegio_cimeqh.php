@@ -68,7 +68,7 @@
 <!--*****************************************************************************************************************-->
 <form autocomplete="false" onsubmit="return false">
   <div class="modal" id="modal_nuevo_cimeqh">
-    <div class="modal-dialog modal-xl">
+    <div class="modal-dialog modal-lg">
       <div class="modal-content">
 
         <!-- Modal Header -->
@@ -120,6 +120,7 @@
               <input type="date" class="form-control" id="txt_fech" placeholder="Ingrese la fecha">
               <br>
             </div>
+           
             
           </div>
         </div>

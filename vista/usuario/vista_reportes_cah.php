@@ -28,32 +28,131 @@
                 </div>
                 <div class="card-body">
                   <div class="tab-content">
-                    <div class="tab-pane active" id="tab_1">
-                    REPORTE DE PROYECTOS APROBADOS Y EN SEGUIMIENTO
+                  <div class="tab-pane active" id="tab_1">
+                    <h4>REPORTE DE PROYECTOS APROBADOS Y EN SEGUIMIENTO</h4><br>
+                        <form action="">
+                          <div class="col-lg-5">
+                            <label for="">Fecha Inicial</label>
+                            <input type="date" class="form-control" id="fecha_inicial">
+                            <br>
+                            <label for="">Fecha Final</label>
+                            <input type="date" class="form-control" id="fecha_final">
+                            <br>
+                          <button type="submit" name="report_cimeqh_aprobados" class="btn btn-primary w-50 p-3"><i class="fas fa-file-pdf me-2 mr-2"></i>Generar Reporte</button>
+                          </div>
+                        </form>
                     </div>
                     <div class="tab-pane" id="tab_2">
-                    REPORTES DESAPROBADOS
+                   <h4> REPORTES DESAPROBADOS</h4><br>
+                        <form action="">
+                          <div class="col-lg-5">
+                            <label for="">Fecha Inicial</label>
+                            <input type="date" class="form-control" id="fecha_inicial">
+                            <br>
+                            <label for="">Fecha Final</label>
+                            <input type="date" class="form-control" id="fecha_final">
+                            <br>
+                          <button type="submit" name="report_cimeqh_desaprobados" class="btn btn-primary w-50 p-3"><i class="fas fa-file-pdf me-2 mr-2"></i>Generar Reporte</button>
+                          </div>
+                        </form>
                     </div>      
                     <div class="tab-pane" id="tab_3">
-                    REPORTES EN SOLICITUD DE DOCUMENTACION DE PROYETOS
+                   <h4>REPORTES EN SOLICITUD DE DOCUMENTACION DE PROYETOS</h4><br>
+                        <form action="">
+                          <div class="col-lg-5">
+                            <label for="">Fecha Inicial</label>
+                            <input type="date" class="form-control" id="fecha_inicial">
+                            <br>
+                            <label for="">Fecha Final</label>
+                            <input type="date" class="form-control" id="fecha_final">
+                            <br>
+                          <button type="submit" name="report_cimeqh_documentacion" class="btn btn-primary w-50 p-3"><i class="fas fa-file-pdf me-2 mr-2"></i>Generar Reporte</button>
+                          </div>
+                        </form>
                     </div>
                     <div class="tab-pane" id="tab_4">
-                    REPORTES EN BASE A TIPO DE CONSTRUCCION
+                    <h4>REPORTES EN BASE A TIPO DE CONSTRUCCION</h4><br>
+                        <form action="">
+                          <div class="col-lg-5">
+                            <label for="">Fecha Inicial</label>
+                            <input type="date" class="form-control" id="fecha_inicial">
+                            <br>
+                            <label for="">Fecha Final</label>
+                            <input type="date" class="form-control" id="fecha_final">
+                            <br>
+                          <button type="submit" name="report_cimeqh_tipoconstruccion" class="btn btn-primary w-50 p-3"><i class="fas fa-file-pdf me-2 mr-2"></i>Generar Reporte</button>
+                          </div>
+                        </form>
                     </div>
                     <div class="tab-pane" id="tab_5">
-                    REPORTES EN BASE A PRESUPUESTO DE OBRA
+                    <h4>REPORTES EN BASE A PRESUPUESTO DE OBRA</h4><br>
+                        <form action="">
+                          <div class="col-lg-5">
+                            <label for="">Fecha Inicial</label>
+                            <input type="date" class="form-control" id="fecha_inicial">
+                            <br>
+                            <label for="">Fecha Final</label>
+                            <input type="date" class="form-control" id="fecha_final">
+                            <br>
+                          <button type="submit" name="report_cimeqh_presupuesto" class="btn btn-primary w-50 p-3"><i class="fas fa-file-pdf me-2 mr-2"></i>Generar Reporte</button>
+                          </div>
+                        </form>
                     </div>      
                     <div class="tab-pane" id="tab_6">
-                    REPORTES DE AREA DE CONSTRUCCION
+                    <h4>REPORTES DE AREA DE CONSTRUCCION</h4><br>
+                        <form action="">
+                          <div class="col-lg-5">
+                            <label for="">Fecha Inicial</label>
+                            <input type="date" class="form-control" id="fecha_inicial">
+                            <br>
+                            <label for="">Fecha Final</label>
+                            <input type="date" class="form-control" id="fecha_final">
+                            <br>
+                          <button type="submit" name="report_cimeqh_area" class="btn btn-primary w-50 p-3"><i class="fas fa-file-pdf me-2 mr-2"></i>Generar Reporte</button>
+                          </div>
+                        </form>
                     </div>
                     <div class="tab-pane" id="tab_7">
-                    REPORTE DE PROYECTOS QUE NECESITAN INSPECCION
+                    <h4>REPORTE DE PROYECTOS QUE NECESITAN INSPECCION</h4><br>
+                        <form action="">
+                          <div class="col-lg-5">
+                            <label for="">Fecha Inicial</label>
+                            <input type="date" class="form-control" id="fecha_inicial">
+                            <br>
+                            <label for="">Fecha Final</label>
+                            <input type="date" class="form-control" id="fecha_final">
+                            <br>
+                          <button type="submit" name="report_cimeqh_inspeccion" class="btn btn-primary w-50 p-3"><i class="fas fa-file-pdf me-2 mr-2"></i>Generar Reporte</button>
+                          </div>
+                        </form>
                     </div>
                     <div class="tab-pane" id="tab_8">
-                    REPORTES EXPEDIENTES DESCONTINUADOS POR CAMBIO DE INGENIERO DE OBRA
+                    <h4>REPORTES EXPEDIENTES DESCONTINUADOS POR CAMBIO DE INGENIERO DE OBRA</h4><br>
+                        <form action="">
+                          <div class="col-lg-5">
+                            <label for="">Fecha Inicial</label>
+                            <input type="date" class="form-control" id="fecha_inicial">
+                            <br>
+                            <label for="">Fecha Final</label>
+                            <input type="date" class="form-control" id="fecha_final">
+                            <br>
+                          <button type="submit" name="report_cimeqh_cambioingeniero" class="btn btn-primary w-50 p-3"><i class="fas fa-file-pdf me-2 mr-2"></i>Generar Reporte</button>
+                          </div>
+                        </form>
                     </div>      
                     <div class="tab-pane" id="tab_9">
-                    REPORTES DE PROYECTOS MILLONARIOS
+                    <h4>REPORTES DE PROYECTOS MILLONARIOS</h4><br>
+                        <form action="">
+                          <div class="col-lg-5">
+                            <label for="">Fecha Inicial</label>
+                            <input type="date" class="form-control" id="fecha_inicial">
+                            <br>
+                            <label for="">Fecha Final</label>
+                            <input type="date" class="form-control" id="fecha_final">
+                            <br>
+                          <button type="submit" name="report_cimeqh_proyectmillonario" class="btn btn-primary w-50 p-3"><i class="fas fa-file-pdf me-2 mr-2"></i>Generar Reporte</button>
+                          </div>
+                        </form>
                     </div>
                   </div>
                 </div>

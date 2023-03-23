@@ -44,6 +44,11 @@ if(!isset($_SESSION['S_IDUSUARIO'])){
   .swal2-popup{
     font-size:1.6rem !important;
   }
+
+  #tabla_cich{
+    font-size:0.7rem !important;
+    font-weight: 500 !important;
+  }
 </style>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -65,8 +70,8 @@ if(!isset($_SESSION['S_IDUSUARIO'])){
     <li class="nav-item">
       <div class="pull-right">
         <div>
-          <a href="../controlador/usuario/controlador_cerrar_session.php" class="btn btn-outline-info"> <img src="../plantilla/../plantilla/dist/img/cerrarsesion1.png" class="img-circle elevation-2 " alt="User Image" width="40">
-          <span class="brand-text font-weight-light">Cerrar Sesión</span>
+        <a href="../controlador/usuario/controlador_cerrar_session.php" ><button type="button" class="btn btn-danger btn-lg">
+           Cerrar Sesión</button>
           </a>
         </div>
       </div>
@@ -104,10 +109,22 @@ if(!isset($_SESSION['S_IDUSUARIO'])){
               </p>
             </a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item has-treeview">
+              <a href="#" onclick="cargar_contenido('contenido_principal', 'usuario/vista_reportes_cich.php')" class="nav-link">
+                <i class="nav-icon far fa-file"></i> 
+                <p>
+                  Reportes CICH
+                 
+                </p>
+              </a>
+          </li>
+          <li class="nav-item has-treeview">
               <a href="#" onclick="cargar_contenido('contenido_principal', 'usuario/vista_grafico_cich.php')" class="nav-link">
-                <i class="far fa-chart-bar nav-icon"></i>
-                <p>Gráficos Estádisticos</p>
+                <i class="far fa-chart-bar nav-icon"></i> 
+                <p>
+                  Grafico CICH
+                 
+                </p>
               </a>
           </li>
           <!-- ********** CONFIGURACION *********** -->
@@ -135,8 +152,7 @@ if(!isset($_SESSION['S_IDUSUARIO'])){
             <h3 class="card-title">BIENVENIDO AL CONTENIDO PRINCIPAL</h3>
 
             <div class="card-tools pull-right">
-            <button type="button" class="btn btn-box-tool" data-card-widget="remove"><i class="fas fa-times"></i>
-            </button>
+            
             </div>
           </div>
           <div class="card-body">

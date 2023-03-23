@@ -4,7 +4,7 @@
           <div class="card-header">
             <h3 class="card-title">BIENVENIDO AL CONTENIDO DEL USUARIO</h3>
               <div class="card-tools">
-                <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
+                
               </div> 
         </div>
             <div class="card-body">   
@@ -22,29 +22,31 @@
                   </button>
                 </div>
                 <div class="col-lg-3">
-                  <button class="btn btn-outline-secondary d-flex align-items-center justify-content-center mt-3" style="width:100%" onclick="AbrirModalEditarContra()">
+                  <button class="btn btn-primary d-flex align-items-center justify-content-center mt-3" style="width:100%" onclick="AbrirModalEditarContra()">
                   <i class="fas fa-cog me-2 mr-2"></i>
-                    <span class="me-2">Modificar Contrase&ntilde;a del Usuario</span>
+                    <span class="me-2">Modificar Contrase&ntilde;a</span>
                   </button>
                 </div>
               </div>
               <table id="tabla_usuario" class="display responsive nowrap" style="width: 100%">
                   <thead>
                     <tr>
-                      <th>#</th>
+                      <th>|</th>
                       <th>Usuario</th>
                       <th>Rol</th>
                       <th>Estatus</th>
                       <th>Acci&oacute;n</th>
+
                     </tr>
                   </thead>
                   <tfoot>
                     <tr>
-                      <th>#</th>
+                      <th>|</th>
                       <th>Usuario</th>
                       <th>Rol</th>
                       <th>Estatus</th>
                       <th>Acci&oacute;n</th>
+                      
                     </tr>
                   </tfoot>
               </table>

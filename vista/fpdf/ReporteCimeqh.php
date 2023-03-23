@@ -9,6 +9,8 @@ class PDF extends FPDF
    function Header()
    {
       
+      include '../../modelo/modelo_conexion.php';
+
       $this->Image('cimeqh.jpeg', 220, 10, 60); //logo de la empresa,moverDerecha,moverAbajo,tamañoIMG
       $this->SetFont('Arial', 'B', 19); //tipo fuente, negrita(B-I-U-BIU), tamañoTexto
       $this->Cell(95); // Movernos a la derecha
@@ -53,10 +55,11 @@ class PDF extends FPDF
       $this->SetTextColor(255, 255, 255); //colorTexto
       $this->SetDrawColor(163, 163, 163); //colorBorde
       $this->SetFont('Arial', 'B', 11);
-      $this->Cell(40, 10, utf8_decode('N° DE APROBACIÓN'), 1, 0, 'C', 1);
-      $this->Cell(85, 10, utf8_decode('PROPIETARIO'), 1, 0, 'C', 1);
-      $this->Cell(60, 10, utf8_decode('CLAVE CATASTRAL'), 1, 0, 'C', 1);
-      $this->Cell(60, 10, utf8_decode('FECHA DE APROBACIÓN'), 1, 0, 'C', 1);
+      $this->Cell(50, 10, utf8_decode('N° DE EXPEDIENTE'), 1, 0, 'C', 1);
+      $this->Cell(50, 10, utf8_decode('CLAVE CATASTRAL'), 1, 0, 'C', 1);
+      $this->Cell(52, 10, utf8_decode('TIPO DE CONSTRUCCION'), 1, 0, 'C', 1);
+      $this->Cell(55, 10, utf8_decode('PROPIETARIO'), 1, 0, 'C', 1);
+      $this->Cell(40, 10, utf8_decode('FECHA'), 1, 0, 'C', 1);
       $this->Cell(30, 10, utf8_decode('ESTATUS'), 1, 1, 'C', 1);
    }
 
@@ -74,9 +77,9 @@ class PDF extends FPDF
    }
 }
 
-  include '../../modelo/modelo_conexion.php';
-  $conexion = new conexion();
-  $conexion->conectar();
+//   include '../../modelo/modelo_conexion.php';
+//   $conexion = new conexion();
+//   $conexion->conectar(); 
   
 
 $pdf = new PDF();
@@ -87,16 +90,17 @@ $i = 0;
 $pdf->SetFont('Arial', '', 12);
 $pdf->SetDrawColor(163, 163, 163); //colorBorde
 
-$consulta_reporte = $conexion->conexion->query("CALL SP_REPORTE_APROBADO_CIMEQH()");
+$consulta_reporte = $conexion->conexion->query("CALL SP_APROBADOS_CIMEQH()");
 
 while ($datos_reporte = $consulta_reporte->fetch_object()) {      
    
 $i = $i + 1;
 /* TABLA */
 $pdf->Cell(40, 10, utf8_decode($datos_reporte->num_expediente), 1, 0, 'C', 0);
-$pdf->Cell(85, 10, utf8_decode($datos_reporte->propietario), 1, 0, 'C', 0);
-$pdf->Cell(60, 10, utf8_decode($datos_reporte->clave_catastral), 1, 0, 'C', 0);
-$pdf->Cell(60, 10, utf8_decode($datos_reporte->fecha_de_aprobacion), 1, 0, 'C', 0);
+$pdf->Cell(85, 10, utf8_decode($datos_reporte->clave_catastral), 1, 0, 'C', 0);
+$pdf->Cell(60, 10, utf8_decode($datos_reporte->tipo_proyecto), 1, 0, 'C', 0);
+$pdf->Cell(60, 10, utf8_decode($datos_reporte->propietario), 1, 0, 'C', 0);
+$pdf->Cell(60, 10, utf8_decode($datos_reporte->fecha), 1, 0, 'C', 0);
 $pdf->Cell(30, 10, utf8_decode($datos_reporte->estatus), 1, 1, 'C', 0);
 }
 

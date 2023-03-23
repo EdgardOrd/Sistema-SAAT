@@ -80,8 +80,8 @@ if(!isset($_SESSION['S_IDUSUARIO'])){
     <li class="nav-item">
       <div class="pull-right">
         <div>
-          <a href="../controlador/usuario/controlador_cerrar_session.php" class="btn btn-outline-info"> <img src="../plantilla/../plantilla/dist/img/cerrarsesion1.png" class="img-circle elevation-2 " alt="User Image" width="40">
-          <span class="brand-text font-weight-light">Cerrar Sesión</span>
+          <a href="../controlador/usuario/controlador_cerrar_session.php" ><button type="button" class="btn btn-danger btn-lg">
+           Cerrar Sesión</button>
           </a>
         </div>
       </div>
@@ -149,6 +149,36 @@ if(!isset($_SESSION['S_IDUSUARIO'])){
               </li>
             </ul>
           </li>
+          <li class="nav-item has-treeview">
+          <a href="#" class="nav-link">
+              <i class="nav-icon far fa-file"></i>
+              <p>
+                Reportes
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="#" onclick="cargar_contenido('contenido_principal', 'usuario/vista_reportes_cimeqh.php')" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>CIMEQH</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" onclick="cargar_contenido('contenido_principal', 'usuario/vista_reportes_cich.php')" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>CICH</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" onclick="cargar_contenido('contenido_principal', 'usuario/vista_reportes_cah.php')" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>CAH</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          
           <li class="nav-item">
                 <a href="#" onclick="cargar_contenido('contenido_principal', 'usuario/vista_graficos_colegios.php')" class="nav-link">
                   <i class="far fa-chart-bar nav-icon"></i>
@@ -177,8 +207,7 @@ if(!isset($_SESSION['S_IDUSUARIO'])){
           <div class="card-header with-border">
             <h3 class="card-title">BIENVENIDO AL CONTENIDO PRINCIPAL</h3>
             <div class="card-tools pull-right">
-            <button type="button" class="btn btn-box-tool" data-card-widget="remove"><i class="fas fa-times"></i>
-            </button>
+            
             </div>
           </div>
           <div class="card-body">
@@ -199,12 +228,21 @@ if(!isset($_SESSION['S_IDUSUARIO'])){
                   <div class="tab-content">
                     <div class="tab-pane active" id="tab_1">
                     Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rerum numquam eius voluptatum, hic mollitia id sit quaerat fuga ad ipsam aspernatur excepturi earum rem a eligendi, ut, dolorem perferendis atque.
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit velit numquam atque, id aperiam quae reprehenderit, ipsa rem iusto vero non aut maxime esse nemo pariatur quasi necessitatibus placeat maiores!
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eos doloribus neque nemo, culpa, tempora vel id rerum reprehenderit quibusdam illum voluptates officiis fugiat, deserunt necessitatibus corporis cumque voluptatem perspiciatis laudantium?
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus corporis commodi natus labore ullam? Dolorem molestiae esse earum ea in voluptate magnam. Ea quibusdam tempore ipsa? Quos eius possimus quaerat!
                     </div>
                     <div class="tab-pane" id="tab_2">
-                      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repudiandae ipsam aspernatur ex numquam voluptatibus tenetur illum accusamus vitae explicabo, similique iste sit corporis suscipit dolores quaerat esse in et beatae!
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rerum numquam eius voluptatum, hic mollitia id sit quaerat fuga ad ipsam aspernatur excepturi earum rem a eligendi, ut, dolorem perferendis atque.
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit velit numquam atque, id aperiam quae reprehenderit, ipsa rem iusto vero non aut maxime esse nemo pariatur quasi necessitatibus placeat maiores!
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eos doloribus neque nemo, culpa, tempora vel id rerum reprehenderit quibusdam illum voluptates officiis fugiat, deserunt necessitatibus corporis cumque voluptatem perspiciatis laudantium?
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus corporis commodi natus labore ullam? Dolorem molestiae esse earum ea in voluptate magnam. Ea quibusdam tempore ipsa? Quos eius possimus quaerat!
                     </div>      
                     <div class="tab-pane" id="tab_3">
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque esse totam cumque atque ullam temporibus reiciendis eveniet dolor voluptatem, molestias sed delectus! Delectus consequuntur ratione animi quod minima eveniet necessitatibus.
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rerum numquam eius voluptatum, hic mollitia id sit quaerat fuga ad ipsam aspernatur excepturi earum rem a eligendi, ut, dolorem perferendis atque.
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit velit numquam atque, id aperiam quae reprehenderit, ipsa rem iusto vero non aut maxime esse nemo pariatur quasi necessitatibus placeat maiores!
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eos doloribus neque nemo, culpa, tempora vel id rerum reprehenderit quibusdam illum voluptates officiis fugiat, deserunt necessitatibus corporis cumque voluptatem perspiciatis laudantium?
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus corporis commodi natus labore ullam? Dolorem molestiae esse earum ea in voluptate magnam. Ea quibusdam tempore ipsa? Quos eius possimus quaerat!
                     </div>
                   </div>
                 </div>

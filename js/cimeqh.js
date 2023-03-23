@@ -18,7 +18,7 @@ function listar_usuario_cimeqh(){
            "url":"../controlador/colegios/controlador_cimeqh.php",
            type:'POST'
        },
-       "columns":[
+       "columns":[ 
            {"data":"Expediente"},
            {"data":"Tipo de Proyecto"},
            {"data":"Propietario"},

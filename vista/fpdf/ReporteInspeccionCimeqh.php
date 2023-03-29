@@ -12,12 +12,16 @@ if(!empty($_GET["fecha_inicial"]) and !empty($_GET["fecha_final"]))
    {
       private $fecha_inicial;
       private $fecha_final;
+      private $fecha1;
+      private $fecha2;
 
       function __construct($fecha_inicial, $fecha_final)
       {
          parent::__construct();
          $this->fecha_inicial = $fecha_inicial;
          $this->fecha_final = $fecha_final;
+         $this->fecha1 = date("d/m/Y", strtotime($fecha_inicial));
+         $this->fecha2 = date("d/m/Y", strtotime($fecha_final));
       }
       // Cabecera de página
       function Header()
@@ -60,7 +64,7 @@ if(!empty($_GET["fecha_inicial"]) and !empty($_GET["fecha_final"]))
          $this->SetFont('Arial', 'B', 15);
          $this->Cell(75, 10, utf8_decode("REPORTE DE PROYECTOS QUE NECESITAN INSPECCIÓN"), 0, 1, 'C', 0);
          $this->SetFont('Arial', 'B', 12);
-         $this->Cell(270, 10, utf8_decode($this->fecha_inicial . ' a ' . $this->fecha_final), 0, 0, 'C', 0);
+         $this->Cell(270, 10, utf8_decode($this->fecha1 . ' a ' . $this->fecha2), 0, 0, 'C', 0);
          $this->Ln(12);
 
          /* CAMPOS DE LA TABLA */
@@ -69,9 +73,9 @@ if(!empty($_GET["fecha_inicial"]) and !empty($_GET["fecha_final"]))
          $this->SetTextColor(255, 255, 255); //colorTexto
          $this->SetDrawColor(163, 163, 163); //colorBorde
          $this->SetFont('Arial', 'B', 11);
-         $this->Cell(60, 10, utf8_decode('N° DE EXPEDIENTE'), 1, 0, 'C', 1);    
+         $this->Cell(60, 10, utf8_decode('CLAVE CATASTRAL'), 1, 0, 'C', 1);    
          $this->Cell(85, 10, utf8_decode('PROPIETARIO'), 1, 0, 'C', 1);
-         $this->Cell(80, 10, utf8_decode('OBSERVACIONES'), 1, 0, 'C', 1);
+         $this->Cell(80, 10, utf8_decode('MOTIVO DE INSPECCIÓN'), 1, 0, 'C', 1);
          $this->Cell(50, 10, utf8_decode('FECHA'), 1, 1, 'C', 1);
       }
 
@@ -108,7 +112,7 @@ if(!empty($_GET["fecha_inicial"]) and !empty($_GET["fecha_final"]))
       
    $i = $i + 1;
    /* TABLA */
-   $pdf->Cell(60, 10, utf8_decode($datos_reporte->num_expediente), 1, 0, 'C', 0);
+   $pdf->Cell(60, 10, utf8_decode($datos_reporte->clave_catastral), 1, 0, 'C', 0);
    $pdf->Cell(85, 10, utf8_decode($datos_reporte->propietario), 1, 0, 'C', 0);
    $pdf->Cell(80, 10, utf8_decode($datos_reporte->Observaciones), 1, 0, 'C', 0);
    $pdf->Cell(50, 10, utf8_decode($datos_reporte->fecha), 1, 1, 'C', 0);

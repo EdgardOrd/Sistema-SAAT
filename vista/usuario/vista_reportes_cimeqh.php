@@ -18,10 +18,10 @@
                     <li class="nav-item"><a class="nav-link active" href="#tab_1" data-toggle="tab">APROBADO Y SEGUIMIENTO</a></li>
                     <li class="nav-item"><a class="nav-link" href="#tab_2" data-toggle="tab">DESAPROBADO</a></li>
                     <li class="nav-item"><a class="nav-link" href="#tab_3" data-toggle="tab">DOCUMENTACION</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#tab_4" data-toggle="tab">TIPO DE CONSTRUCCION</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#tab_4" data-toggle="tab">TIPO DE CONSTRUCCIÓN</a></li>
                     <li class="nav-item"><a class="nav-link" href="#tab_5" data-toggle="tab">PRESUPUESTO</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#tab_6" data-toggle="tab">AREA</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#tab_7" data-toggle="tab">INSPECCION</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#tab_6" data-toggle="tab">ÁREA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#tab_7" data-toggle="tab">INSPECCIÓN</a></li>
                     <li class="nav-item"><a class="nav-link" href="#tab_8" data-toggle="tab">CAMBIO DE INGENIERO</a></li>
                     <li class="nav-item"><a class="nav-link" href="#tab_9" data-toggle="tab">MILLONARIO</a></li>
                   </ul>
@@ -71,7 +71,7 @@
                         </form>
                     </div>
                     <div class="tab-pane" id="tab_4">
-                    <h4>REPORTE DE PROYECTOS ORDENADOS SEGÚN EL TIPO DE CONSTRUCCION</h4><br>
+                    <h4>REPORTE DE PROYECTOS ORDENADOS SEGÚN EL TIPO DE CONSTRUCCIÓN</h4><br>
                     <form onsubmit="window.open('../vista/fpdf/ReporteConstruccionCimeqh.php?fecha_inicial=' + encodeURIComponent(document.getElementById('fi4').value) + '&fecha_final=' + encodeURIComponent(document.getElementById('ff4').value), '_blank');">
                           <div class="col-lg-5">
                             <label for="">Fecha Inicial</label>

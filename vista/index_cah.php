@@ -49,6 +49,19 @@ if(!isset($_SESSION['S_IDUSUARIO'])){
     font-size:0.7rem !important;
     font-weight: 500 !important;
   }
+
+  .content-wrapper {
+    background-image: linear-gradient(360deg, rgba(165,165,165, 0.24) 0%, rgba(165,165,165, 0.24) 8%,rgba(235,235,235, 0.7) 8%, rgba(235,235,235, 0.7) 9%,rgba(7, 7, 7, 0.03) 9%, rgba(7, 7, 7, 0.03) 14%,rgba(212,212,212, 0.4) 14%, rgba(212,212,212, 0.4) 17%,rgba(219, 219, 219, 0.03) 17%, rgba(219, 219, 219, 0.03) 95%,rgba(86, 86, 86, 0.03) 95%, rgba(86, 86, 86, 0.03) 100%),linear-gradient(67.5deg, rgba(80, 80, 80, 0.03) 0%, rgba(80, 80, 80, 0.03) 11%,rgba(138, 138, 138, 0.03) 11%, rgba(138, 138, 138, 0.03) 17%,rgba(122, 122, 122, 0.03) 17%, rgba(122, 122, 122, 0.03) 24%,rgba(166, 166, 166, 0.03) 24%, rgba(166, 166, 166, 0.03) 27%,rgba(245, 245, 245, 0.03) 27%, rgba(245, 245, 245, 0.03) 89%,rgba(88, 88, 88, 0.03) 89%, rgba(88, 88, 88, 0.03) 100%),linear-gradient(67.5deg, rgba(244, 244, 244, 0.03) 0%, rgba(244, 244, 244, 0.03) 4%,rgba(16, 16, 16, 0.03) 4%, rgba(16, 16, 16, 0.03) 10%,rgba(157, 157, 157, 0.03) 10%, rgba(157, 157, 157, 0.03) 20%,rgba(212,212,212, 0.4) 20%, rgba(212,212,212, 0.4) 83%,rgba(5, 5, 5, 0.03) 83%, rgba(5, 5, 5, 0.03) 84%,rgba(237, 237, 237, 0.03) 84%, rgba(237, 237, 237, 0.03) 100%),linear-gradient(360deg, #ffffff,#ffffff);
+  }
+
+  .card-header {
+    background: rgb(39,56,132);
+    color: white;
+  }
+
+  .nav-pills .nav-link {
+    color: #fff;
+  }
 </style>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -101,8 +114,8 @@ if(!isset($_SESSION['S_IDUSUARIO'])){
         </div>
       </div>
       <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <li class="nav-item has-treeview menu-open">
-            <a href="#" onclick="cargar_contenido('contenido_principal', 'usuario/vista_colegio_cah.php')" class="nav-link active">
+          <li class="nav-item has-treeview">
+            <a href="#" onclick="cargar_contenido('contenido_principal', 'usuario/vista_colegio_cah.php')" class="nav-link">
               <i class="nav-icon fas fa-solid fa-user"></i>
               <p>
                 COLEGIO CAH
@@ -160,16 +173,6 @@ if(!isset($_SESSION['S_IDUSUARIO'])){
     </div>
   </section>
   </div>
-  <!-- /.content-wrapper -->
-  <footer class="main-footer">
-    
-  </footer>
-
-  <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
-  </aside>
-  <!-- /.control-sidebar -->
 </div>
 <!-- *********** MODAL DE EDITAR CONTRA **************** -->
  

@@ -59,6 +59,19 @@ if(!isset($_SESSION['S_IDUSUARIO'])){
     font-size:0.7rem !important;
     font-weight: 500 !important;
   }
+
+  .content-wrapper {
+    background-image: linear-gradient(360deg, rgba(165,165,165, 0.24) 0%, rgba(165,165,165, 0.24) 8%,rgba(235,235,235, 0.7) 8%, rgba(235,235,235, 0.7) 9%,rgba(7, 7, 7, 0.03) 9%, rgba(7, 7, 7, 0.03) 14%,rgba(212,212,212, 0.4) 14%, rgba(212,212,212, 0.4) 17%,rgba(219, 219, 219, 0.03) 17%, rgba(219, 219, 219, 0.03) 95%,rgba(86, 86, 86, 0.03) 95%, rgba(86, 86, 86, 0.03) 100%),linear-gradient(67.5deg, rgba(80, 80, 80, 0.03) 0%, rgba(80, 80, 80, 0.03) 11%,rgba(138, 138, 138, 0.03) 11%, rgba(138, 138, 138, 0.03) 17%,rgba(122, 122, 122, 0.03) 17%, rgba(122, 122, 122, 0.03) 24%,rgba(166, 166, 166, 0.03) 24%, rgba(166, 166, 166, 0.03) 27%,rgba(245, 245, 245, 0.03) 27%, rgba(245, 245, 245, 0.03) 89%,rgba(88, 88, 88, 0.03) 89%, rgba(88, 88, 88, 0.03) 100%),linear-gradient(67.5deg, rgba(244, 244, 244, 0.03) 0%, rgba(244, 244, 244, 0.03) 4%,rgba(16, 16, 16, 0.03) 4%, rgba(16, 16, 16, 0.03) 10%,rgba(157, 157, 157, 0.03) 10%, rgba(157, 157, 157, 0.03) 20%,rgba(212,212,212, 0.4) 20%, rgba(212,212,212, 0.4) 83%,rgba(5, 5, 5, 0.03) 83%, rgba(5, 5, 5, 0.03) 84%,rgba(237, 237, 237, 0.03) 84%, rgba(237, 237, 237, 0.03) 100%),linear-gradient(360deg, #ffffff,#ffffff);
+  }
+
+  .card-header {
+    background: rgb(39,56,132);
+    color: white;
+  }
+
+  .nav-pills .nav-link {
+    color: #fff;
+  }
 </style>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -227,22 +240,34 @@ if(!isset($_SESSION['S_IDUSUARIO'])){
                 <div class="card-body">
                   <div class="tab-content">
                     <div class="tab-pane active" id="tab_1">
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rerum numquam eius voluptatum, hic mollitia id sit quaerat fuga ad ipsam aspernatur excepturi earum rem a eligendi, ut, dolorem perferendis atque.
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit velit numquam atque, id aperiam quae reprehenderit, ipsa rem iusto vero non aut maxime esse nemo pariatur quasi necessitatibus placeat maiores!
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eos doloribus neque nemo, culpa, tempora vel id rerum reprehenderit quibusdam illum voluptates officiis fugiat, deserunt necessitatibus corporis cumque voluptatem perspiciatis laudantium?
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus corporis commodi natus labore ullam? Dolorem molestiae esse earum ea in voluptate magnam. Ea quibusdam tempore ipsa? Quos eius possimus quaerat!
+                      <h3>CIMEQH</h3>
+                    El colegio de Ingenieros Mecánicos, Electricistas y Químicos de Honduras y Ramas Afines. Es una institución sin fines de lucro, apolítica, cuyo objetivo principal es el de velar por el desarrollo tecnológico del pais mediante la regulación del ejercicio profesional y actualización de sus agremiados, procurando capacitarlos para que adquieran conocimientos, destrezas y habilidades adicionales, a fin de lograr mayor productividad y competitividad en los servicios profesionales; asi como promover la protección económica  y solidaridad entre  los miembros.
+                    <hr>
+                    <h3>HISTORIA</h3>
+                    La Asociación de Ingenieros Mecánicos, Electricistas y Químicos de Honduras "AIMEQH", creada a finales de la década de los setenta es el origen del Colegio de Ingenieros Mecánicos, Electricistas y Químicos de Honduras y ramas afines "CIMEQH". En su corta vida, esta asociación tuvo como presidentes a los distinguidos profesionales de la Ingeniería Eléctrica, Dr. Luis Cosenza Jiménez y Percy Armando Buck Mendoza; quienes canalizaron toda su energía y conocimientos para coordinar las actividades desarrolladas. Adicionalmente 38 distinguidos profesionales de la Ingeniería Eléctrica, Mecánica y Química impulsaron los Estatutos, Ley Orgánica y Reglamento Interno del CIMEQH ante el Congreso Nacional y así darle vida al Colegio que hoy tenemos.
+                    <br>
+                    Sin embargo, en la década de los ochenta y noventa el número de agremiados se incrementó considerablemente en calidad y cantidad, haciendo que el CIMEQH sea una de las Organizaciones Profesionales más Fuertes y Beligerantes del País, cuyos miembros hacen aportaciones sustanciales en el Proceso de Desarrollo Tecnológico de la nación.
                     </div>
                     <div class="tab-pane" id="tab_2">
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rerum numquam eius voluptatum, hic mollitia id sit quaerat fuga ad ipsam aspernatur excepturi earum rem a eligendi, ut, dolorem perferendis atque.
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit velit numquam atque, id aperiam quae reprehenderit, ipsa rem iusto vero non aut maxime esse nemo pariatur quasi necessitatibus placeat maiores!
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eos doloribus neque nemo, culpa, tempora vel id rerum reprehenderit quibusdam illum voluptates officiis fugiat, deserunt necessitatibus corporis cumque voluptatem perspiciatis laudantium?
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus corporis commodi natus labore ullam? Dolorem molestiae esse earum ea in voluptate magnam. Ea quibusdam tempore ipsa? Quos eius possimus quaerat!
+                    <h3>CICH</h3>
+                    El Colegio de Ingenieros Civiles de Honduras (CICH) surge al inicio como una SOCIEDAD HONDUREÑA DE INGENIEROS, que, junto con la SOCIEDAD DE HONDURAS DE ARQUITECTOS, y a iniciativa de la primera, acordaron celebrar el Primer Congreso de Ingenieros y Arquitectos de Honduras.
+                    El evento se llevó a cabo en la Ciudad de Comayagua el 19 de agosto de 1951, y dentro de sus resoluciones, fue aprobado, según ponencia presentada por el Ingeniero RUBEN CLARE VEGA, lo siguiente:
+                    <hr>
+                    <ul>
+                      <li>Declarar constituido provisionalmente el Colegio de Ingenieros y Arquitectos.</li>
+                      <li>rganizar sociedades locales de ingenieros y arquitectos en los lugares donde haya los indispensables profesionales de este ramo.</li>
+                      <li>Elevar al Poder Ejecutivo una solicitud para que emita los Estudios y Reglamentos necesarios a la creación del Colegio de Ingenieros y Arquitectos de Honduras.</li>
+                      <li>ue la Sociedad Hondureña de Ingenieros se encargue de elaborar los Estatutos y Reglamentos del Colegio Profesional para ser sometidos al conocimiento y la resolución del próximo Congreso de Ingenieros y Arquitectos de la República.</li>
+                    </ul>
                     </div>      
                     <div class="tab-pane" id="tab_3">
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rerum numquam eius voluptatum, hic mollitia id sit quaerat fuga ad ipsam aspernatur excepturi earum rem a eligendi, ut, dolorem perferendis atque.
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit velit numquam atque, id aperiam quae reprehenderit, ipsa rem iusto vero non aut maxime esse nemo pariatur quasi necessitatibus placeat maiores!
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eos doloribus neque nemo, culpa, tempora vel id rerum reprehenderit quibusdam illum voluptates officiis fugiat, deserunt necessitatibus corporis cumque voluptatem perspiciatis laudantium?
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus corporis commodi natus labore ullam? Dolorem molestiae esse earum ea in voluptate magnam. Ea quibusdam tempore ipsa? Quos eius possimus quaerat!
+                    <h3>CAH</h3>
+                    El Colegio de Arquitectos de Honduras (CAH) es una organización gremial que asegura la excelencia en el ejercicio profesional de Arquitectura en Honduras, con todos los derechos y obligaciones, que señala su ley orgánica y reglamento interno.
+                    <hr>
+                    <h3>Misión y Visión</h3>
+                    Nuestra Misión Agrupar y fortalecer a los profesionales. regular su práctica y participar en la solución de problemas locales y nacionales, garantizar y velar por los intereses de sus agremiados, su familia, los futuros profesionales, las comunidades y la sociedad. 
+                    <br><br>
+                    Nuestra Visión Gremio profesional líder y de prestigio a nivel nacional y regional, creativo en su contribución al ambiente; solidario a sus miembros y los intereses de la comunidad y promotor de una practica actualizada y pertinente.
                     </div>
                   </div>
                 </div>
@@ -255,16 +280,6 @@ if(!isset($_SESSION['S_IDUSUARIO'])){
     </div>
   </section>
   </div>
-  <!-- /.content-wrapper -->
-  <footer class="main-footer">
-    
-  </footer>
-
-  <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
-  </aside>
-  <!-- /.control-sidebar -->
 </div>
 <!-- *********** MODAL DE EDITAR CONTRA **************** -->
   <div class="modal" id="modal_editar_contra">

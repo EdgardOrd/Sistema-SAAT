@@ -22,7 +22,7 @@
                     <li class="nav-item"><a class="nav-link" href="#tab_5" data-toggle="tab">PRESUPUESTO</a></li>
                     <li class="nav-item"><a class="nav-link" href="#tab_6" data-toggle="tab">AREA</a></li>
                     <li class="nav-item"><a class="nav-link" href="#tab_7" data-toggle="tab">INSPECCION</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#tab_8" data-toggle="tab">DESCONTINUADO</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#tab_8" data-toggle="tab">CAMBIO DE INGENIERO</a></li>
                     <li class="nav-item"><a class="nav-link" href="#tab_9" data-toggle="tab">MILLONARIO</a></li>
                   </ul>
                 </div>

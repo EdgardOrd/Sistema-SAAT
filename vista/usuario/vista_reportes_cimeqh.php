@@ -22,7 +22,7 @@
                     <li class="nav-item"><a class="nav-link" href="#tab_5" data-toggle="tab">PRESUPUESTO</a></li>
                     <li class="nav-item"><a class="nav-link" href="#tab_6" data-toggle="tab">AREA</a></li>
                     <li class="nav-item"><a class="nav-link" href="#tab_7" data-toggle="tab">INSPECCION</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#tab_8" data-toggle="tab">DESCONTINUADO</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#tab_8" data-toggle="tab">CAMBIO DE INGENIERO</a></li>
                     <li class="nav-item"><a class="nav-link" href="#tab_9" data-toggle="tab">MILLONARIO</a></li>
                   </ul>
                 </div>
@@ -33,10 +33,10 @@
                     <form onsubmit="window.open('../vista/fpdf/ReporteAprobadosCimeqh.php?fecha_inicial=' + encodeURIComponent(document.getElementById('fi1').value) + '&fecha_final=' + encodeURIComponent(document.getElementById('ff1').value), '_blank');">
                           <div class="col-lg-5">
                             <label for="">Fecha Inicial</label>
-                            <input type="date" class="form-control" id="fi1" name = "fi1">
+                            <input required type="date" class="form-control" id="fi1" name = "fi1">
                             <br>
                             <label for="">Fecha Final</label>
-                            <input type="date" class="form-control" id="ff1" name="ff1">
+                            <input required type="date" class="form-control" id="ff1" name="ff1">
                             <br>
                           <button type="submit" name="report_cimeqh_aprobados" class="btn btn-primary w-50 p-3"><i class="fas fa-file-pdf me-2 mr-2"></i>Generar Reporte</button>
                           </div>
@@ -47,10 +47,10 @@
                    <form onsubmit="window.open('../vista/fpdf/ReporteDesaprobadosCimeqh.php?fecha_inicial=' + encodeURIComponent(document.getElementById('fi2').value) + '&fecha_final=' + encodeURIComponent(document.getElementById('ff2').value), '_blank');">
                           <div class="col-lg-5">
                             <label for="">Fecha Inicial</label>
-                            <input type="date" class="form-control" id="fi2" name = "fi2">
+                            <input required type="date" class="form-control" id="fi2" name = "fi2">
                             <br>
                             <label for="">Fecha Final</label>
-                            <input type="date" class="form-control" id="ff2" name="ff2">
+                            <input required type="date" class="form-control" id="ff2" name="ff2">
                             <br>
                           <button type="submit" name="report_cimeqh_desaprobados" class="btn btn-primary w-50 p-3" target="_blank"><i class="fas fa-file-pdf me-2 mr-2"></i>Generar Reporte</button>
                           </div>
@@ -61,10 +61,10 @@
                    <form onsubmit="window.open('../vista/fpdf/ReporteSoliDocCimeqh.php?fecha_inicial=' + encodeURIComponent(document.getElementById('fi3').value) + '&fecha_final=' + encodeURIComponent(document.getElementById('ff3').value), '_blank');">
                           <div class="col-lg-5">
                             <label for="">Fecha Inicial</label>
-                            <input type="date" class="form-control" id="fi3" name = "fi3">
+                            <input required type="date" class="form-control" id="fi3" name = "fi3">
                             <br>
                             <label for="">Fecha Final</label>
-                            <input type="date" class="form-control" id="ff3" name="ff3">
+                            <input required type="date" class="form-control" id="ff3" name="ff3">
                             <br>
                           <button type="submit" name="report_cimeqh_documentacion" class="btn btn-primary w-50 p-3" target="_blank"><i class="fas fa-file-pdf me-2 mr-2"></i>Generar Reporte</button>
                           </div>
@@ -75,10 +75,10 @@
                     <form onsubmit="window.open('../vista/fpdf/ReporteConstruccionCimeqh.php?fecha_inicial=' + encodeURIComponent(document.getElementById('fi4').value) + '&fecha_final=' + encodeURIComponent(document.getElementById('ff4').value), '_blank');">
                           <div class="col-lg-5">
                             <label for="">Fecha Inicial</label>
-                            <input type="date" class="form-control" id="fi4" name = "fi4">
+                            <input required type="date" class="form-control" id="fi4" name = "fi4">
                             <br>
                             <label for="">Fecha Final</label>
-                            <input type="date" class="form-control" id="ff4" name="ff4">
+                            <input required type="date" class="form-control" id="ff4" name="ff4">
                             <br>
                           <button type="submit" name="report_cimeqh_tipoconstruccion" class="btn btn-primary w-50 p-3" target="_blank"><i class="fas fa-file-pdf me-2 mr-2"></i>Generar Reporte</button>
                           </div>
@@ -94,7 +94,7 @@
                             <label for="">Fecha Final</label>
                             <input type="date" class="form-control" id="ff8" name="ff8">
                             <br>
-                          <button type="submit" name="report_cimeqh_tipoconstruccion" class="btn btn-primary w-50 p-3" target="_blank"><i class="fas fa-file-pdf me-2 mr-2"></i>Generar Reporte</button>
+                          
                           </div><br>
                           <div class="col-lg-12">
                           <section class="content">          
@@ -117,6 +117,8 @@
                               </div>
                           </section>
                           </div>
+                          <br>
+                          <button type="submit" name="report_cimeqh_tipoconstruccion" class="btn btn-primary w-25 p-3 ml-4 mt-2" target="_blank"><i class="fas fa-file-pdf me-2 mr-2"></i>Generar Reporte</button>
                         </form>
                     </div>
                     <div class="tab-pane" id="tab_6">
@@ -129,20 +131,19 @@
                             <label for="">Fecha Final</label>
                             <input type="date" class="form-control" id="ff9" name="ff9">
                             <br>
-                          <button type="submit" name="report_cimeqh_tipoconstruccion" class="btn btn-primary w-50 p-3" target="_blank"><i class="fas fa-file-pdf me-2 mr-2"></i>Generar Reporte</button>
                           </div><br>
                           <div class="col-lg-12">
                           <section class="content">          
                               <div class="container-fluid">
                                   <div class="row">
-                                      <div class="col-md-10">
+                                      <div class="col-md-10 mt-2" >
                                           <!-- BAR CHART -->
                                           <div class="card card-success">
                                               <div class="card-header">
                                                   <h3 class="card-title">Expedintes En Base A Las Areas en Metros Cuadrados</h3>
                                               </div>
                                               <div class="card-body">
-                                                  <div class="chart">
+                                                  <div class="chart ">
                                                       <canvas id="barChart_cimeqh_area" style="height:230px; min-height:230px"></canvas>
                                                   </div>
                                               </div>
@@ -152,6 +153,8 @@
                               </div>
                           </section>
                           </div>
+                          <br>
+                          <button type="submit" name="report_cimeqh_tipoconstruccion" class="btn btn-primary w-25 p-3 ml-4 mt-2" target="_blank"><i class="fas fa-file-pdf me-2 mr-2"></i>Generar Reporte</button>
                         </form>
                     </div>
                     <div class="tab-pane" id="tab_4">
@@ -159,10 +162,10 @@
                     <form onsubmit="window.open('../vista/fpdf/ReporteConstruccionCimeqh.php?fecha_inicial=' + encodeURIComponent(document.getElementById('fi4').value) + '&fecha_final=' + encodeURIComponent(document.getElementById('ff4').value), '_blank');">
                           <div class="col-lg-5">
                             <label for="">Fecha Inicial</label>
-                            <input type="date" class="form-control" id="fi4" name = "fi4">
+                            <input required type="date" class="form-control" id="fi4" name = "fi4">
                             <br>
                             <label for="">Fecha Final</label>
-                            <input type="date" class="form-control" id="ff4" name="ff4">
+                            <input required type="date" class="form-control" id="ff4" name="ff4">
                             <br>
                           <button type="submit" name="report_cimeqh_tipoconstruccion" class="btn btn-primary w-50 p-3" target="_blank"><i class="fas fa-file-pdf me-2 mr-2"></i>Generar Reporte</button>
                           </div>
@@ -174,38 +177,38 @@
                     <form onsubmit="window.open('../vista/fpdf/ReporteInspeccionCimeqh.php?fecha_inicial=' + encodeURIComponent(document.getElementById('fi5').value) + '&fecha_final=' + encodeURIComponent(document.getElementById('ff5').value), '_blank');">
                           <div class="col-lg-5">
                           <label for="">Fecha Inicial</label>
-                            <input type="date" class="form-control" id="fi5" name = "fi5">
+                            <input required type="date" class="form-control" id="fi5" name = "fi5">
                             <br>
                             <label for="">Fecha Final</label>
-                            <input type="date" class="form-control" id="ff5" name="ff5">
+                            <input required type="date" class="form-control" id="ff5" name="ff5">
                             <br>
                           <button type="submit" name="report_cimeqh_inspeccion" class="btn btn-primary w-50 p-3" target="_blank"><i class="fas fa-file-pdf me-2 mr-2"></i>Generar Reporte</button>
                           </div>
                         </form>
                     </div>
                     <div class="tab-pane" id="tab_8">
-                    <h4>REPORTES EXPEDIENTES DESCONTINUADOS POR CAMBIO DE INGENIERO DE OBRA</h4><br>
-                        <form action="">
+                    <h4>REPORTE DE EXPEDIENTES CON CAMBIO DE INGENIERO DE OBRA</h4><br>
+                    <form onsubmit="window.open('../vista/fpdf/ReporteDescontinuadoCimeqh.php?fecha_inicial=' + encodeURIComponent(document.getElementById('fi6').value) + '&fecha_final=' + encodeURIComponent(document.getElementById('ff6').value), '_blank');">
                           <div class="col-lg-5">
                           <label for="">Fecha Inicial</label>
-                            <input type="date" class="form-control" id="fi6" name = "fi6">
+                            <input required type="date" class="form-control" id="fi6" name = "fi6">
                             <br>
                             <label for="">Fecha Final</label>
-                            <input type="date" class="form-control" id="ff6" name="ff6">
+                            <input required type="date" class="form-control" id="ff6" name="ff6">
                             <br>
                           <button type="submit" name="report_cimeqh_cambioingeniero" class="btn btn-primary w-50 p-3" target="_blank"><i class="fas fa-file-pdf me-2 mr-2"></i>Generar Reporte</button>
                           </div>
                         </form>
                     </div>      
                     <div class="tab-pane" id="tab_9">
-                    <h4>REPORTES DE PROYECTOS MILLONARIOS</h4><br>
-                        <form action="">
+                    <h4>REPORTE DE PROYECTOS MILLONARIOS</h4><br>
+                        <form onsubmit="window.open('../vista/fpdf/ReporteMillonariosCimeqh.php?fecha_inicial=' + encodeURIComponent(document.getElementById('fi7').value) + '&fecha_final=' + encodeURIComponent(document.getElementById('ff7').value), '_blank');">
                           <div class="col-lg-5">
                           <label for="">Fecha Inicial</label>
-                            <input type="date" class="form-control" id="fi7" name = "fi7">
+                            <input required type="date" class="form-control" id="fi7" name = "fi7">
                             <br>
                             <label for="">Fecha Final</label>
-                            <input type="date" class="form-control" id="ff7" name="ff7">
+                            <input required type="date" class="form-control" id="ff7" name="ff7">
                             <br>
                           <button type="submit" name="report_cimeqh_proyectmillonario" class="btn btn-primary w-50 p-3" target="_blank"><i class="fas fa-file-pdf me-2 mr-2"></i>Generar Reporte</button>
                           </div>
@@ -217,6 +220,7 @@
 </div>
 <script src="../Plantilla/plugins/chart.js/Chart.min.js"></script>
 <script>
+  
     $(document).ready(function(){
 
     // ------------------------------------- GRAFICO DE CIMEQH EN BASE A PRESUPUESTO --------------------------------

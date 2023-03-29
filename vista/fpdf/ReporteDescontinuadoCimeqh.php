@@ -58,7 +58,7 @@ if(!empty($_GET["fecha_inicial"]) and !empty($_GET["fecha_final"]))
          $this->SetTextColor(39, 56, 132);
          $this->Cell(100); // mover a la derecha
          $this->SetFont('Arial', 'B', 15);
-         $this->Cell(75, 10, utf8_decode("REPORTE DE PROYECTOS EN SOLICITUD DE DOCUMENTACIÓN"), 0, 1, 'C', 0);
+         $this->Cell(75, 10, utf8_decode("REPORTE DE PROYECTOS CON CAMBIO DE INGENIERO DE OBRA"), 0, 1, 'C', 0);
          $this->SetFont('Arial', 'B', 12);
          $this->Cell(270, 10, utf8_decode($this->fecha_inicial . ' a ' . $this->fecha_final), 0, 0, 'C', 0);
          $this->Ln(12);
@@ -68,14 +68,12 @@ if(!empty($_GET["fecha_inicial"]) and !empty($_GET["fecha_final"]))
          $this->SetFillColor(39, 56, 132); //colorFondo
          $this->SetTextColor(255, 255, 255); //colorTexto
          $this->SetDrawColor(163, 163, 163); //colorBorde
-         $this->SetFont('Arial', 'B', 8);
-         $this->Cell(40, 10, utf8_decode('N° DE EXPEDIENTE'), 1, 0, 'C', 1);
-         $this->Cell(70, 10, utf8_decode('DOCUMENTOS FALTANTE'), 1, 0, 'C', 1);
-         $this->Cell(60, 10, utf8_decode('TIPO DE CONSTRUCCIÓN'), 1, 0, 'C', 1);
-         $this->Cell(65, 10, utf8_decode('PROPIETARIO'), 1, 0, 'C', 1);
-         $this->Cell(40, 10, utf8_decode('FECHA DE SEGUIMIENTO'), 1, 1, 'C', 1);
-         
-         
+         $this->Cell(3.5);
+         $this->SetFont('Arial', 'B', 11);
+         $this->Cell(60, 10, utf8_decode('N° DE EXPEDIENTE'), 1, 0, 'C', 1);
+         $this->Cell(60, 10, utf8_decode('ESTATUS'), 1, 0, 'C', 1);     
+         $this->Cell(100, 10, utf8_decode('OBSERVACIONES'), 1, 0, 'C', 1);
+         $this->Cell(50, 10, utf8_decode('FECHA'), 1, 1, 'C', 1);
       }
 
       // Pie de página
@@ -104,22 +102,23 @@ if(!empty($_GET["fecha_inicial"]) and !empty($_GET["fecha_final"]))
    $i = 0;
    $pdf->SetFont('Arial', '', 10);
    $pdf->SetDrawColor(163, 163, 163); //colorBorde
-
-   $consulta_reporte = $conexion->conexion->query("CALL SP_DOCUMENTACION_CIMEQH('$fecha_inicial','$fecha_final')");
-
+   $pdf->Cell(3.5);
+   $consulta_reporte = $conexion->conexion->query("CALL SP_DESCONTINUADOS_CIMEQH('$fecha_inicial','$fecha_final')");
+   
    while ($datos_reporte = $consulta_reporte->fetch_object()) {      
       
    $i = $i + 1;
    /* TABLA */
-   $pdf->Cell(40, 10, utf8_decode($datos_reporte->num_expediente), 1, 0, 'C', 0);
-   $pdf->Cell(70, 10, utf8_decode($datos_reporte->observaciones), 1, 0, 'C', 0);
-   $pdf->Cell(60, 10, utf8_decode($datos_reporte->tipo_proyecto), 1, 0, 'C', 0);
-   $pdf->Cell(65, 10, utf8_decode($datos_reporte->propietario), 1, 0, 'C', 0);
-   $pdf->Cell(40, 10, utf8_decode($datos_reporte->fecha), 1, 1, 'C', 0);
+   
+   $pdf->Cell(60, 18, utf8_decode($datos_reporte->num_expediente), 1, 0, 'C', 0);
+   $pdf->Cell(60, 18, utf8_decode($datos_reporte->estatus), 1, 0, 'C', 0);
+   $pdf->Cell(100, 18, utf8_decode($datos_reporte->Observaciones), 1, 0, 'C', 0);
+   $pdf->Cell(50, 18, utf8_decode($datos_reporte->fecha), 1, 1, 'C', 0);
+   
    }
 
    
-   $pdf->Output("ReportedeProyectosenSolicitudDocumentacionCIMEQH-$fecha_inicial-$fecha_final.pdf", 'I');//nombreDescarga, Visor(I->visualizar - D->descargar)
+   $pdf->Output("ReporteProyectosDescontinuadosCIMEQH-$fecha_inicial-$fecha_final.pdf", 'I');//nombreDescarga, Visor(I->visualizar - D->descargar)
  }
  else
  {

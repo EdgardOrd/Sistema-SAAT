@@ -7,81 +7,52 @@
                     <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
                 </div>     
          </div>
-         <div class="card-body">  
-            <h3 class="mt-4 mb-2">GRAFICOS DE APROBACIONES EN CIMEQH</h3><br>
-            <section class="content">          
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <!-- BAR CHART -->
-                            <div class="card card-success">
-                                <div class="card-header">
-                                    <h3 class="card-title">Gráfico de Barra de notas aprobadas</h3>
-                                </div>
-                                <div class="card-body">
-                                    <div class="chart">
-                                        <canvas id="barChart_cimeqh" style="height:230px; min-height:230px"></canvas>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <div>
-            Implementar un gráfico de barras para visualizar las notas aprobadas es beneficioso porque permite a los usuarios ver de manera clara y visual cómo se distribuyen las notas. Los gráficos de barras son una forma efectiva de representar grandes cantidades de datos, lo que los hace ideales para mostrar la distribución de notas en un conjunto de datos. Además, el uso de diferentes colores para las barras puede ayudar a distinguir entre diferentes rangos de notas y hacer que la información sea más fácil de entender. En general, los gráficos de barras son una herramienta útil para analizar datos y tomar decisiones informadas en función de esos datos.
-            </div>
-            
+         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                $.ajax({
+                    url: "get_data_cimeqh.php",
+                    method: "GET",
+                    success: function(data) {
+                        var labels = [];
+                        var values = [];
+
+                        labels = data.split("|")[0];
+                        values = data.split("|")[1];
+
+                        var chartdata = {
+                            labels: JSON.parse(labels),
+                            datasets : [
+                                {
+                                    label: 'Datos de la base de datos',
+                                    backgroundColor: 'rgba(200, 200, 200, 0.75)',
+                                    borderColor: 'rgba(200, 200, 200, 0.75)',
+                                    hoverBackgroundColor: 'rgba(200, 200, 200, 1)',
+                                    hoverBorderColor: 'rgba(200, 200, 200, 1)',
+                                    data: JSON.parse(values)
+                                }
+                            ]
+                        };
+
+                        var ctx = $("#mycanvas");
+
+                        var barGraph = new Chart(ctx, {
+                            type: 'bar',
+                            data: chartdata
+                        });
+                    },
+                    error: function(data) {
+                        console.log(data);
+                    }
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <div style="width:50%;">
+            <canvas id="mycanvas"></canvas>
         </div>
-
-
-
-<!--*****************************************************************************************************************-->
-<script src="../Plantilla/plugins/chart.js/Chart.min.js"></script>
-<script>
-    $(document).ready(function(){
-
-    // ------------------------------------- GRAFICO DE CIMEQH --------------------------------
-    var areaChartCanvas = $('#barChart_cimeqh').get(0).getContext('2d')
-
-    var areaChartData = {
-    labels  : ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
-    datasets: [
-        {
-        label               : 'CIMEQH',
-        backgroundColor     : 'rgba(60,141,188,0.9)',
-        borderColor         : 'rgba(60,141,188,0.8)',
-        pointRadius          : false,
-        pointColor          : '#3b8bba',
-        pointStrokeColor    : 'rgba(60,141,188,1)',
-        pointHighlightFill  : '#fff',
-        pointHighlightStroke: 'rgba(60,141,188,1)',
-        data                : [28, 48, 40, 19, 86, 27, 90, 19, 86, 27, 100,20]
-        }
-    ]
-    }
-
-  //-------------
-    //- BAR CHART -
-    //-------------
-    var barChartCanvas = $('#barChart_cimeqh').get(0).getContext('2d')
-    var barChartData = jQuery.extend(true, {}, areaChartData)
-    var temp0 = areaChartData.datasets[0]
-    barChartData.datasets[0] = temp0
-
-    var barChartOptions = {
-      responsive              : true,
-      maintainAspectRatio     : false,
-      datasetFill             : false
-    }
-
-    var barChart = new Chart(barChartCanvas, {
-      type: 'bar', 
-      data: barChartData,
-      options: barChartOptions
-    })
-
-
-    })
+    </body>
 
 </script>

@@ -72,11 +72,11 @@ if(!empty($_GET["fecha_inicial"]) and !empty($_GET["fecha_final"]))
          $this->SetFillColor(39, 56, 132); //colorFondo
          $this->SetTextColor(255, 255, 255); //colorTexto
          $this->SetDrawColor(163, 163, 163); //colorBorde
-         $this->SetFont('Arial', 'B', 11);
+         $this->SetFont('Arial', 'B', 10.5);
          $this->Cell(60, 10, utf8_decode('CLAVE CATASTRAL'), 1, 0, 'C', 1);    
          $this->Cell(85, 10, utf8_decode('PROPIETARIO'), 1, 0, 'C', 1);
          $this->Cell(80, 10, utf8_decode('MOTIVO DE INSPECCIÓN'), 1, 0, 'C', 1);
-         $this->Cell(50, 10, utf8_decode('FECHA'), 1, 1, 'C', 1);
+         $this->Cell(50, 10, utf8_decode('FECHA DE RECIBIMIENTO'), 1, 1, 'C', 1);
       }
 
       // Pie de página
@@ -107,16 +107,32 @@ if(!empty($_GET["fecha_inicial"]) and !empty($_GET["fecha_final"]))
    $pdf->SetDrawColor(163, 163, 163); //colorBorde
 
    $consulta_reporte = $conexion->conexion->query("CALL SP_INSPECCION_CIMEQH('$fecha_inicial','$fecha_final')");
-
-   while ($datos_reporte = $consulta_reporte->fetch_object()) {      
+  
+   while ($datos_reporte = $consulta_reporte->fetch_object())
+    {      
       
-   $i = $i + 1;
-   /* TABLA */
-   $pdf->Cell(60, 10, utf8_decode($datos_reporte->clave_catastral), 1, 0, 'C', 0);
-   $pdf->Cell(85, 10, utf8_decode($datos_reporte->propietario), 1, 0, 'C', 0);
-   $pdf->Cell(80, 10, utf8_decode($datos_reporte->Observaciones), 1, 0, 'C', 0);
-   $pdf->Cell(50, 10, utf8_decode($datos_reporte->fecha), 1, 1, 'C', 0);
+      $i = $i + 1;
+      /* TABLA */
+      $pdf->Cell(60, 10, utf8_decode($datos_reporte->clave_catastral), 1, 0, 'C', 0);
+      $pdf->Cell(85, 10, utf8_decode($datos_reporte->propietario), 1, 0, 'C', 0);
+      $pdf->Cell(80, 10, utf8_decode($datos_reporte->Observaciones), 1, 0, 'C', 0);
+      $pdf->Cell(50, 10, utf8_decode($datos_reporte->fecha), 1, 1, 'C', 0);
    }
+   
+   $pdf->Ln(15);
+   $pdf->SetFillColor(39, 56, 132); //colorFondo
+   $pdf->Cell(95);
+   
+   $pdf->SetFont('Arial', 'B', 10.5);
+   $pdf->SetTextColor(255,255,255);
+   $pdf->Cell(50, 10, utf8_decode("TOTAL"), 1, 0, 'C', 1);
+   $pdf->SetFillColor(39, 56, 132); //colorFondo
+   
+   
+   $pdf->SetFont('Arial', 'B', 10.5);
+   $pdf->SetTextColor(39, 56, 132);
+   $pdf->Cell(50, 10, utf8_decode($i), 1, 1, 'C', 0);
+   $consulta_reporte->close();
 
    
    $pdf->Output("ReporteProyectosInspeccionCIMEQH-$fecha_inicial-$fecha_final.pdf", 'I');//nombreDescarga, Visor(I->visualizar - D->descargar)

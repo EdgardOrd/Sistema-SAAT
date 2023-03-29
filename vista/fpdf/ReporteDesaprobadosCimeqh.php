@@ -121,7 +121,7 @@ if(!empty($_GET["fecha_inicial"]) and !empty($_GET["fecha_final"]))
    $pdf->Cell(35, 20, utf8_decode($datos_reporte->clave_catastral), 1, 0, 'C', 0);
    $pdf->Cell(55, 20, utf8_decode($datos_reporte->tipo_proyecto), 1, 0, 'C', 0);
    $pdf->Cell(65, 20, utf8_decode($datos_reporte->propietario), 1, 0, 'C', 0);
-   $pdf->Multicell(50, 10, utf8_decode($datos_reporte->observaciones), 1, 0, 'C', 0);
+   $pdf->Cell(50, 20, utf8_decode($datos_reporte->observaciones), 1, 0, 'C', 0);
    $pdf->Cell(40, 20, utf8_decode($datos_reporte->fecha), 1, 1, 'C', 0);
    }
 

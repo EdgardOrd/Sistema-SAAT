@@ -72,6 +72,7 @@ if(!empty($_GET["fecha_inicial"]) and !empty($_GET["fecha_final"]))
          $this->SetFillColor(39, 56, 132); //colorFondo
          $this->SetTextColor(255, 255, 255); //colorTexto
          $this->SetDrawColor(163, 163, 163); //colorBorde
+
          $this->SetFont('Arial', 'B', 10.5);
          $this->Cell(60, 10, utf8_decode('CLAVE CATASTRAL'), 1, 0, 'C', 1);    
          $this->Cell(85, 10, utf8_decode('PROPIETARIO'), 1, 0, 'C', 1);
@@ -111,6 +112,7 @@ if(!empty($_GET["fecha_inicial"]) and !empty($_GET["fecha_final"]))
    while ($datos_reporte = $consulta_reporte->fetch_object())
     {      
       
+
       $i = $i + 1;
       /* TABLA */
       $pdf->Cell(60, 10, utf8_decode($datos_reporte->clave_catastral), 1, 0, 'C', 0);

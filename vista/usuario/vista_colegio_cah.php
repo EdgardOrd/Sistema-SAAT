@@ -4,13 +4,13 @@
 <div class="col-md-12">
         <div class="card card-warning">
           <div class="card-header">
-            <h3 class="card-title">BIENVENIDO AL HISTORIAL DE FORMULARIOS DE CAH</h3>
+            <h3 class="card-title">BIENVENIDO AL HISTORIAL DE REGISTRO EN CAH</h3>
               <div class="card-tools">
                 
               </div>
         </div>
         <div class="card-body">   
-        <h3 class="mt-4 mb-2">Aprobar Notas de Construcción</h3><br>
+        <h3 class="mt-4 mb-2">Registro de Notas de Construcción</h3><br>
         <div class="form-group row">
                 <div class="col-lg-10">
                   <div class="input-group">
@@ -25,7 +25,7 @@
                   </button>
                 </div>
                 <div class="col-lg-2"><br>
-                  <a href="#" class="btn btn-primary"><i class="fas fa-file-pdf me-2 mr-2"></i>Generar</a> 
+                  <a href="#" class="btn btn-success"><i class="fas fa-file-pdf me-2 mr-2"></i>Generar</a> 
                 </div>
               </div>
               <table id="tabla_cah" class="display responsive nowrap" style="width:100%">

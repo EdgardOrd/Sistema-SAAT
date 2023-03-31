@@ -192,5 +192,34 @@
                 $this->conexion->cerrar();
             }
         }
+
+        function TraerDatosGraficoBar($fecha_inicial,$fecha_final)
+        {
+            $sql = "call SP_AREA_CIMEQH('$fecha_inicial', '$fecha_final');";
+            $arreglo = array();
+
+            if($consulta = $this->conexion->conexion->query($sql)) {
+                while ($consulta_VU = mysqli_fetch_array($consulta))
+                {
+                    $arreglo[] = $consulta_VU;
+                }
+                return $arreglo;
+                $this->conexion->cerrar();
+            }
+        }
+        function TraerDatosGraficoBar2($fecha_inicial,$fecha_final)
+        {
+            $sql = "call SP_PRESUPUESTO_CIMEQH('$fecha_inicial', '$fecha_final');";
+            $arreglo = array();
+
+            if($consulta = $this->conexion->conexion->query($sql)) {
+                while ($consulta_VU = mysqli_fetch_array($consulta))
+                {
+                    $arreglo[] = $consulta_VU;
+                }
+                return $arreglo;
+                $this->conexion->cerrar();
+            }
+        }
     }
 ?>

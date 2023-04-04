@@ -221,5 +221,62 @@
                 $this->conexion->cerrar();
             }
         }
+        function TraerDatosArea_CAH($fecha_inicial,$fecha_final)
+        {
+            $sql = "call SP_AREA_CAH('$fecha_inicial', '$fecha_final');";
+            $arreglo = array();
+
+            if($consulta = $this->conexion->conexion->query($sql)) {
+                while ($consulta_VU = mysqli_fetch_array($consulta))
+                {
+                    $arreglo[] = $consulta_VU;
+                }
+                return $arreglo;
+                $this->conexion->cerrar();
+            }
+        }
+        function TraerDatosPresupuesto_CAH($fecha_inicial,$fecha_final)
+        {
+            $sql = "call SP_PRESUPUESTO_CAH('$fecha_inicial', '$fecha_final');";
+            $arreglo = array();
+
+            if($consulta = $this->conexion->conexion->query($sql)) {
+                while ($consulta_VU = mysqli_fetch_array($consulta))
+                {
+                    $arreglo[] = $consulta_VU;
+                }
+                return $arreglo;
+                $this->conexion->cerrar();
+            }
+        }
+        function TraerDatosArea_CICH($fecha_inicial,$fecha_final)
+        {
+            $sql = "call SP_AREA_CICH('$fecha_inicial', '$fecha_final');";
+            $arreglo = array();
+
+            if($consulta = $this->conexion->conexion->query($sql)) {
+                while ($consulta_VU = mysqli_fetch_array($consulta))
+                {
+                    $arreglo[] = $consulta_VU;
+                }
+                return $arreglo;
+                $this->conexion->cerrar();
+            }
+        }
+        function TraerDatosPresupuesto_CICH($fecha_inicial,$fecha_final)
+        {
+            $sql = "call SP_PRESUPUESTO_CICH('$fecha_inicial', '$fecha_final');";
+            $arreglo = array();
+
+            if($consulta = $this->conexion->conexion->query($sql)) {
+                while ($consulta_VU = mysqli_fetch_array($consulta))
+                {
+                    $arreglo[] = $consulta_VU;
+                }
+                return $arreglo;
+                $this->conexion->cerrar();
+            }
+        }
+        
     }
 ?>

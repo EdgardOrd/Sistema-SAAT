@@ -57,7 +57,7 @@
                         </form>
                     </div>      
                     <div class="tab-pane" id="tab_3">
-                   <h4>REPORTE EN SOLICITUD DE DOCUMENTACIÓN DE PROYECTOS</h4><br>
+                   <h4>REPORTE DE PROYECTOS EN SOLICITUD DE DOCUMENTACIÓN</h4><br>
                    <form onsubmit="window.open('../vista/fpdf/ReporteSoliDocCimeqh.php?fecha_inicial=' + encodeURIComponent(document.getElementById('fi3').value) + '&fecha_final=' + encodeURIComponent(document.getElementById('ff3').value), '_blank');">
                           <div class="col-lg-5">
                             <label for="">Fecha Inicial</label>
@@ -85,7 +85,7 @@
                         </form>
                     </div>
                     <div class="tab-pane" id="tab_5">
-                    <h4>REPORTE DE EXPEDIENTES ORDENADOS EN BASE A PRESUPUESTO</h4><br>
+                    <h4>REPORTE DE EXPEDIENTES EN BASE A PRESUPUESTO</h4><br>
                     <form onsubmit="window.open('../vista/fpdf/ReportePresupuestoCimeqh.php?fecha_inicial=' + encodeURIComponent(document.getElementById('fi8').value) + '&fecha_final=' + encodeURIComponent(document.getElementById('ff8').value), '_blank');">
                           <div class="col-lg-5">
                             <label for="">Fecha Inicial</label>

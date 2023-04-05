@@ -37,7 +37,7 @@
                             <label for="">Fecha Final</label>
                             <input required type="date" class="form-control" id="ff1" name="ff1">
                             <br>
-                          <button type="submit" name="report_cimeqh_aprobados" class="btn btn-primary w-50 p-3"><i class="fas fa-file-pdf me-2 mr-2"></i>Generar Reporte</button>
+                          <button type="submit" name="report_cimeqh_aprobados" class="btn btn-primary w-100 p-3"><i class="fas fa-file-pdf me-2 mr-2"></i>Generar Reporte</button>
                           </div>
                         </form>
                     </div> 
@@ -51,7 +51,7 @@
                             <label for="">Fecha Final</label>
                             <input required type="date" class="form-control" id="ff2" name="ff2">
                             <br>
-                          <button type="submit" name="report_cimeqh_desaprobados" class="btn btn-primary w-50 p-3" target="_blank"><i class="fas fa-file-pdf me-2 mr-2"></i>Generar Reporte</button>
+                          <button type="submit" name="report_cimeqh_desaprobados" class="btn btn-primary w-100 p-3" target="_blank"><i class="fas fa-file-pdf me-2 mr-2"></i>Generar Reporte</button>
                           </div>
                         </form>
                     </div>      
@@ -66,7 +66,7 @@
                             <label for="">Fecha Final</label>
                             <input required type="date" class="form-control" id="ff3" name="ff3">
                             <br>
-                          <button type="submit" name="report_cimeqh_documentacion" class="btn btn-primary w-50 p-3" target="_blank"><i class="fas fa-file-pdf me-2 mr-2"></i>Generar Reporte</button>
+                          <button type="submit" name="report_cimeqh_documentacion" class="btn btn-primary w-100 p-3" target="_blank"><i class="fas fa-file-pdf me-2 mr-2"></i>Generar Reporte</button>
                           </div>
                         </form>
                     </div>
@@ -80,7 +80,7 @@
                             <label for="">Fecha Final</label>
                             <input required type="date" class="form-control" id="ff4" name="ff4">
                             <br>
-                          <button type="submit" name="report_cimeqh_tipoconstruccion" class="btn btn-primary w-50 p-3" target="_blank"><i class="fas fa-file-pdf me-2 mr-2"></i>Generar Reporte</button>
+                          <button type="submit" name="report_cimeqh_tipoconstruccion" class="btn btn-primary w-100 p-3" target="_blank"><i class="fas fa-file-pdf me-2 mr-2"></i>Generar Reporte</button>
                           </div>
                         </form>
                     </div>
@@ -206,7 +206,7 @@
                             <label for="">Fecha Final</label>
                             <input required type="date" class="form-control" id="ff4" name="ff4">
                             <br>
-                          <button type="submit" name="report_cimeqh_tipoconstruccion" class="btn btn-primary w-50 p-3" target="_blank"><i class="fas fa-file-pdf me-2 mr-2"></i>Generar Reporte</button>
+                          <button type="submit" name="report_cimeqh_tipoconstruccion" class="btn btn-primary w-100 p-3" target="_blank"><i class="fas fa-file-pdf me-2 mr-2"></i>Generar Reporte</button>
                           </div>
                         </form>
                     </div>
@@ -221,7 +221,7 @@
                             <label for="">Fecha Final</label>
                             <input required type="date" class="form-control" id="ff5" name="ff5">
                             <br>
-                          <button type="submit" name="report_cimeqh_inspeccion" class="btn btn-primary w-50 p-3" target="_blank"><i class="fas fa-file-pdf me-2 mr-2"></i>Generar Reporte</button>
+                          <button type="submit" name="report_cimeqh_inspeccion" class="btn btn-primary w-100 p-3" target="_blank"><i class="fas fa-file-pdf me-2 mr-2"></i>Generar Reporte</button>
                           </div>
                         </form>
                     </div>
@@ -235,7 +235,7 @@
                             <label for="">Fecha Final</label>
                             <input required type="date" class="form-control" id="ff6" name="ff6">
                             <br>
-                          <button type="submit" name="report_cimeqh_cambioingeniero" class="btn btn-primary w-50 p-3" target="_blank"><i class="fas fa-file-pdf me-2 mr-2"></i>Generar Reporte</button>
+                          <button type="submit" name="report_cimeqh_cambioingeniero" class="btn btn-primary w-100 p-3" target="_blank"><i class="fas fa-file-pdf me-2 mr-2"></i>Generar Reporte</button>
                           </div>
                         </form>
                     </div>      
@@ -249,7 +249,7 @@
                             <label for="">Fecha Final</label>
                             <input required type="date" class="form-control" id="ff7" name="ff7">
                             <br>
-                          <button type="submit" name="report_cimeqh_proyectmillonario" class="btn btn-primary w-50 p-3" target="_blank"><i class="fas fa-file-pdf me-2 mr-2"></i>Generar Reporte</button>
+                          <button type="submit" name="report_cimeqh_proyectmillonario" class="btn btn-primary w-100 p-3" target="_blank"><i class="fas fa-file-pdf me-2 mr-2"></i>Generar Reporte</button>
                           </div>
                         </form>
                     </div>

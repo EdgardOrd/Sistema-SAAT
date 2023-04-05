@@ -93,8 +93,9 @@
                             <label for="">Fecha Final</label>
                             <input type="date" class="form-control" id="ff8" name="ff8" onchange="CargarDatosGraficoBar2()">
                             <br>
-                          </div>
-                          <div class="col-lg-14">
+                          <button type="submit" name="report_cimeqh_tipoconstruccion" class="btn btn-primary w-50 p-3" target="_blank"><i class="fas fa-file-pdf me-2 mr-2"></i>Generar Reporte</button>
+                          </div><br>
+                          <div class="col-lg-12">
                           <section class="content">          
                               <div class="container-fluid">
                                   <div class="row">
@@ -102,7 +103,7 @@
                                           <!-- BAR CHART -->
                                           <div class="card card-success">
                                               <div class="card-header">
-                                                  <h3 class="card-title">Gráfico En Base A Presupuesto de Obra</h3>
+                                                  <h3 class="card-title">Expedintes En Base A Presupuesto de Obra</h3>
                                               </div>
                                               <div class="card-body">
                                                   <div class="chart">
@@ -135,53 +136,33 @@
                               </div>
                           </section>  
                           </div>
-                          <button type="submit" name="report_cimeqh_tipoconstruccion" class="btn btn-primary w-25 p-3 ml-4 mt-2" target="_blank"><i class="fas fa-file-pdf me-2 mr-2"></i>Generar Reporte</button>
                         </form>
                     </div>
                     <div class="tab-pane" id="tab_6">
-                    <h4 class="text-center">REPORTE DE EXPEDIENTES EN BASE AL ÁREA EN METROS CUADRADOS</h4><br>
-                    <form onsubmit="">
-                          <div class="col-lg-12">
+                    <h4>REPORTE DE EXPEDIENTES EN BASE A LAS AREAS EN METROS CUADRADOS</h4><br>
+                    <form onsubmit="window.open('../vista/fpdf/ReporteAreaCah.php?fecha_inicial=' + encodeURIComponent(document.getElementById('fi9').value) + '&fecha_final=' + encodeURIComponent(document.getElementById('ff9').value), '_blank');">
+                          <div class="col-lg-5">
                             <label for="">Fecha Inicial</label>
                             <input type="date" class="form-control" id="fi9" name = "fi9" onchange="CargarDatosGraficoBar()">
                             <br>
                             <label for="">Fecha Final</label>
                             <input type="date" class="form-control" id="ff9" name="ff9" onchange="CargarDatosGraficoBar()">
                             <br>
-                          </div>
-                          <div class="col-lg-14">
+                          <button type="submit" name="report_cimeqh_tipoconstruccion" class="btn btn-primary w-50 p-3" target="_blank"><i class="fas fa-file-pdf me-2 mr-2"></i>Generar Reporte</button>
+                          </div><br>
+                          <div class="col-lg-12">
                           <section class="content">          
                               <div class="container-fluid">
                                   <div class="row">
-                                      <div class="col-md-12" >
+                                      <div class="col-md-10">
                                           <!-- BAR CHART -->
                                           <div class="card card-success" id="card_area">
                                               <div class="card-header">
-                                                  <h3 class="card-title">Gráficos En Base A Las Areas en Metros Cuadrados</h3>
+                                                  <h3 class="card-title">Expedintes En Base A Las Areas en Metros Cuadrados</h3>
                                               </div>
                                               <div class="card-body">
-                                                  <div class="chart ">
-                                                      <canvas id="barChart_cimeqh_area" style="min-height:230px; max-height:230px;width:200px"></canvas>
-                                                  </div>
-                                              </div>
-                                          </div>
-                                      </div>
-                                  </div>
-                              </div>
-                          </section>
-                          <section class="content">          
-                              <div class="container-fluid">
-                                  <div class="row">
-                                      <div class="col-md-12">
-                                          <!-- BAR CHART -->
-                                          <div class="card card-success">
-                                              <div class="card-header">
-                                                  <h3 class="card-title">Tabla En Base A Las Areas en Metros Cuadrados</h3>
-                                              </div>
-                                              <div class="card-body">
-                                              <div class="chart">
-                                                      <canvas id="#" style="min-height:230px; max-height:230px;width:200px">
-                                                    </canvas>
+                                                  <div class="chart">
+                                                      <canvas id="barChart_cah_area" style="height:230px; min-height:230px"></canvas>
                                                   </div>
                                               </div>
                                           </div>
@@ -190,7 +171,6 @@
                               </div>
                           </section>  
                           </div>
-                          <button onclick="printDiv('card_area')" type="button" name="report_cimeqh_tipoconstruccion" class="btn btn-primary w-25 p-3 ml-4 mt-2" target="_blank"><i class="fas fa-file-pdf me-2 mr-2"></i>Generar Reporte</button>
                         </form>
                     </div>
                     <div class="tab-pane" id="tab_7">

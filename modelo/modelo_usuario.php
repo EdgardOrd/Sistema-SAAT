@@ -119,8 +119,8 @@
             }
         }
 
-        function RegistrarCimeqh($expediente,$proyecto,$propietario,$catrastal,$area,$presupuesto,$observaciones,$fecha){
-            $sql = "call SP_REGISTRAR_APROBADO_CIMEQH('$expediente','$proyecto','$propietario','$catrastal','$area','$presupuesto','$observaciones','$fecha')";
+        function RegistrarCimeqh($expediente,$proyecto,$propietario,$catrastal,$area,$presupuesto,$estatus,$observaciones,$fecha){
+            $sql = "call SP_REGISTRAR_APROBADO_CIMEQH('$expediente','$proyecto','$propietario','$catrastal','$area','$presupuesto','$estatus','$observaciones','$fecha')";
             if ($consulta = $this->conexion->conexion->query($sql)) {
                 $this->conexion->conexion->next_result(); // Limpiar el conjunto de resultados
                 $this->conexion->cerrar();
@@ -130,8 +130,8 @@
             }
         }
  
-        function RegistrarCich($expediente,$proyecto,$propietario,$catrastal,$area,$presupuesto,$observaciones,$fecha){
-            $sql = "call SP_REGISTRAR_APROBADO_CICH('$expediente','$proyecto','$propietario','$catrastal','$area','$presupuesto','$observaciones','$fecha')";
+        function RegistrarCich($expediente,$proyecto,$propietario,$catrastal,$area,$presupuesto,$estatus,$observaciones,$fecha){
+            $sql = "call SP_REGISTRAR_APROBADO_CICH('$expediente','$proyecto','$propietario','$catrastal','$area','$presupuesto','$estatus','$observaciones','$fecha')";
             if ($consulta = $this->conexion->conexion->query($sql)) {
                 $this->conexion->conexion->next_result(); // Limpiar el conjunto de resultados
                 $this->conexion->cerrar();
@@ -141,8 +141,8 @@
             }
         }
 
-        function RegistrarCah($expediente,$proyecto,$propietario,$catrastal,$area,$presupuesto,$observaciones,$fecha){
-            $sql = "call SP_REGISTRAR_APROBADO_CAH('$expediente','$proyecto','$propietario','$catrastal','$area','$presupuesto','$observaciones','$fecha')";
+        function RegistrarCah($expediente,$proyecto,$propietario,$catrastal,$area,$presupuesto,$estatus,$observaciones,$fecha){
+            $sql = "call SP_REGISTRAR_APROBADO_CAH('$expediente','$proyecto','$propietario','$catrastal','$area','$presupuesto','$estatus','$observaciones','$fecha')";
             if ($consulta = $this->conexion->conexion->query($sql)) {
                 $this->conexion->conexion->next_result(); // Limpiar el conjunto de resultados
                 $this->conexion->cerrar();
@@ -192,5 +192,91 @@
                 $this->conexion->cerrar();
             }
         }
+
+        function TraerDatosGraficoBar($fecha_inicial,$fecha_final)
+        {
+            $sql = "call SP_AREA_CIMEQH('$fecha_inicial', '$fecha_final');";
+            $arreglo = array();
+
+            if($consulta = $this->conexion->conexion->query($sql)) {
+                while ($consulta_VU = mysqli_fetch_array($consulta))
+                {
+                    $arreglo[] = $consulta_VU;
+                }
+                return $arreglo;
+                $this->conexion->cerrar();
+            }
+        }
+        function TraerDatosGraficoBar2($fecha_inicial,$fecha_final)
+        {
+            $sql = "call SP_PRESUPUESTO_CIMEQH('$fecha_inicial', '$fecha_final');";
+            $arreglo = array();
+
+            if($consulta = $this->conexion->conexion->query($sql)) {
+                while ($consulta_VU = mysqli_fetch_array($consulta))
+                {
+                    $arreglo[] = $consulta_VU;
+                }
+                return $arreglo;
+                $this->conexion->cerrar();
+            }
+        }
+        function TraerDatosArea_CAH($fecha_inicial,$fecha_final)
+        {
+            $sql = "call SP_AREA_CAH('$fecha_inicial', '$fecha_final');";
+            $arreglo = array();
+
+            if($consulta = $this->conexion->conexion->query($sql)) {
+                while ($consulta_VU = mysqli_fetch_array($consulta))
+                {
+                    $arreglo[] = $consulta_VU;
+                }
+                return $arreglo;
+                $this->conexion->cerrar();
+            }
+        }
+        function TraerDatosPresupuesto_CAH($fecha_inicial,$fecha_final)
+        {
+            $sql = "call SP_PRESUPUESTO_CAH('$fecha_inicial', '$fecha_final');";
+            $arreglo = array();
+
+            if($consulta = $this->conexion->conexion->query($sql)) {
+                while ($consulta_VU = mysqli_fetch_array($consulta))
+                {
+                    $arreglo[] = $consulta_VU;
+                }
+                return $arreglo;
+                $this->conexion->cerrar();
+            }
+        }
+        function TraerDatosArea_CICH($fecha_inicial,$fecha_final)
+        {
+            $sql = "call SP_AREA_CICH('$fecha_inicial', '$fecha_final');";
+            $arreglo = array();
+
+            if($consulta = $this->conexion->conexion->query($sql)) {
+                while ($consulta_VU = mysqli_fetch_array($consulta))
+                {
+                    $arreglo[] = $consulta_VU;
+                }
+                return $arreglo;
+                $this->conexion->cerrar();
+            }
+        }
+        function TraerDatosPresupuesto_CICH($fecha_inicial,$fecha_final)
+        {
+            $sql = "call SP_PRESUPUESTO_CICH('$fecha_inicial', '$fecha_final');";
+            $arreglo = array();
+
+            if($consulta = $this->conexion->conexion->query($sql)) {
+                while ($consulta_VU = mysqli_fetch_array($consulta))
+                {
+                    $arreglo[] = $consulta_VU;
+                }
+                return $arreglo;
+                $this->conexion->cerrar();
+            }
+        }
+        
     }
 ?>

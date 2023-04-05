@@ -18,6 +18,32 @@ USE `bd_sistema`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `colegiados`
+--
+
+DROP TABLE IF EXISTS `colegiados`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `colegiados` (
+  `id_colegiado` int NOT NULL,
+  `nombre` varchar(80) DEFAULT NULL,
+  `colegio` varchar(3) DEFAULT NULL,
+  PRIMARY KEY (`id_colegiado`),
+  KEY `fkColegiadosColegio` (`colegio`),
+  CONSTRAINT `fkColegiadosColegio` FOREIGN KEY (`colegio`) REFERENCES `colegio` (`nombre`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `colegiados`
+--
+
+LOCK TABLES `colegiados` WRITE;
+/*!40000 ALTER TABLE `colegiados` DISABLE KEYS */;
+/*!40000 ALTER TABLE `colegiados` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `colegio`
 --
 
@@ -201,6 +227,27 @@ UNLOCK TABLES;
 --
 -- Dumping routines for database 'bd_sistema'
 --
+/*!50003 DROP PROCEDURE IF EXISTS `contar_inspeccion_cimeqh` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `contar_inspeccion_cimeqh`(IN fecha_inicial DATE, IN fecha_final DATE)
+BEGIN
+    SELECT COUNT(observaciones) 
+    FROM proyectoscimeqh 
+    WHERE Observaciones LIKE '%inspeccion%' AND fecha BETWEEN fecha_inicial AND fecha_final;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `SP_APROBADOS_CAH` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -216,9 +263,9 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_APROBADOS_CAH`(
     in_fecha_final date
 )
 begin
-        select num_expediente,clave_catastral, tipo_proyecto,
-        propietario, fecha
-        from proyectoscah
+        select num_expediente,clave_catastral, tipo_proyecto, presupuesto,
+        propietario, date_format(fecha, "%d/%m/%Y") as fecha
+        from proyectoscah 
         where (estatus = 'APROBADO' or estatus = "SEGUIMIENTO") and fecha between in_fecha_inicial and in_fecha_final;
     end ;;
 DELIMITER ;
@@ -241,8 +288,8 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_APROBADOS_CICH`(
     in_fecha_final date
 )
 begin
-        select num_expediente,clave_catastral, tipo_proyecto,
-        propietario, fecha
+       select num_expediente,clave_catastral, tipo_proyecto, presupuesto,
+        propietario, date_format(fecha, "%d/%m/%Y") as fecha
         from proyectoscich
         where (estatus = 'APROBADO' or estatus = "SEGUIMIENTO") and fecha between in_fecha_inicial and in_fecha_final;
     end ;;
@@ -267,7 +314,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_APROBADOS_CIMEQH`(
 )
 begin
         select num_expediente,clave_catastral, tipo_proyecto, presupuesto,
-        propietario, fecha
+        propietario, date_format(fecha, "%d/%m/%Y") as fecha
         from proyectoscimeqh 
         where (estatus = 'APROBADO' or estatus = "SEGUIMIENTO") and fecha between in_fecha_inicial and in_fecha_final;
     end ;;
@@ -292,13 +339,18 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_AREA_CAH`(
 )
 BEGIN
     SELECT 
-        COUNT(CASE WHEN area < 100 THEN 1 END) AS `Menor a 100`,
-        COUNT(CASE WHEN area BETWEEN 100 AND 250 THEN 1 END) AS `100 - 250`,
-        COUNT(CASE WHEN area BETWEEN 251 AND 500 THEN 1 END) AS `251 - 500`,
-        COUNT(CASE WHEN area BETWEEN 501 AND 1000 THEN 1 END) AS `501 - 1000`,
-        COUNT(CASE WHEN area > 1000 THEN 1 END) AS `Mayor a 1000`
-    FROM proyectoscah
-    WHERE fecha BETWEEN in_fecha_inicial AND in_fecha_final;
+  COUNT(*) AS `Cantidad De Proyectos`,
+  CASE 
+    WHEN area < 100 THEN 'Menor a 100 m^2'
+    WHEN area >= 100 AND area < 250 THEN '100 - 250 m^2'
+    WHEN area >= 250 AND area < 500 THEN '250 - 500 m^2'
+    WHEN area >= 500 AND area < 1000 THEN '500 - 1000 m^2'
+    ELSE 'Mayor a 1000 m^2'
+	END AS `Área De Construcción`
+FROM proyectoscah
+WHERE fecha BETWEEN in_fecha_inicial AND in_fecha_final
+GROUP BY `Área De Construcción`
+Order by `Área De Construcción`;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -321,13 +373,18 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_AREA_CICH`(
 )
 BEGIN
     SELECT 
-        COUNT(CASE WHEN area < 100 THEN 1 END) AS `Menor a 100`,
-        COUNT(CASE WHEN area BETWEEN 100 AND 250 THEN 1 END) AS `100 - 250`,
-        COUNT(CASE WHEN area BETWEEN 251 AND 500 THEN 1 END) AS `251 - 500`,
-        COUNT(CASE WHEN area BETWEEN 501 AND 1000 THEN 1 END) AS `501 - 1000`,
-        COUNT(CASE WHEN area > 1000 THEN 1 END) AS `Mayor a 1000`
-    FROM proyectoscich
-    WHERE fecha BETWEEN in_fecha_inicial AND in_fecha_final;
+  COUNT(*) AS `Cantidad De Proyectos`,
+  CASE 
+    WHEN area < 100 THEN 'Menor a 100 m^2'
+    WHEN area >= 100 AND area < 250 THEN '100 - 250 m^2'
+    WHEN area >= 250 AND area < 500 THEN '250 - 500 m^2'
+    WHEN area >= 500 AND area < 1000 THEN '500 - 1000 m^2'
+    ELSE 'Mayor a 1000 m^2'
+	END AS `Área De Construcción`
+FROM proyectoscich
+WHERE fecha BETWEEN in_fecha_inicial AND in_fecha_final
+GROUP BY `Área De Construcción`
+Order by `Área De Construcción`;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -349,14 +406,19 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_AREA_CIMEQH`(
     IN in_fecha_final DATE
 )
 BEGIN
-    SELECT 
-        COUNT(CASE WHEN area < 100 THEN 1 END) AS `Menor a 100`,
-        COUNT(CASE WHEN area BETWEEN 100 AND 250 THEN 1 END) AS `100 - 250`,
-        COUNT(CASE WHEN area BETWEEN 251 AND 500 THEN 1 END) AS `251 - 500`,
-        COUNT(CASE WHEN area BETWEEN 501 AND 1000 THEN 1 END) AS `501 - 1000`,
-        COUNT(CASE WHEN area > 1000 THEN 1 END) AS `Mayor a 1000`
-    FROM proyectoscimeqh
-    WHERE fecha BETWEEN in_fecha_inicial AND in_fecha_final;
+  SELECT 
+  COUNT(*) AS `Cantidad De Proyectos`,
+  CASE 
+    WHEN area < 100 THEN 'Menor a 100 m^2'
+    WHEN area >= 100 AND area < 250 THEN '100 - 250 m^2'
+    WHEN area >= 250 AND area < 500 THEN '250 - 500 m^2'
+    WHEN area >= 500 AND area < 1000 THEN '500 - 1000 m^2'
+    ELSE 'Mayor a 1000 m^2'
+	END AS `Área De Construcción`
+FROM proyectoscimeqh
+WHERE fecha BETWEEN in_fecha_inicial AND in_fecha_final
+GROUP BY `Área De Construcción`
+Order by `Área De Construcción`;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -459,19 +521,19 @@ DELIMITER ;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8mb3 */ ;
-/*!50003 SET character_set_results = utf8mb3 */ ;
-/*!50003 SET collation_connection  = utf8mb3_general_ci */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_CONSTRUCCION_CAH`(
     in_fecha_inicial date, 
     in_fecha_final date
 )
 begin
-        select num_expediente,clave_catastral, tipo_proyecto,
-        propietario, estatus, fecha
+        select clave_catastral, area,tipo_proyecto,
+        estatus, date_format(fecha, "%d/%m/%Y") as fecha
         from proyectoscah
         where fecha between in_fecha_inicial and in_fecha_final order by tipo_proyecto;
     end ;;
@@ -495,8 +557,8 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_CONSTRUCCION_CICH`(
     in_fecha_final date
 )
 begin
-        select num_expediente,clave_catastral, tipo_proyecto,
-        propietario, estatus, fecha
+        select clave_catastral, area,tipo_proyecto,
+        estatus, date_format(fecha, "%d/%m/%Y") as fecha
         from proyectoscich
         where fecha between in_fecha_inicial and in_fecha_final order by tipo_proyecto;
     end ;;
@@ -521,7 +583,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_CONSTRUCCION_CIMEQH`(
 )
 begin
         select clave_catastral, area,tipo_proyecto,
-        estatus, fecha
+        estatus, date_format(fecha, "%d/%m/%Y") as fecha
         from proyectoscimeqh
         where fecha between in_fecha_inicial and in_fecha_final order by tipo_proyecto;
     end ;;
@@ -546,7 +608,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_DESAPROBADOS_CAH`(
 )
 begin
         select num_expediente,clave_catastral, tipo_proyecto,
-        propietario,  fecha 
+        propietario,observaciones, date_format(fecha, "%d/%m/%Y") as fecha
         from proyectoscah
         where estatus = 'DESAPROBADO' and fecha between in_fecha_inicial and in_fecha_final;
     end ;;
@@ -571,7 +633,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_DESAPROBADOS_CICH`(
 )
 begin
         select num_expediente,clave_catastral, tipo_proyecto,
-        propietario, fecha
+        propietario,observaciones, date_format(fecha, "%d/%m/%Y") as fecha
         from proyectoscich
         where estatus = 'DESAPROBADO' and fecha between in_fecha_inicial and in_fecha_final;
     end ;;
@@ -596,7 +658,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_DESAPROBADOS_CIMEQH`(
 )
 begin
         select num_expediente,clave_catastral, tipo_proyecto,
-        propietario,observaciones, fecha
+        propietario,observaciones, date_format(fecha, "%d/%m/%Y") as fecha
         from proyectoscimeqh
         where estatus = 'DESAPROBADO' and fecha between in_fecha_inicial and in_fecha_final;
     end ;;
@@ -620,7 +682,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_DESCONTINUADOS_CIMEQH`(
     IN fecha_final DATE
 )
 BEGIN
-    SELECT num_expediente, estatus, Observaciones, fecha 
+    SELECT num_expediente, estatus, Observaciones, date_format(fecha, "%d/%m/%Y") as fecha
     FROM proyectoscimeqh
     WHERE Observaciones LIKE '%cambio de%' 
     AND fecha BETWEEN fecha_inicial AND fecha_final;
@@ -634,19 +696,19 @@ DELIMITER ;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8mb3 */ ;
-/*!50003 SET character_set_results = utf8mb3 */ ;
-/*!50003 SET collation_connection  = utf8mb3_general_ci */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_DOCUMENTACION_CAH`(
     in_fecha_inicial date, 
     in_fecha_final date
 )
 begin
-        select num_expediente,clave_catastral, tipo_proyecto,
-        propietario, fecha
+        select num_expediente,observaciones, tipo_proyecto, presupuesto, area,
+        propietario, date_format(fecha, "%d/%m/%Y") as fecha
         from proyectoscah
         where estatus = 'SOLICITUD DE DOCUMENTACION' and fecha between in_fecha_inicial and in_fecha_final;
     end ;;
@@ -659,19 +721,19 @@ DELIMITER ;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8mb3 */ ;
-/*!50003 SET character_set_results = utf8mb3 */ ;
-/*!50003 SET collation_connection  = utf8mb3_general_ci */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_DOCUMENTACION_CICH`(
     in_fecha_inicial date, 
     in_fecha_final date
 )
 begin
-        select num_expediente,clave_catastral, tipo_proyecto,
-        propietario,  fecha
+        select num_expediente,observaciones, tipo_proyecto, presupuesto, area,
+        propietario, date_format(fecha, "%d/%m/%Y") as fecha
         from proyectoscich
         where estatus = 'SOLICITUD DE DOCUMENTACION' and fecha between in_fecha_inicial and in_fecha_final;
     end ;;
@@ -696,7 +758,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_DOCUMENTACION_CIMEQH`(
 )
 begin
         select num_expediente,observaciones, tipo_proyecto, presupuesto, area,
-        propietario, fecha
+        propietario, date_format(fecha, "%d/%m/%Y") as fecha
         from proyectoscimeqh
         where estatus = 'SOLICITUD DE DOCUMENTACION' and fecha between in_fecha_inicial and in_fecha_final;
     end ;;
@@ -720,8 +782,8 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_INSPECCION_CAH`(
     IN fecha_final DATE
 )
 BEGIN
-    SELECT num_expediente,propietario, Observaciones, fecha 
-    FROM proyectoscah 
+    SELECT clave_catastral, propietario, Observaciones, date_format(fecha, "%d/%m/%Y") as fecha
+    FROM proyectoscah
     WHERE Observaciones LIKE '%inspeccion%' 
     AND fecha BETWEEN fecha_inicial AND fecha_final;
 END ;;
@@ -745,8 +807,8 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_INSPECCION_CICH`(
     IN fecha_final DATE
 )
 BEGIN
-    SELECT num_expediente,propietario, Observaciones, fecha 
-    FROM proyectoscich 
+    SELECT clave_catastral, propietario, Observaciones, date_format(fecha, "%d/%m/%Y") as fecha
+    FROM proyectoscich
     WHERE Observaciones LIKE '%inspeccion%' 
     AND fecha BETWEEN fecha_inicial AND fecha_final;
 END ;;
@@ -770,10 +832,13 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_INSPECCION_CIMEQH`(
     IN fecha_final DATE
 )
 BEGIN
-    SELECT clave_catastral, propietario, Observaciones, fecha 
+    SELECT clave_catastral, propietario, Observaciones, date_format(fecha, "%d/%m/%Y") as fecha
     FROM proyectoscimeqh
     WHERE Observaciones LIKE '%inspeccion%' 
     AND fecha BETWEEN fecha_inicial AND fecha_final;
+    
+    
+    
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -831,6 +896,52 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `SP_MILLONARIOS_CAH` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_MILLONARIOS_CAH`(IN fecha_inicial DATE, IN fecha_final DATE)
+BEGIN
+    SELECT num_expediente,presupuesto,area, clave_catastral, tipo_proyecto, date_format(fecha, "%d/%m/%Y") as fecha 
+    FROM proyectoscah
+    WHERE presupuesto >= 1000000
+    AND fecha BETWEEN fecha_inicial AND fecha_final
+    ORDER BY presupuesto desc;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `SP_MILLONARIOS_CICH` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_MILLONARIOS_CICH`(IN fecha_inicial DATE, IN fecha_final DATE)
+BEGIN
+    SELECT num_expediente,presupuesto,area, clave_catastral, tipo_proyecto, date_format(fecha, "%d/%m/%Y") as fecha 
+    FROM proyectoscich
+    WHERE presupuesto >= 1000000
+    AND fecha BETWEEN fecha_inicial AND fecha_final
+    ORDER BY presupuesto desc;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `SP_MILLONARIOS_CIMEQH` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -841,15 +952,13 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_MILLONARIOS_CIMEQH`(
-    IN fecha_inicial DATE,
-    IN fecha_final DATE
-)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_MILLONARIOS_CIMEQH`(IN fecha_inicial DATE,IN fecha_final DATE)
 BEGIN
-    SELECT num_expediente,presupuesto,area, clave_catastral, propietario, fecha 
+    SELECT num_expediente,presupuesto,area, clave_catastral, tipo_proyecto, date_format(fecha, "%d/%m/%Y") as fecha 
     FROM proyectoscimeqh
-    WHERE presupuesto > 1000000
-    AND fecha BETWEEN fecha_inicial AND fecha_final;
+    WHERE presupuesto >= 1000000
+    AND fecha BETWEEN fecha_inicial AND fecha_final
+    ORDER BY presupuesto desc;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -973,12 +1082,25 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_PRESUPUESTO_CAH`(
 )
 begin
   SELECT 
-    COUNT(CASE WHEN presupuesto < 100000 THEN 1 END) AS 'Menor a 100,000',
-    COUNT(CASE WHEN presupuesto >= 100000 AND presupuesto <= 250000 THEN 1 END) AS '100,000 - 250,000',
-    COUNT(CASE WHEN presupuesto > 250000 AND presupuesto <= 500000 THEN 1 END) AS '250,000 - 500,000',
-    COUNT(CASE WHEN presupuesto > 500000 AND presupuesto <= 1000000 THEN 1 END) AS '500,000 - 1,000,000',
-    COUNT(CASE WHEN presupuesto > 1000000 THEN 1 END) AS 'Mayor a 1,000,000'
-  FROM proyectoscah where fecha between in_fecha_inicial and in_fecha_final;
+  COUNT(*) AS cantidad_proyectos, 
+  CASE 
+    WHEN presupuesto < 100000 THEN 'Menor a Lps.100,000'
+    WHEN presupuesto BETWEEN 100000 AND 250000 THEN 'Lps.100,000 - Lps.250,000'
+    WHEN presupuesto BETWEEN 250000 AND 500000 THEN 'Lps.250,000 - Lps.500,000'
+    WHEN presupuesto BETWEEN 500000 AND 1000000 THEN 'Lps.500,000 - Lps.1,000,000'
+    ELSE 'Mayor a Lps.1,000,000'
+  END AS rango_presupuesto
+FROM proyectoscimeqh
+WHERE fecha BETWEEN in_fecha_inicial AND in_fecha_final
+GROUP BY rango_presupuesto
+ORDER BY 
+  CASE rango_presupuesto 
+    WHEN 'Menor a Lps.100,000' THEN 1 
+    WHEN 'Lps.100,000 - Lps.250,000' THEN 2 
+    WHEN 'Lps.250,000 - Lps.500,000' THEN 3 
+    WHEN 'Lps.500,000 - Lps.1,000,000' THEN 4 
+    ELSE 5 
+  END;
 end ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -1001,12 +1123,25 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_PRESUPUESTO_CICH`(
 )
 begin
   SELECT 
-    COUNT(CASE WHEN presupuesto < 100000 THEN 1 END) AS 'Menor a 100,000',
-    COUNT(CASE WHEN presupuesto >= 100000 AND presupuesto <= 250000 THEN 1 END) AS '100,000 - 250,000',
-    COUNT(CASE WHEN presupuesto > 250000 AND presupuesto <= 500000 THEN 1 END) AS '250,000 - 500,000',
-    COUNT(CASE WHEN presupuesto > 500000 AND presupuesto <= 1000000 THEN 1 END) AS '500,000 - 1,000,000',
-    COUNT(CASE WHEN presupuesto > 1000000 THEN 1 END) AS 'Mayor a 1,000,000'
-  FROM proyectoscich where fecha between in_fecha_inicial and in_fecha_final;
+  COUNT(*) AS cantidad_proyectos, 
+  CASE 
+    WHEN presupuesto < 100000 THEN 'Menor a Lps.100,000'
+    WHEN presupuesto BETWEEN 100000 AND 250000 THEN 'Lps.100,000 - Lps.250,000'
+    WHEN presupuesto BETWEEN 250000 AND 500000 THEN 'Lps.250,000 - Lps.500,000'
+    WHEN presupuesto BETWEEN 500000 AND 1000000 THEN 'Lps.500,000 - Lps.1,000,000'
+    ELSE 'Mayor a Lps.1,000,000'
+  END AS rango_presupuesto
+FROM proyectoscimeqh
+WHERE fecha BETWEEN in_fecha_inicial AND in_fecha_final
+GROUP BY rango_presupuesto
+ORDER BY 
+  CASE rango_presupuesto 
+    WHEN 'Menor a Lps.100,000' THEN 1 
+    WHEN 'Lps.100,000 - Lps.250,000' THEN 2 
+    WHEN 'Lps.250,000 - Lps.500,000' THEN 3 
+    WHEN 'Lps.500,000 - Lps.1,000,000' THEN 4 
+    ELSE 5 
+  END;
 end ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -1028,14 +1163,27 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_PRESUPUESTO_CIMEQH`(
     in_fecha_final date
 )
 begin
-  SELECT 
-    COUNT(CASE WHEN presupuesto < 100000 THEN 1 END) AS 'Menora100,000',
-    COUNT(CASE WHEN presupuesto >= 100000 AND presupuesto <= 250000 THEN 1 END) AS '100,000-250,000',
-    COUNT(CASE WHEN presupuesto > 250000 AND presupuesto <= 500000 THEN 1 END) AS '250,000-500,000',
-    COUNT(CASE WHEN presupuesto > 500000 AND presupuesto <= 1000000 THEN 1 END) AS '500,000-1,000,000',
-    COUNT(CASE WHEN presupuesto > 1000000 THEN 1 END) AS 'Mayora1,000,000'
-  FROM proyectoscimeqh where fecha between in_fecha_inicial and in_fecha_final;
-end ;;
+SELECT 
+  COUNT(*) AS cantidad_proyectos, 
+  CASE 
+    WHEN presupuesto < 100000 THEN 'Menor a Lps.100,000'
+    WHEN presupuesto BETWEEN 100000 AND 250000 THEN 'Lps.100,000 - Lps.250,000'
+    WHEN presupuesto BETWEEN 250000 AND 500000 THEN 'Lps.250,000 - Lps.500,000'
+    WHEN presupuesto BETWEEN 500000 AND 1000000 THEN 'Lps.500,000 - Lps.1,000,000'
+    ELSE 'Mayor a Lps.1,000,000'
+  END AS rango_presupuesto
+FROM proyectoscimeqh
+WHERE fecha BETWEEN in_fecha_inicial AND in_fecha_final
+GROUP BY rango_presupuesto
+ORDER BY 
+  CASE rango_presupuesto 
+    WHEN 'Menor a Lps.100,000' THEN 1 
+    WHEN 'Lps.100,000 - Lps.250,000' THEN 2 
+    WHEN 'Lps.250,000 - Lps.500,000' THEN 3 
+    WHEN 'Lps.500,000 - Lps.1,000,000' THEN 4 
+    ELSE 5 
+  END;
+END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
@@ -1161,4 +1309,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-03-29 10:54:06
+-- Dump completed on 2023-04-04 15:11:15

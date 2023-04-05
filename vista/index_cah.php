@@ -131,12 +131,7 @@ if(!isset($_SESSION['S_IDUSUARIO'])){
                 </p>
               </a>
           </li>
-          <li class="nav-item">
-              <a href="#" onclick="cargar_contenido('contenido_principal', 'usuario/vista_grafico_cah.php')" class="nav-link">
-                <i class="far fa-chart-bar nav-icon"></i>
-                <p>Gráficos Estádisticos</p>
-              </a>
-          </li>
+         
           <!-- ********** CONFIGURACION *********** -->
          
       </ul><br>

@@ -79,7 +79,8 @@ if(!empty($_GET["fecha_inicial"]) and !empty($_GET["fecha_final"]))
          $this->Cell(55, 10, utf8_decode('CONSTRUCCIÓN'), 1, 0, 'C', 1);
          $this->Cell(65, 10, utf8_decode('PROPIETARIO'), 1, 0, 'C', 1);
          $this->Cell(50, 10, utf8_decode('OBSERVACIONES'), 1, 0, 'C', 1);
-         $this->Cell(40, 10, utf8_decode('FECHA'), 1, 1, 'C', 1);
+         $this->SetFont('Arial', 'B', 8);
+         $this->Cell(40, 10, utf8_decode('FECHA DESAPROBACIÓN'), 1, 1, 'C', 1);
          
          
       }

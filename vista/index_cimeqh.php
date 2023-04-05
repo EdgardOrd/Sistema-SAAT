@@ -132,16 +132,7 @@ if(!isset($_SESSION['S_IDUSUARIO'])){
                 </p>
               </a>
           </li>
-          <li class="nav-item has-treeview">
-              <a href="#" onclick="cargar_contenido('contenido_principal', 'usuario/vista_grafico_cimeqh.php')" class="nav-link">
-                <i class="far fa-chart-bar nav-icon"></i> 
-                <p>
-                  Grafico CIMEQH
-                 
-                </p>
-              </a>
-          </li>
-
+          
           <!-- ********** CONFIGURACION *********** -->
          
       </ul><br>

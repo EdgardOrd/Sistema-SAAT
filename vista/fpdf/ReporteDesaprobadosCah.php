@@ -1,4 +1,5 @@
 <?php
+
 if(!empty($_GET["fecha_inicial"]) and !empty($_GET["fecha_final"]))
 {
    require('./fpdf.php');
@@ -6,22 +7,28 @@ if(!empty($_GET["fecha_inicial"]) and !empty($_GET["fecha_final"]))
    $fecha_inicial = $_GET["fecha_inicial"];
    $fecha_final = $_GET["fecha_final"];
 
+
    class PDF extends FPDF
    {
       private $fecha_inicial;
       private $fecha_final;
+      private $fecha1;
+      private $fecha2;
+      
 
       function __construct($fecha_inicial, $fecha_final)
       {
          parent::__construct();
          $this->fecha_inicial = $fecha_inicial;
          $this->fecha_final = $fecha_final;
+         $this->fecha1 = date("d/m/Y", strtotime($fecha_inicial));
+         $this->fecha2 = date("d/m/Y", strtotime($fecha_final));
       }
       // Cabecera de página
       function Header()
       {
          
-         $this->Image('cah.jpeg', 10, 10, 35); //logo de la empresa,moverDerecha,moverAbajo,tamañoIMG
+         $this->Image('cah.jpeg', 220, 6, 50);  //logo de la empresa,moverDerecha,moverAbajo,tamañoIMG
          $this->SetFont('Arial', 'B', 19); //tipo fuente, negrita(B-I-U-BIU), tamañoTexto
          $this->Cell(95); // Movernos a la derecha
          $this->SetTextColor(0, 0, 0); //color
@@ -31,19 +38,19 @@ if(!empty($_GET["fecha_inicial"]) and !empty($_GET["fecha_final"]))
          $this->SetTextColor(103); //color
 
          /* UBICACION */
-         $this->Cell(200);  // mover a la derecha
+         $this->Cell(1);  // mover a la derecha
          $this->SetFont('Arial', 'B', 10);
          $this->Cell(96, 10, utf8_decode("Ubicación : San Pedro Sula"), 0, 0, '', 0);
          $this->Ln(6);
 
          /* TELEFONO */
-         $this->Cell(200);  // mover a la derecha
+         $this->Cell(1);  // mover a la derecha
          $this->SetFont('Arial', 'B', 10);
          $this->Cell(59, 10, utf8_decode("Teléfono : 9669-0746"), 0, 0, '', 0);
          $this->Ln(5);
 
          /* COREEO */
-         $this->Cell(200);  // mover a la derecha
+         $this->Cell(1);  // mover a la derecha
          $this->SetFont('Arial', 'B', 10);
          $this->Cell(85, 10, utf8_decode("Correo : capnor@cimeqh.org"), 0, 0, '', 0);
          $this->Ln(22);
@@ -58,20 +65,24 @@ if(!empty($_GET["fecha_inicial"]) and !empty($_GET["fecha_final"]))
          $this->SetFont('Arial', 'B', 15);
          $this->Cell(75, 10, utf8_decode("REPORTE DE PROYECTOS DESAPROBADOS"), 0, 1, 'C', 0);
          $this->SetFont('Arial', 'B', 12);
-         $this->Cell(270, 10, utf8_decode($this->fecha_inicial . ' a ' . $this->fecha_final), 0, 0, 'C', 0);
+         $this->Cell(270, 10, utf8_decode($this->fecha1 . ' a ' . $this->fecha2), 0, 0, 'C', 0);
          $this->Ln(12);
 
          /* CAMPOS DE LA TABLA */
-         //colorrgb(48, 197, 85)
+         //color
          $this->SetFillColor(199, 140, 46); //colorFondo
          $this->SetTextColor(255, 255, 255); //colorTexto
          $this->SetDrawColor(163, 163, 163); //colorBorde
-         $this->SetFont('Arial', 'B', 11);
-         $this->Cell(40, 10, utf8_decode('N° DE EXPEDIENTE'), 1, 0, 'C', 1);
-         $this->Cell(50, 10, utf8_decode('CLAVE CATASTRAL'), 1, 0, 'C', 1);
-         $this->Cell(60, 10, utf8_decode('TIPO DE CONSTRUCCIÓN'), 1, 0, 'C', 1);
-         $this->Cell(85, 10, utf8_decode('PROPIETARIO'), 1, 0, 'C', 1);
-         $this->Cell(40, 10, utf8_decode('FECHA'), 1, 1, 'C', 1);
+         $this->SetFont('Arial', 'B', 9);
+         $this->Cell(35, 10, utf8_decode('EXPEDIENTE'), 1, 0, 'C', 1);
+         $this->Cell(35, 10, utf8_decode('CLAVE CATASTRAL'), 1, 0, 'C', 1);
+         $this->Cell(55, 10, utf8_decode('CONSTRUCCIÓN'), 1, 0, 'C', 1);
+         $this->Cell(65, 10, utf8_decode('PROPIETARIO'), 1, 0, 'C', 1);
+         $this->Cell(50, 10, utf8_decode('OBSERVACIONES'), 1, 0, 'C', 1);
+         $this->SetFont('Arial', 'B', 8);
+         $this->Cell(40, 10, utf8_decode('FECHA DESAPROBACIÓN'), 1, 1, 'C', 1);
+         
+         
       }
 
       // Pie de página
@@ -98,7 +109,7 @@ if(!empty($_GET["fecha_inicial"]) and !empty($_GET["fecha_final"]))
    $pdf->AliasNbPages(); //muestra la pagina / y total de paginas
 
    $i = 0;
-   $pdf->SetFont('Arial', '', 10);
+   $pdf->SetFont('Arial', '', 9);
    $pdf->SetDrawColor(163, 163, 163); //colorBorde
 
    $consulta_reporte = $conexion->conexion->query("CALL SP_DESAPROBADOS_CAH('$fecha_inicial','$fecha_final')");
@@ -107,17 +118,18 @@ if(!empty($_GET["fecha_inicial"]) and !empty($_GET["fecha_final"]))
       
    $i = $i + 1;
    /* TABLA */
-   $pdf->Cell(40, 10, utf8_decode($datos_reporte->num_expediente), 1, 0, 'C', 0);
-   $pdf->Cell(50, 10, utf8_decode($datos_reporte->clave_catastral), 1, 0, 'C', 0);
-   $pdf->Cell(60, 10, utf8_decode($datos_reporte->tipo_proyecto), 1, 0, 'C', 0);
-   $pdf->Cell(85, 10, utf8_decode($datos_reporte->propietario), 1, 0, 'C', 0);
-   $pdf->Cell(40, 10, utf8_decode($datos_reporte->fecha), 1, 1, 'C', 0);
+   $pdf->Cell(35, 20, utf8_decode($datos_reporte->num_expediente), 1, 0, 'C', 0);
+   $pdf->Cell(35, 20, utf8_decode($datos_reporte->clave_catastral), 1, 0, 'C', 0);
+   $pdf->Cell(55, 20, utf8_decode($datos_reporte->tipo_proyecto), 1, 0, 'C', 0);
+   $pdf->Cell(65, 20, utf8_decode($datos_reporte->propietario), 1, 0, 'C', 0);
+   $pdf->Cell(50, 20, utf8_decode($datos_reporte->observaciones), 1, 0, 'C', 0);
+   $pdf->Cell(40, 20, utf8_decode($datos_reporte->fecha), 1, 1, 'C', 0);
    }
 
    
    $pdf->Output("ReporteDesaprobadosCAH-$fecha_inicial-$fecha_final.pdf", 'I');//nombreDescarga, Visor(I->visualizar - D->descargar)
-}
-else
-{
-   echo("Intente de nuevo");
-}
+ }
+ else
+ {
+   echo("error");
+ }

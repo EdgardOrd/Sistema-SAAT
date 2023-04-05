@@ -75,7 +75,7 @@ if(!empty($_GET["fecha_inicial"]) and !empty($_GET["fecha_final"]))
          $this->Cell(1);
          $this->SetFont('Arial', 'B', 9);
          $this->Cell(45, 10, utf8_decode('CLAVE CATASTRAL'), 1, 0, 'C', 1);
-         $this->Cell(30, 10, utf8_decode('ÁREA (m²)'), 1, 0, 'C', 1);
+         $this->Cell(30, 10, utf8_decode('ÁREA'), 1, 0, 'C', 1);
          $this->Cell(80, 10, utf8_decode('TIPO DE CONSTRUCCIÓN'), 1, 0, 'C', 1);
          $this->Cell(70, 10, utf8_decode('ESTATUS'), 1, 0, 'C', 1);
          $this->Cell(45, 10, utf8_decode('ÚLTIMA MODIFICACIÓN'), 1, 1, 'C', 1);
@@ -118,14 +118,14 @@ if(!empty($_GET["fecha_inicial"]) and !empty($_GET["fecha_final"]))
    /* TABLA */
    $pdf->Cell(1);
    $pdf->Cell(45, 10, utf8_decode($datos_reporte->clave_catastral), 1, 0, 'C', 0);
-   $pdf->Cell(30, 10, utf8_decode(number_format($datos_reporte->area, 0, '.', ',')), 1, 0, 'C', 0);
+   $pdf->Cell(30, 10, utf8_decode(number_format($datos_reporte->area, 0, '.', ',') . " " . "m²"), 1, 0, 'C', 0);
    $pdf->Cell(80, 10, utf8_decode($datos_reporte->tipo_proyecto), 1, 0, 'C', 0);
    $pdf->Cell(70, 10, utf8_decode($datos_reporte->estatus), 1, 0, 'C', 0);
    $pdf->Cell(45, 10, utf8_decode($datos_reporte->fecha), 1, 1, 'C', 0);
    }
 
    
-   $pdf->Output("ReporteOrdenadosPorConstruccion-$fecha_inicial-$fecha_final.pdf", 'I');//nombreDescarga, Visor(I->visualizar - D->descargar)
+   $pdf->Output("ReporteOrdenadosPorConstruccionCIMEQH-$fecha_inicial-$fecha_final.pdf", 'I');//nombreDescarga, Visor(I->visualizar - D->descargar)
  }
  else
  {

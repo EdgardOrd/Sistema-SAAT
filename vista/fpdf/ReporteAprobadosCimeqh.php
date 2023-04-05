@@ -79,7 +79,8 @@ if(!empty($_GET["fecha_inicial"]) and !empty($_GET["fecha_final"]))
          $this->Cell(60, 8, utf8_decode('CONSTRUCCIÓN'), 1, 0, 'C', 1);
          $this->Cell(35, 8, utf8_decode('PRESUPUESTO'), 1, 0, 'C', 1);
          $this->Cell(82, 8, utf8_decode('PROPIETARIO'), 1, 0, 'C', 1);
-         $this->Cell(35, 8, utf8_decode('FECHA'), 1, 1, 'C', 1);
+         $this->SetFont('Arial', 'B', 7.5);
+         $this->Cell(35, 8, utf8_decode('FECHA DE APROBACIÓN'), 1, 1, 'C', 1);
          
          
       }
@@ -120,7 +121,7 @@ if(!empty($_GET["fecha_inicial"]) and !empty($_GET["fecha_final"]))
    $pdf->Cell(30, 10, utf8_decode($datos_reporte->num_expediente), 1, 0, 'C', 0);
    $pdf->Cell(35, 10, utf8_decode($datos_reporte->clave_catastral), 1, 0, 'C', 0);
    $pdf->Cell(60, 10, utf8_decode($datos_reporte->tipo_proyecto), 1, 0, 'C', 0);
-   $pdf->Cell(35, 10, utf8_decode(number_format($datos_reporte->presupuesto,2,'.',',')), 1, 0, 'C', 0);
+   $pdf->Cell(35, 10, utf8_decode("Lps." . "" . number_format($datos_reporte->presupuesto,2,'.',',')), 1, 0, 'C', 0);
    $pdf->Cell(82, 10, utf8_decode($datos_reporte->propietario), 1, 0, 'C', 0);
    $pdf->Cell(35, 10, utf8_decode($datos_reporte->fecha), 1, 1, 'C', 0);
    }

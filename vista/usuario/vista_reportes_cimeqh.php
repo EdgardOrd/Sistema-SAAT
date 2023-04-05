@@ -16,7 +16,7 @@
                     <li class="nav-item"><a class="nav-link active" href="#tab_1" data-toggle="tab">APROBADO Y SEGUIMIENTO</a></li>
                     <li class="nav-item"><a class="nav-link" href="#tab_2" data-toggle="tab">DESAPROBADO</a></li>
                     <li class="nav-item"><a class="nav-link" href="#tab_3" data-toggle="tab">DOCUMENTACIÓN</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#tab_3" data-toggle="tab">DOCUMENTACIÓN</a></li>
+                    
                     <li class="nav-item"><a class="nav-link" href="#tab_4" data-toggle="tab">TIPO DE CONSTRUCCIÓN</a></li>
                     <li class="nav-item"><a class="nav-link" href="#tab_5" data-toggle="tab">PRESUPUESTO</a></li>
                     <li class="nav-item"><a class="nav-link" href="#tab_6" data-toggle="tab">ÁREA</a></li>
@@ -57,7 +57,7 @@
                     </div>      
                     <div class="tab-pane" id="tab_3">
                    <h4>REPORTE DE PROYECTOS EN SOLICITUD DE DOCUMENTACIÓN</h4><br>
-                   <h4>REPORTE DE PROYECTOS EN SOLICITUD DE DOCUMENTACIÓN</h4><br>
+                   
                    <form onsubmit="window.open('../vista/fpdf/ReporteSoliDocCimeqh.php?fecha_inicial=' + encodeURIComponent(document.getElementById('fi3').value) + '&fecha_final=' + encodeURIComponent(document.getElementById('ff3').value), '_blank');">
                           <div class="col-lg-5">
                             <label for="">Fecha Inicial</label>
@@ -86,7 +86,7 @@
                     </div>
                     <div class="tab-pane" id="tab_5">
                     <h4 class="text-center">REPORTE DE EXPEDIENTES EN BASE A PRESUPUESTO</h4><br>
-                    <form onsubmit="window.open('../vista/fpdf/ReportePresupuestoCimeqh.php?fecha_inicial=' + encodeURIComponent(document.getElementById('fi8').value) + '&fecha_final=' + encodeURIComponent(document.getElementById('ff8').value), '_blank');">
+                    <form>
                           <div class="col-lg-12">
                             <label for="">Fecha Inicial</label>
                             <input type="date" class="form-control" id="fi8" name = "fi8" onchange="CargarDatosGraficoBar2()" onchange="CargarDatosGraficoBar2()">
@@ -190,7 +190,7 @@
                                   </div>
                               </div>
                           </section>
-                          <button onclick="printDiv('card_area')" type="button" name="report_cimeqh_tipoconstruccion" class="btn btn-primary w-25 p-3 ml-4 mt-2" target="_blank"><i class="fas fa-file-pdf me-2 mr-2"></i>Generar Reporte</button>
+                          
                           </div>
                           <br>
                           <button onclick="printDiv('card_area')" type="button" name="report_cimeqh_tipoconstruccion" class="btn btn-primary w-25 p-3 ml-4 mt-2" target="_blank"><i class="fas fa-file-pdf me-2 mr-2"></i>Generar Reporte</button>

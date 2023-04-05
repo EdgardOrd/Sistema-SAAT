@@ -84,7 +84,7 @@
                     </div>
                     <div class="tab-pane" id="tab_5">
                     <h4 class="text-center">REPORTE DE EXPEDIENTES EN BASE A PRESUPUESTO</h4><br>
-                    <form onsubmit="window.open('../vista/fpdf/ReportePresupuestoCimeqh.php?fecha_inicial=' + encodeURIComponent(document.getElementById('fi8').value) + '&fecha_final=' + encodeURIComponent(document.getElementById('ff8').value), '_blank');">
+                    <form>
                           <div class="col-lg-12">
                             <label for="">Fecha Inicial</label>
                             <input type="date" class="form-control" id="fi8" name = "fi8" onchange="CargarDatosGraficoBar2()" onchange="CargarDatosGraficoBar2()">
@@ -139,15 +139,15 @@
                     </div>
                     <div class="tab-pane" id="tab_6">
                     <h4 class="text-center">REPORTE DE EXPEDIENTES EN BASE AL ÁREA EN METROS CUADRADOS</h4><br>
-                    <form onsubmit="">
+                    <form>
                           <div class="col-lg-12">
                             <label for="">Fecha Inicial</label>
                             <input type="date" class="form-control" id="fi9" name = "fi9" onchange="CargarDatosGraficoBar()">
-                            <input type="date" class="form-control" id="fi9" name = "fi9" onchange="CargarDatosGraficoBar()">
+                           
                             <br>
                             <label for="">Fecha Final</label>
                             <input type="date" class="form-control" id="ff9" name="ff9" onchange="CargarDatosGraficoBar()">
-                            <input type="date" class="form-control" id="ff9" name="ff9" onchange="CargarDatosGraficoBar()">
+                            
                             <br>
                           </div>
                           <div class="col-lg-14">
@@ -193,7 +193,7 @@
                           </div>
                           <br>
                           <button onclick="printDiv('card_area')" type="button" name="report_cimeqh_tipoconstruccion" class="btn btn-primary w-25 p-3 ml-4 mt-2" target="_blank"><i class="fas fa-file-pdf me-2 mr-2"></i>Generar Reporte</button>
-                          <button onclick="printDiv('card_area')" type="button" name="report_cimeqh_tipoconstruccion" class="btn btn-primary w-25 p-3 ml-4 mt-2" target="_blank"><i class="fas fa-file-pdf me-2 mr-2"></i>Generar Reporte</button>
+                          
                         </form>
                     </div>
                     <div class="tab-pane" id="tab_7">

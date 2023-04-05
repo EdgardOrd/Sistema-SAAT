@@ -3,9 +3,7 @@
         <div class="card card-primary">
           <div class="card-header">
                 <h3 class="card-title">BIENVENIDO AL PANEL DE REPORTES DEL COLEGIO CIMEQH</h3>
-                <div class="card-tools">
-                    <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
-                </div>     
+                  
          </div>
          <div class="card-body">
           <h3 class="mt-4 mb-2">TIPOS DE REPORTES CIMEQH</h3><br>
@@ -17,6 +15,7 @@
                   <ul class="nav nav-pills ml p-2">
                     <li class="nav-item"><a class="nav-link active" href="#tab_1" data-toggle="tab">APROBADO Y SEGUIMIENTO</a></li>
                     <li class="nav-item"><a class="nav-link" href="#tab_2" data-toggle="tab">DESAPROBADO</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#tab_3" data-toggle="tab">DOCUMENTACIÓN</a></li>
                     <li class="nav-item"><a class="nav-link" href="#tab_3" data-toggle="tab">DOCUMENTACIÓN</a></li>
                     <li class="nav-item"><a class="nav-link" href="#tab_4" data-toggle="tab">TIPO DE CONSTRUCCIÓN</a></li>
                     <li class="nav-item"><a class="nav-link" href="#tab_5" data-toggle="tab">PRESUPUESTO</a></li>
@@ -43,7 +42,7 @@
                         </form>
                     </div> 
                     <div class="tab-pane" id="tab_2">
-                   <h4> REPORTE DE PROYECTOS DESAPROBADOS</h4><br>
+                   <h4> REPORTE DE PROYECTO DE PROYECTOS DESAPROBADOS</h4><br>
                    <form onsubmit="window.open('../vista/fpdf/ReporteDesaprobadosCimeqh.php?fecha_inicial=' + encodeURIComponent(document.getElementById('fi2').value) + '&fecha_final=' + encodeURIComponent(document.getElementById('ff2').value), '_blank');">
                           <div class="col-lg-5">
                             <label for="">Fecha Inicial</label>
@@ -57,6 +56,7 @@
                         </form>
                     </div>      
                     <div class="tab-pane" id="tab_3">
+                   <h4>REPORTE DE PROYECTOS EN SOLICITUD DE DOCUMENTACIÓN</h4><br>
                    <h4>REPORTE DE PROYECTOS EN SOLICITUD DE DOCUMENTACIÓN</h4><br>
                    <form onsubmit="window.open('../vista/fpdf/ReporteSoliDocCimeqh.php?fecha_inicial=' + encodeURIComponent(document.getElementById('fi3').value) + '&fecha_final=' + encodeURIComponent(document.getElementById('ff3').value), '_blank');">
                           <div class="col-lg-5">
@@ -85,22 +85,21 @@
                         </form>
                     </div>
                     <div class="tab-pane" id="tab_5">
-                    <h4>REPORTE DE EXPEDIENTES EN BASE A PRESUPUESTO</h4><br>
+                    <h4 class="text-center">REPORTE DE EXPEDIENTES EN BASE A PRESUPUESTO</h4><br>
                     <form onsubmit="window.open('../vista/fpdf/ReportePresupuestoCimeqh.php?fecha_inicial=' + encodeURIComponent(document.getElementById('fi8').value) + '&fecha_final=' + encodeURIComponent(document.getElementById('ff8').value), '_blank');">
-                          <div class="col-lg-5">
+                          <div class="col-lg-12">
                             <label for="">Fecha Inicial</label>
-                            <input type="date" class="form-control" id="fi8" name = "fi8" onchange="CargarDatosGraficoBar2()">
+                            <input type="date" class="form-control" id="fi8" name = "fi8" onchange="CargarDatosGraficoBar2()" onchange="CargarDatosGraficoBar2()">
                             <br>
                             <label for="">Fecha Final</label>
-                            <input type="date" class="form-control" id="ff8" name="ff8" onchange="CargarDatosGraficoBar2()">
+                            <input type="date" class="form-control" id="ff8" name="ff8" onchange="CargarDatosGraficoBar2()" onchange="CargarDatosGraficoBar2()">
                             <br>
-                          
-                          </div><br>
-                          <div class="col-lg-12">
+                          </div>                         
+                          <div class="col-lg-14">
                           <section class="content">          
                               <div class="container-fluid">
                                   <div class="row">
-                                      <div class="col-md-10">
+                                      <div class="col-md-12">
                                           <!-- BAR CHART -->
                                           <div class="card card-success">
                                               <div class="card-header">
@@ -115,31 +114,70 @@
                                       </div>
                                   </div>
                               </div>
-                          </section>
-                          </div>
-                          <br>
-                          <button type="submit" name="report_cimeqh_tipoconstruccion" class="btn btn-primary w-25 p-3 ml-4 mt-2" target="_blank"><i class="fas fa-file-pdf me-2 mr-2"></i>Generar Reporte</button>
-                        </form>
-                    </div>
-                    <div class="tab-pane" id="tab_6">
-                    <h4>REPORTE DE EXPEDIENTES EN BASE AL ÁREA EN METROS CUADRADOS</h4><br>
-                    <form onsubmit="">
-                          <div class="col-lg-5">
-                            <label for="">Fecha Inicial</label>
-                            <input type="date" class="form-control" id="fi9" name = "fi9" onchange="CargarDatosGraficoBar()">
-                            <br>
-                            <label for="">Fecha Final</label>
-                            <input type="date" class="form-control" id="ff9" name="ff9" onchange="CargarDatosGraficoBar()">
-                            <br>
-                          </div><br>
-                          <div class="col-lg-12">
+                          </section>    
                           <section class="content">          
                               <div class="container-fluid">
                                   <div class="row">
-                                      <div class="col-md-10 mt-2" >
+                                      <div class="col-md-12">
+                                          <!-- BAR CHART -->
+                                          <div class="card card-success">
+                                              <div class="card-header">
+                                                  <h3 class="card-title">Tabla En Base A Presupuesto de Obra</h3>
+                                              </div>
+                                              <div class="card-body">
+                                              <div class="chart">
+                                                      <canvas id="#" style="min-height:230px; max-height:230px;width:200px">
+                                                    </canvas>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </section>  
+                          <button type="submit" name="report_cimeqh_tipoconstruccion" class="btn btn-primary w-25 p-3 ml-4 mt-2" target="_blank"><i class="fas fa-file-pdf me-2 mr-2"></i>Generar Reporte</button>                   
+                          </div>
+                        </form>
+                    </div>
+                    <div class="tab-pane" id="tab_6">
+                    <h4 class="text-center">REPORTE DE EXPEDIENTES EN BASE AL ÁREA EN METROS CUADRADOS</h4><br>
+                    <form onsubmit="">
+                          <div class="col-lg-12">
+                            <label for="">Fecha Inicial</label>
+                            <input type="date" class="form-control" id="fi9" name = "fi9" onchange="CargarDatosGraficoBar()" onchange="CargarDatosGraficoBar()">
+                            <br>
+                            <label for="">Fecha Final</label>
+                            <input type="date" class="form-control" id="ff9" name="ff9" onchange="CargarDatosGraficoBar()" onchange="CargarDatosGraficoBar()">
+                            <br>
+                          </div>                     
+                          <div class="col-lg-14">
+                          <section class="content">          
+                              <div class="container-fluid">
+                                  <div class="row">
+                                      <div class="col-md-12" >
                                           <!-- BAR CHART -->
                                           <div class="card card-success" id="card_area">
                                               <div class="card-header">
+                                                  <h3 class="card-title">Gráfico En Base A Las Areas en Metros Cuadrados</h3>
+                                              </div>
+                                              <div class="card-body">
+                                                  <div class="chart ">
+                                                      <canvas id="barChart_cimeqh_area" style="min-height:230px; max-height:230px;width:200px"></canvas>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </section>
+                          <section class="content">          
+                              <div class="container-fluid">
+                                  <div class="row">
+                                      <div class="col-md-12">
+                                          <!-- BAR CHART -->
+                                          <div class="card card-success" id="card_area">
+                                              <div class="card-header">
+                                                  <h3 class="card-title">Tabla En Base A Las Areas en Metros Cuadrados</h3>
                                                   <h3 class="card-title">Expedientes En Base A Las Areas en Metros Cuadrados</h3>
                                               </div>
                                               <div class="card-body">
@@ -152,6 +190,7 @@
                                   </div>
                               </div>
                           </section>
+                          <button onclick="printDiv('card_area')" type="button" name="report_cimeqh_tipoconstruccion" class="btn btn-primary w-25 p-3 ml-4 mt-2" target="_blank"><i class="fas fa-file-pdf me-2 mr-2"></i>Generar Reporte</button>
                           </div>
                           <br>
                           <button onclick="printDiv('card_area')" type="button" name="report_cimeqh_tipoconstruccion" class="btn btn-primary w-25 p-3 ml-4 mt-2" target="_blank"><i class="fas fa-file-pdf me-2 mr-2"></i>Generar Reporte</button>
@@ -219,6 +258,8 @@
               </div>
 </div>
 <script src="../Plantilla/plugins/chart.js/Chart.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
     

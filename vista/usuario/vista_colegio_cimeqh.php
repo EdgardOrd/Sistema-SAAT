@@ -5,9 +5,7 @@
         <div class="card card-primary">
           <div class="card-header">
                 <h3 class="card-title">BIENVENIDO AL HISTORIAL DE REGISTRO EN CIMEQH</h3>
-                <div class="card-tools">
-                    <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
-                </div>     
+                 
          </div>
          <div class="card-body">  
          <h3 class="mt-4 mb-2">Registro de Notas de Construcción</h3><br>
@@ -63,7 +61,7 @@
     </div>
 </div>
 
-<!--*****************************************************************************************************************-->
+<!--*********************************************MODAL DE REGISTRO************************************************-->
 <form autocomplete="false" onsubmit="return false">
   <div class="modal" id="modal_nuevo_cimeqh">
     <div class="modal-dialog modal-lg">
@@ -71,7 +69,7 @@
 
         <!-- Modal Header -->
         <div class="modal-header">
-          <h4 class="modal-title"><a>Nota de Aprobación CIMEQH</a></h4>
+          <h4 class="modal-title"><a>Nota de Registro CIMEQH</a></h4>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
 
@@ -88,9 +86,19 @@
               <input type="text" class="form-control" id="txt_proyect" placeholder="Ingrese Tipo de Expediente">
               <br>
             </div>
-            <div class="col-lg-12">
+            <div class="col-lg-6">
               <label for="">Propietario</label>
               <input type="text" class="form-control" id="txt_prop" placeholder="Ingrese el propietario">
+              <br>
+            </div>
+            <div class="col-lg-6">
+              <label for="">Estatus del Proyecto</label>
+              <select class="js-example-basic-single" name="state" id="cbm_estatus" style="width:100%;">
+                <option value="APROBADO">APROBADO</option>
+                <option value="DESAPROBADO">DESAPROBADO</option>
+                <option value="SEGUIMIENTO">SEGUIMIENTO</option>
+                <option value="SOLICITUD DE DOCUMENTACION">SOLICITUD DE DOCUMENTACION</option>
+              </select>
               <br>
             </div>
             <div class="col-lg-6">
@@ -99,7 +107,7 @@
               <br>
             </div>
             <div class="col-lg-6">
-              <label for="">Fecha</label>
+              <label for="">Fecha de Registro</label>
               <input type="date" class="form-control" id="txt_fech" placeholder="Ingrese la fecha">
               <br>
             </div>  
@@ -124,7 +132,7 @@
 
         <!-- Modal footer -->
         <div class="modal-footer d-flex align-items-center justify-content-center">
-          <button class="btn btn-success" onclick="Registrar_Nota_Cimeqh()"><i class="fa fa-check">&nbsp;Aprobar</i></button>
+          <button class="btn btn-success" onclick="Registrar_Nota_Cimeqh()"><i class="fa fa-check">&nbsp;Registrar</i></button>
           <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times">&nbsp;Cerrar</i></button>
         </div>
 
@@ -132,7 +140,85 @@
     </div>
   </div>
 </form>
+<!--***********************************MODAL DE EDITAR*************************************************************-->
+<form autocomplete="false" onsubmit="return false">
+  <div class="modal" id="modal_nuevo_editar">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
 
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title"><a>Editar Nota de Registro CIMEQH</a></h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+
+        <!-- Modal body -->
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-lg-12">
+              <label for="">N° de Expediente</label>
+              <input type="number" class="form-control" id="txt_exp_editar" placeholder="Ingrese Numero de Expediente">
+              <br>
+            </div>
+            <div class="col-lg-12">
+              <label for="">Tipo de Proyecto</label>
+              <input type="text" class="form-control" id="txt_proyect_editar" placeholder="Ingrese Tipo de Expediente">
+              <br>
+            </div>
+            <div class="col-lg-6">
+              <label for="">Propietario</label>
+              <input type="text" class="form-control" id="txt_prop_editar" placeholder="Ingrese el propietario">
+              <br>
+            </div>
+            <div class="col-lg-6">
+              <label for="">Estatus del Proyecto</label>
+              <select class="js-example-basic-single" name="state" id="cbm_estatus_editar" style="width:100%;">
+                <option value="APROBADO">APROBADO</option>
+                <option value="DESAPROBADO">DESAPROBADO</option>
+                <option value="SEGUIMIENTO">SEGUIMIENTO</option>
+                <option value="SOLICITUD DE DOCUMENTACION">SOLICITUD DE DOCUMENTACION</option>
+              </select>
+              <br>
+            </div>
+            <div class="col-lg-6">
+              <label for="">Clave Catastral</label>
+              <input type="text" class="form-control" id="txt_cat_editar" placeholder="Ingrese el numero catastral">
+              <br>
+            </div>
+            <div class="col-lg-6">
+              <label for="">Fecha de Registro</label>
+              <input type="date" class="form-control" id="txt_fech_editar" placeholder="Ingrese la fecha">
+              <br>
+            </div>  
+            <div class="col-lg-6">
+              <label for="">Area</label>
+              <input type="number" class="form-control" id="txt_area_editar" placeholder="Area del Proyecto">
+              <br>
+            </div>
+            <div class="col-lg-6">
+              <label for="">Presupuesto</label>
+              <input type="number" class="form-control" id="txt_pre_editar" placeholder="Presupuesto del Proyecto">
+              <br>
+            </div>
+            <div class="col-lg-12">
+              <label for="">Observaciones</label>
+              <input type="text" class="form-control" id="txt_obs_editar" placeholder="Observaciones">
+              <br>
+            </div>
+            
+          </div>
+        </div>
+
+        <!-- Modal footer -->
+        <div class="modal-footer d-flex align-items-center justify-content-center">
+          <button class="btn btn-success" onclick="Registrar_Nota_Cimeqh()"><i class="fa fa-check">&nbsp;Editar</i></button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times">&nbsp;Cerrar</i></button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</form>
         
 <script>
 $(document).ready(function () {

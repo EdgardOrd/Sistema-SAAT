@@ -30,7 +30,7 @@
                     <div class="tab-pane active" id="tab_1">
                     <h4>REPORTE DE PROYECTOS APROBADOS Y EN SEGUIMIENTO</h4><br>
                     <form onsubmit="window.open('../vista/fpdf/ReporteAprobadosCimeqh.php?fecha_inicial=' + encodeURIComponent(document.getElementById('fi1').value) + '&fecha_final=' + encodeURIComponent(document.getElementById('ff1').value), '_blank');">
-                          <div class="col-lg-5">
+                          <div class="col-lg-3">
                             <label for="">Fecha Inicial</label>
                             <input required type="date" class="form-control" id="fi1" name = "fi1">
                             <br>
@@ -44,7 +44,7 @@
                     <div class="tab-pane" id="tab_2">
                    <h4> REPORTE DE PROYECTO DE PROYECTOS DESAPROBADOS</h4><br>
                    <form onsubmit="window.open('../vista/fpdf/ReporteDesaprobadosCimeqh.php?fecha_inicial=' + encodeURIComponent(document.getElementById('fi2').value) + '&fecha_final=' + encodeURIComponent(document.getElementById('ff2').value), '_blank');">
-                          <div class="col-lg-5">
+                          <div class="col-lg-3">
                             <label for="">Fecha Inicial</label>
                             <input required type="date" class="form-control" id="fi2" name = "fi2">
                             <br>
@@ -59,7 +59,7 @@
                    <h4>REPORTE DE PROYECTOS EN SOLICITUD DE DOCUMENTACIÓN</h4><br>
                    
                    <form onsubmit="window.open('../vista/fpdf/ReporteSoliDocCimeqh.php?fecha_inicial=' + encodeURIComponent(document.getElementById('fi3').value) + '&fecha_final=' + encodeURIComponent(document.getElementById('ff3').value), '_blank');">
-                          <div class="col-lg-5">
+                          <div class="col-lg-3">
                             <label for="">Fecha Inicial</label>
                             <input required type="date" class="form-control" id="fi3" name = "fi3">
                             <br>
@@ -73,7 +73,7 @@
                     <div class="tab-pane" id="tab_4">
                     <h4>REPORTE DE PROYECTOS ORDENADOS SEGÚN EL TIPO DE CONSTRUCCIÓN</h4><br>
                     <form onsubmit="window.open('../vista/fpdf/ReporteConstruccionCimeqh.php?fecha_inicial=' + encodeURIComponent(document.getElementById('fi4').value) + '&fecha_final=' + encodeURIComponent(document.getElementById('ff4').value), '_blank');">
-                          <div class="col-lg-5">
+                          <div class="col-lg-3">
                             <label for="">Fecha Inicial</label>
                             <input required type="date" class="form-control" id="fi4" name = "fi4">
                             <br>
@@ -87,7 +87,7 @@
                     <div class="tab-pane" id="tab_5">
                     <h4 class="text-center">REPORTE DE EXPEDIENTES EN BASE A PRESUPUESTO</h4><br>
                     <form>
-                          <div class="col-lg-12">
+                          <div class="col-lg-3">
                             <label for="">Fecha Inicial</label>
                             <input type="date" class="form-control" id="fi8" name = "fi8" onchange="CargarDatosGraficoBar2()" onchange="CargarDatosGraficoBar2()">
                             <br>
@@ -142,7 +142,7 @@
                     <div class="tab-pane" id="tab_6">
                     <h4 class="text-center">REPORTE DE EXPEDIENTES EN BASE AL ÁREA EN METROS CUADRADOS</h4><br>
                     <form onsubmit="">
-                          <div class="col-lg-12">
+                          <div class="col-lg-3">
                             <label for="">Fecha Inicial</label>
                             <input type="date" class="form-control" id="fi9" name = "fi9" onchange="CargarDatosGraficoBar()" onchange="CargarDatosGraficoBar()">
                             <br>
@@ -199,7 +199,7 @@
                     <div class="tab-pane" id="tab_4">
                     <h4>REPORTE DE PROYECTOS ORDENADOS SEGÚN EL TIPO DE CONSTRUCCIÓN</h4><br>
                     <form onsubmit="window.open('../vista/fpdf/ReporteConstruccionCimeqh.php?fecha_inicial=' + encodeURIComponent(document.getElementById('fi4').value) + '&fecha_final=' + encodeURIComponent(document.getElementById('ff4').value), '_blank');">
-                          <div class="col-lg-5">
+                          <div class="col-lg-3">
                             <label for="">Fecha Inicial</label>
                             <input required type="date" class="form-control" id="fi4" name = "fi4">
                             <br>
@@ -214,7 +214,7 @@
                     <div class="tab-pane" id="tab_7">
                     <h4>REPORTE DE PROYECTOS QUE NECESITAN INSPECCIÓN</h4><br>
                     <form onsubmit="window.open('../vista/fpdf/ReporteInspeccionCimeqh.php?fecha_inicial=' + encodeURIComponent(document.getElementById('fi5').value) + '&fecha_final=' + encodeURIComponent(document.getElementById('ff5').value), '_blank');">
-                          <div class="col-lg-5">
+                          <div class="col-lg-3">
                           <label for="">Fecha Inicial</label>
                             <input required type="date" class="form-control" id="fi5" name = "fi5">
                             <br>
@@ -228,7 +228,7 @@
                     <div class="tab-pane" id="tab_8">
                     <h4>REPORTE DE EXPEDIENTES CON CAMBIO DE INGENIERO DE OBRA</h4><br>
                     <form onsubmit="window.open('../vista/fpdf/ReporteDescontinuadoCimeqh.php?fecha_inicial=' + encodeURIComponent(document.getElementById('fi6').value) + '&fecha_final=' + encodeURIComponent(document.getElementById('ff6').value), '_blank');">
-                          <div class="col-lg-5">
+                          <div class="col-lg-3">
                           <label for="">Fecha Inicial</label>
                             <input required type="date" class="form-control" id="fi6" name = "fi6">
                             <br>
@@ -242,7 +242,7 @@
                     <div class="tab-pane" id="tab_9">
                     <h4>REPORTE DE PROYECTOS MILLONARIOS</h4><br>
                         <form onsubmit="window.open('../vista/fpdf/ReporteMillonariosCimeqh.php?fecha_inicial=' + encodeURIComponent(document.getElementById('fi7').value) + '&fecha_final=' + encodeURIComponent(document.getElementById('ff7').value), '_blank');">
-                          <div class="col-lg-5">
+                          <div class="col-lg-3">
                           <label for="">Fecha Inicial</label>
                             <input required type="date" class="form-control" id="fi7" name = "fi7">
                             <br>

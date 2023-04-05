@@ -3,9 +3,7 @@
         <div class="card card-primary">
           <div class="card-header">
                 <h3 class="card-title">BIENVENIDO AL HISTORIAL DE GRAFICOS DE LOS COLEGIOS</h3>
-                <div class="card-tools">
-                    <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
-                </div>     
+                 
          </div>
          <div class="card-body">  
             <h3 class="mt-4 mb-2">GRAFICOS DE APROBACIONES</h3><br>

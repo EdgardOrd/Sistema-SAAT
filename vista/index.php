@@ -245,8 +245,7 @@ if(!isset($_SESSION['S_IDUSUARIO'])){
                     <hr>
                     <h3>HISTORIA</h3>
                     La Asociación de Ingenieros Mecánicos, Electricistas y Químicos de Honduras "AIMEQH", creada a finales de la década de los setenta es el origen del Colegio de Ingenieros Mecánicos, Electricistas y Químicos de Honduras y ramas afines "CIMEQH". En su corta vida, esta asociación tuvo como presidentes a los distinguidos profesionales de la Ingeniería Eléctrica, Dr. Luis Cosenza Jiménez y Percy Armando Buck Mendoza; quienes canalizaron toda su energía y conocimientos para coordinar las actividades desarrolladas. Adicionalmente 38 distinguidos profesionales de la Ingeniería Eléctrica, Mecánica y Química impulsaron los Estatutos, Ley Orgánica y Reglamento Interno del CIMEQH ante el Congreso Nacional y así darle vida al Colegio que hoy tenemos.
-                    <br>
-                    Sin embargo, en la década de los ochenta y noventa el número de agremiados se incrementó considerablemente en calidad y cantidad, haciendo que el CIMEQH sea una de las Organizaciones Profesionales más Fuertes y Beligerantes del País, cuyos miembros hacen aportaciones sustanciales en el Proceso de Desarrollo Tecnológico de la nación.
+                    
                     </div>
                     <div class="tab-pane" id="tab_2">
                     <h3>CICH</h3>

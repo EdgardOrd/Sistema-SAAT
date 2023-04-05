@@ -119,8 +119,8 @@
             }
         }
 
-        function RegistrarCimeqh($expediente,$proyecto,$propietario,$catrastal,$area,$presupuesto,$observaciones,$fecha){
-            $sql = "call SP_REGISTRAR_APROBADO_CIMEQH('$expediente','$proyecto','$propietario','$catrastal','$area','$presupuesto','$observaciones','$fecha')";
+        function RegistrarCimeqh($expediente,$proyecto,$propietario,$catrastal,$area,$presupuesto,$estatus,$observaciones,$fecha){
+            $sql = "call SP_REGISTRAR_APROBADO_CIMEQH('$expediente','$proyecto','$propietario','$catrastal','$area','$presupuesto','$estatus','$observaciones','$fecha')";
             if ($consulta = $this->conexion->conexion->query($sql)) {
                 $this->conexion->conexion->next_result(); // Limpiar el conjunto de resultados
                 $this->conexion->cerrar();
@@ -130,8 +130,8 @@
             }
         }
  
-        function RegistrarCich($expediente,$proyecto,$propietario,$catrastal,$area,$presupuesto,$observaciones,$fecha){
-            $sql = "call SP_REGISTRAR_APROBADO_CICH('$expediente','$proyecto','$propietario','$catrastal','$area','$presupuesto','$observaciones','$fecha')";
+        function RegistrarCich($expediente,$proyecto,$propietario,$catrastal,$area,$presupuesto,$estatus,$observaciones,$fecha){
+            $sql = "call SP_REGISTRAR_APROBADO_CICH('$expediente','$proyecto','$propietario','$catrastal','$area','$presupuesto','$estatus','$observaciones','$fecha')";
             if ($consulta = $this->conexion->conexion->query($sql)) {
                 $this->conexion->conexion->next_result(); // Limpiar el conjunto de resultados
                 $this->conexion->cerrar();
@@ -141,8 +141,8 @@
             }
         }
 
-        function RegistrarCah($expediente,$proyecto,$propietario,$catrastal,$area,$presupuesto,$observaciones,$fecha){
-            $sql = "call SP_REGISTRAR_APROBADO_CAH('$expediente','$proyecto','$propietario','$catrastal','$area','$presupuesto','$observaciones','$fecha')";
+        function RegistrarCah($expediente,$proyecto,$propietario,$catrastal,$area,$presupuesto,$estatus,$observaciones,$fecha){
+            $sql = "call SP_REGISTRAR_APROBADO_CAH('$expediente','$proyecto','$propietario','$catrastal','$area','$presupuesto','$estatus','$observaciones','$fecha')";
             if ($consulta = $this->conexion->conexion->query($sql)) {
                 $this->conexion->conexion->next_result(); // Limpiar el conjunto de resultados
                 $this->conexion->cerrar();

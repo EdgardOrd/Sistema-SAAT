@@ -42,7 +42,7 @@ function listar_usuario_cich(){
            },  
            {"data":"Observaciones"},  
            {"data":"Fecha"},
-           {"defaultContent":"<button style='font-size:13px;' type='button' class='desactivar btn btn-primary'><i class='fas fa-edit' aria-hidden='true'></i></button>"}
+           {"defaultContent":"<button style='font-size:13px;' type='button' class='editar btn btn-primary'><i class='fas fa-edit' aria-hidden='true'></i></button>"}
        ], 
        "language":idioma_espanol,
        select: true
@@ -55,6 +55,15 @@ function listar_usuario_cich(){
         filterColumn( $(this).parents('tr').attr('data-column') );
     });
 }
+
+$('#tabla_cich').on('click','.editar',function(){
+    var data = table.row($(this).parents('tr')).data();
+    if(table.row(this).child.isShown()){
+        var data = table.row(this).data();
+    }
+    $("#modal_nuevo_editar").modal({backdrop:'static',keyboard:false})
+    $("#modal_nuevo_editar").modal('show');
+});
 
 function filterGlobal() {
     $('#tabla_cich').DataTable().search(
@@ -90,8 +99,9 @@ function Registrar_Nota_Cich(){
     let area = $('#txt_area').val();
     let presu = $('#txt_pre').val();
     let obs = $('#txt_obs').val();
+    let estatus = $('#cbm_estatus').val();
     let fecha = $('#txt_fech').val();
-    if(exp.length == 0 || proye.length == 0 || prop.length == 0 || cat.length == 0 || area.length == 0 || presu.length == 0  || obs.length == 0 || fecha.length == 0){
+    if(exp.length == 0 || proye.length == 0 || prop.length == 0 || cat.length == 0 || area.length == 0 || presu.length == 0 || estatus.length == 0 || obs.length == 0 || fecha.length == 0){
         return Swal.fire("Advertencia", "Llene los campos vacios","warning");
     }
     $.ajax({
@@ -104,6 +114,7 @@ function Registrar_Nota_Cich(){
             catastral:cat,
             area:area,
             presupuesto:presu,
+            estatus:estatus,
             observaciones:obs,
             fecha:fecha,
         }
@@ -111,13 +122,13 @@ function Registrar_Nota_Cich(){
         if(resp>0){
             if(resp==1){
                 $('#modal_nuevo_cich').modal('hide');
-                Swal.fire("CONFRIMADO", "Nota de Aprobación Aceptada","success")
+                Swal.fire("CONFRIMADO", "Nota de Construcción Registrada","success")
                 .then((value)=>{
                     LimpiarRegistro();
                     table.ajax.reload();
                 });
             }else{
-                return Swal.fire("ADVERTENCIA", "La Nota de Aprobación ya Existe","warning");
+                return Swal.fire("ADVERTENCIA", "La Nota de Construcción ya Existe","warning");
             }
         }else{  
             Swal.fire("ERROR", "No se pudo completar","error");
@@ -130,6 +141,7 @@ function LimpiarRegistro(){
     $('#txt_proyect').val("");
     $('#txt_prop').val("");
     $('#txt_cat').val("");
+    $('#cbm_estatus').val("");
     $('#txt_obs').val("");
     $('#txt_fech').val("");
 }

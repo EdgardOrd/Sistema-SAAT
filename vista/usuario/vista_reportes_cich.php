@@ -27,7 +27,7 @@
                 <div class="card-body">
                   <div class="tab-content">
                   <div class="tab-pane active" id="tab_1">
-                    <h4>REPORTE DE PROYECTOS APROBADOS Y EN SEGUIMIENTO</h4><br>
+                    <h4 class="text-center">REPORTE DE PROYECTOS APROBADOS Y EN SEGUIMIENTO</h4><br>
                     <form onsubmit="window.open('../vista/fpdf/ReporteAprobadosCich.php?fecha_inicial=' + encodeURIComponent(document.getElementById('fi1').value) + '&fecha_final=' + encodeURIComponent(document.getElementById('ff1').value), '_blank');">
                           <div class="col-lg-3">
                             <label for="">Fecha Inicial</label>
@@ -41,7 +41,7 @@
                         </form>
                     </div>
                     <div class="tab-pane" id="tab_2">
-                   <h4> REPORTE DE PROYECTOS DESAPROBADOS</h4><br>
+                   <h4 class="text-center"> REPORTE DE PROYECTOS DESAPROBADOS</h4><br>
                    <form onsubmit="window.open('../vista/fpdf/ReporteDesaprobadosCich.php?fecha_inicial=' + encodeURIComponent(document.getElementById('fi2').value) + '&fecha_final=' + encodeURIComponent(document.getElementById('ff2').value), '_blank');">
                           <div class="col-lg-3">
                             <label for="">Fecha Inicial</label>
@@ -55,7 +55,7 @@
                         </form>
                     </div>      
                     <div class="tab-pane" id="tab_3">
-                   <h4>REPORTE DE PROYECTOS EN SOLICITUD DE DOCUMENTACIÓN</h4><br>
+                   <h4 class="text-center">REPORTE DE PROYECTOS EN SOLICITUD DE DOCUMENTACIÓN</h4><br>
                    <form onsubmit="window.open('../vista/fpdf/ReporteSoliDocCich.php?fecha_inicial=' + encodeURIComponent(document.getElementById('fi3').value) + '&fecha_final=' + encodeURIComponent(document.getElementById('ff3').value), '_blank');">
                           <div class="col-lg-3">
                             <label for="">Fecha Inicial</label>
@@ -69,7 +69,7 @@
                         </form>
                     </div>
                     <div class="tab-pane" id="tab_4">
-                    <h4>REPORTE DE PROYECTOS ORDENADOS EN BASE A TIPO DE CONSTRUCCIÓN</h4><br>
+                    <h4 class="text-center">REPORTE DE PROYECTOS ORDENADOS EN BASE A TIPO DE CONSTRUCCIÓN</h4><br>
                     <form onsubmit="window.open('../vista/fpdf/ReporteConstruccionCich.php?fecha_inicial=' + encodeURIComponent(document.getElementById('fi4').value) + '&fecha_final=' + encodeURIComponent(document.getElementById('ff4').value), '_blank');">
                           <div class="col-lg-3">
                             <label for="">Fecha Inicial</label>
@@ -101,7 +101,7 @@
                                           <!-- BAR CHART -->
                                           <div class="card card-success">
                                               <div class="card-header">
-                                                  <h3 class="card-title">Grafico En Base A Presupuesto de Obra</h3>
+                                                  <h3 class="card-title">Gráfico En Base A Presupuesto de Obra</h3>
                                               </div>
                                               <div class="card-body">
                                                   <div class="chart">
@@ -115,22 +115,52 @@
                           </section>
                           <section class="content">          
                               <div class="container-fluid">
-                                  <div class="row">
-                                      <div class="col-md-12">
-                                          <!-- BAR CHART -->
-                                          <div class="card card-success">
-                                              <div class="card-header">
-                                                  <h3 class="card-title">Tabla En Base A Presupuesto de Obra</h3>
-                                              </div>
-                                              <div class="card-body">
-                                              <div class="chart">
-                                                      <canvas id="#" style="min-height:230px; max-height:230px;width:200px">
-                                                    </canvas>
-                                                  </div>
-                                              </div>
-                                          </div>
-                                      </div>
+                              <div class="row">
+                                <div class="col-12">
+                                  <div class="card">
+                                    <div class="card-header">
+                                      <h3 class="card-title">Tabla En Base A Presupuesto de Obra </h3>
+
+                                     
+                                    </div>
+                                    <!-- /.card-header -->
+                                    <div class="card-body table-responsive p-0">
+                                      <table id="tabla_presupuesto" class="table table-hover">
+                                        <thead>
+                                          <tr>
+                                            <th>Cantidad de Proyectos</th>
+                                            <th>Presupuesto</th>                                            
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          <tr>
+                                            <td>1</td>
+                                            <td>Menor a 100,000 LPS</td>                                           
+                                          </tr>
+                                          <tr>
+                                            <td>2</td>
+                                            <td>100,000 - 250,000 LPS</td>                                           
+                                          </tr>
+                                          <tr>
+                                            <td>3</td>
+                                            <td>250,000 - 500,000 LPS</td>                                           
+                                          </tr>
+                                          <tr>
+                                            <td>4</td>
+                                            <td>500,000 - 1,000,000 LPS</td>                                           
+                                          </tr>
+                                          <tr>
+                                            <td>5</td>
+                                            <td>Mayor a 1,000,000 LPS</td>                                           
+                                          </tr>
+                                        </tbody>
+                                      </table>
+                                    </div>
+                                    <!-- /.card-body -->
                                   </div>
+                                  <!-- /.card -->
+                                </div>
+                              </div>
                               </div>
                           </section>  
                           </div>
@@ -172,22 +202,52 @@
                           </section>
                           <section class="content">          
                               <div class="container-fluid">
-                                  <div class="row">
-                                      <div class="col-md-12 mt-2" >
-                                          <!-- BAR CHART -->
-                                          <div class="card card-success" id="card_area">
-                                              <div class="card-header">
-                                                  <h3 class="card-title">Tabla En Base A Las Areas en Metros Cuadrados</h3>
-                                              </div>
-                                              <div class="card-body">
-                                              <div class="chart">
-                                                      <canvas id="#" style="min-height:230px; max-height:230px;width:200px">
-                                                    </canvas>
-                                                  </div>
-                                              </div>
-                                          </div>
-                                      </div>
+                              <div class="row">
+                                <div class="col-12">
+                                  <div class="card">
+                                    <div class="card-header">
+                                      <h3 class="card-title">Tabla En Base A Las Areas en Metros Cuadrados</h3>
+
+                                     
+                                    </div>
+                                    <!-- /.card-header -->
+                                    <div class="card-body table-responsive p-0">
+                                      <table id="tabla_area" class="table table-hover">
+                                        <thead>
+                                          <tr>
+                                            <th>Cantidad de Proyectos</th>
+                                            <th>Área de Construcción</th>                                            
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          <tr>
+                                            <td>1</td>
+                                            <td>Menor a 100 m^2</td>                                           
+                                          </tr>
+                                          <tr>
+                                            <td>2</td>
+                                            <td>100 - 250 m^2</td>                                           
+                                          </tr>
+                                          <tr>
+                                            <td>3</td>
+                                            <td>250 - 500 m^2</td>                                           
+                                          </tr>
+                                          <tr>
+                                            <td>4</td>
+                                            <td>500 - 1,000 m^2</td>                                           
+                                          </tr>
+                                          <tr>
+                                            <td>5</td>
+                                            <td>Mayor a 1,000 m^2</td>                                           
+                                          </tr>
+                                        </tbody>
+                                      </table>
+                                    </div>
+                                    <!-- /.card-body -->
                                   </div>
+                                  <!-- /.card -->
+                                </div>
+                              </div>
                               </div>
                           </section>  
                           </div>
@@ -197,7 +257,7 @@
                         </form>
                     </div>
                     <div class="tab-pane" id="tab_7">
-                    <h4>REPORTE DE PROYECTOS QUE NECESITAN INSPECCIÓN</h4><br>
+                    <h4 class="text-center">REPORTE DE PROYECTOS QUE NECESITAN INSPECCIÓN</h4><br>
                     <form action="">
                           <div class="col-lg-3">
                           <label for="">Fecha Inicial</label>
@@ -205,13 +265,90 @@
                             <br>
                             <label for="">Fecha Final</label>
                             <input type="date" class="form-control" id="ff5" name="ff5">
+                            </div> 
+                          <br>
+                          <div class="col-lg-14">
+                          <section class="content">          
+                              <div class="container-fluid">
+                                  <div class="row">
+                                      <div class="col-md-12" >
+                                          <!-- BAR CHART -->
+                                          <div class="card card-success" id="card_inspeccion">
+                                              <div class="card-header">
+                                                  <h3 class="card-title">Gráfico En Base A Proyectos Que Necesitan Inspección</h3>
+                                              </div>
+                                              <div class="card-body">
+                                                  <div class="chart ">
+                                                      <canvas id="barChart_cimeqh_area" style="min-height:230px; max-height:230px;width:200px"></canvas>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </section>
+                          <section class="content">          
+                              <div class="container-fluid">
+                              <div class="row">
+                                <div class="col-12">
+                                  <div class="card">
+                                    <div class="card-header">
+                                      <h3 class="card-title">Tabla En Base A Proyectos Que Necesitan Inspección</h3>
+
+                                    </div>
+                                    <!-- /.card-header -->
+                                    <div class="card-body table-responsive p-0">
+                                      <table id="tabla_inspeccion" class="table table-hover">
+                                        <thead>
+                                          <tr>
+                                            <th>COLUMNA 1</th>
+                                            <th>COLUMNA 2</th>
+                                            <th>COLUMNA 3</th>                                            
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          <tr>
+                                            <td>*</td>
+                                            <td>*</td>
+                                            <td>*</td>                                           
+                                          </tr>
+                                          <tr>
+                                          <td>*</td>
+                                            <td>*</td>
+                                            <td>*</td>                                           
+                                          </tr>
+                                          <tr>
+                                          <td>*</td>
+                                            <td>*</td>
+                                            <td>*</td>                                           
+                                          </tr>
+                                          <tr>
+                                          <td>*</td>
+                                            <td>*</td>
+                                            <td>*</td>                                        
+                                          </tr>
+                                          <tr>
+                                          <td>*</td>
+                                            <td>*</td>
+                                            <td>*</td>                                          
+                                          </tr>
+                                        </tbody>
+                                      </table>
+                                    </div>
+                                    <!-- /.card-body -->
+                                  </div>
+                                  <!-- /.card -->
+                                </div>
+                              </div>
+                              </div>
+                          </section>  
+                          </div>  
                             <br>
-                          <button type="submit" name="report_cich_inspeccion" class="btn btn-primary w-100 p-3" target="_blank"><i class="fas fa-file-pdf me-2 mr-2"></i>Generar Reporte</button>
-                          </div>
+                          <button type="submit" name="report_cich_inspeccion" class="btn btn-primary w-25 p-3 ml-4 mt-2" target="_blank"><i class="fas fa-file-pdf me-2 mr-2"></i>Generar Reporte</button>
                         </form>
                     </div>
                     <div class="tab-pane" id="tab_8">
-                    <h4>REPORTE DE EXPEDIENTES CON CAMBIO DE INGENIERO DE OBRA</h4><br>
+                    <h4 class="text-center">REPORTE DE EXPEDIENTES CON CAMBIO DE INGENIERO DE OBRA</h4><br>
                         <form action="">
                           <div class="col-lg-3">
                           <label for="">Fecha Inicial</label>
@@ -225,7 +362,7 @@
                         </form>
                     </div>      
                     <div class="tab-pane" id="tab_9">
-                    <h4>REPORTE DE PROYECTOS MILLONARIOS</h4><br>
+                    <h4 class="text-center">REPORTE DE PROYECTOS MILLONARIOS</h4><br>
                         <form onsubmit="window.open('../vista/fpdf/ReporteMillonariosCich.php?fecha_inicial=' + encodeURIComponent(document.getElementById('fi7').value) + '&fecha_final=' + encodeURIComponent(document.getElementById('ff7').value), '_blank');">
                           <div class="col-lg-3">
                           <label for="">Fecha Inicial</label>

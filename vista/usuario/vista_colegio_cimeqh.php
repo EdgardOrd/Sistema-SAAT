@@ -76,9 +76,14 @@
         <!-- Modal body -->
         <div class="modal-body">
           <div class="row">
-            <div class="col-lg-12">
+            <div class="col-lg-6">
               <label for="">N° de Expediente</label>
               <input type="number" class="form-control" id="txt_exp" placeholder="Ingrese Numero de Expediente">
+              <br>
+            </div>
+            <div class="col-lg-6">
+              <label for="">Nombre de Ingeniero</label>
+              <input type="text" class="form-control" id="txt_ing" placeholder="Ingrese nombre del colegiado">
               <br>
             </div>
             <div class="col-lg-12">
@@ -155,9 +160,14 @@
         <!-- Modal body -->
         <div class="modal-body">
           <div class="row">
-            <div class="col-lg-12">
+            <div class="col-lg-6">
               <label for="">N° de Expediente</label>
               <input type="number" class="form-control" id="txt_exp_editar" placeholder="Ingrese Numero de Expediente">
+              <br>
+            </div>
+            <div class="col-lg-6">
+              <label for="">Nombre de Ingeniero</label>
+              <input type="text" class="form-control" id="txt_ing_editar" placeholder="Ingrese el nombre del colegiado">
               <br>
             </div>
             <div class="col-lg-12">

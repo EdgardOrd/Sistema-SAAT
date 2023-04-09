@@ -150,3 +150,5 @@ function LimpiarRegistro(){
     $('#txt_fech').val("");
 }
 
+
+  

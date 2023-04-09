@@ -193,7 +193,7 @@
             }
         }
 
-        function TraerDatosGraficoBar($fecha_inicial,$fecha_final)
+        function TraerDatosArea_CIMEQH($fecha_inicial,$fecha_final)
         {
             $sql = "call SP_AREA_CIMEQH('$fecha_inicial', '$fecha_final');";
             $arreglo = array();
@@ -207,7 +207,7 @@
                 $this->conexion->cerrar();
             }
         }
-        function TraerDatosGraficoBar2($fecha_inicial,$fecha_final)
+        function TraerDatosPresupuesto_CIMEQH($fecha_inicial,$fecha_final)
         {
             $sql = "call SP_PRESUPUESTO_CIMEQH('$fecha_inicial', '$fecha_final');";
             $arreglo = array();

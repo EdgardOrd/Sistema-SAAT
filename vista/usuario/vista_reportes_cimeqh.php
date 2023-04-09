@@ -85,16 +85,17 @@
                     </div>
                     <div class="tab-pane" id="tab_5">
                     <h4 class="text-center">REPORTE DE EXPEDIENTES EN BASE A PRESUPUESTO</h4><br>
-                    <form>
+                    <form id="form_presupuesto">
                           <div class="col-lg-3">
                             <label for="">Fecha Inicial</label>
-                            <input type="date" class="form-control" id="fi8" name = "fi8" onchange="CargarDatosGraficoBar2()" onchange="CargarDatosGraficoBar2()">
+                            <input type="date" class="form-control" id="fi8" name = "fi8" onchange="cargarDatosGrafico('../controlador/colegios/controlador_grafico_cimeqh2.php', 'barChart_cimeqh_presupuesto', 'fi8', 'ff8');llenarTablaPresupuesto('../controlador/colegios/controlador_grafico_cimeqh2.php');">
                             <br>
                             <label for="">Fecha Final</label>
-                            <input type="date" class="form-control" id="ff8" name="ff8" onchange="CargarDatosGraficoBar2()" onchange="CargarDatosGraficoBar2()">
+                            <input type="date" class="form-control" id="ff8" name="ff8" onchange="cargarDatosGrafico('../controlador/colegios/controlador_grafico_cimeqh2.php', 'barChart_cimeqh_presupuesto', 'fi8', 'ff8'); llenarTablaPresupuesto('../controlador/colegios/controlador_grafico_cimeqh2.php');">
                             <br>
                           </div>                         
                           <div class="col-lg-14">
+                          <div>
                           <section class="content">          
                               <div class="container-fluid">
                                   <div class="row">
@@ -105,8 +106,8 @@
                                                   <h3 class="card-title">Gráfico En Base A Presupuesto de Obra</h3>
                                               </div>
                                               <div class="card-body">
-                                                  <div class="chart">
-                                                      <canvas id="barChart_cimeqh_presupuesto" style="min-height:230px; max-height:230px;width:200px"></canvas>
+                                                  <div class="chart" id="chart">
+                                                      <canvas id="barChart_cimeqh_presupuesto" style="background-color: transparent;min-height:230px; max-height:230px;width:200px;"></canvas>
                                                   </div>
                                               </div>
                                           </div>
@@ -125,35 +126,16 @@
                                      
                                     </div>
                                     <!-- /.card-header -->
-                                    <div class="card-body table-responsive p-0">
-                                      <table id="tabla_presupuesto" class="table table-hover">
+                                    <div class="card-body table-responsive p-0" id="div_tabla_presupuesto">
+                                      <table class="table table-hover" id="tabla_presupuesto">
                                         <thead>
                                           <tr>
-                                            <th>Cantidad de Proyectos</th>
-                                            <th>Presupuesto</th>                                            
+                                          <th>Cantidad de Proyectos</th>
+                                            <th>Rango de Presupuestos</th>                                       
                                           </tr>
                                         </thead>
                                         <tbody>
-                                          <tr>
-                                            <td>1</td>
-                                            <td>Menor a 100,000 LPS</td>                                           
-                                          </tr>
-                                          <tr>
-                                            <td>2</td>
-                                            <td>100,000 - 250,000 LPS</td>                                           
-                                          </tr>
-                                          <tr>
-                                            <td>3</td>
-                                            <td>250,000 - 500,000 LPS</td>                                           
-                                          </tr>
-                                          <tr>
-                                            <td>4</td>
-                                            <td>500,000 - 1,000,000 LPS</td>                                           
-                                          </tr>
-                                          <tr>
-                                            <td>5</td>
-                                            <td>Mayor a 1,000,000 LPS</td>                                           
-                                          </tr>
+                                          
                                         </tbody>
                                       </table>
                                     </div>
@@ -163,20 +145,21 @@
                                 </div>
                               </div>
                               </div>
-                          </section>  
-                          <button type="submit" name="report_cimeqh_tipoconstruccion" class="btn btn-primary w-25 p-3 ml-4 mt-2" target="_blank"><i class="fas fa-file-pdf me-2 mr-2"></i>Generar Reporte</button>                   
+                          </section> 
+                            </div> 
+                          <button type="button" onclick="printCanvasPresupuesto();" name="report_cimeqh_tipoconstruccion" class="btn btn-primary w-25 p-3 ml-4 mt-2" target="_blank"><i class="fas fa-download me-2 mr-2"></i>Descargar Reporte</button>                   
                           </div>
                         </form>
                     </div>
                     <div class="tab-pane" id="tab_6">
                     <h4 class="text-center">REPORTE DE EXPEDIENTES EN BASE AL ÁREA EN METROS CUADRADOS</h4><br>
-                    <form onsubmit="">
+                    <form>
                           <div class="col-lg-3">
                             <label for="">Fecha Inicial</label>
-                            <input type="date" class="form-control" id="fi9" name = "fi9" onchange="CargarDatosGraficoBar()" onchange="CargarDatosGraficoBar()">
+                            <input type="date" class="form-control" id="fi9" name = "fi9" onchange="cargarDatosGrafico('../controlador/colegios/controlador_grafico_cimeqh1.php', 'barChart_cimeqh_area', 'fi9', 'ff9'); llenarTablaArea('../controlador/colegios/controlador_grafico_cimeqh1.php')">
                             <br>
                             <label for="">Fecha Final</label>
-                            <input type="date" class="form-control" id="ff9" name="ff9" onchange="CargarDatosGraficoBar()" onchange="CargarDatosGraficoBar()">
+                            <input type="date" class="form-control" id="ff9" name="ff9" onchange="cargarDatosGrafico('../controlador/colegios/controlador_grafico_cimeqh1.php', 'barChart_cimeqh_area', 'fi9', 'ff9'); llenarTablaArea('../controlador/colegios/controlador_grafico_cimeqh1.php')" >
                             <br>
                           </div>                     
                           <div class="col-lg-14">
@@ -209,7 +192,7 @@
 
                                     </div>
                                     <!-- /.card-header -->
-                                    <div class="card-body table-responsive p-0">
+                                    <div class="card-body table-responsive p-0" id="div_tabla_area">
                                       <table id="tabla_area" class="table table-hover">
                                         <thead>
                                           <tr>
@@ -218,26 +201,7 @@
                                           </tr>
                                         </thead>
                                         <tbody>
-                                          <tr>
-                                            <td>1</td>
-                                            <td>Menor a 100 m^2</td>                                           
-                                          </tr>
-                                          <tr>
-                                            <td>2</td>
-                                            <td>100 - 250 m^2</td>                                           
-                                          </tr>
-                                          <tr>
-                                            <td>3</td>
-                                            <td>250 - 500 m^2</td>                                           
-                                          </tr>
-                                          <tr>
-                                            <td>4</td>
-                                            <td>500 - 1,000 m^2</td>                                           
-                                          </tr>
-                                          <tr>
-                                            <td>5</td>
-                                            <td>Mayor a 1,000 m^2</td>                                           
-                                          </tr>
+                                          
                                         </tbody>
                                       </table>
                                     </div>
@@ -250,7 +214,7 @@
                           </section>  
                           </div>
                           <br>
-                          <button onclick="printDiv('card_area')" type="button" name="report_cimeqh_tipoconstruccion" class="btn btn-primary w-25 p-3 ml-4 mt-2" target="_blank"><i class="fas fa-file-pdf me-2 mr-2"></i>Generar Reporte</button>
+                          <button onclick="printCanvasArea()" type="button" name="report_cimeqh_tipoconstruccion" class="btn btn-primary w-25 p-3 ml-4 mt-2" target="_blank"><i class="fas fa-download me-2 mr-2"></i>Descargar Reporte</button>
                         </form>
                     </div>
                     <div class="tab-pane" id="tab_4">
@@ -290,7 +254,7 @@
                                                   <h3 class="card-title">Gráfico En Base A Proyectos Que Necesitan Inspección</h3>
                                               </div>
                                               <div class="card-body">
-                                                  <div class="chart ">
+                                                  <div class="chart " id="chart">
                                                       <canvas id="barChart_cimeqh_area" style="min-height:230px; max-height:230px;width:200px"></canvas>
                                                   </div>
                                               </div>
@@ -393,112 +357,119 @@
 </div>
 <script src="../Plantilla/plugins/chart.js/Chart.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-</script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script>
-    
-    function CargarDatosGraficoBar()
-    
-    {
-      var fechaInicial = document.getElementById('fi9').value;
-var fechaFinal = document.getElementById('ff9').value;
 
-var xhr = new XMLHttpRequest();
-    xhr.open('POST', '../vista/usuario/controlador_grafico.php');
-    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    xhr.onload = function() {
-      if (xhr.status === 200) {
-        var titulo = [];
-        var cantidad = [];
-        var data = JSON.parse(xhr.responseText);
-        for (var i = 0; i < data.length; i++) {
-          titulo.push(data[i][1]);
-          cantidad.push(data[i][0]);
-        }
-        const ctx = document.getElementById('barChart_cimeqh_area');
-        var chart = Chart.getChart(ctx);
-        if (chart) {
-          chart.destroy();
-        }
-        new Chart(ctx, {
-          type: 'bar',
-          data: {
-            labels: titulo,
-            datasets: [{
-              label: '# de Proyectos',
-              data: cantidad,
-              borderWidth: 2
-            }]
-          },
-          options: {
-            scales: {
-              y: {
-                beginAtZero: true,
-              }
-            }
-          }
-        });
-      } else {
-        console.log('Ha ocurrido un error');
-      }
-    };
-    xhr.onerror = function() {
-      console.log('Ha ocurrido un error');
-    };
-    xhr.send('fecha_inicial=' + fechaInicial + '&fecha_final=' + fechaFinal);
-        }
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.debug.js"></script>
+<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.js"></script>
+<script src="../js/graficas.js"></script>
 
-        function CargarDatosGraficoBar2()
+<style>
+    
+    #tabla_presupuesto,#barChart_cimeqh_presupuesto {
+        background-color: #ffffff;
+    }
+    #tabla_area,#barChart_cimeqh_area {
+        background-color: #ffffff;
+    }
+</style>
+<script>    
+        function getFecha(id1,id2)
         {
-        var fechaInicial = document.getElementById('fi8').value;
-        var fechaFinal = document.getElementById('ff8').value;
+          const fi = document.getElementById(`${id1}`);
+          const fivalue = fi.value;
+          const fiobject = new Date(fivalue);
 
-        var xhr = new XMLHttpRequest();
-        xhr.open('POST', '../vista/usuario/controlador_grafico2.php');
-        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-        xhr.onload = function() {
-        if (xhr.status === 200) {
-        var titulo = [];
-        var cantidad = [];
-        var data = JSON.parse(xhr.responseText);
-        for (var i = 0; i < data.length; i++) {
-          titulo.push(data[i][1]);
-          cantidad.push(data[i][0]);
+          const day = fiobject.getDate();
+          const month = fiobject.getMonth() + 1; // Ten en cuenta que los meses de JavaScript comienzan desde 0
+          const year = fiobject.getFullYear();
+
+          const f1 = `${day}/${month}/${year}`;
+
+          const ff = document.getElementById(`${id2}`);
+          const ffvalue = ff.value;
+          const ffobject = new Date(ffvalue);
+
+          const day2 = ffobject.getDate();
+          const month2 = ffobject.getMonth() + 1; // Ten en cuenta que los meses de JavaScript comienzan desde 0
+          const year2 = ffobject.getFullYear();
+
+          const f2 = `${day2}/${month2}/${year2}`;
+
+          return {fechaInicial:f1, fechaFinal:f2}
+
         }
-        const ctx = document.getElementById('barChart_cimeqh_presupuesto');
-        var chart = Chart.getChart(ctx);
-        if (chart) {
-          chart.destroy();
-        }
-        
-        new Chart(ctx, {
-          type: 'bar',
-          data: {
-            labels: titulo,
-            datasets: [{
-              label: '# de Proyectos',
-              data: cantidad,
-              borderWidth: 2
-            }]
-          },
-          options: {
-            scales: {
-              y: {
-                beginAtZero: true,
-              }
+        function printCanvasPresupuesto() 
+        {
+            var fecha = getFecha("fi8","ff8");
+            var doc = new jsPDF("l", "mm", "a4");
+            var content = document.getElementById("div_tabla_presupuesto");
+            var canvas = document.getElementById("barChart_cimeqh_presupuesto");
+            // Crear un objeto Image
+            var img = new Image();
+            // Configurar la imagen
+            img.onload = function() 
+            {
+              // Agregar la imagen al documento
+              doc.addImage(this, 'JPEG', 225, 5, 60, 20);
+
+              // Configurar la fuente y agregar el título del reporte y la fecha
+              doc.setFontSize(18);
+              doc.text('Reporte de Proyectos en Base a Presupuesto', 85, 25);
+              doc.text(`${fecha.fechaInicial}-${fecha.fechaFinal}`, 120, 35);
+              // Agregar el gráfico generado por html2canvas
+              html2canvas(canvas).then(function(canvasImg) {
+                doc.addImage(canvasImg, 'PNG',10, 60, 270, 60);
+
+                // Agregar el contenido HTML (tabla) al documento PDF en la página 2
+              doc.addPage();
+              
+              doc.fromHTML(content, 40, 30);
+
+              // Guardar el documento PDF con un nombre dinámico
+              doc.save(`ReportedeProyectosxPresupuestoCIMEQH${fecha.fechaInicial}-${fecha.fechaFinal}.pdf`);
+              });
             }
-          }
-        });
-      } else {
-        console.log('Ha ocurrido un error');
-      }
-    };
-    xhr.onerror = function() {
-      console.log('Ha ocurrido un error');
-    };
-    xhr.send('fecha_inicial=' + fechaInicial + '&fecha_final=' + fechaFinal);
-        }
 
-    
+            // Cargar la imagen
+            img.src = '../vista/fpdf/cimeqh.jpeg';
+
+        }
+       function printCanvasArea()
+       {
+        var fecha = getFecha("fi9","ff9");
+            var doc = new jsPDF("l", "mm", "a4");
+            var content = document.getElementById("div_tabla_area");
+            var canvas = document.getElementById("barChart_cimeqh_area");
+            // Crear un objeto Image
+            var img = new Image();
+            // Configurar la imagen
+            img.onload = function() 
+            {
+              // Agregar la imagen al documento
+              doc.addImage(this, 'JPEG', 225, 5, 60, 20);
+
+              // Configurar la fuente y agregar el título del reporte y la fecha
+              doc.setFontSize(18);
+              doc.text('Reporte de Proyectos en Base a Área', 85, 25);
+              doc.text(`${fecha.fechaInicial}-${fecha.fechaFinal}`, 120, 35);
+              // Agregar el gráfico generado por html2canvas
+              html2canvas(canvas).then(function(canvasImg) {
+                doc.addImage(canvasImg, 'PNG',10, 60, 270, 60);
+
+                // Agregar el contenido HTML (tabla) al documento PDF en la página 2
+              doc.addPage();
+              
+              doc.fromHTML(content, 40, 30);
+
+              // Guardar el documento PDF con un nombre dinámico
+              doc.save(`ReportedeProyectosxÁreaCIMEQH${fecha.fechaInicial}-${fecha.fechaFinal}.pdf`);
+              });
+            }
+
+            // Cargar la imagen
+            img.src = '../vista/fpdf/cimeqh.jpeg';
+       }
+
+       
 </script>
 

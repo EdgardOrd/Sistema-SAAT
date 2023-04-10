@@ -12,22 +12,18 @@ if(!empty($_GET["fecha_inicial"]) and !empty($_GET["fecha_final"]))
    {
       private $fecha_inicial;
       private $fecha_final;
-      private $fecha1;
-      private $fecha2;
 
       function __construct($fecha_inicial, $fecha_final)
       {
          parent::__construct();
          $this->fecha_inicial = $fecha_inicial;
          $this->fecha_final = $fecha_final;
-         $this->fecha1 = date("d/m/Y", strtotime($fecha_inicial));
-         $this->fecha2 = date("d/m/Y", strtotime($fecha_final));
       }
       // Cabecera de página
       function Header()
       {
          
-        $this->Image('cah.jpeg', 220, 6, 50); //logo de la empresa,moverDerecha,moverAbajo,tamañoIMG
+         $this->Image('cah.jpeg', 220, 6, 50); //logo de la empresa,moverDerecha,moverAbajo,tamañoIMG
          $this->SetFont('Arial', 'B', 19); //tipo fuente, negrita(B-I-U-BIU), tamañoTexto
          $this->Cell(95); // Movernos a la derecha
          $this->SetTextColor(0, 0, 0); //color
@@ -62,9 +58,9 @@ if(!empty($_GET["fecha_inicial"]) and !empty($_GET["fecha_final"]))
          $this->SetTextColor(199, 161, 46);
          $this->Cell(100); // mover a la derecha
          $this->SetFont('Arial', 'B', 15);
-         $this->Cell(75, 10, utf8_decode("REPORTE DE PROYECTOS QUE NECESITAN INSPECCIÓN"), 0, 1, 'C', 0);
+         $this->Cell(75, 10, utf8_decode("REPORTE DE PROYECTOS CON CAMBIO DE INGENIERO DE OBRA"), 0, 1, 'C', 0);
          $this->SetFont('Arial', 'B', 12);
-         $this->Cell(270, 10, utf8_decode($this->fecha1 . ' a ' . $this->fecha2), 0, 0, 'C', 0);
+         $this->Cell(270, 10, utf8_decode($this->fecha_inicial . ' a ' . $this->fecha_final), 0, 0, 'C', 0);
          $this->Ln(12);
 
          /* CAMPOS DE LA TABLA */
@@ -72,12 +68,14 @@ if(!empty($_GET["fecha_inicial"]) and !empty($_GET["fecha_final"]))
          $this->SetFillColor(199, 140, 46); //colorFondo
          $this->SetTextColor(255, 255, 255); //colorTexto
          $this->SetDrawColor(163, 163, 163); //colorBorde
-
-         $this->SetFont('Arial', 'B', 10.5);
-         $this->Cell(60, 10, utf8_decode('CLAVE CATASTRAL'), 1, 0, 'C', 1);    
-         $this->Cell(85, 10, utf8_decode('PROPIETARIO'), 1, 0, 'C', 1);
-         $this->Cell(80, 10, utf8_decode('MOTIVO DE INSPECCIÓN'), 1, 0, 'C', 1);
-         $this->Cell(50, 10, utf8_decode('FECHA DE RECIBIMIENTO'), 1, 1, 'C', 1);
+         $this->Cell(2);
+         $this->SetFont('Arial', 'B', 10);
+         $this->Cell(40, 10, utf8_decode('N° DE EXPEDIENTE'), 1, 0, 'C', 1);
+         $this->Cell(60, 10, utf8_decode('COLEGIADO'), 1, 0, 'C', 1);  
+         $this->Cell(55, 10, utf8_decode('TIPO DE CONSTRUCCIÓN'), 1, 0, 'C', 1);   
+         $this->Cell(85, 10, utf8_decode('OBSERVACIONES'), 1, 0, 'C', 1);
+         $this->SetFont('Arial', 'B', 8.5);
+         $this->Multicell(32, 5, utf8_decode('           ÚLTIMA                 MODIFICACIÓN'), 1, 1, 'R', 1);
       }
 
       // Pie de página
@@ -104,40 +102,26 @@ if(!empty($_GET["fecha_inicial"]) and !empty($_GET["fecha_final"]))
    $pdf->AliasNbPages(); //muestra la pagina / y total de paginas
 
    $i = 0;
-   $pdf->SetFont('Arial', '', 10);
+   $pdf->SetFont('Arial', '', 9.5);
    $pdf->SetDrawColor(163, 163, 163); //colorBorde
-
-   $consulta_reporte = $conexion->conexion->query("CALL SP_INSPECCION_CAH('$fecha_inicial','$fecha_final')");
-  
-   while ($datos_reporte = $consulta_reporte->fetch_object())
-    {      
+   $pdf->Cell(2);
+   $consulta_reporte = $conexion->conexion->query("CALL SP_DESCONTINUADOS_CAH('$fecha_inicial','$fecha_final')");
+   
+   while ($datos_reporte = $consulta_reporte->fetch_object()) {      
       
-
-      $i = $i + 1;
-      /* TABLA */
-      $pdf->Cell(60, 10, utf8_decode($datos_reporte->clave_catastral), 1, 0, 'C', 0);
-      $pdf->Cell(85, 10, utf8_decode($datos_reporte->propietario), 1, 0, 'C', 0);
-      $pdf->Cell(80, 10, utf8_decode($datos_reporte->Observaciones), 1, 0, 'C', 0);
-      $pdf->Cell(50, 10, utf8_decode($datos_reporte->fecha), 1, 1, 'C', 0);
+   $i = $i + 1;
+   /* TABLA */
+   
+   $pdf->Cell(40, 18, utf8_decode($datos_reporte->num_expediente), 1, 0, 'C', 0);
+   $pdf->Cell(60, 18, utf8_decode($datos_reporte->colegiado), 1, 0, 'C', 0);
+   $pdf->Cell(55, 18, utf8_decode($datos_reporte->tipo_proyecto), 1, 0, 'C', 0);
+   $pdf->Cell(85, 18, utf8_decode($datos_reporte->Observaciones), 1, 0, 'C', 0);
+   $pdf->Cell(32, 18, utf8_decode($datos_reporte->fecha), 1, 1, 'C', 0);
+   
    }
-   
-   $pdf->Ln(15);
-   $pdf->SetFillColor(39, 56, 132); //colorFondo
-   $pdf->Cell(95);
-   
-   $pdf->SetFont('Arial', 'B', 10.5);
-   $pdf->SetTextColor(255,255,255);
-   $pdf->Cell(50, 10, utf8_decode("TOTAL"), 1, 0, 'C', 1);
-   $pdf->SetFillColor(39, 56, 132); //colorFondo
-   
-   
-   $pdf->SetFont('Arial', 'B', 10.5);
-   $pdf->SetTextColor(39, 56, 132);
-   $pdf->Cell(50, 10, utf8_decode($i), 1, 1, 'C', 0);
-   $consulta_reporte->close();
 
    
-   $pdf->Output("ReporteProyectosInspeccionCIMEQH-$fecha_inicial-$fecha_final.pdf", 'I');//nombreDescarga, Visor(I->visualizar - D->descargar)
+   $pdf->Output("ReporteProyectosDescontinuadosCAH-$fecha_inicial-$fecha_final.pdf", 'I');//nombreDescarga, Visor(I->visualizar - D->descargar)
  }
  else
  {

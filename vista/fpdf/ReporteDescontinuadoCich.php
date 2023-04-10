@@ -23,7 +23,7 @@ if(!empty($_GET["fecha_inicial"]) and !empty($_GET["fecha_final"]))
       function Header()
       {
          
-         $this->Image('cimeqh.jpeg', 220, 10, 60); //logo de la empresa,moverDerecha,moverAbajo,tamañoIMG
+         $this->Image('cich.jpeg', 250, 10, 32); //logo de la empresa,moverDerecha,moverAbajo,tamañoIMG
          $this->SetFont('Arial', 'B', 19); //tipo fuente, negrita(B-I-U-BIU), tamañoTexto
          $this->Cell(95); // Movernos a la derecha
          $this->SetTextColor(0, 0, 0); //color
@@ -55,7 +55,7 @@ if(!empty($_GET["fecha_inicial"]) and !empty($_GET["fecha_final"]))
          /* TITULO DE LA TABLA */
          //color
          
-         $this->SetTextColor(39, 56, 132);
+         $this->SetTextColor(81, 117, 64);
          $this->Cell(100); // mover a la derecha
          $this->SetFont('Arial', 'B', 15);
          $this->Cell(75, 10, utf8_decode("REPORTE DE PROYECTOS CON CAMBIO DE INGENIERO DE OBRA"), 0, 1, 'C', 0);
@@ -65,7 +65,7 @@ if(!empty($_GET["fecha_inicial"]) and !empty($_GET["fecha_final"]))
 
          /* CAMPOS DE LA TABLA */
          //color
-         $this->SetFillColor(39, 56, 132); //colorFondo
+         $this->SetFillColor(196, 199, 46); //colorFondo
          $this->SetTextColor(255, 255, 255); //colorTexto
          $this->SetDrawColor(163, 163, 163); //colorBorde
          $this->Cell(2);
@@ -105,7 +105,7 @@ if(!empty($_GET["fecha_inicial"]) and !empty($_GET["fecha_final"]))
    $pdf->SetFont('Arial', '', 9.5);
    $pdf->SetDrawColor(163, 163, 163); //colorBorde
    $pdf->Cell(2);
-   $consulta_reporte = $conexion->conexion->query("CALL SP_DESCONTINUADOS_CIMEQH('$fecha_inicial','$fecha_final')");
+   $consulta_reporte = $conexion->conexion->query("CALL SP_DESCONTINUADOS_CICH('$fecha_inicial','$fecha_final')");
    
    while ($datos_reporte = $consulta_reporte->fetch_object()) {      
       
@@ -121,7 +121,7 @@ if(!empty($_GET["fecha_inicial"]) and !empty($_GET["fecha_final"]))
    }
 
    
-   $pdf->Output("ReporteProyectosDescontinuadosCIMEQH-$fecha_inicial-$fecha_final.pdf", 'I');//nombreDescarga, Visor(I->visualizar - D->descargar)
+   $pdf->Output("ReporteProyectosDescontinuadosCICH-$fecha_inicial-$fecha_final.pdf", 'I');//nombreDescarga, Visor(I->visualizar - D->descargar)
  }
  else
  {

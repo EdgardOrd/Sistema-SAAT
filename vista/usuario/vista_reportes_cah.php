@@ -311,7 +311,7 @@
                     </div>
                     <div class="tab-pane" id="tab_8">
                     <h4 class="text-center">REPORTE DE EXPEDIENTES CON CAMBIO DE INGENIERO DE OBRA</h4><br>
-                        <form action="">
+                        <form onsubmit="window.open('../vista/fpdf/ReporteDescontinuadoCah.php?fecha_inicial=' + encodeURIComponent(document.getElementById('fi6').value) + '&fecha_final=' + encodeURIComponent(document.getElementById('ff6').value), '_blank');">
                           <div class="col-lg-3">
                             <label for="">Fecha Inicial</label>
                             <input type="date" class="form-control" id="fi6" name = "fi6">

@@ -102,7 +102,7 @@ if(!empty($_GET["fecha_inicial"]) and !empty($_GET["fecha_final"]))
    $pdf->AliasNbPages(); //muestra la pagina / y total de paginas
 
    $i = 0;
-   $pdf->SetFont('Arial', '', 9.5);
+   $pdf->SetFont('Arial', '', 10);
    $pdf->SetDrawColor(163, 163, 163); //colorBorde
    $pdf->Cell(2);
    $consulta_reporte = $conexion->conexion->query("CALL SP_DESCONTINUADOS_CIMEQH('$fecha_inicial','$fecha_final')");

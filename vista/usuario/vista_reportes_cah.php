@@ -220,13 +220,13 @@
                     </div>
                     <div class="tab-pane" id="tab_7">
                     <h4 class="text-center">REPORTE DE PROYECTOS QUE NECESITAN INSPECCIÓN</h4><br>
-                        <form action="">
+                        <form>
                           <div class="col-lg-3">
                             <label for="">Fecha Inicial</label>
-                            <input type="date" class="form-control" id="fi5" name = "fi5">
+                            <input type="date" class="form-control" id="fi5" name = "fi5" onchange="cargarDatosGrafico('../controlador/colegios/controlador_grafico_cah3.php', 'barChart_cah_inspeccion', 'fi5', 'ff5'); llenarTablaInspeccion('../controlador/colegios/controlador_grafico_cah3.php')">
                             <br>
                             <label for="">Fecha Final</label>
-                            <input type="date" class="form-control" id="ff5" name = "ff5">
+                            <input type="date" class="form-control" id="ff5" name = "ff5" onchange="cargarDatosGrafico('../controlador/colegios/controlador_grafico_cah3.php', 'barChart_cah_inspeccion', 'fi5', 'ff5'); llenarTablaInspeccion('../controlador/colegios/controlador_grafico_cah3.php')">
                           </div>
                             <br>
                             <div class="col-lg-14">
@@ -241,7 +241,7 @@
                                               </div>
                                               <div class="card-body">
                                                   <div class="chart ">
-                                                      <canvas id="barChart_cah_area" style="min-height:230px; max-height:230px;width:200px"></canvas>
+                                                      <canvas id="barChart_cah_inspeccion" style="min-height:230px; max-height:230px;width:200px"></canvas>
                                                   </div>
                                               </div>
                                           </div>
@@ -259,41 +259,17 @@
 
                                     </div>
                                     <!-- /.card-header -->
-                                    <div class="card-body table-responsive p-0">
+                                    <div class="card-body table-responsive p-0" id="div_tabla_inspeccion">
                                       <table id="tabla_inspeccion" class="table table-hover">
                                         <thead>
                                           <tr>
-                                            <th>COLUMNA 1</th>
-                                            <th>COLUMNA 2</th>
-                                            <th>COLUMNA 3</th>                                            
+                                          <th>Razón de Inspección</th>
+                                          <th>Cantidad</th>    
+                                                                                       
                                           </tr>
                                         </thead>
                                         <tbody>
-                                          <tr>
-                                            <td>*</td>
-                                            <td>*</td>
-                                            <td>*</td>                                           
-                                          </tr>
-                                          <tr>
-                                          <td>*</td>
-                                            <td>*</td>
-                                            <td>*</td>                                           
-                                          </tr>
-                                          <tr>
-                                          <td>*</td>
-                                            <td>*</td>
-                                            <td>*</td>                                           
-                                          </tr>
-                                          <tr>
-                                          <td>*</td>
-                                            <td>*</td>
-                                            <td>*</td>                                        
-                                          </tr>
-                                          <tr>
-                                          <td>*</td>
-                                            <td>*</td>
-                                            <td>*</td>                                          
-                                          </tr>
+                                          
                                         </tbody>
                                       </table>
                                     </div>
@@ -305,7 +281,7 @@
                               </div>
                           </section>  
                           </div>  
-                          <button type="submit" name="report_cimeqh_inspeccion" class="btn btn-primary w-25 p-3 ml-4 mt-2" target="_blank"><i class="fas fa-file-pdf me-2 mr-2"></i>Generar Reporte</button>
+                          <button onclick="printCanvasInspeccion()" type="button" name="report_cimeqh_inspeccion" class="btn btn-primary w-25 p-3 ml-4 mt-2" target="_blank"><i class="fas fa-file-pdf me-2 mr-2"></i>Generar Reporte</button>
 
                         </form>
                     </div>
@@ -411,7 +387,7 @@
               doc.fromHTML(content, 40, 30);
 
               // Guardar el documento PDF con un nombre dinámico
-              doc.save(`ReportedeProyectosxPresupuestoCIMEQH${fecha.fechaInicial}-${fecha.fechaFinal}.pdf`);
+              doc.save(`ReportedeProyectosxPresupuestoCAH${fecha.fechaInicial}-${fecha.fechaFinal}.pdf`);
               });
             }
 
@@ -431,7 +407,7 @@
             img.onload = function() 
             {
               // Agregar la imagen al documento
-              doc.addImage(this, 'JPEG', 225, 5, 60, 20);
+              doc.addImage(this, 'JPEG', 230, 5, 60, 20);
 
               // Configurar la fuente y agregar el título del reporte y la fecha
               doc.setFontSize(18);
@@ -447,7 +423,42 @@
               doc.fromHTML(content, 40, 30);
 
               // Guardar el documento PDF con un nombre dinámico
-              doc.save(`ReportedeProyectosxÁreaCIMEQH${fecha.fechaInicial}-${fecha.fechaFinal}.pdf`);
+              doc.save(`ReportedeProyectosxÁreaCAH${fecha.fechaInicial}-${fecha.fechaFinal}.pdf`);
+              });
+            }
+
+            // Cargar la imagen
+            img.src = '../vista/fpdf/cah.jpeg';
+       }
+       function printCanvasInspeccion()
+       {
+            var fecha = getFecha("fi5","ff5");
+            var doc = new jsPDF("l", "mm", "a4");
+            var content = document.getElementById("div_tabla_inspeccion");
+            var canvas = document.getElementById("barChart_cah_inspeccion");
+            // Crear un objeto Image
+            var img = new Image();
+            // Configurar la imagen
+            img.onload = function() 
+            {
+              // Agregar la imagen al documento
+              doc.addImage(this, 'JPEG', 230, 5, 60, 20);
+
+              // Configurar la fuente y agregar el título del reporte y la fecha
+              doc.setFontSize(18);
+              doc.text('Reporte de Proyectos que Necesitan Inspección', 85, 25);
+              doc.text(`${fecha.fechaInicial}-${fecha.fechaFinal}`, 120, 35);
+              // Agregar el gráfico generado por html2canvas
+              html2canvas(canvas).then(function(canvasImg) {
+                doc.addImage(canvasImg, 'PNG',10, 60, 270, 60);
+
+                // Agregar el contenido HTML (tabla) al documento PDF en la página 2
+              doc.addPage();
+              
+              doc.fromHTML(content, 40, 30);
+
+              // Guardar el documento PDF con un nombre dinámico
+              doc.save(`ReportedeProyectosInspecciónCAH${fecha.fechaInicial}-${fecha.fechaFinal}.pdf`);
               });
             }
 

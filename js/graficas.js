@@ -153,3 +153,56 @@ function cargarDatosGrafico(url, graficoId, fechaInicialId, fechaFinalId)
         xhr.send('fecha_inicial=' + fechaInicial + '&fecha_final=' + fechaFinal);
 
        }
+       function llenarTablaInspeccion(url)
+       {
+        var fechaInicial = document.getElementById('fi5').value;
+        var fechaFinal = document.getElementById('ff5').value;
+
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', url);
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhr.onload = function() {
+          if (xhr.status === 200) {
+            var titulo = [];
+            var cantidad = [];
+            var data = JSON.parse(xhr.responseText);
+            for (var i = 0; i < data.length; i++) {
+              titulo.push(data[i][1]);
+              cantidad.push(data[i][0]);
+            }
+
+            // Llena la tabla con los datos recibidos
+            var tabla = document.getElementById('tabla_inspeccion');
+            tabla.innerHTML = ''; // Limpiar la tabla antes de llenarla
+
+            // Crea los encabezados de la tabla
+            var filaEncabezados = document.createElement('tr');
+            var encabezadoTitulo = document.createElement('th');
+            encabezadoTitulo.textContent = 'Razón de Inspección';     
+            var encabezadoCantidad = document.createElement('th');
+            encabezadoCantidad.textContent = 'Cantidad de Proyectos';
+            filaEncabezados.appendChild(encabezadoTitulo);
+            filaEncabezados.appendChild(encabezadoCantidad);
+            tabla.appendChild(filaEncabezados);
+
+            // Llena la tabla con los datos
+            for (var i = 0; i < data.length; i++) {
+              var fila = document.createElement('tr');
+              var celdaTitulo = document.createElement('td');
+              celdaTitulo.textContent = titulo[i];
+              var celdaCantidad = document.createElement('td');
+              celdaCantidad.textContent = cantidad[i];
+              fila.appendChild(celdaTitulo);
+              fila.appendChild(celdaCantidad);
+              tabla.appendChild(fila);
+            }
+          } else {
+            console.log('Ha ocurrido un error');
+          }
+        };
+        xhr.onerror = function() {
+          console.log('Ha ocurrido un error');
+        };
+        xhr.send('fecha_inicial=' + fechaInicial + '&fecha_final=' + fechaFinal);
+
+       }

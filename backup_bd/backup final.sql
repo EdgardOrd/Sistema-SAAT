@@ -788,10 +788,10 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_INSPECCION_CAH`(
     IN fecha_final DATE
 )
 BEGIN
-    SELECT clave_catastral, propietario, Observaciones, date_format(fecha, "%d/%m/%Y") as fecha
-    FROM proyectoscah
-    WHERE Observaciones LIKE '%inspeccion%' 
-    AND fecha BETWEEN fecha_inicial AND fecha_final;
+    SELECT COUNT(*) AS Total,Observaciones
+	FROM proyectoscah
+    where Observaciones like '%inspeccion%' and fecha BETWEEN fecha_inicial AND fecha_final
+    GROUP BY Observaciones;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -813,10 +813,10 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_INSPECCION_CICH`(
     IN fecha_final DATE
 )
 BEGIN
-    SELECT clave_catastral, propietario, Observaciones, date_format(fecha, "%d/%m/%Y") as fecha
-    FROM proyectoscich
-    WHERE Observaciones LIKE '%inspeccion%' 
-    AND fecha BETWEEN fecha_inicial AND fecha_final;
+    SELECT COUNT(*) AS Total,Observaciones
+	FROM proyectoscich
+    where Observaciones like '%inspeccion%' and fecha BETWEEN fecha_inicial AND fecha_final
+    GROUP BY Observaciones;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -838,9 +838,9 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_INSPECCION_CIMEQH`(
     IN fecha_final DATE
 )
 BEGIN
-    SELECT Observaciones, COUNT(*) AS Total
+    SELECT COUNT(*) AS Total,Observaciones
 	FROM proyectoscimeqh
-    where fecha BETWEEN fecha_inicial AND fecha_final
+    where Observaciones like '%inspeccion%' and fecha BETWEEN fecha_inicial AND fecha_final
     GROUP BY Observaciones;
 END ;;
 DELIMITER ;
@@ -1315,4 +1315,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-04-09 23:03:30
+-- Dump completed on 2023-04-10 23:00:35

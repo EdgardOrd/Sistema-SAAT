@@ -20,9 +20,9 @@ function listar_usuario_cah(){
        },
        "columns":[
         {"data":"Expediente"},
-        {"data":"Tipo de Proyecto"},
+        {"data":"Tipo_de_Proyecto"},
         {"data":"Propietario"},
-        {"data":"Clave Catastral"}, 
+        {"data":"Clave_Catastral"}, 
         {"data":"Estatus",
         render: function (data, type, row ) {
          switch (data) {
@@ -62,6 +62,16 @@ $('#tabla_cah').on('click','.editar',function(){
     }
     $("#modal_nuevo_editar").modal({backdrop:'static',keyboard:false})
     $("#modal_nuevo_editar").modal('show');
+    $("#txt_exp_editar").val(data.Expediente);
+    $("#txt_proyect_editar").val(data.Tipo_de_Proyecto);
+    $("#txt_prop_editar").val(data.Propietario);
+    $("#txt_cat_editar").val(data.Clave_Catastral);
+    $("#cbm_estatus_editar").val(data.Estatus).trigger("change");
+    $("#txt_obs_editar").val(data.Observaciones);
+    $("#txt_fech_editar").val(data.Fecha);
+    $("#txt_ing_editar").val(data.Colegiado);
+    $("#txt_area_editar").val(data.Area);
+    $("#txt_pre_editar").val(data.Presupuesto);
 });
 
 
@@ -97,10 +107,11 @@ function Registrar_Nota_Cah(){
     let cat = $('#txt_cat').val();
     let area = $('#txt_area').val();
     let presu = $('#txt_pre').val();
+    let colegiado = $('#txt_ing').val();
     let obs = $('#txt_obs').val();
     let estatus = $('#cbm_estatus').val();
     let fecha = $('#txt_fech').val();
-    if(exp.length == 0 || proye.length == 0 || prop.length == 0 || cat.length == 0 || area.length == 0 || presu.length == 0  || estatus.length == 0  || obs.length == 0 || fecha.length == 0){
+    if(exp.length == 0 || proye.length == 0 || prop.length == 0 || cat.length == 0 || area.length == 0 || presu.length == 0  || colegiado.length == 0 || estatus.length == 0  || obs.length == 0 || fecha.length == 0){
         return Swal.fire("Advertencia", "Llene los campos vacios","warning");
     }
     $.ajax({
@@ -113,6 +124,7 @@ function Registrar_Nota_Cah(){
             catastral:cat,
             area:area,
             presupuesto:presu,
+            colegiado:colegiado,
             estatus:estatus,
             observaciones:obs,
             fecha:fecha,

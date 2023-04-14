@@ -1,0 +1,28 @@
+.container {
+display: flex; /* contenedor con flexbox */
+}
+
+.box {
+margin-top: 100px;
+margin-bottom: 100px;
+margin-right: 100px; /* margen derecho para separar los div */
+display: inline-flex; /* mostrar en línea con flexbox */
+}
+
+.custom-btn {
+width: 200px;
+height: 200px;
+background-color: #2d8cf1 !important; /* color de fondo personalizado */
+color: #fff !important; /* color de texto personalizado */
+border-radius: 10px !important; /* bordes redondeados */
+font-size: 20px !important; /* tamaño de fuente */
+font-weight: bold !important; /* negrita */
+text-transform: uppercase !important; /* mayúsculas */
+transition: all 0.3s ease-in-out !important; /* animación de transición suave */
+box-shadow: 2px 2px 5px rgba(0, 0, 0, 1) !important; 
+}
+
+.custom-btn:hover {
+background-color: #1188a6 !important; /* color de fondo al pasar el mouse */
+}
+

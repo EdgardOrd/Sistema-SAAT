@@ -4,26 +4,29 @@
 <div class="col-md-12">
         <div class="card card-primary">
           <div class="card-header">
-                <h3 class="card-title">BIENVENIDO AL HISTORIAL DE REGISTRO EN CIMEQH</h3>
+                <h3 class="text-center">BIENVENIDO AL HISTORIAL DE REGISTRO EN CIMEQH</h3>
                  
          </div>
          <div class="card-body">  
          <h3 class="mt-4 mb-2">Registro de Notas de Construcción</h3><br>
          <div class="form-group row">
-                <div class="col-lg-10">
+                <div class="col-lg-8">
                   <div class="input-group">
                     <input type="text" class="global_filter form-control" id="global_filter" placeholder="Ingrese el nombre del propietario...">
                     <span class="input-group-addon "><i class="fa fa-search pt-2 pl-2"></i> </span>
                   </div>
                 </div>
                 <div class="col-lg-2">
-                  <button class="btn btn-success d-flex align-items-center justify-content-center py-2" style="width:100%" onclick="abrirModalNuevoCimeqh()">
+                  <button class="btn btn-primary d-flex align-items-center justify-content-center py-2" style="width:100%" onclick="abrirModalNuevoCimeqh()">
                     <i class="gg-add-r btn-icon me-2 mr-2"></i>
                     <span class="me-2">Registar</span>
                   </button>
                 </div>
-                <div class="col-lg-2"><br>
-                  <a href="#" class="btn btn-success"><i class="fas fa-file-pdf me-2 mr-2"></i>Generar</a> 
+                <div class="col-lg-2">
+                  <button class="btn btn-success d-flex align-items-center justify-content-center py-2" style="width:100%" onclick="#">
+                  <i class="fas fa-download me-2 mr-2"></i>
+                    <span class="me-2">Descargar</span>
+                  </button>
                 </div>
            
                 
@@ -221,7 +224,7 @@
 
         <!-- Modal footer -->
         <div class="modal-footer d-flex align-items-center justify-content-center">
-          <button class="btn btn-success" onclick="Registrar_Nota_Cimeqh()"><i class="fa fa-check">&nbsp;Editar</i></button>
+          <button class="btn btn-success" onclick="Editar_Nota_Cimeqh()"><i class="fa fa-check">&nbsp;Editar</i></button>
           <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times">&nbsp;Cerrar</i></button>
         </div>
 

@@ -104,14 +104,14 @@ if(!empty($_GET["fecha_inicial"]) and !empty($_GET["fecha_final"]))
    $i = 0;
    $pdf->SetFont('Arial', '', 10);
    $pdf->SetDrawColor(163, 163, 163); //colorBorde
-   $pdf->Cell(2);
+
    $consulta_reporte = $conexion->conexion->query("CALL SP_DESCONTINUADOS_CIMEQH('$fecha_inicial','$fecha_final')");
    
    while ($datos_reporte = $consulta_reporte->fetch_object()) {      
       
    $i = $i + 1;
    /* TABLA */
-   
+   $pdf->Cell(2);
    $pdf->Cell(40, 18, utf8_decode($datos_reporte->num_expediente), 1, 0, 'C', 0);
    $pdf->Cell(60, 18, utf8_decode($datos_reporte->colegiado), 1, 0, 'C', 0);
    $pdf->Cell(55, 18, utf8_decode($datos_reporte->tipo_proyecto), 1, 0, 'C', 0);

@@ -7,9 +7,9 @@
                 
               </div> 
         </div>
-            <div class="card-body">   
+            <div class="card-body"> <br>  
             <div class="form-group row">
-                <div class="col-lg-10"> 
+                <div class="col-lg-8"> 
                   <div class="input-group">
                     <input type="text" class="global_filter form-control" id="global_filter" placeholder="Ingresar usuario a buscar">
                     <span class="input-group-addon "><i class="fa fa-search pt-2 pl-2"></i> </span>
@@ -21,13 +21,13 @@
                     <span class="me-2">Nuevo Usuario</span>
                   </button>
                 </div>
-                <div class="col-lg-3">
-                  <button class="btn btn-primary d-flex align-items-center justify-content-center mt-3" style="width:100%" onclick="AbrirModalEditarContra()">
+                <div class="col-lg-2">
+                  <button class="btn btn-primary d-flex align-items-center justify-content-center py-2" style="width:100%" onclick="AbrirModalEditarContra()">
                   <i class="fas fa-cog me-2 mr-2"></i>
                     <span class="me-2">Modificar Contrase&ntilde;a</span>
                   </button>
                 </div>
-              </div>
+              </div><br>
               <table id="tabla_usuario" class="display responsive nowrap" style="width: 100%">
                   <thead>
                     <tr>

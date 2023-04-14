@@ -10,12 +10,13 @@ if(!isset($_SESSION['S_IDUSUARIO'])){
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>CIMEQH</title>
-  <link rel="icon" type="image/png" href="images/icons/perfil.ico"/>
+  <link rel="icon" type="image/png" href="images/icons/cimeqh.ico"/>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Font Awesome -->
 <!-- Tell the browser to be responsive to screen width -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../vista/estilo_colegios/cimeqh.css">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="../Plantilla/plugins/fontawesome-free/css/all.min.css">
   <!-- Ionicons -->
@@ -123,7 +124,7 @@ if(!isset($_SESSION['S_IDUSUARIO'])){
             <a href="#" onclick="cargar_contenido('contenido_principal', 'usuario/vista_colegio_cimeqh.php')" class="nav-link">
               <i class="nav-icon fas fa-solid fa-user"></i>
               <p>
-                DELEGADO CIMEQH
+                DELEGADO
               </p>
             </a>
           </li>
@@ -131,7 +132,7 @@ if(!isset($_SESSION['S_IDUSUARIO'])){
               <a href="#" onclick="cargar_contenido('contenido_principal', 'usuario/vista_reportes_cimeqh.php')" class="nav-link">
                 <i class="nav-icon far fa-file"></i> 
                 <p>
-                  Reportes CIMEQH
+                  REPORTES
                  
                 </p>
               </a>
@@ -166,7 +167,144 @@ if(!isset($_SESSION['S_IDUSUARIO'])){
             </div>
           </div>
           <div class="card-body">
-            Contenido Principal
+          <div class="d-flex justify-content-center">
+            <div class="imag_cah">
+              <img src="../vista/fpdf/cimeqh.jpeg" alt="logo_cah">
+            </div>
+          </div>
+<!-- ************************************************************************************************ -->
+            <div class="container">
+              <!-- Button trigger modal -->
+            <div class="box">
+            <button type="button" class="btn btn-primary custom-btn " data-toggle="modal" data-target="#exampleModalCenter">
+              Sobre Nosotros 
+            </button>
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Colegio Cimeqh</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                  <p>
+                  El colegio de Ingenieros Mecánicos, Electricistas y Químicos de Honduras y Ramas Afines. Es una institución sin fines de lucro, apolítica, cuyo objetivo principal es el de velar por el desarrollo tecnológico del pais mediante la regulación del ejercicio profesional y actualización de sus agremiados, procurando capacitarlos para que adquieran conocimientos, destrezas y habilidades adicionales, a fin de lograr mayor productividad y competitividad en los servicios profesionales; asi como promover la protección económica  y solidaridad entre  los miembros.
+                  </p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            </div>
+<!-- ************************************************************************************************ -->
+
+<!-- ************************************************************************************************ -->
+            <!-- Button trigger modal -->
+            <div class="box">
+            <button type="button" class="btn btn-primary custom-btn " data-toggle="modal" data-target="#modalHistoria">
+              Historia 
+            </button>
+            <!-- Modal -->
+            <div class="modal fade bd-example-modal-lg" id="modalHistoria" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+              <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Colegio Cimeqh</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                  <p>
+                  La Asociación de Ingenieros Mecánicos, Electricistas y Químicos de Honduras "AIMEQH", creada a finales de la década de los setenta es el origen del Colegio de Ingenieros Mecánicos, Electricistas y Químicos de Honduras y ramas afines "CIMEQH". En su corta vida, esta asociación tuvo como presidentes a los distinguidos profesionales de la Ingeniería Eléctrica, Dr. Luis Cosenza Jiménez y Percy Armando Buck Mendoza; quienes canalizaron toda su energía y conocimientos para coordinar las actividades desarrolladas. Adicionalmente 38 distinguidos profesionales de la Ingeniería Eléctrica, Mecánica y Química impulsaron los Estatutos, Ley Orgánica y Reglamento Interno del CIMEQH ante el Congreso Nacional y así darle vida al Colegio que hoy tenemos.
+                  </p>
+                  <p>
+                  Este nace como Colegio en 1980 según Decreto No. 902 del 24 de marzo de 1980 siendo los fundadores el miso grupo de Ingenieros de la AIMEQH, la cual desaparece al nacer el CIMEQH; de los cuales 16 eran egresados de Universidades Extranjeras y 24 de la UNAH. Aunque en la década de los setenta la UNAH ya graduaba Ingenieros en estas disciplinas, el número de egresados era pequeño en sus inicios, lo que hacía difícil la creación de un Colegio fuerte, razón por la cual algunos de los Ingenieros de estas especialidades como única alternativa se afiliaban en el CICH.
+                  </p>
+                  <p>
+                  Sin embargo, en la década de los ochenta y noventa el número de agremiados se incrementó considerablemente en calidad y cantidad, haciendo que el CIMEQH sea una de las Organizaciones Profesionales más Fuertes y Beligerantes del País, cuyos miembros hacen aportaciones sustanciales en el Proceso de Desarrollo Tecnológico de la nación.
+                  </p>   
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            </div>
+<!-- ************************************************************************************************ -->
+
+<!-- ************************************************************************************************ -->
+            <!-- Button trigger modal -->
+            <div class="box">
+            <button type="button" class="btn btn-primary custom-btn" data-toggle="modal" data-target="#modalvision">
+              Misión y Visión
+            </button>
+            <!-- Modal -->
+            <div class="modal fade" id="modalvision" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Colegio Cimeqh</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                  <p>
+                  <h2>
+                  MISIÓN
+                  </h2>
+                    Llegar a ser el Colegio Profesional con la más alta proyección a la comunidad a través de la participación de sus agremiados.
+                  <hr>
+                  <h2>
+                    VISIÓN
+                  </h2>
+                  Contar con los recursos necesarios para asegurar el bienestar de todos nuestros agreamiados y de la Institucion misma, generando un clima de confianza y de apoyo al colegiado, para comprometerlo a participar en todas las acciones que desarrolle el CIMEQH. Velando, a la vez, por un ejercicio de la profesión con los más altos valores personales y de conducta.
+                  </p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            </div>
+<!-- ************************************************************************************************ -->
+<!-- ************************************************************************************************ -->
+            <!-- Button trigger modal -->
+            <div class="box">
+            <button type="button" class="btn btn-primary custom-btn " data-toggle="modal" data-target="#modalobjetivo">
+             Objetivo
+            </button>
+            <!-- Modal -->
+            <div class="modal fade" id="modalobjetivo" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Colegio Cimeqh</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                  <p>
+                  La Asociación de Ingenieros Mecánicos, Electricistas y Químicos de Honduras "AIMEQH", creada a finales de la década de los setenta es el origen del Colegio de Ingenieros Mecánicos, Electricistas y Químicos de Honduras y ramas afines "CIMEQH". En su corta vida, esta asociación tuvo como presidentes a los distinguidos profesionales de la Ingeniería Eléctrica, Dr. Luis Cosenza Jiménez y Percy Armando Buck Mendoza; quienes canalizaron toda su energía y conocimientos para coordinar las actividades desarrolladas. Adicionalmente 38 distinguidos profesionales de la Ingeniería Eléctrica, Mecánica y Química impulsaron los Estatutos, Ley Orgánica y Reglamento Interno del CIMEQH ante el Congreso Nacional y así darle vida al Colegio
+                  </p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            </div>
+<!-- ************************************************************************************************ -->
           </div>
         </div>
       </div>

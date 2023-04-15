@@ -153,6 +153,53 @@ function Registrar_Nota_Cimeqh(){
     })
 }
 
+function Editar_Nota_Cimeqh()
+{
+    
+        let exp = $('#txt_exp_editar').val();
+        let proye = $('#txt_proyect_editar').val();
+        let prop = $('#txt_prop_editar').val();
+        let cat = $('#txt_cat_editar').val();
+        let area = $('#txt_area_editar').val();
+        let presu = $('#txt_pre_editar').val();
+        let colegiado = $('#txt_ing_editar').val();
+        let obs = $('#txt_obs_editar').val();
+        let estatus = $('#cbm_estatus_editar').val();
+        let fecha = $('#txt_fech_editar').val();
+        if(exp.length == 0 || proye.length == 0 || prop.length == 0 || cat.length == 0 || area.length == 0 || presu.length == 0 || colegiado.length == 0 || estatus.length == 0  || obs.length == 0 || fecha.length == 0){
+            return Swal.fire("Advertencia", "Llene los campos vacios","warning");
+        }
+        $.ajax({
+            url: `../controlador/colegios/controlador_cimeqh_editar.php`,
+            type: 'POST',
+            data: {
+                _method: 'PUT',
+                expediente: exp,
+                proyecto: proye,
+                propietario: prop,
+                catastral: cat,
+                area: area,
+                presupuesto: presu,
+                colegiado: colegiado,
+                estatus: estatus,
+                observaciones: obs,
+                fecha: fecha,
+            }
+        }).done(function(resp){
+            
+            if(resp == 1){
+                $('#modal_nuevo_cimeqh').modal('hide');
+                Swal.fire("CONFRIMADO", "Nota de Construcción Actualizada","success")
+                .then((value)=>{
+                    LimpiarRegistro();
+                    table.ajax.reload();
+                }); 
+            }else{  
+                Swal.fire("ERROR", "No se pudo completar la actualización","error");
+            }
+        });
+}
+
 function LimpiarRegistro(){
     $('#txt_exp').val("");
     $('#txt_proyect').val("");

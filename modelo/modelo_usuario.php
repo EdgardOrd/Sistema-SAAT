@@ -319,6 +319,21 @@
                 $this->conexion->cerrar();
             }
         }
+
+        function Actualizar_Cimeqh($expediente, $proyecto, $propietario, $catastral, $area, $presupuesto, $colegiado, $estatus, $observaciones, $fecha)
+            {
+                $sql = "CALL SP_ACTUALIZAR_CIMEQH('$expediente', '$proyecto', '$propietario', '$catastral', $area, $presupuesto, '$colegiado', '$estatus', '$observaciones', '$fecha');";
+                
+
+                if ($consulta = $this->conexion->conexion->query($sql)) {
+                    return 1;
+                }
+                else{
+                    return 0;
+                }
+            }
+
+
         
     }
 ?>

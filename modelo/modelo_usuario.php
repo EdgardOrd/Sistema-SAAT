@@ -333,7 +333,30 @@
                 }
             }
 
+            function Actualizar_Cah($expediente, $proyecto, $propietario, $catastral, $area, $presupuesto, $colegiado, $estatus, $observaciones, $fecha)
+            {
+                $sql = "CALL SP_ACTUALIZAR_CAH('$expediente', '$proyecto', '$propietario', '$catastral', $area, $presupuesto, '$colegiado', '$estatus', '$observaciones', '$fecha');";
+                
 
+                if ($consulta = $this->conexion->conexion->query($sql)) {
+                    return 1;
+                }
+                else{
+                    return 0;
+                }
+            }
+            function Actualizar_Cich($expediente, $proyecto, $propietario, $catastral, $area, $presupuesto, $colegiado, $estatus, $observaciones, $fecha)
+            {
+                $sql = "CALL SP_ACTUALIZAR_CICH('$expediente', '$proyecto', '$propietario', '$catastral', $area, $presupuesto, '$colegiado', '$estatus', '$observaciones', '$fecha');";
+                
+
+                if ($consulta = $this->conexion->conexion->query($sql)) {
+                    return 1;
+                }
+                else{
+                    return 0;
+                }
+            }
         
     }
 ?>

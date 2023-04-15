@@ -188,7 +188,7 @@ function Editar_Nota_Cimeqh()
         }).done(function(resp){
             
             if(resp == 1){
-                $('#modal_nuevo_cimeqh').modal('hide');
+                $('#modal_nuevo_editar').modal('hide');
                 Swal.fire("CONFRIMADO", "Nota de Construcción Actualizada","success")
                 .then((value)=>{
                     LimpiarRegistro();

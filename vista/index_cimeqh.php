@@ -14,9 +14,9 @@ if(!isset($_SESSION['S_IDUSUARIO'])){
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Font Awesome -->
-<!-- Tell the browser to be responsive to screen width -->
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="../vista/estilo_colegios/cimeqh.css">
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../vista/estilo_colegios/cimeqh.css">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="../Plantilla/plugins/fontawesome-free/css/all.min.css">
   <!-- Ionicons -->

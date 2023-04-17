@@ -37,9 +37,6 @@ if(!isset($_SESSION['S_IDUSUARIO'])){
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
   <link href='https://unpkg.com/css.gg/icons/all.css' rel='stylesheet'>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-  
- 
-
 </head>
 
 <style>
@@ -77,7 +74,7 @@ if(!isset($_SESSION['S_IDUSUARIO'])){
 <div class="wrapper">
 
   <!-- Navbar -->
-  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+<nav class="main-header navbar navbar-expand navbar-white navbar-light">
   <!-- Left navbar links -->
   <ul class="navbar-nav">
     <li class="nav-item">

@@ -112,7 +112,7 @@ if(!empty($_GET["fecha_inicial"]) and !empty($_GET["fecha_final"]))
    $pdf->SetFont('Arial', '', 8);
    $pdf->SetDrawColor(163, 163, 163); //colorBorde
 
-   $consulta_reporte = $conexion->conexion->query("CALL SP_APROBADOS_CIMEQH('$fecha_inicial','$fecha_final')");
+   $consulta_reporte = $conexion->conexion->query("CALL SP_APROBADOS_CAH('$fecha_inicial','$fecha_final')");
 
    while ($datos_reporte = $consulta_reporte->fetch_object()) {      
       

@@ -1,14 +1,30 @@
 
 <script type="text/javascript" src="../js/cimeqh.js?rev=<?php echo time();?>"></script>
-<link rel="stylesheet" href="../vista/css/colegios.css">
+<style>
+  table th{
+    background-color: #273884 !important;
+    color: white;
+  }
+
+  .titulo {
+  font-family: 'Roboto', sans-serif;
+  font-size: 32px;
+  font-weight: bold;
+  color: #333;
+  text-transform: uppercase;
+  text-shadow: 2px 2px #ccc;
+  border-radius: 5px;
+  box-shadow: 0px 3px 0px #ccc;
+  padding: 15px;
+  margin-bottom: 50px;
+  text-align: center;
+}
+</style>
 <div class="col-md-12">
         <div class="card card-primary">
-          <div class="card-header">
-                <h3 class="text-center">BIENVENIDO AL HISTORIAL DE REGISTRO EN CIMEQH</h3>
-                 
-         </div>
+          <div class="card-header"></div>
          <div class="card-body">  
-         <h3 class="mt-4 mb-2">Registro de Notas de Construcción</h3><br>
+         <h3 class="titulo">Registro de Notas de Construcción</h3>
          <div class="form-group row">
                 <div class="col-lg-8">
                   <div class="input-group">
@@ -27,9 +43,7 @@
                   <i class="fas fa-download me-2 mr-2"></i>
                     <span class="me-2">Descargar</span>
                   </button>
-                </div>
-           
-                
+                </div>          
               </div><br>
 <!--**************************** TABLA DE CIMEQH *****************************************************************-->
             <table id="tabla_cimeqh" class="display responsive nowrap" style="width:100%">
@@ -63,7 +77,6 @@
         </div>
     </div>
 </div>
-
 <!--*********************************************MODAL DE REGISTRO************************************************-->
 <form autocomplete="false" onsubmit="return false">
   <div class="modal" id="modal_nuevo_cimeqh">
@@ -86,7 +99,7 @@
             </div>
             <div class="col-lg-6">
               <label for="">Nombre de Ingeniero</label>
-              <input type="text" class="form-control" id="txt_ing" placeholder="Ingrese nombre del colegiado">
+              <input type="text" class="form-control" id="txt_ing" placeholder="Ingrese nombre del colegiado" maxlenght="50" onkeypress="return soloLetras(event)">
               <br>
             </div>
             <div class="col-lg-12">
@@ -96,7 +109,7 @@
             </div>
             <div class="col-lg-6">
               <label for="">Propietario</label>
-              <input type="text" class="form-control" id="txt_prop" placeholder="Ingrese el propietario">
+              <input type="text" class="form-control" id="txt_prop" placeholder="Ingrese el propietario" maxlenght="50" onkeypress="return soloLetras(event)">
               <br>
             </div>
             <div class="col-lg-6">
@@ -170,7 +183,7 @@
             </div>
             <div class="col-lg-6">
               <label for="">Nombre de Ingeniero</label>
-              <input type="text" class="form-control" id="txt_ing_editar" placeholder="Ingrese el nombre del colegiado">
+              <input type="text" class="form-control" id="txt_ing_editar" placeholder="Ingrese el nombre del colegiado" maxlenght="50" onkeypress="return soloLetras(event)">
               <br>
             </div>
             <div class="col-lg-12">
@@ -180,7 +193,7 @@
             </div>
             <div class="col-lg-6">
               <label for="">Propietario</label>
-              <input type="text" class="form-control" id="txt_prop_editar" placeholder="Ingrese el propietario">
+              <input type="text" class="form-control" id="txt_prop_editar" placeholder="Ingrese el propietario" maxlenght="50" onkeypress="return soloLetras(event)">
               <br>
             </div>
             <div class="col-lg-6">

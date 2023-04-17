@@ -1,15 +1,29 @@
 <script type="text/javascript" src="../js/cich.js?rev=<?php echo time();?>"></script>
-<link rel="stylesheet" href="../vista/css/colegios.css">
+<style>
+  table th{
+    background-color: #517540 !important;
+    color: white;
+  }
+
+  .titulo {
+  font-family: 'Roboto', sans-serif;
+  font-size: 32px;
+  font-weight: bold;
+  color: #333;
+  text-transform: uppercase;
+  text-shadow: 2px 2px #ccc;
+  border-radius: 5px;
+  box-shadow: 0px 3px 0px #ccc;
+  padding: 15px;
+  margin-bottom: 50px;
+  text-align: center;
+}
+</style>
 <div class="col-md-12">
         <div class="card card-warning">
-          <div class="card-header">
-            <h3 class="text-center">BIENVENIDO AL HISTORIAL DE REGISTRO EN CICH</h3>
-              <div class="card-tools">
-              
-              </div>
-        </div>
+          <div class="card-header"></div>
         <div class="card-body">   
-        <h3 class="mt-4 mb-2">Registro de Notas de Construcción</h3><br>
+        <h3 class="titulo">Registro de Notas de Construcción</h3><br>
         <div class="form-group row">
                 <div class="col-lg-8">
                   <div class="input-group">
@@ -85,7 +99,7 @@
             </div>
             <div class="col-lg-6">
               <label for="">Nombre de Ingeniero</label>
-              <input type="text" class="form-control" id="txt_ing" placeholder="Ingrese nombre del colegiado">
+              <input type="text" class="form-control" id="txt_ing" placeholder="Ingrese nombre del colegiado" maxlenght="50" onkeypress="return soloLetras(event)">
               <br>
             </div>
             <div class="col-lg-12">
@@ -95,7 +109,7 @@
             </div>
             <div class="col-lg-6">
               <label for="">Propietario</label>
-              <input type="text" class="form-control" id="txt_prop" placeholder="Ingrese el propietario">
+              <input type="text" class="form-control" id="txt_prop" placeholder="Ingrese el propietario" maxlenght="50" onkeypress="return soloLetras(event)">
               <br>
             </div>
             <div class="col-lg-6">
@@ -170,7 +184,7 @@
             </div>
             <div class="col-lg-6">
               <label for="">Nombre de Ingeniero</label>
-              <input type="text" class="form-control" id="txt_ing_editar" placeholder="Ingrese nombre del colegiado">
+              <input type="text" class="form-control" id="txt_ing_editar" placeholder="Ingrese nombre del colegiado" maxlenght="50" onkeypress="return soloLetras(event)">
               <br>
             </div>
             <div class="col-lg-12">
@@ -180,7 +194,7 @@
             </div>
             <div class="col-lg-6">
               <label for="">Propietario</label>
-              <input type="text" class="form-control" id="txt_prop_editar" placeholder="Ingrese el propietario">
+              <input type="text" class="form-control" id="txt_prop_editar" placeholder="Ingrese el propietario" maxlenght="50" onkeypress="return soloLetras(event)">
               <br>
             </div>
             <div class="col-lg-6">

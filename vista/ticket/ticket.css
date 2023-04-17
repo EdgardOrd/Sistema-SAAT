@@ -9,6 +9,10 @@ body{
     height: 100vh;
 }
 
+.container-fluid {
+    padding: 0;
+  }
+
 .container{
     height: 100%;
     color: #000000;
@@ -32,11 +36,11 @@ body{
     font-weight: 600;
 }
 .left_content p{
-    margin-top: 50px;
+    margin-top: 10px;
     padding-right: 100px;
     font-weight: 500;
     font-size: 20px;
-    margin-bottom: 50px;
+    margin-bottom: 20px;
     color: white;
 }
 
@@ -95,18 +99,40 @@ span{
     background-size: cover;
 }
 
+#colegios {
+    width: 400px;
+    height: 200px;
+    font-size: 16px;
+    color: white;
+    background-color: transparent; /* Hacer que el fondo del select sea transparente */
+    padding: 15px;
+    margin-bottom: 10px;
+    appearance: none;
+    border: 1px solid white;
+    margin-bottom: 40px;
+  }
+  
+  #colegios option {
+    color: white;
+    font-size: 16px;
+    padding: 20px;
+    background-color: transparent; /* Establecer el color de fondo de las opciones */
+  }
+  
+nav p{
+    color: white;
+    padding-right: 150px;
+    padding-top: 10px;
+}
 
-@media only screen and (min-width: 1200px){
-    h1{
-        font-size: 2.5em;
-    }
-    p{
-        margin-right: 70px;
-    }
-    .estadistica{
-        display: flex;
-        justify-content: space-between;
-        margin-right: 70px;
-    }
+#watch {
+    color: #ffffff;
+    padding-right: 20px;
+    margin-top: -10px; /* Mueve el elemento 10px hacia arriba */
+    margin-bottom: -20px; /* Agrega un margen negativo para compensar el espacio */
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 24px;
+    text-shadow: 2px 2px 4px #000000;
 }
 

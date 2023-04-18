@@ -41,7 +41,7 @@ function listar_usuario_cimeqh(){
            },  
            {"data":"Observaciones"},  
            {"data":"Fecha"},  
-           {"defaultContent":"<button style='font-size:13px;' type='button' class='editar btn btn-primary'><i class='fas fa-edit' aria-hidden='true'></i></button>"}
+           {"defaultContent":"<button style='font-size:13px;' type='button' class='editar btn btn-primary'><i class='fas fa-edit' aria-hidden='true'></i></button>&nbsp;<button style='font-size:13px;' type='button' class='imprimir btn btn-success'><i class='fas fa-file-excel' aria-hidden='true'></i></button>"}
         //    {"defaultContent":"<button type='button' class='btn btn-primary dropdown-toggle' data-toggle='dropdown'> Acción <span class='caret'></span> </button> <ul class='dropdown-menu'> <li><a href='#'>Opción 1</a></li> <li><a href='#'>Opción 2</a></li> <li><a href='#'>Opción 3</a></li> </ul>"} DROPDOWN por si se quiere agregar.........
        ], 
        "language":idioma_espanol,

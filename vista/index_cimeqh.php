@@ -160,7 +160,7 @@ if(!isset($_SESSION['S_IDUSUARIO'])){
       <div class="col-md-12">
         <div class="card card-warning card-solid">
           <div class="card-header with-border">
-            <h3 class="card-title">BIENVENIDO AL CONTENIDO PRINCIPAL DEL COLEGIO CIMEQH</h3>
+            <h3 class="text-center">BIENVENIDO AL CONTENIDO PRINCIPAL DEL COLEGIO CIMEQH</h3>
 
             <div class="card-tools pull-right">
             

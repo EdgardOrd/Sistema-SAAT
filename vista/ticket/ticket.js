@@ -4,7 +4,7 @@ function EnviarTicket(){
         icon: 'success',
         title: 'Por favor, toma tu ticket!',
         showConfirmButton: false,
-        timer: 1800
+        timer: 2000
       })     
 }
 

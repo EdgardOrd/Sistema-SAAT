@@ -71,10 +71,10 @@ var table;
 function listar_usuario(){
     table = $("#tabla_usuario").DataTable({
        "ordering":false,
-       "paging": false,
+       "paging": true,
        "searching": { "regex": true },
-       "lengthMenu": [ [10, 25, 50, 100, -1], [10, 25, 50, 100, "All"] ],
-       "pageLength": 100,
+       "lengthMenu": [ [10, 25, 50, 100, -1], [10, 25, 50, 100, "Todos"] ],
+       "pageLength": 10,
        "destroy":true,
        "async": false ,
        "processing": true,
@@ -97,7 +97,6 @@ function listar_usuario(){
            },  
            {"defaultContent":"<button style='font-size:13px;' type='button' class='desactivar btn btn-danger'><i class='fa fa-power-off' aria-hidden='true'></i></button>&nbsp;<button style='font-size:13px;' type='button' class='activar btn btn-success'><i class='fa fa-power-off' aria-hidden='true'></i></button>"}
        ], 
-
        "language":idioma_espanol,
        select: true
    });

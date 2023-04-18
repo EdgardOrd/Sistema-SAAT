@@ -7,10 +7,10 @@ var table;
 function listar_usuario_cimeqh(){
     table = $("#tabla_cimeqh").DataTable({
        "ordering":false,
-       "paging": false,
+       "paging": true,
        "searching": { "regex": true },
-       "lengthMenu": [ [10, 25, 50, 100, -1], [10, 25, 50, 100, "All"] ],
-       "pageLength": 100,
+       "lengthMenu": [ [10, 25, 50, 100, -1], [10, 25, 50, 100, "Todos"] ],
+       "pageLength": 10,
        "destroy":true,
        "async": false ,
        "processing": true,
@@ -41,7 +41,7 @@ function listar_usuario_cimeqh(){
            },  
            {"data":"Observaciones"},  
            {"data":"Fecha"},  
-           {"defaultContent":"<button style='font-size:13px;' type='button' class='editar btn btn-primary'><i class='fas fa-edit' aria-hidden='true'></i></button>&nbsp;<button style='font-size:13px;' type='button' class='imprimir btn btn-success'><i class='fas fa-file-excel' aria-hidden='true'></i></button>"}
+           {"defaultContent":"<button title='Editar Registro' style='font-size:13px;' type='button' class='editar btn btn-primary'><i class='fas fa-edit' aria-hidden='true'></i></button>&nbsp;<button title='Imprimir Registro' style='font-size:13px;' type='button' class='imprimir btn btn-danger'><i class='fas fa-print' aria-hidden='true'></i></button>"}
         //    {"defaultContent":"<button type='button' class='btn btn-primary dropdown-toggle' data-toggle='dropdown'> Acción <span class='caret'></span> </button> <ul class='dropdown-menu'> <li><a href='#'>Opción 1</a></li> <li><a href='#'>Opción 2</a></li> <li><a href='#'>Opción 3</a></li> </ul>"} DROPDOWN por si se quiere agregar.........
        ], 
        "language":idioma_espanol,
@@ -61,8 +61,6 @@ $('#tabla_cimeqh').on('click','.editar',function(){
     if(table.row(this).child.isShown()){
         var data = table.row(this).data();
     }
-    $("#modal_nuevo_editar").modal({backdrop:'static',keyboard:false})
-    $("#modal_nuevo_editar").modal('show');
     $("#modal_nuevo_editar").modal({backdrop:'static',keyboard:false})
     $("#modal_nuevo_editar").modal('show');
     $("#txt_exp_editar").val(data.Expediente);
@@ -208,12 +206,15 @@ function LimpiarRegistro(){
     $('#cbm_estatus').val("");
     $('#txt_obs').val("");
     $('#txt_fech').val("");
+    $('#txt_ing').val("");
+    $('#txt_area').val("");
+    $('#txt_pre').val("");
 }
 
 function soloLetras(e){
     key = e.keyCode || e.which;
     tecla = String.fromCharCode(key).toLocaleLowerCase();
-    letras = "áéíóúabcdefghijklmnñopqrstuvwxyz";
+    letras = "áéíóúabcdefghijklmnñopqrstuvwxyz. ";
     especiales = "8-37-39-46";
     tecla_especial = false;
     for(var i in especiales){
@@ -225,4 +226,15 @@ function soloLetras(e){
     if(letras.indexOf(tecla)==-1 && !tecla_especial){
         return false;
     }
+}
+
+function soloNumeros(e){
+    tecla = (document.all) ? e.keyCode : e.which;
+    if(tecla == 8){
+        return true;
+    }
+    // PATRON DE ENTRADA, SOLO ACEPTA NUMEROS DEL 0-9
+    patron = /[0-9]/;
+    tecla_final = String.fromCharCode(tecla);
+    return patron.test(tecla_final);
 }

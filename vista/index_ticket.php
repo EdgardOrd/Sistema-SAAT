@@ -19,12 +19,12 @@ if(!isset($_SESSION['S_IDUSUARIO'])){
         <nav class="navbar navbar-light" style="background-color: #0e285d;">
             <div class="container-fluid">
                 <div class="text-start">
+                    <div id="watch" ></div>
+                </div>
+                <div class="text-end">
                     <a href="../controlador/usuario/controlador_cerrar_session.php">
                     <img src="../plantilla/../plantilla/dist/img/cerrarsesion1.png" alt="" width="40" height="34" class="d-inline-block align-text-top" style="margin-left: 20px;">
                     </a>
-                </div>
-                <div class="text-end">
-                    <div id="watch" ></div>
                 </div>
             </div>
         </nav>

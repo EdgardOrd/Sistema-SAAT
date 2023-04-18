@@ -139,7 +139,7 @@
             </div>
             <div class="col-lg-6">
               <label for="">Presupuesto</label>
-              <input type="number" class="form-control" id="txt_pre" placeholder="Presupuesto del Proyecto">
+              <input type="text" class="form-control" id="txt_pre" placeholder="Presupuesto del Proyecto" onkeypress="return soloNumeros(event)">
               <br>
             </div>
             <div class="col-lg-12">
@@ -178,7 +178,7 @@
           <div class="row">
             <div class="col-lg-6">
               <label for="">N° de Expediente</label>
-              <input type="number" class="form-control" id="txt_exp_editar" placeholder="Ingrese Numero de Expediente">
+              <input type="number" class="form-control" id="txt_exp_editar" placeholder="Ingrese Numero de Expediente" disabled>
               <br>
             </div>
             <div class="col-lg-6">
@@ -223,7 +223,7 @@
             </div>
             <div class="col-lg-6">
               <label for="">Presupuesto</label>
-              <input type="number" class="form-control" id="txt_pre_editar" placeholder="Presupuesto del Proyecto">
+              <input type="text" class="form-control" id="txt_pre_editar" placeholder="Presupuesto del Proyecto" onkeypress="return soloNumeros(event)">
               <br>
             </div>
             <div class="col-lg-12">

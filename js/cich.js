@@ -8,10 +8,10 @@ var table;
 function listar_usuario_cich(){
     table = $("#tabla_cich").DataTable({
        "ordering":false,
-       "paging": false,
+       "paging": true,
        "searching": { "regex": true },
-       "lengthMenu": [ [10, 25, 50, 100, -1], [10, 25, 50, 100, "All"] ],
-       "pageLength": 100,
+       "lengthMenu": [ [10, 25, 50, 100, -1], [10, 25, 50, 100, "Todos"] ],
+       "pageLength": 10,
        "destroy":true,
        "async": false ,
        "processing": true,
@@ -42,7 +42,7 @@ function listar_usuario_cich(){
            },  
            {"data":"Observaciones"},  
            {"data":"Fecha"},
-           {"defaultContent":"<button style='font-size:13px;' type='button' class='editar btn btn-primary'><i class='fas fa-edit' aria-hidden='true'></i></button>"}
+           {"defaultContent":"<button title='Editar Registro' style='font-size:13px;' type='button' class='editar btn btn-primary'><i class='fas fa-edit' aria-hidden='true'></i></button>&nbsp;<button title='Imprimir Registro' style='font-size:13px;' type='button' class='imprimir btn btn-danger'><i class='fas fa-print' aria-hidden='true'></i></button>"}
        ], 
        "language":idioma_espanol,
        select: true
@@ -203,12 +203,15 @@ function LimpiarRegistro(){
     $('#cbm_estatus').val("");
     $('#txt_obs').val("");
     $('#txt_fech').val("");
+    $('#txt_ing').val("");
+    $('#txt_area').val("");
+    $('#txt_pre').val("");
 }
 
 function soloLetras(e){
     key = e.keyCode || e.which;
     tecla = String.fromCharCode(key).toLocaleLowerCase();
-    letras = "áéíóúabcdefghijklmnñopqrstuvwxyz";
+    letras = "áéíóúabcdefghijklmnñopqrstuvwxyz. ";
     especiales = "8-37-39-46";
     tecla_especial = false;
     for(var i in especiales){
@@ -220,4 +223,15 @@ function soloLetras(e){
     if(letras.indexOf(tecla)==-1 && !tecla_especial){
         return false;
     }
+}
+
+function soloNumeros(e){
+    tecla = (document.all) ? e.keyCode : e.which;
+    if(tecla == 8){
+        return true;
+    }
+    // PATRON DE ENTRADA, SOLO ACEPTA NUMEROS DEL 0-9
+    patron = /[0-9]/;
+    tecla_final = String.fromCharCode(tecla);
+    return patron.test(tecla_final);
 }

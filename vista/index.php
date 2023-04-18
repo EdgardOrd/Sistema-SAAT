@@ -90,8 +90,8 @@ if(!isset($_SESSION['S_IDUSUARIO'])){
     <li class="nav-item">
       <div class="pull-right">
         <div>
-          <a href="../controlador/usuario/controlador_cerrar_session.php" ><button type="button" class="btn btn-danger btn-lg"><i class="fas fa-sign-out-alt"></i> 
-           Cerrar Sesión</button>
+          <a href="../controlador/usuario/controlador_cerrar_session.php" ><button title="Salir" type="button" class="btn btn-light btn-lg"><i class="fas fa-sign-out-alt"></i> 
+           </button>
           </a>
         </div>
       </div>

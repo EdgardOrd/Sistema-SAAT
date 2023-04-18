@@ -1,8 +1,14 @@
 <script type="text/javascript" src="../js/usuario.js?rev=<?php echo time();?>"></script>
+<style>
+    table th{
+    background-color: #273884 !important;
+    color: white;
+  }
+</style>
 <div class="col-md-12">
         <div class="card card-warning">
           <div class="card-header">
-            <h3 class="card-title">BIENVENIDO AL CONTENIDO DEL USUARIO</h3>
+            <h3 class="text-center">CONTENIDO DEL USUARIO</h3>
               <div class="card-tools">
                 
               </div> 
@@ -31,7 +37,7 @@
               <table id="tabla_usuario" class="display responsive nowrap" style="width: 100%">
                   <thead>
                     <tr>
-                      <th>|</th>
+                      <th></th>
                       <th>Usuario</th>
                       <th>Rol</th>
                       <th>Estatus</th>
@@ -41,7 +47,7 @@
                   </thead>
                   <tfoot>
                     <tr>
-                      <th>|</th>
+                      <th></th>
                       <th>Usuario</th>
                       <th>Rol</th>
                       <th>Estatus</th>

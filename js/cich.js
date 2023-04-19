@@ -75,6 +75,15 @@ $('#tabla_cich').on('click','.editar',function(){
     $("#txt_pre_editar").val(data.Presupuesto);
 });
 
+$('#tabla_cich').on('click','.imprimir',function(){
+    var data = table.row($(this).parents('tr')).data();
+    if(table.row(this).child.isShown()){
+        var data = table.row(this).data();
+    }
+    window.open("../vista/fpdf/NotaCich.php?expe="+parseInt(data.Expediente)+"#zoom=100%","PDF","scrollbars=NO");
+});
+
+
 function filterGlobal() {
     $('#tabla_cich').DataTable().search(
         $('#global_filter').val(),

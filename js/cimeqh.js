@@ -75,7 +75,13 @@ $('#tabla_cimeqh').on('click','.editar',function(){
     $("#txt_pre_editar").val(data.Presupuesto);
 });
 
-
+$('#tabla_cimeqh').on('click','.imprimir',function(){
+    var data = table.row($(this).parents('tr')).data();
+    if(table.row(this).child.isShown()){
+        var data = table.row(this).data();
+    }
+    window.open("../vista/fpdf/NotaCimeqh.php?expe="+parseInt(data.Expediente)+"#zoom=100%","PDF","scrollbars=NO");
+});
 
 
 function filterGlobal() {

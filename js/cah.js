@@ -75,6 +75,14 @@ $('#tabla_cah').on('click','.editar',function(){
 });
 
 
+$('#tabla_cah').on('click','.imprimir',function(){
+    var data = table.row($(this).parents('tr')).data();
+    if(table.row(this).child.isShown()){
+        var data = table.row(this).data();
+    }
+    window.open("../vista/fpdf/NotaCah.php?expe="+parseInt(data.Expediente)+"#zoom=100%","PDF","scrollbars=NO");
+});
+
 function filterGlobal() {
     $('#tabla_cah').DataTable().search(
         $('#global_filter').val(),

@@ -168,9 +168,8 @@ if(!isset($_SESSION['S_IDUSUARIO'])){
             </div>
           </div>
           <!-- ************************************************************************************************ -->
-          <div class="container">
               <!-- Button trigger modal -->
-            <div class="box">
+            <div class="box ml-5">
             <button type="button" class="btn btn-warning custom-btn " data-toggle="modal" data-target="#exampleModalCenter">
               Sobre Nosotros 
             </button>
@@ -200,7 +199,7 @@ if(!isset($_SESSION['S_IDUSUARIO'])){
 
 <!-- ************************************************************************************************ -->
             <!-- Button trigger modal -->
-            <div class="box">
+            <div class="box ml-4">
             <button type="button" class="btn btn-warning custom-btn " data-toggle="modal" data-target="#modalHistoria">
               Historia 
             </button>
@@ -236,7 +235,7 @@ if(!isset($_SESSION['S_IDUSUARIO'])){
 
 <!-- ************************************************************************************************ -->
             <!-- Button trigger modal -->
-            <div class="box">
+            <div class="box ml-4">
             <button type="button" class="btn btn-warning custom-btn" data-toggle="modal" data-target="#modalvision">
               Misión y Visión
             </button>
@@ -273,7 +272,7 @@ if(!isset($_SESSION['S_IDUSUARIO'])){
 <!-- ************************************************************************************************ -->
 <!-- ************************************************************************************************ -->
             <!-- Button trigger modal -->
-            <div class="box">
+            <div class="box ml-4">
             <button type="button" class="btn btn-warning custom-btn " data-toggle="modal" data-target="#modalobjetivo">
             Objetivo
             </button>
@@ -300,7 +299,6 @@ if(!isset($_SESSION['S_IDUSUARIO'])){
             </div>
             </div>
 <!-- ************************************************************************************************ -->
-          </div>
         </div>
       </div>
     </div>

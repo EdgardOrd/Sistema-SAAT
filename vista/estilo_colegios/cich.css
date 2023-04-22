@@ -26,4 +26,8 @@ box-shadow: 2px 2px 5px rgba(0, 0, 0, 1) !important;
 background-color: #5ca53b !important; /* color de fondo al pasar el mouse */
     }
     
-    
+    @media (max-width: 768px) { /* media query para pantallas más pequeñas */
+        .container {
+          flex-direction: column !important; /* cambia la dirección de los elementos a columnas */
+        }
+      }

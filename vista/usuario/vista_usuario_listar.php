@@ -15,13 +15,13 @@
         </div>
             <div class="card-body"> <br>  
             <div class="form-group row">
-                <div class="col-lg-8"> 
+                <div class="col-lg-8 mb-3"> 
                   <div class="input-group">
                     <input type="text" class="global_filter form-control" id="global_filter" placeholder="Ingresar usuario a buscar">
                     <span class="input-group-addon "><i class="fa fa-search pt-2 pl-2"></i> </span>
                   </div>
                 </div>
-                <div class="col-lg-2">
+                <div class="col-lg-2 mb-3">
                   <button class="btn btn-primary d-flex align-items-center justify-content-center py-2" style="width:100%" onclick="abrirModalRegistro()">
                     <i class="gg-add-r btn-icon me-2 mr-2"></i>
                     <span class="me-2">Nuevo Usuario</span>

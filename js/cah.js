@@ -80,7 +80,7 @@ $('#tabla_cah').on('click','.imprimir',function(){
     if(table.row(this).child.isShown()){
         var data = table.row(this).data();
     }
-    window.open("../vista/fpdf/NotaCah.php?expe="+parseInt(data.Expediente)+"#zoom=100%","PDF","scrollbars=NO");
+    window.open('../vista/fpdf/NotaCah.php?Propietario=' + data.Propietario + '&Clave_Catastral=' + data.Clave_Catastral + '&Expediente=' + data.Expediente + '&Colegiado=' + encodeURIComponent(data.Colegiado)+ '&Fecha=' + encodeURIComponent(data.Fecha) +"#zoom=100%","PDF","scrollbars=NO");
 });
 
 function filterGlobal() {

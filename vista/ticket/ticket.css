@@ -136,3 +136,27 @@ nav p{
     text-shadow: 2px 2px 4px #000000;
 }
 
+@media screen and (max-width: 768px) {
+    .container {
+      flex-direction: column;
+    }
+    
+    .left_content, .right_content {
+      flex: 1;
+      width: 100%;
+    }
+    
+    .left_content {
+      order: 2;
+      margin-bottom: 100px;
+    }
+    
+    .right_content {
+      order: 1;
+      margin-bottom: 100px;
+    }
+    
+    .right_content img {
+      margin-bottom: 100px;
+    }
+  }

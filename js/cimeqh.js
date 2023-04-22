@@ -80,7 +80,8 @@ $('#tabla_cimeqh').on('click','.imprimir',function(){
     if(table.row(this).child.isShown()){
         var data = table.row(this).data();
     }
-    window.open("../vista/fpdf/NotaCimeqh.php?expe="+parseInt(data.Expediente)+"#zoom=100%","PDF","scrollbars=NO");
+    window.open('../vista/fpdf/NotaCimeqh.php?Propietario=' + data.Propietario + '&Clave_Catastral=' + data.Clave_Catastral + '&Tipo_de_Proyecto=' + data.Tipo_de_Proyecto + '&Fecha=' + encodeURIComponent(data.Fecha) +"#zoom=100%","PDF","scrollbars=NO");
+    // encodeURIComponent(data.)+"#zoom=100%","PDF","scrollbars=NO");
 });
 
 

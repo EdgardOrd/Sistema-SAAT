@@ -3,7 +3,7 @@
 if(!empty($_GET["fecha_inicial"]) and !empty($_GET["fecha_final"]))
 {
    require('./fpdf.php');
-
+   date_default_timezone_set('America/Tegucigalpa');
    $fecha_inicial = $_GET["fecha_inicial"];
    $fecha_final = $_GET["fecha_final"];
 

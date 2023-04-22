@@ -137,7 +137,7 @@
                   </div>
               </section>  
               </div>
-              <button type="button" onclick="printCanvasPresupuesto()" name="report_cimeqh_tipoconstruccion" class="btn btn-primary w-25 p-3 ml-4 mt-2" target="_blank"><i class="fas fa-download me-2 mr-2"></i>Descargar Reporte</button>
+              <button type="button" onclick="printCanvasPresupuesto()" name="report_cimeqh_tipoconstruccion" class="btn btn-primary p-3 ml-4 mt-2 w-45 w-sm-50" target="_blank"><i class="fas fa-download me-2 mr-2"></i>Descargar Reporte</button>
             </form>
         </div>
         <div class="tab-pane" id="tab_6">
@@ -205,7 +205,7 @@
               </section>  
               </div>
               <br>
-              <button onclick="printCanvasArea()" type="button" name="report_cimeqh_tipoconstruccion" class="btn btn-primary w-25 p-3 ml-4 mt-2" target="_blank"><i class="fas fa-download me-2 mr-2"></i>Descargar Reporte</button>
+              <button onclick="printCanvasArea()" type="button" name="report_cimeqh_tipoconstruccion" class="btn btn-primary p-3 ml-4 mt-2 w-45 w-sm-50" target="_blank"><i class="fas fa-download me-2 mr-2"></i>Descargar Reporte</button>
               
             </form>
         </div>
@@ -272,7 +272,7 @@
                   </div>
               </section>  
               </div>  
-              <button onclick="printCanvasInspeccion()" type="button" name="report_cimeqh_inspeccion" class="btn btn-primary w-25 p-3 ml-4 mt-2" target="_blank"><i class="fas fa-download me-2 mr-2"></i>Descargar Reporte</button>
+              <button onclick="printCanvasInspeccion()" type="button" name="report_cimeqh_inspeccion" class="btn btn-primary p-3 ml-4 mt-2 w-45 w-sm-50" target="_blank"><i class="fas fa-download me-2 mr-2"></i>Descargar Reporte</button>
 
             </form>
         </div>

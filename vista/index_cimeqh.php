@@ -173,10 +173,10 @@ if(!isset($_SESSION['S_IDUSUARIO'])){
             </div>
           </div>
 <!-- ************************************************************************************************ -->
-            <div class="container">
+
               <!-- Button trigger modal -->
             <div class="box">
-            <button type="button" class="btn btn-primary custom-btn " data-toggle="modal" data-target="#exampleModalCenter">
+            <button type="button" class="btn btn-primary custom-btn ml-5" data-toggle="modal" data-target="#exampleModalCenter">
               Sobre Nosotros 
             </button>
             <!-- Modal -->
@@ -206,7 +206,7 @@ if(!isset($_SESSION['S_IDUSUARIO'])){
 <!-- ************************************************************************************************ -->
             <!-- Button trigger modal -->
             <div class="box">
-            <button type="button" class="btn btn-primary custom-btn " data-toggle="modal" data-target="#modalHistoria">
+            <button type="button" class="btn btn-primary custom-btn ml-4" data-toggle="modal" data-target="#modalHistoria">
               Historia 
             </button>
             <!-- Modal -->
@@ -242,7 +242,7 @@ if(!isset($_SESSION['S_IDUSUARIO'])){
 <!-- ************************************************************************************************ -->
             <!-- Button trigger modal -->
             <div class="box">
-            <button type="button" class="btn btn-primary custom-btn" data-toggle="modal" data-target="#modalvision">
+            <button type="button" class="btn btn-primary custom-btn ml-4" data-toggle="modal" data-target="#modalvision">
               Misión y Visión
             </button>
             <!-- Modal -->
@@ -279,7 +279,7 @@ if(!isset($_SESSION['S_IDUSUARIO'])){
 <!-- ************************************************************************************************ -->
             <!-- Button trigger modal -->
             <div class="box">
-            <button type="button" class="btn btn-primary custom-btn " data-toggle="modal" data-target="#modalobjetivo">
+            <button type="button" class="btn btn-primary custom-btn  ml-4" data-toggle="modal" data-target="#modalobjetivo">
              Objetivo
             </button>
             <!-- Modal -->
@@ -305,7 +305,7 @@ if(!isset($_SESSION['S_IDUSUARIO'])){
             </div>
             </div>
 <!-- ************************************************************************************************ -->
-          </div>
+
         </div>
       </div>
     </div>

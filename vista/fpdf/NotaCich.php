@@ -1,5 +1,13 @@
 <?php
 
+$propietario = $_GET["Propietario"];
+$clave = $_GET["Clave_Catastral"];
+$proyecto = $_GET["Tipo_de_Proyecto"];
+$expediente = $_GET["Expediente"];
+if(!empty($_GET["Propietario"]) and !empty($_GET["Clave_Catastral"]) and !empty($_GET["Tipo_de_Proyecto"]) and !empty($_GET["Expediente"]))
+
+{
+
 require('fpdf.php');
 
 // Definir el tamaño del papel y la orientación
@@ -28,25 +36,25 @@ $pdf->Ln(1);
 
 /* Nombre */
 $pdf->Cell(1);  // mover a la derecha
-$pdf->SetFont('Arial', 'B', 10);
-$pdf->Cell(130, 10, utf8_decode("No. Catastral:_____________________"), 0, 0, 'R', 0);
+$pdf->SetFont('Arial', 'B', 10); 
+$pdf->Cell(113, 10, utf8_decode("No. Catastral: " . $clave), 0, 0, 'R', 0);
 $pdf->Ln(4);
 
 /* Catastral */
 $pdf->Cell(1);  // mover a la derecha
 $pdf->SetFont('Arial', 'B', 10);
-$pdf->Cell(130, 10, utf8_decode("Expediente:_____________________"), 0, 0, 'R', 0);
+$pdf->Cell(106, 10, utf8_decode("Expediente: " . $expediente), 0, 0, 'R', 0);
 $pdf->Ln(4);
 
 /* PROYECTO */
 $pdf->Cell(1);  // mover a la derecha
 $pdf->SetFont('Arial', 'B', 10);
-$pdf->Cell(130, 10, utf8_decode("Nombre de Propietario:_____________________"), 0, 0, 'R', 0);
+$pdf->Cell(143, 10, utf8_decode("Nombre de Propietario: ". $propietario), 0, 0, 'R', 0);
 $pdf->Ln(4);
 
 $pdf->Cell(1);  // mover a la derecha
 $pdf->SetFont('Arial', 'B', 10);
-$pdf->Cell(130, 10, utf8_decode("Nombre del Proyecto:_____________________"), 0, 0, 'R', 0);
+$pdf->Cell(112, 10, utf8_decode("Nombre del Proyecto: ". $proyecto), 0, 0, 'R', 0);
 $pdf->Ln(4);
 
 /* Catastral */
@@ -344,3 +352,13 @@ $pdf->Ln(5);
 
 
 $pdf->Output("AprobacionCICH.pdf", 'I');
+}
+else
+{
+    echo("Error");
+    echo($propietario);
+    echo($proyecto);
+    echo($clave);
+    echo($expediente);
+    echo("hasta aca");
+}

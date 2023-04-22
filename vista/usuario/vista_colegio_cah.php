@@ -26,13 +26,13 @@
         <div class="card-body">   
         <h3 class="titulo">Registro de Notas de Construcción</h3>
         <div class="form-group row">
-                <div class="col-lg-8">
+                <div class="col-lg-8 mb-3">
                   <div class="input-group">
                     <input type="text" class="global_filter form-control" id="global_filter" placeholder="Ingrese el nombre del propietario...">
                     <span class="input-group-addon "><i class="fa fa-search pt-2 pl-2"></i> </span>
                   </div>
                 </div>
-                <div class="col-lg-2">
+                <div class="col-lg-2 mb-3">
                   <button class="btn btn-warning d-flex align-items-center justify-content-center py-2" style="width:100%" onclick="abrirModalNuevoCah()">
                     <i class="gg-add-r btn-icon me-2 mr-2"></i>
                     <span class="me-2">Agregar</span>

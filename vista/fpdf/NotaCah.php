@@ -1,6 +1,20 @@
 <?php
 
+$expediente = $_GET["Expediente"];
+$colegiado = $_GET["Colegiado"];
+$propietario = $_GET["Propietario"];
+$clave = $_GET["Clave_Catastral"];
+
+if(!empty($_GET["Propietario"]) and !empty($_GET["Clave_Catastral"]) and !empty($_GET["Colegiado"]) and !empty($_GET["Expediente"]))
+
+{
+
+
 require('fpdf.php');
+date_default_timezone_set('America/Tegucigalpa');
+
+$fecha1 = date("d/m/Y");
+
 
 // Definir el tamaño del papel y la orientación
 $pdf = new FPDF('L', 'mm', 'A3');
@@ -30,29 +44,29 @@ $pdf->Ln(5);
 /* UBICACION */
 $pdf->Cell(1);  // mover a la derecha
 $pdf->SetFont('Arial', 'B', 10);
-$pdf->Cell(96, 10, utf8_decode("FECHA DE ENVIO:"), 0, 0, '', 0);
+$pdf->Cell(96, 10, utf8_decode("FECHA DE ENVIO: " . $fecha1), 0, 0, '', 0);
 $pdf->Ln(10);
 
 /* TELEFONO */
 $pdf->Cell(1);  // mover a la derecha
 $pdf->SetFont('Arial', 'B', 10);
-$pdf->Cell(59, 10, utf8_decode("NUMERO DE EXPEDIENTE:"), 0, 0, '', 0);
+$pdf->Cell(59, 10, utf8_decode("NUMERO DE EXPEDIENTE: " . $expediente), 0, 0, '', 0);
 $pdf->Ln(10);
 
 /* COREEO */
 $pdf->Cell(1);  // mover a la derecha
 $pdf->SetFont('Arial', 'B', 10);
-$pdf->Cell(85, 10, utf8_decode("ARQUITECTO:"), 0, 0, '', 0);
+$pdf->Cell(85, 10, utf8_decode("ARQUITECTO: " . $colegiado), 0, 0, '', 0);
 $pdf->Ln(10);
 
 $pdf->Cell(1);  // mover a la derecha
 $pdf->SetFont('Arial', 'B', 10);
-$pdf->Cell(85, 10, utf8_decode("PROPIETARIO:"), 0, 0, '', 0);
+$pdf->Cell(85, 10, utf8_decode("PROPIETARIO: " . $propietario), 0, 0, '', 0);
 $pdf->Ln(10);
 
 $pdf->Cell(1);  // mover a la derecha
 $pdf->SetFont('Arial', 'B', 10);
-$pdf->Cell(85, 10, utf8_decode("CLAVE CATASTRAL:"), 0, 0, '', 0);
+$pdf->Cell(85, 10, utf8_decode("CLAVE CATASTRAL: " . $clave), 0, 0, '', 0);
 $pdf->Ln(15);
 
 
@@ -186,3 +200,13 @@ $pdf->Ln(5);
 
 
 $pdf->Output("AprobacionCAH.pdf", 'I');
+}
+else
+{
+    echo("Error");
+    echo($propietario);
+    echo($colegiado);
+    echo($clave);
+    echo($expediente);
+    echo("hasta aca");
+}

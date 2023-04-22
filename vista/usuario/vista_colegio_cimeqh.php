@@ -39,7 +39,7 @@
                   </button>
                 </div>
                 <div class="col-lg-2">
-                  <button class="btn btn-success d-flex align-items-center justify-content-center py-2" style="width:100%" onclick="#">
+                  <button class="btn btn-success d-flex align-items-center justify-content-center py-2" style="width:100%" onclick="window.open('../controlador/colegios/controlador_descargar.php?tabla=proyectoscimeqh')">
                   <i class="fas fa-download me-2 mr-2"></i>
                     <span class="me-2">Descargar</span>
                   </button>
@@ -56,7 +56,7 @@
    
                         <th>Estado</th>
                         <th>Observaciones</th>
-                        <th>Fecha de Aprobación</th>
+                        <th>Fecha de Registro</th>
                         <th>Acci&oacute;n</th>
                     </tr>
                 </thead>
@@ -69,7 +69,7 @@
         
                         <th>Estado</th>
                         <th>Observaciones</th>
-                        <th>Fecha de Aprobación</th>
+                        <th>Fecha de Registro</th>
                         <th>Acci&oacute;n</th>
                     </tr>
                 </tfoot>
@@ -104,7 +104,7 @@
             </div>
             <div class="col-lg-12">
               <label for="">Tipo de Proyecto</label>
-              <input type="text" class="form-control" id="txt_proyect" placeholder="Ingrese Tipo de Expediente">
+              <input type="text" class="form-control" id="txt_proyect" placeholder="Ingrese el tipo de proyecto">
               <br>
             </div>
             <div class="col-lg-6">
@@ -129,13 +129,12 @@
             </div>
             <div class="col-lg-6">
               <label for="">Fecha de Registro</label>
-              <input type="date" class="form-control" id="txt_fech" placeholder="Ingrese la fecha">
+              <input type="date" class="form-control" id="txt_fech"  placeholder="Ingrese la fecha" min=${fechaActualFormateada} max="2023-04-30">
               <br>
             </div>  
             <div class="col-lg-6">
               <label for="">Area</label>
               <input type="number" class="form-control" id="txt_area" placeholder="Area del Proyecto">
-              <br>
             </div>
             <div class="col-lg-6">
               <label for="">Presupuesto</label>
@@ -208,12 +207,12 @@
             </div>
             <div class="col-lg-6">
               <label for="">Clave Catastral</label>
-              <input type="text" class="form-control" id="txt_cat_editar" placeholder="Ingrese el numero catastral">
+              <input type="text" class="form-control" id="txt_cat_editar"  placeholder="Ingrese el numero catastral">
               <br>
             </div>
             <div class="col-lg-6">
               <label for="">Fecha de Registro</label>
-              <input type="date" class="form-control" id="txt_fech_editar" placeholder="Ingrese la fecha">
+              <input type="date" class="form-control" id="txt_fech_editar"  placeholder="Ingrese la fecha" min="2022-01-01" max="2023-04-31"> 
               <br>
             </div>  
             <div class="col-lg-6">
@@ -255,4 +254,27 @@ $(document).ready(function () {
     $('#txt_exp').focus();
   })
 });
+
+var fechaActual = new Date();
+var offset = fechaActual.getTimezoneOffset();
+fechaActual.setMinutes(fechaActual.getMinutes() - offset);
+var fechaActualFormateada = fechaActual.toISOString().slice(0,10);
+
+document.getElementById("txt_fech").value = fechaActualFormateada;
+
+const fechaMinima = new Date();
+fechaMinima.setDate(fechaMinima.getDate() - 14);
+const fechaMinimaFormateada = fechaMinima.toISOString().slice(0, 10);
+
+const fechaMaxima = new Date();
+fechaMaxima.setDate(fechaMaxima.getDate() + 14);
+const fechaMaximaFormateada = fechaMaxima.toISOString().slice(0, 10);
+
+document.getElementById("txt_fech").setAttribute("min", fechaMinimaFormateada);
+document.getElementById("txt_fech").setAttribute("max", fechaMaximaFormateada);
+
+document.getElementById("txt_fech_editar").setAttribute("min", fechaMinimaFormateada);
+document.getElementById("txt_fech_editar").setAttribute("max", fechaMaximaFormateada);
+
+
 </script>

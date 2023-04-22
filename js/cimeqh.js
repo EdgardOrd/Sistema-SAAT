@@ -205,6 +205,7 @@ function Editar_Nota_Cimeqh()
         });
 }
 
+
 function LimpiarRegistro(){
     $('#txt_exp').val("");
     $('#txt_proyect').val("");

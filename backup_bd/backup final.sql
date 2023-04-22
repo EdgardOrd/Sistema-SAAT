@@ -59,6 +59,7 @@ CREATE TABLE `proyectoscah` (
   `estatus` enum('APROBADO','DESAPROBADO','SEGUIMIENTO','SOLICITUD DE DOCUMENTACION') NOT NULL,
   `Observaciones` varchar(200) DEFAULT NULL,
   `fecha` date NOT NULL,
+  `fecha_mod` date DEFAULT NULL,
   PRIMARY KEY (`num_expediente`),
   KEY `nombre_col` (`nombre_col`),
   CONSTRAINT `proyectoscah_ibfk_1` FOREIGN KEY (`nombre_col`) REFERENCES `colegio` (`nombre`)
@@ -71,9 +72,47 @@ CREATE TABLE `proyectoscah` (
 
 LOCK TABLES `proyectoscah` WRITE;
 /*!40000 ALTER TABLE `proyectoscah` DISABLE KEYS */;
-INSERT INTO `proyectoscah` VALUES (1253869,'CAH','CASA','RONI CASTRO ','NO123456458',80,600000,'Ing. Carlos Gomez','DESAPROBADO','Cumple Todo','2023-04-13'),(12342022,'CAH','VIVIENDA UNIFAMILIAR','JOSUE MORONI BENAVENTE NUNEZ','NO123456789',150,168000,'Henry Orellana','SEGUIMIENTO','Faltan Planos','2022-01-02'),(12352022,'CAH','VIVIENDA BIFAMILIAR','KEVIN ALBERTO ALVA CASTRO','NO123456788',200,146000,'Henry Orellana','SEGUIMIENTO','Falta Hoja De Afiliacion','2022-01-01'),(12362022,'CAH','VIVIENDA UNIFAMILIAR','FERNANDO JOSUE CABALLERO DUBON','NO123456787',250,200000,'Henry Orellana','APROBADO','Cumple Todo','2022-01-03'),(12372022,'CAH','FARMACIA','WALTER FERNANDO CEREN ESPINAL','NO123456786',300,350000,'Henry Orellana','SOLICITUD DE DOCUMENTACION','Faltan Documentos','2022-01-04'),(12382022,'CAH','GASOLINERA','DOUGLAS MAUDIEL CHAVEZ TORO','NO123456785',289,300000,'Henry Orellana','APROBADO','Cumple Todo','2022-01-05'),(12458697,'CAH','CASA ','DOUGLAS PALMA ','NO123456759',500,10000000,'Ing. Henry Orellana','APROBADO','Cumple Todo','2023-04-13'),(21342022,'CAH','VIVIENDA','PRUEBA CAH','NO123456733',100,100,'Henry Orellana','APROBADO','Cumple Todo','2023-03-22'),(22222222,'CAH','VIVIENDA DE HENRY','PRUEBA CAHH','NO123456723',100,205000,'Henry Orellana','APROBADO','Cumple Todo','2023-03-23'),(32152020,'CAH','PROYECTO DE ARQUITECTURA','CARLOS HERNÁNDEZ GARCÍA','NO345678912',800,750000,'Henry Orellana','APROBADO','Cumple Todo','2023-03-25'),(58932023,'CAH','VIVIENDA','NIXON ANTONIO CHAVEZ','NO123456789',700,900000,'Henry Orellana','SEGUIMIENTO','Cambio de Ingeniero','2023-03-25'),(65472021,'CAH','PROYECTO DE DISEÑO GRÁFICO','MARÍA PÉREZ FLORES','NO891234567',150,250000,'Henry Orellana','APROBADO','Cumple Todo','2023-03-25'),(78922022,'CAH','CONSTRUCCIÓN','JUAN GARCÍA RODRÍGUEZ','NO987654321',1000,1500000,'Henry Orellana','APROBADO','Cumple Todo','2023-03-25'),(78932022,'CAH','DISEÑO DE INTERIORES','ANA MONTES FERNÁNDEZ','NO876543210',200,250000,'Henry Orellana','APROBADO','Cumple Todo','2023-03-25'),(78932023,'CAH','CONDOMINIO','MARTHA GONZÁLEZ RAMÍREZ','NO123456789',700,900000,'Henry Orellana','SEGUIMIENTO','Inspeccion de elevador','2023-03-25'),(78942022,'CAH','ARQUITECTURA','CARLOS HERNÁNDEZ SÁNCHEZ','NO765432109',800,1000000,'Henry Orellana','APROBADO','Cumple Todo','2023-03-25'),(78952022,'CAH','PUENTE','LUIS GARCÍA RAMÍREZ','NO456789012',350,300000,'Henry Orellana','DESAPROBADO','No cumple con los requisitos','2023-03-25'),(78962022,'CAH','CASA','ANA MARTÍNEZ GÓMEZ','NO123456789',200,200000,'Henry Orellana','SOLICITUD DE DOCUMENTACION','Faltan documentos por presentar','2023-03-25');
+INSERT INTO `proyectoscah` VALUES (1253869,'CAH','CASA','RONI CASTRO ','NO123456458',100,600000,'Ing. Carlos Gomez','DESAPROBADO','Cumple Todo','2023-04-13','2023-04-22'),(12342022,'CAH','VIVIENDA UNIFAMILIAR','JOSUE MORONI BENAVENTE NUNEZ','NO123456789',150,168000,'Henry Orellana','SEGUIMIENTO','Faltan Planos','2022-01-02','2023-04-21'),(12352022,'CAH','VIVIENDA BIFAMILIAR','KEVIN ALBERTO ALVA CASTRO','NO123456788',200,146000,'Henry Orellana','SEGUIMIENTO','Falta Hoja De Afiliacion','2022-01-01','2023-04-21'),(12362022,'CAH','VIVIENDA UNIFAMILIAR','FERNANDO JOSUE CABALLERO DUBON','NO123456787',250,200000,'Henry Orellana','APROBADO','Cumple Todo','2022-01-03','2023-04-21'),(12372022,'CAH','FARMACIA','WALTER FERNANDO CEREN ESPINAL','NO123456786',300,350000,'Henry Orellana','SOLICITUD DE DOCUMENTACION','Faltan Documentos','2022-01-04','2023-04-21'),(12382022,'CAH','GASOLINERA','DOUGLAS MAUDIEL CHAVEZ TORO','NO123456785',289,300000,'Henry Orellana','APROBADO','Cumple Todo','2022-01-05','2023-04-21'),(12458697,'CAH','CASA ','DOUGLAS PALMA ','NO123456759',500,10000000,'Ing. Henry Orellana','APROBADO','Cumple Todo','2023-04-13','2023-04-21'),(21342022,'CAH','VIVIENDA','PRUEBA CAH','NO123456733',100,100,'Henry Orellana','APROBADO','Cumple Todo','2023-03-22','2023-04-21'),(22222222,'CAH','VIVIENDA DE HENRY','PRUEBA CAHH','NO123456723',100,205000,'Henry Orellana','APROBADO','Cumple Todo','2023-03-23','2023-04-21'),(32152020,'CAH','PROYECTO DE ARQUITECTURA','CARLOS HERNÁNDEZ GARCÍA','NO345678912',800,750000,'Henry Orellana','APROBADO','Cumple Todo','2023-03-25','2023-04-21'),(58932023,'CAH','VIVIENDA','NIXON ANTONIO CHAVEZ','NO123456789',700,900000,'Henry Orellana','SEGUIMIENTO','Cambio de Ingeniero','2023-03-25','2023-04-21'),(65472021,'CAH','PROYECTO DE DISEÑO GRÁFICO','MARÍA PÉREZ FLORES','NO891234567',150,250000,'Henry Orellana','APROBADO','Cumple Todo','2023-03-25','2023-04-21'),(78922022,'CAH','CONSTRUCCIÓN','JUAN GARCÍA RODRÍGUEZ','NO987654321',1000,1500000,'Henry Orellana','APROBADO','Cumple Todo','2023-03-25','2023-04-21'),(78932022,'CAH','DISEÑO DE INTERIORES','ANA MONTES FERNÁNDEZ','NO876543210',200,250000,'Henry Orellana','APROBADO','Cumple Todo','2023-04-09','2023-04-22'),(78932023,'CAH','CONDOMINIO','MARTHA GONZÁLEZ RAMÍREZ','NO123456789',700,900000,'Henry Orellana','SEGUIMIENTO','Inspeccion de elevador','2023-03-25','2023-04-21'),(78942022,'CAH','ARQUITECTURA','CARLOS HERNÁNDEZ SÁNCHEZ','NO765432109',800,1000000,'Henry Orellana','APROBADO','Cumple Todo','2023-03-25','2023-04-21'),(78952022,'CAH','PUENTE','LUIS GARCÍA RAMÍREZ','NO456789012',350,300000,'Henry Orellana','DESAPROBADO','No cumple con los requisitos','2023-03-25','2023-04-21'),(78962022,'CAH','CASA','ANA MARTÍNEZ GÓMEZ','NO123456789',200,200000,'Henry Orellana','SOLICITUD DE DOCUMENTACION','Faltan documentos por presentar','2023-03-25','2023-04-21');
 /*!40000 ALTER TABLE `proyectoscah` ENABLE KEYS */;
 UNLOCK TABLES;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `trg_Insertar_fecha_mod_cah` BEFORE INSERT ON `proyectoscah` FOR EACH ROW BEGIN
+    SET NEW.fecha_mod = CURDATE();
+END */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `trg_UpdateFechaMod_cah` BEFORE UPDATE ON `proyectoscah` FOR EACH ROW BEGIN
+    IF NEW.nombre_col <> OLD.nombre_col OR NEW.tipo_proyecto <> OLD.tipo_proyecto OR NEW.propietario <> OLD.propietario OR NEW.clave_catastral <> OLD.clave_catastral OR NEW.area <> OLD.area OR NEW.presupuesto <> OLD.presupuesto OR NEW.colegiado <> OLD.colegiado OR NEW.estatus <> OLD.estatus OR NEW.Observaciones <> OLD.Observaciones
+    OR NEW.fecha <> OLD.fecha
+    THEN
+        SET NEW.fecha_mod = NOW();
+    END IF;
+END */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 
 --
 -- Table structure for table `proyectoscich`
@@ -94,6 +133,7 @@ CREATE TABLE `proyectoscich` (
   `estatus` enum('APROBADO','DESAPROBADO','SEGUIMIENTO','SOLICITUD DE DOCUMENTACION') NOT NULL,
   `Observaciones` varchar(200) DEFAULT NULL,
   `fecha` date NOT NULL,
+  `fecha_mod` date DEFAULT NULL,
   PRIMARY KEY (`num_expediente`),
   KEY `nombre_col` (`nombre_col`),
   CONSTRAINT `proyectoscich_ibfk_1` FOREIGN KEY (`nombre_col`) REFERENCES `colegio` (`nombre`)
@@ -106,9 +146,47 @@ CREATE TABLE `proyectoscich` (
 
 LOCK TABLES `proyectoscich` WRITE;
 /*!40000 ALTER TABLE `proyectoscich` DISABLE KEYS */;
-INSERT INTO `proyectoscich` VALUES (12032023,'CICH','MILLONARIO','JUAN CARLOS GÓMEZ ROJAS','NO444555666',800,1500000,'Edgard Ordoñez','SOLICITUD DE DOCUMENTACION','Cumple Todo','2023-03-27'),(12342022,'CICH','VIVIENDA UNIFAMILIAR','JOSUE MORONI BENAVENTE NUNEZ','NO123456789',150,168000,'Edgard Ordoñez','SEGUIMIENTO','Faltan Planos','2022-01-02'),(12352022,'CICH','VIVIENDA BIFAMILIAR','KEVIN ALBERTO ALVA CASTRO','NO123456788',200,146000,'Edgard Ordoñez','SEGUIMIENTO','Falta Hoja De Afiliacion','2022-01-01'),(12392022,'CICH','VIVIENDA EN SERIE','AXEL DAVID CORNEJO ORTEGA','NO123456784',270,471000,'Edgard Ordoñez','APROBADO','Cumple Todo','2022-01-05'),(12402022,'CICH','FARMACIA','FRANCISCO JAVIER ESQUIVEL GONZALES','NO123456783',150,199000,'Edgard Ordoñez','SOLICITUD DE DOCUMENTACION','Faltan Documentos','2022-01-06'),(12412022,'CICH','VIVIENDA BIFAMILIAR','DENISE MABEL FIALLOS MARTINEZ','NO123456782',210,230000,'Edgard Ordoñez','APROBADO','Cumple Todo','2022-01-07'),(12458236,'CICH','CONDOMINIO','FATIMA CARRANZA','NO123456752',100,3000000,'Ing. Marlon Rivera ','SEGUIMIENTO','Inspección de energía eléctrica','2023-04-13'),(12485369,'CICH','GASOLINERA','MARIA RAMOS MILLA ','NO1234564752',100,300000,'Ing. Rodrigo Perez ','APROBADO','Cumple Todo','2023-04-13'),(14582536,'CICH','FARMACIA','MARIO PEREZ ','NO123456710',200,500000,'Ing. Douglas Palma','APROBADO','Cumple Todo','2023-04-13'),(15252022,'CICH','VIVIENDA','PRUEBA','NO123456754',100,100,'Edgard Ordoñez','APROBADO','Cumple Todo','2023-03-22'),(22052023,'CICH','MILLONARIO','MARTA GARCÍA JIMÉNEZ','NO777888999',1200,2500000,'Edgard Ordoñez','APROBADO','Cumple Todo','2023-03-28'),(31062023,'CICH','MILLONARIO','ROBERTO PEREZ SÁNCHEZ','NO222333444',900,1800000,'Edgard Ordoñez','APROBADO','Cumple Todo','2023-03-29'),(32152020,'CICH','PROYECTO DE ARQUITECTURA','CARLOS HERNÁNDEZ GARCÍA','NO345678912',800,750000,'Edgard Ordoñez','APROBADO','Cumple Todo','2023-03-25'),(58932023,'CICH','VIVIENDA','NIXON ANTONIO CHAVEZ','NO123456789',700,900000,'Edgard Ordoñez','SEGUIMIENTO','Cambio de Ingeniero','2023-03-25'),(65472021,'CICH','PROYECTO DE DISEÑO GRÁFICO','MARÍA PÉREZ FLORES','NO891234567',150,250000,'Edgard Ordoñez','APROBADO','Cumple Todo','2023-03-25'),(78902022,'CICH','MILLONARIO','ANA LÓPEZ HERNÁNDEZ','NO987654321',1000,2000000,'Edgard Ordoñez','APROBADO','Cumple Todo','2023-03-25'),(78932023,'CICH','CONDOMINIO','MARTHA GONZÁLEZ RAMÍREZ','NO123456789',700,900000,'Edgard Ordoñez','SEGUIMIENTO','Inspeccion de elevador','2023-03-25'),(78952022,'CICH','RESTAURANTE','LUIS GARCÍA RAMÍREZ','NO456789012',350,300000,'Edgard Ordoñez','DESAPROBADO','No cumple con los requisitos','2023-03-25'),(78962022,'CICH','CASA','ANA MARTÍNEZ GÓMEZ','NO123456789',200,200000,'Edgard Ordoñez','SOLICITUD DE DOCUMENTACION','Faltan documentos por presentar','2023-03-25'),(90872022,'CICH','MILLONARIO','DANIEL RAMÍREZ CRUZ','NO111223344',1500,3000000,'Edgard Ordoñez','APROBADO','Cumple Todo','2023-03-26'),(111111111,'CICH','PRUEBA CICH','PRUEBA CICH','NO123456711',200,1500000,'Edgard Ordoñez','APROBADO','Cumple Todo','2023-03-23'),(2023457894,'CICH','Unifamiliar','Luis Salgado','NE784512',450,500000,'Edgard Ordoñez','APROBADO','Cumple Todo','2023-03-22');
+INSERT INTO `proyectoscich` VALUES (12032023,'CICH','MILLONARIO','JUAN CARLOS GÓMEZ ROJAS','NO444555666',800,1500000,'Edgard Ordoñez','SOLICITUD DE DOCUMENTACION','Cumple Todo','2023-03-27','2023-04-21'),(12342022,'CICH','VIVIENDA UNIFAMILIAR','JOSUE MORONI BENAVENTE NUNEZ','NO123456789',150,168000,'Edgard Ordoñez','SEGUIMIENTO','Faltan Planos','2022-01-02','2023-04-21'),(12352022,'CICH','VIVIENDA BIFAMILIAR','KEVIN ALBERTO ALVA CASTRO','NO123456788',200,146000,'Edgard Ordoñez','SEGUIMIENTO','Falta Hoja De Afiliacion','2022-01-01','2023-04-21'),(12392022,'CICH','VIVIENDA EN SERIE','AXEL DAVID CORNEJO ORTEGA','NO123456784',270,471000,'Edgard Ordoñez','APROBADO','Cumple Todo','2022-01-05','2023-04-21'),(12402022,'CICH','FARMACIA','FRANCISCO JAVIER ESQUIVEL GONZALES','NO123456783',150,199000,'Edgard Ordoñez','SOLICITUD DE DOCUMENTACION','Faltan Documentos','2022-01-06','2023-04-21'),(12412022,'CICH','VIVIENDA BIFAMILIAR','DENISE MABEL FIALLOS MARTINEZ','NO123456782',210,230000,'Edgard Ordoñez','APROBADO','Cumple Todo','2022-01-07','2023-04-21'),(12458236,'CICH','CONDOMINIO','FATIMA CARRANZA','NO123456752',120,3000000,'Ing. Marlon Rivera ','SEGUIMIENTO','Inspección de energía eléctrica','2023-04-13','2023-04-22'),(12485369,'CICH','GASOLINERA','MARIA RAMOS MILLA ','NO1234564752',100,300000,'Ing. Rodrigo Perez ','APROBADO','Cumple Todo','2023-04-13','2023-04-21'),(14582536,'CICH','FARMACIA','MARIO PEREZ ','NO123456710',200,500000,'Ing. Douglas Palma','APROBADO','Cumple Todo','2023-04-13','2023-04-21'),(15252022,'CICH','VIVIENDA','PRUEBA','NO123456754',100,100,'Edgard Ordoñez','APROBADO','Cumple Todo','2023-03-22','2023-04-21'),(22052023,'CICH','MILLONARIO','MARTA GARCÍA JIMÉNEZ','NO777888999',1200,2500000,'Edgard Ordoñez','APROBADO','Cumple Todo','2023-03-28','2023-04-21'),(31062023,'CICH','MILLONARIO','ROBERTO PEREZ SÁNCHEZ','NO222333444',900,1800000,'Edgard Ordoñez','APROBADO','Cumple Todo','2023-03-29','2023-04-21'),(32152020,'CICH','PROYECTO DE ARQUITECTURA','CARLOS HERNÁNDEZ GARCÍA','NO345678912',800,750000,'Edgard Ordoñez','APROBADO','Cumple Todo','2023-03-25','2023-04-21'),(58932023,'CICH','VIVIENDA','NIXON ANTONIO CHAVEZ','NO123456789',700,900000,'Edgard Ordoñez','SEGUIMIENTO','Cambio de Ingeniero','2023-03-25','2023-04-21'),(65472021,'CICH','PROYECTO DE DISEÑO GRÁFICO','MARÍA PÉREZ FLORES','NO891234567',150,250000,'Edgard Ordoñez','APROBADO','Cumple Todo','2023-03-25','2023-04-21'),(78902022,'CICH','MILLONARIO','ANA LÓPEZ HERNÁNDEZ','NO987654321',1000,2000000,'Edgard Ordoñez','APROBADO','Cumple Todo','2023-03-25','2023-04-21'),(78932023,'CICH','CONDOMINIO','MARTHA GONZÁLEZ RAMÍREZ','NO123456789',700,900000,'Edgard Ordoñez','SEGUIMIENTO','Inspeccion de elevador','2023-03-25','2023-04-21'),(78952022,'CICH','RESTAURANTE','LUIS GARCÍA RAMÍREZ','NO456789012',350,300000,'Edgard Ordoñez','DESAPROBADO','No cumple con los requisitos','2023-03-25','2023-04-21'),(78962022,'CICH','CASA','ANA MARTÍNEZ GÓMEZ','NO123456789',200,200000,'Edgard Ordoñez','SOLICITUD DE DOCUMENTACION','Faltan documentos por presentar','2023-03-25','2023-04-21'),(90872022,'CICH','MILLONARIO','DANIEL RAMÍREZ CRUZ','NO111223344',1500,3000000,'Edgard Ordoñez','APROBADO','Cumple Todo','2023-04-09','2023-04-22'),(111111111,'CICH','PRUEBA CICH','PRUEBA CICH','NO123456711',200,1500000,'Edgard Ordoñez','APROBADO','Cumple Todo','2023-03-23','2023-04-21'),(2023457894,'CICH','Unifamiliar','Luis Salgado','NE784512',450,500000,'Edgard Ordoñez','APROBADO','Cumple Todo','2023-03-22','2023-04-21');
 /*!40000 ALTER TABLE `proyectoscich` ENABLE KEYS */;
 UNLOCK TABLES;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `trg_Insertar_fecha_mod_cich` BEFORE INSERT ON `proyectoscich` FOR EACH ROW BEGIN
+    SET NEW.fecha_mod = CURDATE();
+END */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `trg_UpdateFechaMod_cich` BEFORE UPDATE ON `proyectoscich` FOR EACH ROW BEGIN
+    IF NEW.nombre_col <> OLD.nombre_col OR NEW.tipo_proyecto <> OLD.tipo_proyecto OR NEW.propietario <> OLD.propietario OR NEW.clave_catastral <> OLD.clave_catastral OR NEW.area <> OLD.area OR NEW.presupuesto <> OLD.presupuesto OR NEW.colegiado <> OLD.colegiado OR NEW.estatus <> OLD.estatus OR NEW.Observaciones <> OLD.Observaciones 
+    OR NEW.fecha <> OLD.fecha
+    THEN
+        SET NEW.fecha_mod = NOW();
+    END IF;
+END */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 
 --
 -- Table structure for table `proyectoscimeqh`
@@ -129,6 +207,7 @@ CREATE TABLE `proyectoscimeqh` (
   `estatus` enum('APROBADO','DESAPROBADO','SEGUIMIENTO','SOLICITUD DE DOCUMENTACION') NOT NULL,
   `Observaciones` varchar(200) DEFAULT NULL,
   `fecha` date NOT NULL,
+  `fecha_mod` date DEFAULT NULL,
   PRIMARY KEY (`num_expediente`),
   KEY `nombre_col` (`nombre_col`),
   CONSTRAINT `proyectoscimeqh_ibfk_1` FOREIGN KEY (`nombre_col`) REFERENCES `colegio` (`nombre`)
@@ -141,9 +220,47 @@ CREATE TABLE `proyectoscimeqh` (
 
 LOCK TABLES `proyectoscimeqh` WRITE;
 /*!40000 ALTER TABLE `proyectoscimeqh` DISABLE KEYS */;
-INSERT INTO `proyectoscimeqh` VALUES (1025849,'CIMEQH','CASA ','MARIO PONITO','NO123456747',150,1000000,'Ing. Douglas Palma','DESAPROBADO','F01','2023-01-02'),(12042031,'CIMEQH','CASA ','ADOLFO ORDOÑEZ','NO123456782',100,600000,'Ing. Raul Reyes ','APROBADO','Cumple Todo','2023-04-13'),(12342014,'CIMEQH','Condominio','KUNNO','NO123456781',100,1000000,'Carlos Gomez','APROBADO','Cumple Todo','2023-03-22'),(12342022,'CIMEQH','VIVIENDA UNIFAMILIAR','JOSUE MORONI BENAVENTE NUNEZ','NO123456789',150,168000,'Carlos Gomez','SOLICITUD DE DOCUMENTACION','Faltan Planos','2022-01-02'),(12342023,'CIMEQH','VIVIENDA','JEIDY PINEDA','NO123456788',100,100000,'Carlos Gomez','DESAPROBADO','Cumple Todo','2022-01-03'),(12348596,'CIMEQH','PRUEBA','PRUEBA11','NO123456755',100,50000,'Carlos Gomez','APROBADO','Cumple Todo','2023-03-23'),(12352022,'CIMEQH','VIVIENDA BIFAMILIAR','KEVIN ALBERTO ALVA CASTRO','NO123456788',200,146000,'Carlos Gomez','SEGUIMIENTO','Falta Hoja De Afiliacion','2022-01-01'),(12362022,'CIMEQH','VIVIENDA UNIFAMILIAR','FERNANDO JOSUE CABALLERO DUBON','NO123456787',250,200000,'Carlos Gomez','APROBADO','Cumple Todo','2022-01-03'),(12372022,'CIMEQH','FARMACIA','WALTER FERNANDO CEREN ESPINAL','NO123456786',300,350000,'Carlos Gomez','SOLICITUD DE DOCUMENTACION','Faltan Documentos','2022-01-04'),(12382022,'CIMEQH','GASOLINERA','DOUGLAS MAUDIEL CHAVEZ TORO','NO123456785',289,300000,'Carlos Gomez','APROBADO','Cumple Todo','2022-01-05'),(12392022,'CIMEQH','VIVIENDA EN SERIE','AXEL DAVID CORNEJO ORTEGA','NO123456784',270,471000,'Carlos Gomez','APROBADO','Cumple Todo','2022-01-05'),(12402022,'CIMEQH','FARMACIA','FRANCISCO JAVIER ESQUIVEL GONZALES','NO123456783',150,199000,'Carlos Gomez','SOLICITUD DE DOCUMENTACION','Faltan Documentos','2022-01-06'),(12412022,'CIMEQH','VIVIENDA BIFAMILIAR','DENISE MABEL FIALLOS MARTINEZ','NO123456782',210,230000,'Carlos Gomez','APROBADO','Cumple Todo','2022-01-07'),(12412023,'CIMEQH','NORMAL','HENRY ESTUARDO ORELLANA','NO123456789',100,500000,'Carlos Gomez','DESAPROBADO','No cumple','2022-03-22'),(13582024,'CIMEQH','MILLONARIO','PEDRO RODRÍGUEZ GARCÍA','NO123456789',800,8000000,'Carlos Gomez','APROBADO','Cumple Todo','2023-03-25'),(14526893,'CIMEQH','CASA FAMILIAR','ROLANDO BUESO AGUILAR','NO123456742',1000,5000000,'Carlos Gomez','APROBADO','Cumple Todo','2023-04-13'),(21538684,'CIMEQH','VIVIENDA','MILTON TURCIOS','NO123456723',100,1000000,'Ing. Marlon Rivera ','SEGUIMIENTO','Cambio de Ingeniero ','2023-04-13'),(24672024,'CIMEQH','MILLONARIO','ANA MARÍA SANTOS PÉREZ','NO123456789',1200,12000000,'Carlos Gomez','APROBADO','Cumple Todo','2023-03-25'),(35792025,'CIMEQH','MILLONARIO','JUAN GARCÍA RODRÍGUEZ','NO123456789',900,9000000,'Carlos Gomez','APROBADO','Cumple Todo','2023-03-25'),(45672021,'CIMEQH','PROYECTO DE INGENIERÍA','JOSÉ LÓPEZ GONZÁLEZ','NO123456789',500,500000,'Carlos Gomez','APROBADO','Cumple Todo','2023-03-25'),(45672023,'CIMEQH','MILLONARIO','CARLOS VELASCO RAMÍREZ','NO123456789',1000,10000000,'Carlos Gomez','APROBADO','Cumple Todo','2023-03-25'),(58932023,'CIMEQH','VIVIENDA','NIXON ANTONIO CHAVEZ','NO123456789',700,900000,'Carlos Gomez','SEGUIMIENTO','Cambio de Ingeniero','2023-03-25'),(78932023,'CIMEQH','CONDOMINIO','MARTHA GONZÁLEZ RAMÍREZ','NO123456789',700,900000,'Carlos Gomez','SEGUIMIENTO','Inspeccion de elevador','2023-03-25'),(78952022,'CIMEQH','PROYECTO DE INGENIERÍA CIVIL','LUIS GARCÍA RAMÍREZ','NO456789012',350,300000,'Carlos Gomez','DESAPROBADO','No cumple con los requisitos','2023-03-25'),(78962022,'CIMEQH','PROYECTO DE ARQUITECTURA','ANA MARTÍNEZ GÓMEZ','NO123456789',200,200000,'Carlos Gomez','SOLICITUD DE DOCUMENTACION','F01','2023-03-25'),(78962023,'CIMEQH','MILLONARIO','MARÍA LÓPEZ SÁNCHEZ','NO123456789',1500,15000000,'Carlos Gomez','APROBADO','Cumple Todo','2023-03-25'),(98762019,'CIMEQH','PROYECTO DE REMODELACIÓN','JULIA MARTÍNEZ RAMOS','NO987654321',250,350000,'Carlos Gomez','APROBADO','Cumple Todo','2023-03-25');
+INSERT INTO `proyectoscimeqh` VALUES (1025849,'CIMEQH','CASA ','MARIO PONITO','NO123456747',150,1000000,'Ing. Douglas Palma','DESAPROBADO','F01','2023-01-02','2023-01-10'),(12042031,'CIMEQH','CASA ','ADOLFO ORDOÑEZ','NO123456782',100,600000,'Ing. Raul Reyes ','APROBADO','Cumple Todo','2023-04-29','2023-04-14'),(12342014,'CIMEQH','Condominio','KUNNO','NO123456781',100,1000000,'Carlos Gomez','APROBADO','Cumple Todo','2023-03-22','2023-03-22'),(12342022,'CIMEQH','VIVIENDA UNIFAMILIAR','JOSUE MORONI BENAVENTE NUNEZ','NO123456789',150,168000,'Carlos Gomez','SOLICITUD DE DOCUMENTACION','Faltan Planos','2022-01-02','2023-01-12'),(12342023,'CIMEQH','VIVIENDA','JEIDY PINEDA','NO123456788',100,100000,'Carlos Gomez','DESAPROBADO','Cumple Todo','2022-01-03','2023-01-21'),(12348596,'CIMEQH','PRUEBA','PRUEBA11','NO123456755',100,50000,'Carlos Gomez','APROBADO','Cumple Todo','2023-03-23','2023-03-24'),(12352022,'CIMEQH','VIVIENDA BIFAMILIAR','KEVIN ALBERTO ALVA CASTRO','NO123456788',200,146000,'Carlos Gomez','SEGUIMIENTO','Falta Hoja De Afiliacion','2022-01-01','2023-01-21'),(12362022,'CIMEQH','VIVIENDA UNIFAMILIAR','FERNANDO JOSUE CABALLERO DUBON','NO123456787',250,200000,'Carlos Gomez','APROBADO','Cumple Todo','2022-01-03','2023-01-05'),(12372022,'CIMEQH','FARMACIA','WALTER FERNANDO CEREN ESPINAL','NO123456786',300,350000,'Carlos Gomez','SOLICITUD DE DOCUMENTACION','Faltan Documentos','2022-01-04','2023-01-21'),(12382022,'CIMEQH','GASOLINERA','DOUGLAS MAUDIEL CHAVEZ TORO','NO123456785',289,300000,'Carlos Gomez','APROBADO','Cumple Todo','2022-01-05','2023-01-21'),(12392022,'CIMEQH','VIVIENDA EN SERIE','AXEL DAVID CORNEJO ORTEGA','NO123456784',270,471000,'Carlos Gomez','APROBADO','Cumple Todo','2022-01-05','2023-01-21'),(12402022,'CIMEQH','FARMACIA','FRANCISCO JAVIER ESQUIVEL GONZALES','NO123456783',150,199000,'Carlos Gomez','SOLICITUD DE DOCUMENTACION','Faltan Documentos','2022-01-06','2023-01-28'),(12412022,'CIMEQH','VIVIENDA BIFAMILIAR','DENISE MABEL FIALLOS MARTINEZ','NO123456782',210,230000,'Carlos Gomez','APROBADO','Cumple Todo','2022-01-07','2023-01-21'),(12412023,'CIMEQH','NORMAL','HENRY ESTUARDO ORELLANA','NO123456789',100,500000,'Carlos Gomez','DESAPROBADO','No cumple','2022-03-22','2023-04-21'),(13582024,'CIMEQH','MILLONARIO','PEDRO RODRÍGUEZ GARCÍA','NO123456789',800,8000000,'Carlos Gomez','APROBADO','Cumple Todo','2023-03-25','2023-03-30'),(14526893,'CIMEQH','CASA FAMILIAR','ROLANDO BUESO AGUILAR','NO123456742',1000,5000000,'Carlos Gomez','APROBADO','Cumple Todo','2023-04-13','2023-04-21'),(21538684,'CIMEQH','VIVIENDA','MILTON TURCIOS','NO123456723',100,1000000,'Ing. Marlon Rivera ','SEGUIMIENTO','Cambio de Ingeniero ','2023-03-07','2023-04-21'),(24672024,'CIMEQH','MILLONARIO','ANA MARÍA SANTOS PÉREZ','NO123456789',1200,12000000,'Carlos Gomez','APROBADO','Cumple Todo','2023-03-25','2023-04-21'),(35792025,'CIMEQH','MILLONARIO','JUAN GARCÍA RODRÍGUEZ','NO123456789',900,9000000,'Carlos Gomez','APROBADO','Cumple Todo','2023-03-25','2023-04-21'),(45672021,'CIMEQH','PROYECTO DE INGENIERÍA','JOSÉ LÓPEZ GONZÁLEZ','NO123456789',500,500000,'Carlos Gomez','APROBADO','Cumple Todo','2023-03-25','2023-04-21'),(45672023,'CIMEQH','MILLONARIO','CARLOS VELASCO RAMÍREZ','NO123456789',1000,10000000,'Carlos Gomez','APROBADO','Cumple Todo','2023-03-25','2023-04-21'),(58932023,'CIMEQH','VIVIENDA','NIXON ANTONIO CHAVEZ','NO123456789',700,900000,'Carlos Gomez','SEGUIMIENTO','Cambio de Ingeniero','2023-04-09','2023-04-22'),(78932023,'CIMEQH','CONDOMINIO','MARTHA GONZÁLEZ RAMÍREZ','NO123456789',700,900000,'Carlos Gomez','SEGUIMIENTO','Inspeccion de elevador','2023-04-10','2023-04-21'),(78952022,'CIMEQH','PROYECTO DE INGENIERÍA CIVIL','LUIS GARCÍA RAMÍREZ','NO456789012',370,300000,'Carlos Gomez','DESAPROBADO','No cumple con los requisitos','2023-03-25','2023-04-22'),(78962022,'CIMEQH','PROYECTO DE ARQUITECTURA','ANA MARTÍNEZ GÓMEZ','NO123456789',200,200000,'Carlos Gomez','SOLICITUD DE DOCUMENTACION','F01','2023-03-25','2023-04-21'),(78962023,'CIMEQH','MILLONARIO','MARÍA LÓPEZ SÁNCHEZ','NO123456789',1500,15000000,'Carlos Gomez','APROBADO','Cumple Todo','2023-03-25','2023-04-21'),(98762019,'CIMEQH','PROYECTO DE REMODELACIÓN','JULIA MARTÍNEZ RAMOS','NO987654321',250,350000,'Carlos Gomez','APROBADO','Cumple Todo','2023-03-25','2023-04-21');
 /*!40000 ALTER TABLE `proyectoscimeqh` ENABLE KEYS */;
 UNLOCK TABLES;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `trg_Insertar_fecha_mod_cimeqh` BEFORE INSERT ON `proyectoscimeqh` FOR EACH ROW BEGIN
+    SET NEW.fecha_mod = CURDATE();
+END */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `trg_UpdateFechaMod_cimeqh` BEFORE UPDATE ON `proyectoscimeqh` FOR EACH ROW BEGIN
+    IF NEW.nombre_col <> OLD.nombre_col OR NEW.tipo_proyecto <> OLD.tipo_proyecto OR NEW.propietario <> OLD.propietario OR NEW.clave_catastral <> OLD.clave_catastral OR NEW.area <> OLD.area OR NEW.presupuesto <> OLD.presupuesto OR NEW.colegiado <> OLD.colegiado OR NEW.estatus <> OLD.estatus OR NEW.Observaciones <> OLD.Observaciones
+    OR NEW.fecha <> OLD.fecha
+    THEN
+        SET NEW.fecha_mod = NOW();
+    END IF;
+END */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 
 --
 -- Table structure for table `rol`
@@ -609,7 +726,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_CONSTRUCCION_CAH`(
 )
 begin
         select clave_catastral, area,tipo_proyecto,
-        estatus, date_format(fecha, "%d/%m/%Y") as fecha
+        estatus, date_format(fecha_mod, "%d/%m/%Y") as fecha
         from proyectoscah
         where fecha between in_fecha_inicial and in_fecha_final order by tipo_proyecto;
     end ;;
@@ -634,7 +751,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_CONSTRUCCION_CICH`(
 )
 begin
         select clave_catastral, area,tipo_proyecto,
-        estatus, date_format(fecha, "%d/%m/%Y") as fecha
+        estatus, date_format(fecha_mod, "%d/%m/%Y") as fecha
         from proyectoscich
         where fecha between in_fecha_inicial and in_fecha_final order by tipo_proyecto;
     end ;;
@@ -659,7 +776,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_CONSTRUCCION_CIMEQH`(
 )
 begin
         select clave_catastral, area,tipo_proyecto,
-        estatus, date_format(fecha, "%d/%m/%Y") as fecha
+        estatus, date_format(fecha_mod, "%d/%m/%Y") as fecha
         from proyectoscimeqh
         where fecha between in_fecha_inicial and in_fecha_final order by tipo_proyecto;
     end ;;
@@ -758,7 +875,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_DESCONTINUADOS_CAH`(
     IN fecha_final DATE
 )
 BEGIN
-    SELECT num_expediente, colegiado, Observaciones, tipo_proyecto, date_format(fecha, "%d/%m/%Y") as fecha
+    SELECT num_expediente, colegiado, Observaciones, tipo_proyecto, date_format(fecha_mod, "%d/%m/%Y") as fecha
     FROM proyectoscah
     WHERE Observaciones LIKE '%cambio de%' 
     AND fecha BETWEEN fecha_inicial AND fecha_final;
@@ -783,7 +900,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_DESCONTINUADOS_CICH`(
     IN fecha_final DATE
 )
 BEGIN
-    SELECT num_expediente, colegiado, Observaciones, tipo_proyecto, date_format(fecha, "%d/%m/%Y") as fecha
+    SELECT num_expediente, colegiado, Observaciones, tipo_proyecto, date_format(fecha_mod, "%d/%m/%Y") as fecha
     FROM proyectoscich
     WHERE Observaciones LIKE '%cambio de%' 
     AND fecha BETWEEN fecha_inicial AND fecha_final;
@@ -808,7 +925,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_DESCONTINUADOS_CIMEQH`(
     IN fecha_final DATE
 )
 BEGIN
-    SELECT num_expediente, colegiado, Observaciones,tipo_proyecto, date_format(fecha, "%d/%m/%Y") as fecha
+    SELECT num_expediente, colegiado, Observaciones,tipo_proyecto, date_format(fecha_mod, "%d/%m/%Y") as fecha
     FROM proyectoscimeqh
     WHERE Observaciones LIKE '%cambio de%' 
     AND fecha BETWEEN fecha_inicial AND fecha_final;
@@ -1031,7 +1148,7 @@ DELIMITER ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_MILLONARIOS_CAH`(IN fecha_inicial DATE, IN fecha_final DATE)
 BEGIN
-    SELECT num_expediente,presupuesto,area, clave_catastral, tipo_proyecto, date_format(fecha, "%d/%m/%Y") as fecha 
+    SELECT num_expediente,presupuesto,area, clave_catastral, tipo_proyecto, date_format(fecha_mod, "%d/%m/%Y") as fecha 
     FROM proyectoscah
     WHERE presupuesto >= 1000000
     AND fecha BETWEEN fecha_inicial AND fecha_final
@@ -1054,7 +1171,7 @@ DELIMITER ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_MILLONARIOS_CICH`(IN fecha_inicial DATE, IN fecha_final DATE)
 BEGIN
-    SELECT num_expediente,presupuesto,area, clave_catastral, tipo_proyecto, date_format(fecha, "%d/%m/%Y") as fecha 
+    SELECT num_expediente,presupuesto,area, clave_catastral, tipo_proyecto, date_format(fecha_mod, "%d/%m/%Y") as fecha 
     FROM proyectoscich
     WHERE presupuesto >= 1000000
     AND fecha BETWEEN fecha_inicial AND fecha_final
@@ -1077,7 +1194,7 @@ DELIMITER ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_MILLONARIOS_CIMEQH`(IN fecha_inicial DATE,IN fecha_final DATE)
 BEGIN
-    SELECT num_expediente,presupuesto,area, clave_catastral, tipo_proyecto, date_format(fecha, "%d/%m/%Y") as fecha 
+    SELECT num_expediente,presupuesto,area, clave_catastral, tipo_proyecto, date_format(fecha_mod, "%d/%m/%Y") as fecha 
     FROM proyectoscimeqh
     WHERE presupuesto >= 1000000
     AND fecha BETWEEN fecha_inicial AND fecha_final
@@ -1141,7 +1258,7 @@ begin
 		select num_expediente as "Expediente", tipo_proyecto as "Tipo_de_Proyecto",
         propietario as "Propietario" , clave_catastral as "Clave_Catastral", estatus as "Estatus", observaciones as 
         "Observaciones" , fecha as "Fecha", area as "Area", presupuesto as "Presupuesto"
-        , colegiado as "Colegiado" from proyectoscah;
+        , colegiado as "Colegiado" from proyectoscah order by fecha desc;
 end ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -1163,7 +1280,7 @@ begin
 		select num_expediente as "Expediente", tipo_proyecto as "Tipo_de_Proyecto",
         propietario as "Propietario" , clave_catastral as "Clave_Catastral", estatus as "Estatus", observaciones as 
         "Observaciones" , fecha as "Fecha", area as "Area", presupuesto as "Presupuesto"
-        , colegiado as "Colegiado" from proyectoscich;
+        , colegiado as "Colegiado" from proyectoscich order by fecha desc;
 end ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -1185,7 +1302,7 @@ begin
 		select num_expediente as "Expediente", tipo_proyecto as "Tipo_de_Proyecto",
         propietario as "Propietario" , clave_catastral as "Clave_Catastral", estatus as "Estatus", observaciones as 
         "Observaciones" , fecha as "Fecha", area as "Area", presupuesto as "Presupuesto"
-        , colegiado as "Colegiado" from ProyectosCIMEQH;
+        , colegiado as "Colegiado" from ProyectosCIMEQH order by fecha desc;
     end ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -1438,4 +1555,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-04-15 16:22:00
+-- Dump completed on 2023-04-22  0:20:39

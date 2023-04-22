@@ -357,6 +357,52 @@
                     return 0;
                 }
             }
+
+            function DescargarCsv($tabla)
+            {
+                $sql = "SELECT * FROM $tabla";
+                $query = $this->conexion->conexion->query($sql);
+
+                if($query->num_rows > 0)
+                {
+                    $delimiter = ",";
+                    $filename = "$tabla" . date('Y-m-d') . ".csv";
+                    
+                    //create a file pointer
+                    $f = fopen('php://memory', 'w');
+                    
+                    //set column headers
+                    // campos del archivo CSV
+                    $fields = array('num_expediente', 'nombre_col', 'tipo_proyecto', 'propietario', 'clave_catastral', 'area', 'presupuesto', 'colegiado', 'estatus', 'Observaciones', 'fecha', 'fecha_modificacion');
+                    // separador de campos
+                    $delimiter = ',';
+
+                    // escribir los campos como la primera línea del archivo CSV
+                    fputcsv($f, $fields, $delimiter);
+
+                    // consulta a la base de datos
+                    
+
+                    // recorrer los resultados y escribirlos en el archivo CSV
+                    while($row = $query->fetch_assoc()){
+                    // procesar los datos antes de escribirlos en el archivo
+                    
+                    $lineData = array($row['num_expediente'], $row['nombre_col'], $row['tipo_proyecto'], $row['propietario'], $row['clave_catastral'], $row['area'], $row['presupuesto'], $row['colegiado'], $row['estatus'], $row['Observaciones'], $row['fecha'], $row['fecha_mod']);
+                    // escribir los datos en el archivo CSV
+                    fputcsv($f, $lineData, $delimiter);
+                    }
+                    
+                    //move back to beginning of file
+                    fseek($f, 0);
+                    
+                    //set headers to download file rather than displayed
+                    header('Content-Type: text/csv');
+                    header('Content-Disposition: attachment; filename="' . $filename . '";');
+                    
+                    //output all remaining data on a file pointer
+                    fpassthru($f);
+                }
+            }
         
     }
 ?>

@@ -366,14 +366,14 @@
                 if($query->num_rows > 0)
                 {
                     $delimiter = ",";
-                    $filename = "$tabla" . date('Y-m-d') . ".csv";
+                    $filename = "$tabla" . date('d-m-Y') . ".csv";
                     
                     //create a file pointer
                     $f = fopen('php://memory', 'w');
                     
                     //set column headers
                     // campos del archivo CSV
-                    $fields = array('num_expediente', 'nombre_col', 'tipo_proyecto', 'propietario', 'clave_catastral', 'area', 'presupuesto', 'colegiado', 'estatus', 'Observaciones', 'fecha', 'fecha_modificacion');
+                    $fields = array('Numero de Expediente', 'Colegio', 'Tipo de Proyecto', 'Propietario', 'Clave Catastral', 'Area', 'Presupuesto', 'Colegiado', 'Estatus', 'Observaciones', 'Fecha de Registro', 'Fecha de Modificacion');
                     // separador de campos
                     $delimiter = ',';
 

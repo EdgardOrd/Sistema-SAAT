@@ -41,7 +41,7 @@
                 <div class="col-lg-2">
                   <button class="btn btn-success d-flex align-items-center justify-content-center py-2" style="width:100%" onclick="window.open('../controlador/colegios/controlador_descargar.php?tabla=proyectoscimeqh')">
                   <i class="fas fa-download me-2 mr-2"></i>
-                    <span class="me-2">Descargar</span>
+                    <span class="me-2">Descargar CSV</span>
                   </button>
                 </div>          
               </div><br>
@@ -94,7 +94,8 @@
           <div class="row">
             <div class="col-lg-6">
               <label for="">N° de Expediente</label>
-              <input type="number" class="form-control" id="txt_exp" placeholder="Ingrese Numero de Expediente">
+              <input type="number" class="form-control" id="txt_exp" placeholder="Ingrese número de expediente">
+              <span id="mensaje_error_expe" style="color: red"></span>
               <br>
             </div>
             <div class="col-lg-6">
@@ -124,7 +125,8 @@
             </div>
             <div class="col-lg-6">
               <label for="">Clave Catastral</label>
-              <input type="text" class="form-control" id="txt_cat" placeholder="Ingrese el numero catastral">
+              <input type="text" class="form-control" id="txt_cat" placeholder="Ingrese la clave catastral">
+              <span id="mensaje_error" style="color: red"></span>
               <br>
             </div>
             <div class="col-lg-6">
@@ -133,17 +135,17 @@
               <br>
             </div>  
             <div class="col-lg-6">
-              <label for="">Area</label>
-              <input type="number" class="form-control" id="txt_area" placeholder="Area del Proyecto">
+              <label for="">Área</label>
+              <input type="number" class="form-control" id="txt_area" placeholder="Ingrese el área del proyecto">
             </div>
             <div class="col-lg-6">
               <label for="">Presupuesto</label>
-              <input type="text" class="form-control" id="txt_pre" placeholder="Presupuesto del Proyecto" onkeypress="return soloNumeros(event)">
+              <input type="text" class="form-control" id="txt_pre" placeholder="Ingrese el presupuesto del proyecto" onkeypress="return soloNumeros(event)">
               <br>
             </div>
             <div class="col-lg-12">
               <label for="">Observaciones</label>
-              <input type="text" class="form-control" id="txt_obs" placeholder="Observaciones">
+              <input type="text" class="form-control" id="txt_obs" placeholder="Ingrese observaciones">
               <br>
             </div>
             
@@ -177,7 +179,7 @@
           <div class="row">
             <div class="col-lg-6">
               <label for="">N° de Expediente</label>
-              <input type="number" class="form-control" id="txt_exp_editar" placeholder="Ingrese Numero de Expediente" disabled>
+              <input type="number" class="form-control" id="txt_exp_editar" placeholder="Ingrese número de expediente" disabled>
               <br>
             </div>
             <div class="col-lg-6">
@@ -185,9 +187,9 @@
               <input type="text" class="form-control" id="txt_ing_editar" placeholder="Ingrese el nombre del colegiado" maxlenght="50" onkeypress="return soloLetras(event)">
               <br>
             </div>
-            <div class="col-lg-12">
+            <div class="col-lg-6">
               <label for="">Tipo de Proyecto</label>
-              <input type="text" class="form-control" id="txt_proyect_editar" placeholder="Ingrese Tipo de Expediente">
+              <input type="text" class="form-control" id="txt_proyect_editar" placeholder="Ingrese tipo de proyecto">
               <br>
             </div>
             <div class="col-lg-6">
@@ -207,27 +209,35 @@
             </div>
             <div class="col-lg-6">
               <label for="">Clave Catastral</label>
-              <input type="text" class="form-control" id="txt_cat_editar"  placeholder="Ingrese el numero catastral">
+              <input type="text" class="form-control" id="txt_cat_editar"  placeholder="Ingrese la clave catastral">
+              <span id="mensaje_error_clave" style="color: red"></span>
               <br>
             </div>
             <div class="col-lg-6">
               <label for="">Fecha de Registro</label>
-              <input type="date" class="form-control" id="txt_fech_editar"  placeholder="Ingrese la fecha" min="2022-01-01" max="2023-04-31"> 
+              <input type="date" class="form-control" id="txt_fech_editar"  placeholder="Ingrese la fecha" min="2022-01-01" max="2023-04-31" > 
               <br>
             </div>  
             <div class="col-lg-6">
-              <label for="">Area</label>
-              <input type="number" class="form-control" id="txt_area_editar" placeholder="Area del Proyecto">
+              <label for="">Fecha de Modificación</label>
+              <input type="date" class="form-control" id="txt_fechamod_editar"  placeholder="Ingrese la fecha" min="2022-01-01" max="2023-04-31" disabled> 
+              <br>
+            </div>  
+            <div class="col-lg-6">
+              <label for="">Área</label>
+              <input type="number" class="form-control" id="txt_area_editar" placeholder="Ingrese el área del proyecto">
+              <span id="mensaje_error_area" style="color: red"></span>
               <br>
             </div>
             <div class="col-lg-6">
               <label for="">Presupuesto</label>
-              <input type="text" class="form-control" id="txt_pre_editar" placeholder="Presupuesto del Proyecto" onkeypress="return soloNumeros(event)">
+              <input type="number" class="form-control" id="txt_pre_editar" placeholder="Ingrese presupuesto del proyecto">
+              <span id="mensaje_error_presu" style="color: red"></span>
               <br>
             </div>
             <div class="col-lg-12">
               <label for="">Observaciones</label>
-              <input type="text" class="form-control" id="txt_obs_editar" placeholder="Observaciones">
+              <input type="text" class="form-control" id="txt_obs_editar" placeholder="Ingrese las observaciones">
               <br>
             </div>
             

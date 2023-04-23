@@ -99,7 +99,7 @@
               <br>
             </div>
             <div class="col-lg-6">
-              <label for="">Nombre de Ingeniero</label>
+              <label for="">Nombre de Colegiado</label>
               <input type="text" class="form-control" id="txt_ing" placeholder="Ingrese nombre del colegiado" maxlenght="50" onkeypress="return soloLetras(event)">
               <br>
             </div>
@@ -185,7 +185,7 @@
               <br>
             </div>
             <div class="col-lg-6">
-              <label for="">Nombre de Ingeniero</label>
+              <label for="">Nombre de Colegiado</label>
               <input type="text" class="form-control" id="txt_ing_editar" placeholder="Ingrese nombre del colegiado" maxlenght="50" onkeypress="return soloLetras(event)">
               <br>
             </div>
@@ -256,18 +256,14 @@
       </div>
     </div>
   </div>
-</form>
-
-        
+</form>        
 <script>
 $(document).ready(function () {
   listar_usuario_cich();
   $('.js-example-basic-single').select2();
   listar_combo_rol_colegio_cich();
-  $("#modal_nuevo_cimeqh").on('shown.bs.modal', function(){
+  $("#modal_nuevo_cich").on('shown.bs.modal', function(){
     $('#txt_exp').focus();
   })
 });
-
-
 </script>

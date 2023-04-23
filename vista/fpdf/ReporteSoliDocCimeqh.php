@@ -79,12 +79,12 @@ if(!empty($_GET["fecha_inicial"]) and !empty($_GET["fecha_final"]))
          
          $this->SetFont('Arial', 'B', 8);
          $this->Cell(30, 10, utf8_decode('EXPEDIENTE'), 1, 0, 'C', 1);
-         $this->Cell(45, 10, utf8_decode('DOCUMENTOS FALTANTES'), 1, 0, 'C', 1);
-         $this->Cell(60, 10, utf8_decode('CONSTRUCCIÓN'), 1, 0, 'C', 1);
+         $this->Cell(55, 10, utf8_decode('DOCUMENTOS FALTANTES'), 1, 0, 'C', 1);
+         $this->Cell(45, 10, utf8_decode('CONSTRUCCIÓN'), 1, 0, 'C', 1);
          $this->Cell(30, 10, utf8_decode('PRESUPUESTO'), 1, 0, 'C', 1);
          $this->Cell(20, 10, utf8_decode('ÁREA'), 1, 0, 'C', 1);
-         $this->Cell(65, 10, utf8_decode('PROPIETARIO'), 1, 0, 'C', 1);
-         $this->Multicell(30,5, utf8_decode("FECHA DE SEGUIMIENTO"), 1, 1, 'R', 1);
+         $this->Cell(50, 10, utf8_decode('PROPIETARIO'), 1, 0, 'C', 1);
+         $this->Cell(45, 10, utf8_decode("FECHA DE SEGUIMIENTO"), 1, 1, 'C', 1);
          
          
       }
@@ -123,12 +123,12 @@ if(!empty($_GET["fecha_inicial"]) and !empty($_GET["fecha_final"]))
    $i = $i + 1;
    /* TABLA */
    $pdf->Cell(30, 15, utf8_decode($datos_reporte->num_expediente), 1, 0, 'C', 0);
-   $pdf->Cell(45, 15, utf8_decode($datos_reporte->observaciones), 1, 0, 'C', 0);
-   $pdf->Cell(60, 15, utf8_decode($datos_reporte->tipo_proyecto), 1, 0, 'C', 0);
+   $pdf->Cell(55, 15, utf8_decode($datos_reporte->observaciones), 1, 0, 'C', 0);
+   $pdf->Cell(45, 15, utf8_decode($datos_reporte->tipo_proyecto), 1, 0, 'C', 0);
    $pdf->Cell(30, 15, utf8_decode("Lps." . "" . number_format($datos_reporte->presupuesto, 2, '.', ',')), 1, 0, 'C', 0);
    $pdf->Cell(20, 15, utf8_decode($datos_reporte->area . " " . "m²"), 1, 0, 'C', 0);
-   $pdf->Cell(65, 15, utf8_decode($datos_reporte->propietario), 1, 0, 'C', 0);
-   $pdf->Cell(30, 15, utf8_decode($datos_reporte->fecha), 1, 1, 'C', 0);
+   $pdf->Cell(50, 15, utf8_decode($datos_reporte->propietario), 1, 0, 'C', 0);
+   $pdf->Cell(45, 15, utf8_decode($datos_reporte->fecha), 1, 1, 'C', 0);
    }
 
    

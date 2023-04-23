@@ -126,60 +126,12 @@ function Registrar_Nota_Cimeqh(){
     if(exp.length == 0 || proye.length == 0 || prop.length == 0 || cat.length == 0 || area.length == 0 || presu.length == 0 || colegiado.length == 0 || estatus.length == 0  || obs.length == 0 || fecha.length == 0){
         return Swal.fire("Advertencia", "Llene los campos vacios","warning");
     }
-    /* VALIDACION DE CLAVE CATASTRAL */
-    const inputClaveCatastral = document.getElementById("txt_cat");
-    const patron = /^([NO]|[NE]|[SE]|[SO]|[N]|[S]|[E]|[O])[A-Z]{1}\d+$/;
-    if (!patron.test(inputClaveCatastral.value)) {
-    inputClaveCatastral.style.borderColor = "red";
-    Swal.fire({
-        icon: 'error',
-        title: 'Error',
-        text: "La clave catastral debe empezar: 'NO', 'NE', 'SE', 'SO', 'N', 'S', 'E', 'O', seguidas de números."
-    });
-    return;
-    } else {
-    inputClaveCatastral.style.borderColor = "initial";
-    }
-    /* VALIDACION DE PRESUPUESTO*/
-
-    const inputPresupuesto = document.getElementById("txt_pre");
-    const minPresupuesto = 45000;
-    const maxPresupuesto = 50000000000;
-
-    if (presu < minPresupuesto || presu > maxPresupuesto) {
-        inputPresupuesto.style.borderColor = "red";
-        Swal.fire({
-        icon: 'error',
-        title: 'Error',
-        text: `Presupuesto Inválido.`
-        });
-        return;
-    } else {
-        inputPresupuesto.style.borderColor = "initial";
-    }
-    /* VALIDACION DE AREA*/
-
-    const inputArea = document.getElementById("txt_area");
-    const minArea = 40;
-
-    if (area < minArea) {
-        inputPresupuesto.style.borderColor = "red";
-        Swal.fire({
-        icon: 'error',
-        title: 'Error',
-        text: `Área Inválida.`
-        });
-        return;
-    } else {
-        inputArea.style.borderColor = "initial";
-    }
-
     /* VALIDACION DE EXPEDIENTE*/
     let fechaActual = new Date();
     let year = fechaActual.getFullYear().toString();
-
+    
     const inputExpediente = document.getElementById("txt_exp");
-
+    
     if (!exp.endsWith(year)) {
         inputExpediente.style.borderColor = "red";
         Swal.fire({
@@ -190,6 +142,55 @@ function Registrar_Nota_Cimeqh(){
         return;
     } else {
         inputExpediente.style.borderColor = "initial";
+    }
+
+    /* VALIDACION DE CLAVE CATASTRAL */
+    const inputClaveCatastral = document.getElementById("txt_cat");
+    const patron = /^([NO]|[NE]|[SE]|[SO]|[N]|[S]|[E]|[O])[A-Z]{1}\d+$/;
+    if (!patron.test(inputClaveCatastral.value)) {
+    inputClaveCatastral.style.borderColor = "red";
+    Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: "La clave catastral debe empezar: 'NO', 'NE', 'SE', 'SO' seguidas de números."
+    });
+    return;
+    } else {
+    inputClaveCatastral.style.borderColor = "initial";
+    }
+
+    /* VALIDACION DE AREA*/
+
+    const inputArea = document.getElementById("txt_area");
+    const minArea = 40;
+
+    if (area < minArea) {
+    inputArea.style.borderColor = "red";
+    Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: `Área Inválida. No puede ser menor a ${minArea} m^2`
+    });
+    return;
+    } else {
+        inputArea.style.borderColor = "initial";
+    }
+
+   /* VALIDACION DE PRESUPUESTO */
+    const inputPresupuesto = document.getElementById("txt_pre");
+    const minPresupuesto = 45000;
+    const maxPresupuesto = 50000000000;
+
+    if (presu < minPresupuesto || presu > maxPresupuesto) {
+        inputPresupuesto.style.borderColor = "red";
+        Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: `Presupuesto Inválido. No puede ser menor a ${minPresupuesto} Lps.`
+        });
+        return;
+    } else {
+        inputPresupuesto.style.borderColor = "initial";
     }
     $.ajax({
         "url":"../controlador/colegios/controlador_cimeqh_registro.php",
@@ -247,7 +248,7 @@ function Editar_Nota_Cimeqh()
         Swal.fire({
             icon: 'error',
             title: 'Error',
-            text: "La clave catastral debe empezar: 'NO', 'NE', 'SE', 'SO', 'N', 'S', 'E', 'O', seguidas de números."
+            text: "La clave catastral debe empezar: 'NO', 'NE', 'SE', 'SO' seguidas de números."
         });
         return;
         } else {
@@ -264,7 +265,7 @@ function Editar_Nota_Cimeqh()
             Swal.fire({
             icon: 'error',
             title: 'Error',
-            text: `Presupuesto Inválido.`
+            text: `Presupuesto Inválido. No puede ser menor a ${minPresupuesto} Lps.`
             });
             return;
         } else {
@@ -276,11 +277,11 @@ function Editar_Nota_Cimeqh()
         const minArea = 40;
 
         if (area < minArea) {
-            inputPresupuesto.style.borderColor = "red";
+            inputArea.style.borderColor = "red";
             Swal.fire({
             icon: 'error',
             title: 'Error',
-            text: `Área Inválida.`
+            text: `Área Inválida. No puede ser menor a ${minArea} m^2`
             });
             return;
         } else {
@@ -359,106 +360,3 @@ function soloNumeros(e){
     return patron.test(tecla_final);
 }
 
-const inputClaveCatastral = document.getElementById("txt_cat");
-const mensajeError = document.getElementById("mensaje_error");
-
-inputClaveCatastral.addEventListener("input", function() {
-const claveCatastral = inputClaveCatastral.value;
-const patron = /^([NO]|[NE]|[SE]|[SO]|[N]|[S]|[E]|[O])[A-Z]{1}\d+$/;
-
-if (patron.test(claveCatastral)) {
-    mensajeError.innerHTML = "";
-    inputClaveCatastral.style.borderColor = "initial";
-} else {
-    mensajeError.innerHTML = "La clave catastral debe empezar: 'NO', 'NE', 'SE', 'SO' o 'N', 'S', 'E', 'O', seguidas de números.";
-    inputClaveCatastral.style.borderColor = "red";
-}
-});
-
-const inputExpediente = document.getElementById("txt_exp");
-const mensajeErrorExpediente = document.getElementById("mensaje_error_expe");
-
-inputExpediente.addEventListener("input", function() {
-  const expediente = inputExpediente.value;
-  const anioActual = new Date().getFullYear();
-  const patron = new RegExp(`^\\d{4}${anioActual}$`);
-
-  if (patron.test(expediente)) {
-    mensajeErrorExpediente.innerHTML = "";
-    inputExpediente.style.borderColor = "initial";
-  } else {
-    mensajeErrorExpediente.innerHTML = `El número de expediente debe tener el formato ####${anioActual}.`;
-    inputExpediente.style.borderColor = "red";
-  }
-});
-
-/* MODAL DE EDITAR VALIDACIONES */
-
-const inputClaveCatastralEditar = document.getElementById("txt_cat_editar");
-const mensajeErrorEditar = document.getElementById("mensaje_error_clave");
-
-inputClaveCatastralEditar.addEventListener("input", function() {
-  const claveCatastralEditar = inputClaveCatastralEditar.value;
-  const patronEditar = /^([NO]|[NE]|[SE]|[SO]|[N]|[S]|[E]|[O])[A-Z]{1}\d+$/;
-
-  if (patronEditar.test(claveCatastralEditar)) {
-    mensajeErrorEditar.innerHTML = "";
-    inputClaveCatastralEditar.style.borderColor = "initial";
-  } else {
-    mensajeErrorEditar.innerHTML = "La clave catastral debe empezar: 'NO', 'NE', 'SE', 'SO' o 'N', 'S', 'E', 'O', seguidas de números.";
-    inputClaveCatastralEditar.style.borderColor = "red";
-  }
-});
-
-const inputAreaEditar = document.getElementById("txt_area_editar");
-const mensajeErrorArea = document.getElementById("mensaje_error_area");
-
-inputAreaEditar.addEventListener("input", function(){
-    const area = 40;
-    const inputValor = parseInt(inputAreaEditar.value);
-    
-    if(inputValor < area){
-        inputAreaEditar.style.borderColor = "red";
-        mensajeErrorArea.textContent = "El área no puede ser menor a 40 m^2";
-    } else {
-        inputAreaEditar.style.borderColor = "initial";
-        mensajeErrorArea.textContent = "";
-    }
-});
-
-const inputPresuEditar = document.getElementById("txt_pre_editar");
-const mensajeErrorPresu = document.getElementById("mensaje_error_presu");
-
-inputPresuEditar.addEventListener("input", function(){
-    const precio = 40000;
-    const inputPrecio = parseInt(inputPresuEditar.value);
-
-    if(inputPrecio < precio){
-        inputPresuEditar.style.borderColor = "red";
-        mensajeErrorPresu.textContent = "El presupuesto no puede ser menor a 40,000 Lps"
-    }else{
-        inputPresuEditar.style.borderColor = "initial";
-        mensajeErrorPresu.textContent = "";
-    }
-});
-
-var fechaActual = new Date();
-var offset = fechaActual.getTimezoneOffset();
-fechaActual.setMinutes(fechaActual.getMinutes() - offset);
-var fechaActualFormateada = fechaActual.toISOString().slice(0,10);
-
-document.getElementById("txt_fech").value = fechaActualFormateada;
-
-const fechaMinima = new Date();
-fechaMinima.setDate(fechaMinima.getDate() - 14);
-const fechaMinimaFormateada = fechaMinima.toISOString().slice(0, 10);
-
-const fechaMaxima = new Date();
-fechaMaxima.setDate(fechaMaxima.getDate() + 14);
-const fechaMaximaFormateada = fechaMaxima.toISOString().slice(0, 10);
-
-document.getElementById("txt_fech").setAttribute("min", fechaMinimaFormateada);
-document.getElementById("txt_fech").setAttribute("max", fechaMaximaFormateada);
-
-document.getElementById("txt_fech_editar").setAttribute("min", fechaMinimaFormateada);
-document.getElementById("txt_fech_editar").setAttribute("max", fechaMaximaFormateada);

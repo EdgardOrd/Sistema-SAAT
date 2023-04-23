@@ -1,4 +1,3 @@
-
 <script type="text/javascript" src="../js/cah.js?rev=<?php echo time();?>"></script>
 <style>
   table th{
@@ -100,7 +99,7 @@
               <br>
             </div>
             <div class="col-lg-6">
-              <label for="">Nombre de Arquitecto</label>
+              <label for="">Nombre de Colegiado</label>
               <input type="text" class="form-control" id="txt_ing" placeholder="Ingrese nombre del arquitecto" maxlenght="50" onkeypress="return soloLetras(event)">
               <br>
             </div>
@@ -186,7 +185,7 @@
               <br>
             </div>
             <div class="col-lg-6">
-              <label for="">Nombre de Arquitecto</label>
+              <label for="">Nombre de Colegiado</label>
               <input type="text" class="form-control" id="txt_ing_editar" placeholder="Ingrese nombre del arquitecto" maxlenght="50" onkeypress="return soloLetras(event)">
               <br>
             </div>
@@ -269,6 +268,4 @@ $(document).ready(function () {
     $('#txt_exp').focus();
   })
 });
-
-
 </script>

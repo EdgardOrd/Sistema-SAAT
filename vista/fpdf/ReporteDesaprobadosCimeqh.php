@@ -77,9 +77,9 @@ if(!empty($_GET["fecha_inicial"]) and !empty($_GET["fecha_final"]))
          $this->SetFont('Arial', 'B', 9);
          $this->Cell(35, 10, utf8_decode('EXPEDIENTE'), 1, 0, 'C', 1);
          $this->Cell(35, 10, utf8_decode('CLAVE CATASTRAL'), 1, 0, 'C', 1);
-         $this->Cell(55, 10, utf8_decode('CONSTRUCCIÓN'), 1, 0, 'C', 1);
-         $this->Cell(65, 10, utf8_decode('PROPIETARIO'), 1, 0, 'C', 1);
-         $this->Cell(50, 10, utf8_decode('OBSERVACIONES'), 1, 0, 'C', 1);
+         $this->Cell(50, 10, utf8_decode('CONSTRUCCIÓN'), 1, 0, 'C', 1);
+         $this->Cell(55, 10, utf8_decode('PROPIETARIO'), 1, 0, 'C', 1);
+         $this->Cell(60, 10, utf8_decode('OBSERVACIONES'), 1, 0, 'C', 1);
          $this->SetFont('Arial', 'B', 8);
          $this->Cell(40, 10, utf8_decode('FECHA DESAPROBACIÓN'), 1, 1, 'C', 1);
          
@@ -121,9 +121,9 @@ if(!empty($_GET["fecha_inicial"]) and !empty($_GET["fecha_final"]))
    /* TABLA */
    $pdf->Cell(35, 20, utf8_decode($datos_reporte->num_expediente), 1, 0, 'C', 0);
    $pdf->Cell(35, 20, utf8_decode($datos_reporte->clave_catastral), 1, 0, 'C', 0);
-   $pdf->Cell(55, 20, utf8_decode($datos_reporte->tipo_proyecto), 1, 0, 'C', 0);
-   $pdf->Cell(65, 20, utf8_decode($datos_reporte->propietario), 1, 0, 'C', 0);
-   $pdf->Cell(50, 20, utf8_decode($datos_reporte->observaciones), 1, 0, 'C', 0);
+   $pdf->Cell(50, 20, utf8_decode($datos_reporte->tipo_proyecto), 1, 0, 'C', 0);
+   $pdf->Cell(55, 20, utf8_decode($datos_reporte->propietario), 1, 0, 'C', 0);
+   $pdf->Cell(60, 20, utf8_decode($datos_reporte->observaciones), 1, 0, 'C', 0);
    $pdf->Cell(40, 20, utf8_decode($datos_reporte->fecha), 1, 1, 'C', 0);
    }
 

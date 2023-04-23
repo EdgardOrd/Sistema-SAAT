@@ -109,16 +109,16 @@ if(!empty($_GET["fecha_inicial"]) and !empty($_GET["fecha_final"]))
    $consulta_reporte = $conexion->conexion->query("CALL SP_DESCONTINUADOS_CICH('$fecha_inicial','$fecha_final')");
    
    while ($datos_reporte = $consulta_reporte->fetch_object()) {      
-      
+
    $i = $i + 1;
    /* TABLA */
-   
+
    $pdf->Cell(40, 18, utf8_decode($datos_reporte->num_expediente), 1, 0, 'C', 0);
    $pdf->Cell(60, 18, utf8_decode($datos_reporte->colegiado), 1, 0, 'C', 0);
    $pdf->Cell(55, 18, utf8_decode($datos_reporte->tipo_proyecto), 1, 0, 'C', 0);
    $pdf->Cell(85, 18, utf8_decode($datos_reporte->Observaciones), 1, 0, 'C', 0);
    $pdf->Cell(32, 18, utf8_decode($datos_reporte->fecha), 1, 1, 'C', 0);
-   
+   $pdf->Cell(2);
    }
 
    

@@ -265,26 +265,7 @@ $(document).ready(function () {
   })
 });
 
-var fechaActual = new Date();
-var offset = fechaActual.getTimezoneOffset();
-fechaActual.setMinutes(fechaActual.getMinutes() - offset);
-var fechaActualFormateada = fechaActual.toISOString().slice(0,10);
 
-document.getElementById("txt_fech").value = fechaActualFormateada;
-
-const fechaMinima = new Date();
-fechaMinima.setDate(fechaMinima.getDate() - 14);
-const fechaMinimaFormateada = fechaMinima.toISOString().slice(0, 10);
-
-const fechaMaxima = new Date();
-fechaMaxima.setDate(fechaMaxima.getDate() + 14);
-const fechaMaximaFormateada = fechaMaxima.toISOString().slice(0, 10);
-
-document.getElementById("txt_fech").setAttribute("min", fechaMinimaFormateada);
-document.getElementById("txt_fech").setAttribute("max", fechaMaximaFormateada);
-
-document.getElementById("txt_fech_editar").setAttribute("min", fechaMinimaFormateada);
-document.getElementById("txt_fech_editar").setAttribute("max", fechaMaximaFormateada);
 
 
 </script>
